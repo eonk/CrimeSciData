@@ -78,9 +78,3 @@ checking-normality-and-dealing-with-problems
 robust-anova
 post-hoc-comparisons
 effect-size-for-anova
-homework-activities
-general-instructions
-week-1-homework-basic-data-exploration-and-filtering
-week-2-homework-data-visualisations-with-r
-week-3-homework-foundations-for-inference-confidence-intervals
-week-4-hypothesis-tests-comparing-means

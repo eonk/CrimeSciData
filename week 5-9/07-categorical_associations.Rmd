@@ -9,26 +9,20 @@ As we learned during the first week we can get results from R in a variety of wa
 We will begin the session by loading again the BCS 2007/2008 data from previous weeks. 
 
 ```{r, eval =  FALSE}
-##R in Windows have some problems with https addresses, that's why we need to do this first:
-urlfile<-'https://raw.githubusercontent.com/jjmedinaariza/LAWS70821/master/BCS0708.csv'
-#We create a data frame object reading the data from the remote .csv file
-BCS0708<-read.csv(url(urlfile))
-
+# save URL into an object
+urlfile<-'https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv'
+# load readr library and use read_csv() function
+library(readr)
+BCS0708<-read_csv(url(urlfile))
 ```
-
-```{r, echo=FALSE}
-BCS0708 <- read.csv("bcs.csv")
-```
-
 
 We will start by producing a cross tabulation of victimisation ("bcsvictim"), a categorical unordered variable, by whether the presence of rubbish in the streets is a problem in the area of residence ("rubbcomm"), another categorical unordered variable. Broken windows theory would argue we should see a relationship. We will use the following code:
 
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(gmodels)
 with(BCS0708, CrossTable(rubbcomm, bcsvictim, prop.chisq = FALSE, format = c("SPSS")))
 #In CrossTable() we are using as our first argument the name of the variable defining the rows, and as our second argument the name of the variable defining the columns. We are also telling R we don't want yet any test of statistical significance and that we want the table to look like it would in SPSS.
-
 ```
 
 The cells for the central two columns represent the total number of cases in each category, the **row percentages**, the **column percentages**, and the **total percentages**. So you have, for example, 63 people in the category "rubbish is very common" that were victims of a crime, this represents 30.88% of all the people in the "rubbish is very common" category (your row percent), 2.79% of all the people in the "victim of a crime" category (your column percent), and 0.57% of all the people in the sample.
@@ -36,7 +30,7 @@ The cells for the central two columns represent the total number of cases in eac
 Notice that although "rubbcomm" is an ordinal variable, the order in which it gets printed does not make logical sense. We can check the order of the encoding using the `levels()` function.
 
 ```{r}
-levels(BCS0708$rubbcomm)
+class(BCS0708$rubbcomm)
 ```
 
 As we can see the order makes little sense. We should reorder the factor levels to make them follow a logical order. There are multiple ways of doing this, some of which we have already seen. This is one possible way of doing it.
