@@ -1,4 +1,4 @@
-# A first lesson about R (week 0)
+# A first lesson about R
 
 ## Install R & RStudio
 

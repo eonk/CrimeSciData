@@ -1,4 +1,4 @@
-# Getting to know your data (week 1)
+# Getting to know your data
 
 ## Causality in social sciences
 

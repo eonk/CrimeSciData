@@ -4,26 +4,26 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 2 Getting to know your data | Data Analysis in R &amp; RStudio</title>
-  <meta name="description" content="This is the course material for Data Analysis in R &amp; RStudio." />
+  <title>Chapter2 Getting to know your data | Modelling Criminological Data</title>
+  <meta name="description" content="This is the course material for Modelling Criminological Data." />
   <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 2 Getting to know your data | Data Analysis in R &amp; RStudio" />
+  <meta property="og:title" content="Chapter2 Getting to know your data | Modelling Criminological Data" />
   <meta property="og:type" content="book" />
   
-  <meta property="og:description" content="This is the course material for Data Analysis in R &amp; RStudio." />
+  <meta property="og:description" content="This is the course material for Modelling Criminological Data." />
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 2 Getting to know your data | Data Analysis in R &amp; RStudio" />
+  <meta name="twitter:title" content="Chapter2 Getting to know your data | Modelling Criminological Data" />
   
-  <meta name="twitter:description" content="This is the course material for Data Analysis in R &amp; RStudio." />
+  <meta name="twitter:description" content="This is the course material for Modelling Criminological Data." />
   
 
-<meta name="author" content="Reka Solymosi and Eon Kim (based on material developed with Juanjo Medina)" />
+<meta name="author" content="Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)" />
 
 
-<meta name="date" content="2022-09-16" />
+<meta name="date" content="2022-11-18" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="a-first-lesson-about-r.html"/>
-<link rel="next" href="data-visualisation-with-r.html"/>
+<link rel="next" href="data-visualisation-with-r-week-2.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -92,7 +92,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -105,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -133,7 +133,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li><a href="./">Data Analysis in R & RStudio</a></li>
+<li><a href="./">Modelling Criminological Data</a></li>
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
@@ -147,12 +147,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.6" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#more-on-packages"><i class="fa fa-check"></i><b>1.6</b> More on packages</a></li>
 <li class="chapter" data-level="1.7" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#using-objects"><i class="fa fa-check"></i><b>1.7</b> Using objects</a></li>
 <li class="chapter" data-level="1.8" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#more-on-objects"><i class="fa fa-check"></i><b>1.8</b> More on objects</a></li>
-<li class="chapter" data-level="1.9" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#on-comments"><i class="fa fa-check"></i><b>1.9</b> On comments</a></li>
-<li class="chapter" data-level="1.10" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#factors"><i class="fa fa-check"></i><b>1.10</b> Factors</a></li>
-<li class="chapter" data-level="1.11" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#naming-conventions-for-objects-in-r"><i class="fa fa-check"></i><b>1.11</b> Naming conventions for objects in R</a></li>
-<li class="chapter" data-level="1.12" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#dataframes"><i class="fa fa-check"></i><b>1.12</b> Dataframes</a></li>
+<li class="chapter" data-level="1.9" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#naming-conventions-for-objects-in-r"><i class="fa fa-check"></i><b>1.9</b> Naming conventions for objects in R</a></li>
+<li class="chapter" data-level="1.10" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#vectors"><i class="fa fa-check"></i><b>1.10</b> Vectors</a></li>
+<li class="chapter" data-level="1.11" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#factors"><i class="fa fa-check"></i><b>1.11</b> Factors</a></li>
+<li class="chapter" data-level="1.12" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#data-frame"><i class="fa fa-check"></i><b>1.12</b> Data frame</a></li>
 <li class="chapter" data-level="1.13" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#exploring-data"><i class="fa fa-check"></i><b>1.13</b> Exploring data</a></li>
-<li class="chapter" data-level="1.14" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#quitting-rstudio"><i class="fa fa-check"></i><b>1.14</b> Quitting RStudio</a></li>
+<li class="chapter" data-level="1.14" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#how-to-use-comment"><i class="fa fa-check"></i><b>1.14</b> How to use ‘comment’</a></li>
+<li class="chapter" data-level="1.15" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#quitting-rstudio"><i class="fa fa-check"></i><b>1.15</b> Quitting RStudio</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html"><i class="fa fa-check"></i><b>2</b> Getting to know your data</a>
 <ul>
@@ -170,68 +171,68 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.6" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#using-dplyr-for-grouped-operations"><i class="fa fa-check"></i><b>2.6</b> Using dplyr for grouped operations</a></li>
 <li class="chapter" data-level="2.7" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#making-comparisons-with-numerical-outcomes"><i class="fa fa-check"></i><b>2.7</b> Making comparisons with numerical outcomes</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html"><i class="fa fa-check"></i><b>3</b> Data visualisation with R</a>
+<li class="chapter" data-level="3" data-path="data-visualisation-with-r-week-2.html"><a href="data-visualisation-with-r-week-2.html"><i class="fa fa-check"></i><b>3</b> Data visualisation with R (week 2)</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
-<li class="chapter" data-level="3.2" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#anatomy-of-a-plot"><i class="fa fa-check"></i><b>3.2</b> Anatomy of a plot</a></li>
-<li class="chapter" data-level="3.3" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#what-graph-should-i-use"><i class="fa fa-check"></i><b>3.3</b> What graph should I use?</a></li>
-<li class="chapter" data-level="3.4" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#visualising-numerical-variables-histograms"><i class="fa fa-check"></i><b>3.4</b> Visualising numerical variables: Histograms</a></li>
-<li class="chapter" data-level="3.5" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#visualising-numerical-variables-density-plots"><i class="fa fa-check"></i><b>3.5</b> Visualising numerical variables: Density plots</a></li>
-<li class="chapter" data-level="3.6" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#visualising-numerical-variables-box-plots"><i class="fa fa-check"></i><b>3.6</b> Visualising numerical variables: Box plots</a></li>
-<li class="chapter" data-level="3.7" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#exploring-relationships-between-two-quantitative-variables-scatterplots"><i class="fa fa-check"></i><b>3.7</b> Exploring relationships between two quantitative variables: scatterplots</a></li>
-<li class="chapter" data-level="3.8" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#scatterplots-conditioning-in-a-third-variable"><i class="fa fa-check"></i><b>3.8</b> Scatterplots conditioning in a third variable</a></li>
-<li class="chapter" data-level="3.9" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#scatterplot-matrix"><i class="fa fa-check"></i><b>3.9</b> Scatterplot matrix</a></li>
-<li class="chapter" data-level="3.10" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#titles-legends-and-themes-in-ggplot2"><i class="fa fa-check"></i><b>3.10</b> Titles, legends, and themes in ggplot2</a></li>
-<li class="chapter" data-level="3.11" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#plotting-categorical-data-bar-charts"><i class="fa fa-check"></i><b>3.11</b> Plotting categorical data: bar charts</a></li>
-<li class="chapter" data-level="3.12" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#further-resources"><i class="fa fa-check"></i><b>3.12</b> Further resources</a></li>
+<li class="chapter" data-level="3.1" data-path="data-visualisation-with-r-week-2.html"><a href="data-visualisation-with-r-week-2.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="data-visualisation-with-r-week-2.html"><a href="data-visualisation-with-r-week-2.html#anatomy-of-a-plot"><i class="fa fa-check"></i><b>3.2</b> Anatomy of a plot</a></li>
+<li class="chapter" data-level="3.3" data-path="data-visualisation-with-r-week-2.html"><a href="data-visualisation-with-r-week-2.html#what-graph-should-i-use"><i class="fa fa-check"></i><b>3.3</b> What graph should I use?</a></li>
+<li class="chapter" data-level="3.4" data-path="data-visualisation-with-r-week-2.html"><a href="data-visualisation-with-r-week-2.html#visualising-numerical-variables-histograms"><i class="fa fa-check"></i><b>3.4</b> Visualising numerical variables: Histograms</a></li>
+<li class="chapter" data-level="3.5" data-path="data-visualisation-with-r-week-2.html"><a href="data-visualisation-with-r-week-2.html#visualising-numerical-variables-density-plots"><i class="fa fa-check"></i><b>3.5</b> Visualising numerical variables: Density plots</a></li>
+<li class="chapter" data-level="3.6" data-path="data-visualisation-with-r-week-2.html"><a href="data-visualisation-with-r-week-2.html#visualising-numerical-variables-box-plots"><i class="fa fa-check"></i><b>3.6</b> Visualising numerical variables: Box plots</a></li>
+<li class="chapter" data-level="3.7" data-path="data-visualisation-with-r-week-2.html"><a href="data-visualisation-with-r-week-2.html#exploring-relationships-between-two-quantitative-variables-scatterplots"><i class="fa fa-check"></i><b>3.7</b> Exploring relationships between two quantitative variables: scatterplots</a></li>
+<li class="chapter" data-level="3.8" data-path="data-visualisation-with-r-week-2.html"><a href="data-visualisation-with-r-week-2.html#scatterplots-conditioning-in-a-third-variable"><i class="fa fa-check"></i><b>3.8</b> Scatterplots conditioning in a third variable</a></li>
+<li class="chapter" data-level="3.9" data-path="data-visualisation-with-r-week-2.html"><a href="data-visualisation-with-r-week-2.html#scatterplot-matrix"><i class="fa fa-check"></i><b>3.9</b> Scatterplot matrix</a></li>
+<li class="chapter" data-level="3.10" data-path="data-visualisation-with-r-week-2.html"><a href="data-visualisation-with-r-week-2.html#titles-legends-and-themes-in-ggplot2"><i class="fa fa-check"></i><b>3.10</b> Titles, legends, and themes in ggplot2</a></li>
+<li class="chapter" data-level="3.11" data-path="data-visualisation-with-r-week-2.html"><a href="data-visualisation-with-r-week-2.html#plotting-categorical-data-bar-charts"><i class="fa fa-check"></i><b>3.11</b> Plotting categorical data: bar charts</a></li>
+<li class="chapter" data-level="3.12" data-path="data-visualisation-with-r-week-2.html"><a href="data-visualisation-with-r-week-2.html#further-resources"><i class="fa fa-check"></i><b>3.12</b> Further resources</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html"><i class="fa fa-check"></i><b>4</b> Refresher on descriptive statistics &amp; data carpentry</a>
+<li class="chapter" data-level="4" data-path="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html"><a href="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html"><i class="fa fa-check"></i><b>4</b> Refresher on descriptive statistics &amp; data carpentry (Prep for Week 3)</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
-<li class="chapter" data-level="4.2" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#getting-some-data-from-eurobarometer"><i class="fa fa-check"></i><b>4.2</b> Getting some data from Eurobarometer</a></li>
-<li class="chapter" data-level="4.3" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#thinking-about-your-data-filtering-cases"><i class="fa fa-check"></i><b>4.3</b> Thinking about your data: filtering cases</a></li>
-<li class="chapter" data-level="4.4" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#selecting-variables-using-dplyrselect"><i class="fa fa-check"></i><b>4.4</b> Selecting variables: using <code>dplyr::select</code></a></li>
-<li class="chapter" data-level="4.5" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#creating-summated-scales"><i class="fa fa-check"></i><b>4.5</b> Creating summated scales</a></li>
-<li class="chapter" data-level="4.6" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#collapsing-categories-in-character-variables"><i class="fa fa-check"></i><b>4.6</b> Collapsing categories in character variables</a></li>
-<li class="chapter" data-level="4.7" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#working-with-apparently-cryptic-variable-names-and-levels"><i class="fa fa-check"></i><b>4.7</b> Working with apparently cryptic variable names and levels</a></li>
-<li class="chapter" data-level="4.8" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#recoding-factors"><i class="fa fa-check"></i><b>4.8</b> Recoding factors</a></li>
-<li class="chapter" data-level="4.9" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#understanding-missing-data"><i class="fa fa-check"></i><b>4.9</b> Understanding missing data</a></li>
-<li class="chapter" data-level="4.10" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#exploring-dataframes-visually"><i class="fa fa-check"></i><b>4.10</b> Exploring dataframes visually</a></li>
-<li class="chapter" data-level="4.11" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#a-quick-recap-on-descriptive-statistics"><i class="fa fa-check"></i><b>4.11</b> A quick recap on descriptive statistics</a>
+<li class="chapter" data-level="4.1" data-path="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html"><a href="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html"><a href="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html#getting-some-data-from-eurobarometer"><i class="fa fa-check"></i><b>4.2</b> Getting some data from Eurobarometer</a></li>
+<li class="chapter" data-level="4.3" data-path="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html"><a href="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html#thinking-about-your-data-filtering-cases"><i class="fa fa-check"></i><b>4.3</b> Thinking about your data: filtering cases</a></li>
+<li class="chapter" data-level="4.4" data-path="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html"><a href="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html#selecting-variables-using-dplyrselect"><i class="fa fa-check"></i><b>4.4</b> Selecting variables: using <code>dplyr::select</code></a></li>
+<li class="chapter" data-level="4.5" data-path="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html"><a href="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html#creating-summated-scales"><i class="fa fa-check"></i><b>4.5</b> Creating summated scales</a></li>
+<li class="chapter" data-level="4.6" data-path="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html"><a href="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html#collapsing-categories-in-character-variables"><i class="fa fa-check"></i><b>4.6</b> Collapsing categories in character variables</a></li>
+<li class="chapter" data-level="4.7" data-path="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html"><a href="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html#working-with-apparently-cryptic-variable-names-and-levels"><i class="fa fa-check"></i><b>4.7</b> Working with apparently cryptic variable names and levels</a></li>
+<li class="chapter" data-level="4.8" data-path="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html"><a href="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html#recoding-factors"><i class="fa fa-check"></i><b>4.8</b> Recoding factors</a></li>
+<li class="chapter" data-level="4.9" data-path="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html"><a href="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html#understanding-missing-data"><i class="fa fa-check"></i><b>4.9</b> Understanding missing data</a></li>
+<li class="chapter" data-level="4.10" data-path="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html"><a href="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html#exploring-dataframes-visually"><i class="fa fa-check"></i><b>4.10</b> Exploring dataframes visually</a></li>
+<li class="chapter" data-level="4.11" data-path="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html"><a href="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html#a-quick-recap-on-descriptive-statistics"><i class="fa fa-check"></i><b>4.11</b> A quick recap on descriptive statistics</a>
 <ul>
-<li class="chapter" data-level="4.11.1" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#central-tendency"><i class="fa fa-check"></i><b>4.11.1</b> Central Tendency</a></li>
-<li class="chapter" data-level="4.11.2" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#dispersion"><i class="fa fa-check"></i><b>4.11.2</b> Dispersion</a></li>
-<li class="chapter" data-level="4.11.3" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#bivariate-analysis"><i class="fa fa-check"></i><b>4.11.3</b> Bivariate analysis</a></li>
+<li class="chapter" data-level="4.11.1" data-path="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html"><a href="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html#central-tendency"><i class="fa fa-check"></i><b>4.11.1</b> Central Tendency</a></li>
+<li class="chapter" data-level="4.11.2" data-path="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html"><a href="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html#dispersion"><i class="fa fa-check"></i><b>4.11.2</b> Dispersion</a></li>
+<li class="chapter" data-level="4.11.3" data-path="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html"><a href="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html#bivariate-analysis"><i class="fa fa-check"></i><b>4.11.3</b> Bivariate analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="4.12" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#further-resources-1"><i class="fa fa-check"></i><b>4.12</b> Further resources</a></li>
+<li class="chapter" data-level="4.12" data-path="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html"><a href="refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3.html#further-resources-1"><i class="fa fa-check"></i><b>4.12</b> Further resources</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html"><i class="fa fa-check"></i><b>5</b> Foundations of statistical inference: confidence intervals</a>
+<li class="chapter" data-level="5" data-path="foundations-of-statistical-inference-confidence-intervals-week-3.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-3.html"><i class="fa fa-check"></i><b>5</b> Foundations of statistical inference: confidence intervals (Week 3)</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#introduction-2"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
-<li class="chapter" data-level="5.2" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#generating-random-data"><i class="fa fa-check"></i><b>5.2</b> Generating random data</a></li>
-<li class="chapter" data-level="5.3" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#sampling-data-and-sampling-variability"><i class="fa fa-check"></i><b>5.3</b> Sampling data and sampling variability</a></li>
-<li class="chapter" data-level="5.4" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#sampling-distributions-and-sampling-experiments"><i class="fa fa-check"></i><b>5.4</b> Sampling distributions and sampling experiments</a></li>
-<li class="chapter" data-level="5.5" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#the-normal-distribution-and-confidence-intervals-with-known-standard-errors"><i class="fa fa-check"></i><b>5.5</b> The normal distribution and confidence intervals with known standard errors</a></li>
-<li class="chapter" data-level="5.6" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#asymptotic-confidence-intervals-for-means-and-proportions-using-r"><i class="fa fa-check"></i><b>5.6</b> Asymptotic confidence intervals for means and proportions using R</a></li>
-<li class="chapter" data-level="5.7" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#a-brief-intro-to-resampling-and-bootstraping"><i class="fa fa-check"></i><b>5.7</b> A brief intro to resampling and bootstraping</a></li>
-<li class="chapter" data-level="5.8" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#what-about-comparisons-sampling-distribution-for-the-difference-of-two-means"><i class="fa fa-check"></i><b>5.8</b> What about comparisons? Sampling distribution for the difference of two means</a></li>
-<li class="chapter" data-level="5.9" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#comparing-means-visually-by-using-error-bars-representing-confidence-intervals-inference-by-eye"><i class="fa fa-check"></i><b>5.9</b> Comparing means visually by using error bars representing confidence intervals: inference by eye</a></li>
+<li class="chapter" data-level="5.1" data-path="foundations-of-statistical-inference-confidence-intervals-week-3.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-3.html#introduction-2"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="foundations-of-statistical-inference-confidence-intervals-week-3.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-3.html#generating-random-data"><i class="fa fa-check"></i><b>5.2</b> Generating random data</a></li>
+<li class="chapter" data-level="5.3" data-path="foundations-of-statistical-inference-confidence-intervals-week-3.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-3.html#sampling-data-and-sampling-variability"><i class="fa fa-check"></i><b>5.3</b> Sampling data and sampling variability</a></li>
+<li class="chapter" data-level="5.4" data-path="foundations-of-statistical-inference-confidence-intervals-week-3.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-3.html#sampling-distributions-and-sampling-experiments"><i class="fa fa-check"></i><b>5.4</b> Sampling distributions and sampling experiments</a></li>
+<li class="chapter" data-level="5.5" data-path="foundations-of-statistical-inference-confidence-intervals-week-3.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-3.html#the-normal-distribution-and-confidence-intervals-with-known-standard-errors"><i class="fa fa-check"></i><b>5.5</b> The normal distribution and confidence intervals with known standard errors</a></li>
+<li class="chapter" data-level="5.6" data-path="foundations-of-statistical-inference-confidence-intervals-week-3.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-3.html#asymptotic-confidence-intervals-for-means-and-proportions-using-r"><i class="fa fa-check"></i><b>5.6</b> Asymptotic confidence intervals for means and proportions using R</a></li>
+<li class="chapter" data-level="5.7" data-path="foundations-of-statistical-inference-confidence-intervals-week-3.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-3.html#a-brief-intro-to-resampling-and-bootstraping"><i class="fa fa-check"></i><b>5.7</b> A brief intro to resampling and bootstraping</a></li>
+<li class="chapter" data-level="5.8" data-path="foundations-of-statistical-inference-confidence-intervals-week-3.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-3.html#what-about-comparisons-sampling-distribution-for-the-difference-of-two-means"><i class="fa fa-check"></i><b>5.8</b> What about comparisons? Sampling distribution for the difference of two means</a></li>
+<li class="chapter" data-level="5.9" data-path="foundations-of-statistical-inference-confidence-intervals-week-3.html"><a href="foundations-of-statistical-inference-confidence-intervals-week-3.html#comparing-means-visually-by-using-error-bars-representing-confidence-intervals-inference-by-eye"><i class="fa fa-check"></i><b>5.9</b> Comparing means visually by using error bars representing confidence intervals: inference by eye</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="hypotheses.html"><a href="hypotheses.html"><i class="fa fa-check"></i><b>6</b> Hypotheses</a>
+<li class="chapter" data-level="6" data-path="hypotheses-week-4.html"><a href="hypotheses-week-4.html"><i class="fa fa-check"></i><b>6</b> Hypotheses (Week 4)</a>
 <ul>
-<li class="chapter" data-level="6.1" data-path="hypotheses.html"><a href="hypotheses.html#the-logic-of-hypothesis-testing"><i class="fa fa-check"></i><b>6.1</b> The logic of hypothesis testing</a></li>
-<li class="chapter" data-level="6.2" data-path="hypotheses.html"><a href="hypotheses.html#comparing-means-across-two-groups-the-t-test"><i class="fa fa-check"></i><b>6.2</b> Comparing means across two groups (the t test)</a></li>
-<li class="chapter" data-level="6.3" data-path="hypotheses.html"><a href="hypotheses.html#what-does-a-significant-effect-mean"><i class="fa fa-check"></i><b>6.3</b> What does a significant effect mean?</a></li>
-<li class="chapter" data-level="6.4" data-path="hypotheses.html"><a href="hypotheses.html#power-analysis"><i class="fa fa-check"></i><b>6.4</b> Power analysis</a></li>
-<li class="chapter" data-level="6.5" data-path="hypotheses.html"><a href="hypotheses.html#comparing-means-across-several-groups-anova"><i class="fa fa-check"></i><b>6.5</b> Comparing means across several groups (ANOVA)</a>
+<li class="chapter" data-level="6.1" data-path="hypotheses-week-4.html"><a href="hypotheses-week-4.html#the-logic-of-hypothesis-testing"><i class="fa fa-check"></i><b>6.1</b> The logic of hypothesis testing</a></li>
+<li class="chapter" data-level="6.2" data-path="hypotheses-week-4.html"><a href="hypotheses-week-4.html#comparing-means-across-two-groups-the-t-test"><i class="fa fa-check"></i><b>6.2</b> Comparing means across two groups (the t test)</a></li>
+<li class="chapter" data-level="6.3" data-path="hypotheses-week-4.html"><a href="hypotheses-week-4.html#what-does-a-significant-effect-mean"><i class="fa fa-check"></i><b>6.3</b> What does a significant effect mean?</a></li>
+<li class="chapter" data-level="6.4" data-path="hypotheses-week-4.html"><a href="hypotheses-week-4.html#power-analysis"><i class="fa fa-check"></i><b>6.4</b> Power analysis</a></li>
+<li class="chapter" data-level="6.5" data-path="hypotheses-week-4.html"><a href="hypotheses-week-4.html#comparing-means-across-several-groups-anova"><i class="fa fa-check"></i><b>6.5</b> Comparing means across several groups (ANOVA)</a>
 <ul>
-<li class="chapter" data-level="6.5.1" data-path="hypotheses.html"><a href="hypotheses.html#the-problem-with-multiple-comparisons"><i class="fa fa-check"></i><b>6.5.1</b> The problem with multiple comparisons</a></li>
-<li class="chapter" data-level="6.5.2" data-path="hypotheses.html"><a href="hypotheses.html#anova"><i class="fa fa-check"></i><b>6.5.2</b> ANOVA</a></li>
-<li class="chapter" data-level="6.5.3" data-path="hypotheses.html"><a href="hypotheses.html#checking-homogeneity-of-variance-and-dealing-with-unequal-spread"><i class="fa fa-check"></i><b>6.5.3</b> Checking homogeneity of variance and dealing with unequal spread</a></li>
-<li class="chapter" data-level="6.5.4" data-path="hypotheses.html"><a href="hypotheses.html#checking-normality-and-dealing-with-problems"><i class="fa fa-check"></i><b>6.5.4</b> Checking normality and dealing with problems</a></li>
-<li class="chapter" data-level="6.5.5" data-path="hypotheses.html"><a href="hypotheses.html#robust-anova"><i class="fa fa-check"></i><b>6.5.5</b> Robust ANOVA</a></li>
-<li class="chapter" data-level="6.5.6" data-path="hypotheses.html"><a href="hypotheses.html#post-hoc-comparisons"><i class="fa fa-check"></i><b>6.5.6</b> Post Hoc Comparisons</a></li>
-<li class="chapter" data-level="6.5.7" data-path="hypotheses.html"><a href="hypotheses.html#effect-size-for-anova"><i class="fa fa-check"></i><b>6.5.7</b> Effect size for ANOVA</a></li>
+<li class="chapter" data-level="6.5.1" data-path="hypotheses-week-4.html"><a href="hypotheses-week-4.html#the-problem-with-multiple-comparisons"><i class="fa fa-check"></i><b>6.5.1</b> The problem with multiple comparisons</a></li>
+<li class="chapter" data-level="6.5.2" data-path="hypotheses-week-4.html"><a href="hypotheses-week-4.html#anova"><i class="fa fa-check"></i><b>6.5.2</b> ANOVA</a></li>
+<li class="chapter" data-level="6.5.3" data-path="hypotheses-week-4.html"><a href="hypotheses-week-4.html#checking-homogeneity-of-variance-and-dealing-with-unequal-spread"><i class="fa fa-check"></i><b>6.5.3</b> Checking homogeneity of variance and dealing with unequal spread</a></li>
+<li class="chapter" data-level="6.5.4" data-path="hypotheses-week-4.html"><a href="hypotheses-week-4.html#checking-normality-and-dealing-with-problems"><i class="fa fa-check"></i><b>6.5.4</b> Checking normality and dealing with problems</a></li>
+<li class="chapter" data-level="6.5.5" data-path="hypotheses-week-4.html"><a href="hypotheses-week-4.html#robust-anova"><i class="fa fa-check"></i><b>6.5.5</b> Robust ANOVA</a></li>
+<li class="chapter" data-level="6.5.6" data-path="hypotheses-week-4.html"><a href="hypotheses-week-4.html#post-hoc-comparisons"><i class="fa fa-check"></i><b>6.5.6</b> Post Hoc Comparisons</a></li>
+<li class="chapter" data-level="6.5.7" data-path="hypotheses-week-4.html"><a href="hypotheses-week-4.html#effect-size-for-anova"><i class="fa fa-check"></i><b>6.5.7</b> Effect size for ANOVA</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html"><i class="fa fa-check"></i><b>7</b> Studying relationships between two factors</a>
@@ -266,10 +267,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.6" data-path="logistic-regression.html"><a href="logistic-regression.html#further-resources-2"><i class="fa fa-check"></i><b>9.6</b> Further resources</a></li>
 </ul></li>
 <li class="chapter" data-level="10" data-path="wrapping-up.html"><a href="wrapping-up.html"><i class="fa fa-check"></i><b>10</b> Wrapping up</a></li>
-<li class="chapter" data-level="11" data-path="homework-activities.html"><a href="homework-activities.html"><i class="fa fa-check"></i><b>11</b> Homework Activities</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="homework-activities.html"><a href="homework-activities.html#general-instructions"><i class="fa fa-check"></i><b>11.1</b> General instructions</a></li>
-</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -282,7 +279,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis in R &amp; RStudio</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Modelling Criminological Data</a>
           </h1>
         </div>
 
@@ -291,7 +288,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="getting-to-know-your-data" class="section level1 hasAnchor" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Getting to know your data<a href="getting-to-know-your-data.html#getting-to-know-your-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<h1><span class="header-section-number">Chapter2</span> Getting to know your data<a href="getting-to-know-your-data.html#getting-to-know-your-data" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <div id="causality-in-social-sciences" class="section level2 hasAnchor" number="2.1">
 <h2><span class="header-section-number">2.1</span> Causality in social sciences<a href="getting-to-know-your-data.html#causality-in-social-sciences" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In today’s session we will refresh themes you have explored in previous research methods courses, specifically causality. This is a central concept in empirical research. We often do research because we want to make causal inferences. We want to be in a position where we establish whether an intervention or a social process is causally linked to crime or some other relevant criminological outcome.</p>
@@ -313,14 +310,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In this page you can see a download section and some files that can be accessed. One of them contains analytic code pertaining to the study and the other contains the data. You also see a link called <strong>metadata</strong>. Metadata is data about data, it simply provides you with some information about the data. If you clink in metadata you will see at the bottom a reference to the software the authors used (STATA). So we know these files are in <a href="https://www.stata.com/">STATA</a> proprietary format. Let’s download the data file and then read the data into R.</p>
 <p>You could just click “download” and then place the file in your project directory. Alternatively, and preferably, you may want to use code to make your whole work more reproducible. Think of it this way, every time you click or use drop down menus you are doing things that others cannot reproduce because there won’t be a written record of your steps. You will need though to do some clicking for finding out the required url you will use for writing your code. The file we want is the <code>AganStarrQJEData.dta</code>. Click in the name of this file. You will be taken to another webpage. On it you will see the download url. Copy and paste this url in your code below.</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="getting-to-know-your-data.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">#First, let&#39;s create an object with the link, paste the copied address here:</span></span>
-<span id="cb60-2"><a href="getting-to-know-your-data.html#cb60-2" aria-hidden="true" tabindex="-1"></a>data_url <span class="ot">&lt;-</span> <span class="st">&quot;https://dataverse.harvard.edu/api/access/datafile/3036350&quot;</span></span></code></pre></div>
+<span id="cb60-2"><a href="getting-to-know-your-data.html#cb60-2" aria-hidden="true" tabindex="-1"></a>urlfile <span class="ot">&lt;-</span> <span class="st">&quot;https://dataverse.harvard.edu/api/access/datafile/3036350&quot;</span></span></code></pre></div>
 <p>This data file is a STATA .dta file in our working directory. To read STATA files we will need the <em>haven</em> package. This is a package developed for importing different kind of data files into R. If you don’t have it you will need to install it. And then load it.</p>
 <div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="getting-to-know-your-data.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(haven)</span>
-<span id="cb61-2"><a href="getting-to-know-your-data.html#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Now we can use the read_dta function, within this function we will</span></span>
+<span id="cb61-2"><a href="getting-to-know-your-data.html#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Now we can use the &#39;read_dta&#39; function, within this function we will</span></span>
 <span id="cb61-3"><a href="getting-to-know-your-data.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="co">#pass an argument, url, specifying to the read_dta function the need to</span></span>
 <span id="cb61-4"><a href="getting-to-know-your-data.html#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="co">#make a url connection. The url function takes as an argument the url</span></span>
-<span id="cb61-5"><a href="getting-to-know-your-data.html#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="co">#we are using and that we encoded in the data_url object in our case.</span></span>
-<span id="cb61-6"><a href="getting-to-know-your-data.html#cb61-6" aria-hidden="true" tabindex="-1"></a>banbox <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="fu">url</span>(data_url))</span></code></pre></div>
+<span id="cb61-5"><a href="getting-to-know-your-data.html#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="co">#we are using and that we encoded in the urlfile object in our case.</span></span>
+<span id="cb61-6"><a href="getting-to-know-your-data.html#cb61-6" aria-hidden="true" tabindex="-1"></a>banbox <span class="ot">&lt;-</span> <span class="fu">read_dta</span>(<span class="fu">url</span>(urlfile))</span></code></pre></div>
 <p>You will need to pay attention to the file extension, to find the appropriate function to read in your file. For example, if something has the extension <code>.sav</code> that is a file used by the software SPSS. To read this, you would use the <code>read_spss()</code> function, also in the haven package.</p>
 <p>Some other file types need other packages. For example, to read in comma separated values or <code>.csv</code> files, you can use the <code>read_csv()</code> function from the <code>readr</code> package. To read in excel files, you would use the appropriate function from the <code>readxl</code> package, which might be <code>read_xls()</code> or <code>read_xlsx()</code> depending on the file extension.</p>
 </div>
@@ -331,7 +328,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>What is the first thing you need to ask yourself when you look at a dataset? Data are often too big to look at the whole thing. It is almost always impossible to eyeball the entire dataset and see what you have in terms of interesting patterns or potential problems. It is often a case of information overload and we want to be able to extract what is relevant and important about it. But where do you start? You can find a brief but very useful overview put together by Steph de Silva in the image below. Read it before we carry on.</p>
 <p><img src="imgs/firstlookatdata.jpg" /><!-- --></p>
 <p>As Mara Averick (somebody you want to follow in twitter at <span class="citation">@dataanndme</span> if you want to be in top of R related resources) suggests this also makes for good relationship advice!</p>
-<p><img src="imgs/relationships.PNG" /><!-- --></p>
+<p><img src="imgs/relationships.PNG" /></p>
 <p>Here we are going to introduce a few functions that will help you to start making sense for what you have just downloaded. Summarising the data is the first step in any analysis and it is also used for finding out potential problems with the data. Regarding the latter you want to look out for: missing values; values outside the expected range (e.g., someone aged 200 years); values that seem to be in the wrong units; mislabeled variables; or variables that seem to be the wrong class (e.g., a quantitative variable encoded as a factor).</p>
 <p>Lets start by the basic things you always look first in a datasets. You can see in the Environment window that banbox has 14813 observations (rows) of 62 variables (columns). You can also obtain this information using code. Here you want the <strong>DIM</strong>ensions of the dataframe (the number of rows and columns) so you use the <code>dim()</code> function:</p>
 <div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="getting-to-know-your-data.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(banbox)</span></code></pre></div>
@@ -428,7 +425,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] &quot;Applicant has Criminal Record&quot;</code></pre>
 <p>So far we have a looked at single columns in your dataframe one at the time. But there is a way that you can apply a function to all elements of a vector (list or dataframe). You can use the functions <code>sapply()</code>, <code>lapply()</code>, and <code>mapply()</code> . To find out more about when to use each one see <a href="https://www.r-bloggers.com/using-apply-sapply-lapply-in-r/">here</a>.</p>
 <p>For example, we can use the <code>lapply()</code> function to look at each column and get its class. To do so, we have to pass two arguments to the <code>lapply()</code> function, the first is the name of the dataframe, to tell it what to look through, and the second is the function we want it to apply to every column of that function.</p>
-<p>So we want to type “lapply(” + “name of dataframe” + “,” + “name of function” + “)”</p>
+<p>So we want to type <code>lapply</code> + <code>(</code>+ <code>name of dataframe</code> + <code>,</code> + <code>name of function</code> + <code>)</code></p>
 <p>Which is:</p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="getting-to-know-your-data.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(banbox, class)</span></code></pre></div>
 <p>As you can see many variables are classed as labelled. This is common with survey data. Many of the questions in social surveys measure the answers as categorical variables (e.g., these are nominal or ordinal level measures). In fact, with this dataset there are many variables that are encoded as numeric that really aren’t. Welcome to real world data, where things can be a bit messy and need tidying!</p>
@@ -494,8 +491,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="data-wrangling-with-dplyr" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Data wrangling with dplyr<a href="getting-to-know-your-data.html#data-wrangling-with-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The data analysis workflow has a number of stages. The diagram below (produced by Hadley Wickham) is a nice illustration of this process:</p>
-<p><img src="imgs/data-science-explore.png" /></p>
-<p>We have started to see different ways of bringing data into R. And we have also started to see how we can explore our data. It is now time we start discussing one of the following stages, <strong>transform</strong>. A good deal of time and effort in data analysis is devoted to this. You get your data and then you have to do some transformations to it so that you can answer the questions you want to address in your research. We have already seen, for example, how to turn variables into factors, but there are other things you may want to do.</p>
+<p><img src="imgs/data-science-explore.png" />
+We have started to see different ways of bringing data into R. And we have also started to see how we can explore our data. It is now time we start discussing one of the following stages, <strong>transform</strong>. A good deal of time and effort in data analysis is devoted to this. You get your data and then you have to do some transformations to it so that you can answer the questions you want to address in your research. We have already seen, for example, how to turn variables into factors, but there are other things you may want to do.</p>
 <p>R offers a great deal of flexibility in how to transform your data, Here we are going to illustrate some of the functionality of the <em>dplyr</em> package for data carpentry (a term people use to refer to this kind of operations). This package is part of the tydiverse and it aims to provide a friendly and modern take on how to work with dataframes (or tibbles) in R. It offers, as the authors of the package put it, “a flexible grammar of data manipulation”.</p>
 <p>Dplyr aims to provide a function for each basic verbs of data manipulation:</p>
 <ul>
@@ -535,14 +532,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">2.5</span> Using dplyr single verbs<a href="getting-to-know-your-data.html#using-dplyr-single-verbs" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>One of the first operations you may want to carry out when working with dataframes is to subset them based on values of particular variables. Say we want to replicate the results reported by Agan and Starr in 2017. In this earlier paper, these researchers only used data from the period prior to the introduction of Ban the Box legislation and only used data from businesses that asked about criminal records in their online applications. How can we recreate this dataset?</p>
 <p>For this kind of operations we use the <code>filter()</code> function. Like all single verbs in dplyr, the first argument is the tibble (or data frame). The second and subsequent arguments refer to variables within that data frame, selecting rows where the expression is TRUE.</p>
-<p>Ok, so if we look at the dataset we can see that there is a variable called “crimbox” that identifies applications that require information about criminal antecedents and there is a variable called “pre” that identifies whether the application was sent before the legislation was introduced. In this dataset the value 1 is being used to denote positive responses. So, if we want to create the 2017 dataset we would start by selecting only data where the value in these two variables equals 1 as shown below.</p>
+<p>Ok, let’s filter out some information we are interested in from <code>bandbox</code>. If we look at the dataset we can see that there is a variable called “crimbox” that identifies ‘applications that require information about criminal antecedents’ and there is a variable called “pre” that identifies ‘whether the application was sent before the legislation was introduced’. In this dataset, the value 1 is being used to denote positive responses. Therefore, if we want to create the 2017 dataset, we would start by selecting only data where the value in these two variables equals 1 as shown below.</p>
 <div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="getting-to-know-your-data.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co">#We will store the results of filtering the data in a new </span></span>
 <span id="cb110-2"><a href="getting-to-know-your-data.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="co">#object that I am calling aer (short for the name of the </span></span>
 <span id="cb110-3"><a href="getting-to-know-your-data.html#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="co">#journal in which the paper was published)</span></span>
 <span id="cb110-4"><a href="getting-to-know-your-data.html#cb110-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb110-5"><a href="getting-to-know-your-data.html#cb110-5" aria-hidden="true" tabindex="-1"></a>aer2017<span class="ot">&lt;-</span> <span class="fu">filter</span>(banbox, crimbox <span class="sc">==</span> <span class="dv">1</span>, pre <span class="sc">==</span> <span class="dv">1</span>)</span></code></pre></div>
 <p>Notice that the number of cases equals the number of cases reported by the authors in their 2017 paper. That’s cool! So far we are replicating with same results.</p>
-<p>You may have noticed in the code above that I wrote “==”” instead of “=”. Logical operators in R are not written exactly the same way than in normal practice. Keep this in mind when you get error messages from running your code. Often the source of your error may be that you are writing the logical operators the wrong way (as far as R is concerned). Look <a href="https://www.statmethods.net/management/operators.html">here</a> for valid logic operators in R.</p>
+<p>You may have noticed in the code above that I wrote “<code>==</code>” instead of “<code>=</code>”. Logical operators in R are not written exactly the same way than in normal practice. Keep this in mind when you get error messages from running your code. Often the source of your error may be that you are writing the logical operators the wrong way (as far as R is concerned). Look <a href="https://www.statmethods.net/management/operators.html">here</a> for valid logic operators in R.</p>
 <p>Sometimes you may want to select only a few variables. Earlier we said that real life data may have hundreds of variables and only a few of those may be relevant for your analysis. Say you only want “crime”, “ged” (a ged is a high school equivalence diploma rather than a proper high school diploma and is sometimes seen as inferior), “empgap” (a gap year on employment), “black_f”, “response”, and “daystoresponse” from this dataset. For this kind of operations you use the <code>select()</code> function.</p>
 <p>The syntax of this function is easy. First we name the dataframe object (“aer2017”) and then we list the variables. The order in which we list the variables within the select function will determine the order in which those columns appear in the new dataframe we are creating. So this is a handy function to use if you want to change the order of your columns for some reason. Since I am pretty confident I am not making a mistake I will transform the original “aer2017” tibble rather than creating an entirely new object.</p>
 <div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="getting-to-know-your-data.html#cb111-1" aria-hidden="true" tabindex="-1"></a>aer2017 <span class="ot">&lt;-</span> <span class="fu">select</span>(aer2017, crime, ged, empgap, black_f, response, daystoresponse)</span></code></pre></div>
@@ -551,7 +548,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="using-dplyr-for-grouped-operations" class="section level2 hasAnchor" number="2.6">
 <h2><span class="header-section-number">2.6</span> Using dplyr for grouped operations<a href="getting-to-know-your-data.html#using-dplyr-for-grouped-operations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>So far we have used <code>dplyr</code> single verbs for ungrouped operations. But we can also use some of the functionality of <code>dplyr</code> for obtaining answers to questions that relate to groups of cases within our dataframe. Imagine that you want to know if applicants with a criminal record are less likely to receive a positive response from employers. How could you figure that one out? For answering this kind of questions we can use the <code>group_by()</code> function in conjunction with other <code>dplyr</code> functions. In particular we are going to look at the <code>summarise</code> function.</p>
-<p>First we group the observations by criminal record in a new object, by using as_factor in the call to the crime variable the results will be labelled later on (even though we are not changing the crime variable in the aer2017 dataframe. Keep in mind we are using as_factor because the column crime is a labelled vector rather than a factor or a character vector, and we do this to aid interpretation (it is easier to
+<p>First we group the observations by criminal record in a new object, “by_antecedents”, by using <code>as_factor()</code> in the call to the crime variable the results will be labelled later on (even though we are not changing the crime variable in the aer2017 dataframe). Keep in mind we are using <code>as_factor()</code> because the column crime is a labelled vector rather than a factor or a character vector, and we do this to aid interpretation (it is easier to
 interpret labels than 0 and 1).</p>
 <div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="getting-to-know-your-data.html#cb112-1" aria-hidden="true" tabindex="-1"></a>by_antecedents <span class="ot">&lt;-</span> <span class="fu">group_by</span>(aer2017, <span class="fu">as_factor</span>(crime))</span>
 <span id="cb112-2"><a href="getting-to-know-your-data.html#cb112-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -561,14 +558,14 @@ interpret labels than 0 and 1).</p>
 <span id="cb112-6"><a href="getting-to-know-your-data.html#cb112-6" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">summarise</span>(by_antecedents,</span>
 <span id="cb112-7"><a href="getting-to-know-your-data.html#cb112-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">count =</span> <span class="fu">n</span>(),</span>
 <span id="cb112-8"><a href="getting-to-know-your-data.html#cb112-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">outcome =</span> <span class="fu">mean</span>(response, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb112-9"><a href="getting-to-know-your-data.html#cb112-9" aria-hidden="true" tabindex="-1"></a><span class="co">#autoprint the results stored in the newly created object</span></span>
-<span id="cb112-10"><a href="getting-to-know-your-data.html#cb112-10" aria-hidden="true" tabindex="-1"></a>results</span></code></pre></div>
+<span id="cb112-9"><a href="getting-to-know-your-data.html#cb112-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb112-10"><a href="getting-to-know-your-data.html#cb112-10" aria-hidden="true" tabindex="-1"></a>results <span class="co">#auto-print the results stored in the newly created object</span></span></code></pre></div>
 <pre><code>## # A tibble: 2 × 3
 ##   `as_factor(crime)` count outcome
 ##   &lt;fct&gt;              &lt;int&gt;   &lt;dbl&gt;
 ## 1 No Crime            1319  0.136 
 ## 2 Crime               1336  0.0846</code></pre>
-<p>Let’s look at the code in the summarise function above. First we are asking R to place the results in an object we are calling “results”. Then we are specifying that we want to group the data in the way we specified in our <code>group_by()</code> function before, that is by criminal record. Then we pass two arguments. Each of these arguments is creating a new variable in the resulting object called “results”. The first variable we are creating is called “<em>count</em>” by saying this equals “n()” we are specifying to R that this new variable simply counts the number of cases in each of the grouping categories. The second variable we are creating is called “<em>outcome</em>” and to compute this variable we are asking R to compute the mean of the variable response for each of the two groups of applicants defined in “by_antecedents” (those with records, those without). Remember that the variable response in the “aer2017” dataframe was coded as numeric variable, even though in truth is categorical in nature (there was a response, or not, from the employers). It doesn’t really matter. Taking the mean of a binary variable in this case is mathematically equivalent to computing a proportion as we discussed earlier.</p>
+<p>Let’s look at the code in the <code>summarise</code> function above. First we are asking R to place the results in an object we are calling “results”. Then we are specifying that we want to group the data in the way we specified in our <code>group_by()</code> function before, that is by criminal record. Then we pass two arguments. Each of these arguments is creating a new variable in the resulting object called “results”. The first variable we are creating is called “<em>count</em>” by saying this equals “n()” we are specifying to R that this new variable simply counts the number of cases in each of the grouping categories. The second variable we are creating is called “<em>outcome</em>” and to compute this variable we are asking R to compute the mean of the variable response for each of the two groups of applicants defined in “by_antecedents” (those with records, those without). Remember that the variable response in the “aer2017” dataframe was coded as numeric variable, even though in truth is categorical in nature (there was a response, or not, from the employers). It doesn’t really matter. Taking the mean of a binary variable in this case is mathematically equivalent to computing a proportion as we discussed earlier.</p>
 <p>So, what we see here is that about 13.6% of applicants with no criminal record received a positive response from the employers, whereas only 8% of those with criminal records did receive such a response. Given that the assignation of a criminal record was randomised to the applicants, there’s a pretty good chance that no other <a href="https://en.wikipedia.org/wiki/Confounding"><strong>confounders</strong></a> are influencing this outcome. And that is the beauty of randomised experiments. You may be in a position to make stronger claims about your results.</p>
 </div>
 <div id="making-comparisons-with-numerical-outcomes" class="section level2 hasAnchor" number="2.7">
@@ -580,22 +577,22 @@ interpret labels than 0 and 1).</p>
 <p>The <code>summary()</code> function provides some useful stats for numerical variables. We obtain the minimum and maximum value, the 25th percentile, the median, the mean, the 75th percentile, and the number of missing data (NA). You can see the number of missing data here is massive. Most cases have missing data on this variable. Clearly this is a function of, first and foremost, the fact that the number of days to receive a positive response will only be collected in cases where there was a positive response! But even accounting for that, it is clear that this information is also missing in many cases that received a positive response. So given all of this, we need to be very careful when interpreting this variable. Yet, because it is the only numeric variable here we will use it to illustrate some handy functions.</p>
 <p>We could do as before and get results by groups. Let’s look at the impact of race on days to response:</p>
 <div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="getting-to-know-your-data.html#cb116-1" aria-hidden="true" tabindex="-1"></a>by_race <span class="ot">&lt;-</span> <span class="fu">group_by</span>(banbox, black_f)</span>
-<span id="cb116-2"><a href="getting-to-know-your-data.html#cb116-2" aria-hidden="true" tabindex="-1"></a>results_3 <span class="ot">&lt;-</span> <span class="fu">summarise</span>(by_race,</span>
+<span id="cb116-2"><a href="getting-to-know-your-data.html#cb116-2" aria-hidden="true" tabindex="-1"></a>results_2 <span class="ot">&lt;-</span> <span class="fu">summarise</span>(by_race,</span>
 <span id="cb116-3"><a href="getting-to-know-your-data.html#cb116-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">avg_delay =</span> <span class="fu">mean</span>(daystoresponse, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb116-4"><a href="getting-to-know-your-data.html#cb116-4" aria-hidden="true" tabindex="-1"></a>results_3</span></code></pre></div>
+<span id="cb116-4"><a href="getting-to-know-your-data.html#cb116-4" aria-hidden="true" tabindex="-1"></a>results_2</span></code></pre></div>
 <pre><code>## # A tibble: 2 × 2
 ##   black_f avg_delay
 ##   &lt;fct&gt;       &lt;dbl&gt;
 ## 1 White        18.7
 ## 2 Black        20.4</code></pre>
-<p>We can see that the average delay seems to be longer for Black applicants than White applicants.</p>
+<p>We can see that the average delay seems to be longer for ‘Black’ applicants than ‘White’ applicants.</p>
 <p>But we could also try to represent these differences graphically. The problem with comparing groups on quantitative variables using numerical summaries such as the mean, is that these comparisons hide more than they show. We want to see the full distribution, not just the mean. For this we are going to use <code>ggplot2</code> the main graphical package we will use this semester. We won’t get into the details of this package or what the code below means, but just try to run it. We will cover graphics in R in the next section. This is just a taster for it.</p>
 <div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="getting-to-know-your-data.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb118-2"><a href="getting-to-know-your-data.html#cb118-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(banbox, <span class="fu">aes</span>(<span class="at">y =</span> daystoresponse, <span class="at">x =</span> black_f)) <span class="sc">+</span> </span>
 <span id="cb118-3"><a href="getting-to-know-your-data.html#cb118-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() </span></code></pre></div>
-<p><img src="02-causality_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<p><img src="02-causality_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p>Watch <a href="https://www.khanacademy.org/math/probability/data-distributions-a1/box--whisker-plots-a1/v/reading-box-and-whisker-plots">this video</a> and see if you can interpret the results portrayed here. What do you think?</p>
-<p>Overall the outcomes are worse for Black applicatns, and in fact, the authors find that employers substantially increase discrimination on the basis of race after ban the box goes into effect.You can now replicate these findings with the data provided. by applying the new skills you’ve learned this week!</p>
+<p>Overall the outcomes are worse for ‘Black’ applicants, and in fact, the authors find that employers substantially increase discrimination on the basis of race after ban the box goes into effect.You can now replicate these findings with the data provided. by applying the new skills you’ve learned this week!</p>
 
 </div>
 </div>
@@ -605,7 +602,7 @@ interpret labels than 0 and 1).</p>
         </div>
       </div>
 <a href="a-first-lesson-about-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-visualisation-with-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="data-visualisation-with-r-week-2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -1,4 +1,4 @@
-# Week 8: Logistic regression
+# Logistic regression
 
 ## Introduction
 
@@ -318,7 +318,7 @@ library(arm)
 ```
 
 ```
-## Working directory is /Users/eonkim/Desktop/R/DAR_book/dar_book
+## Working directory is /Users/EonKim/Desktop/R/MCD_book/mcd_book
 ```
 
 ```

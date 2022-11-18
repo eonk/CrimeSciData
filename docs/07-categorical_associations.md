@@ -1,4 +1,4 @@
-# Week 5: Studying relationships between two factors
+# Studying relationships between two factors
 
 ## Producing cross tabulations
 
@@ -11,13 +11,17 @@ We will begin the session by loading again the BCS 2007/2008 data from previous 
 
 ```r
 ##R in Windows have some problems with https addresses, that's why we need to do this first:
-urlfile<-'https://raw.githubusercontent.com/jjmedinaariza/LAWS70821/master/BCS0708.csv'
+urlfile<-'https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv'
 #We create a data frame object reading the data from the remote .csv file
 BCS0708<-read.csv(url(urlfile))
 ```
 
 
-
+```
+## 
+## The downloaded binary packages are in
+## 	/var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpTtuLbM/downloaded_packages
+```
 
 We will start by producing a cross tabulation of victimisation ("bcsvictim"), a categorical unordered variable, by whether the presence of rubbish in the streets is a problem in the area of residence ("rubbcomm"), another categorical unordered variable. Broken windows theory would argue we should see a relationship. We will use the following code:
 
@@ -76,7 +80,26 @@ with(BCS0708, CrossTable(rubbcomm, bcsvictim, prop.chisq = FALSE, format = c("SP
 
 The cells for the central two columns represent the total number of cases in each category, the **row percentages**, the **column percentages**, and the **total percentages**. So you have, for example, 63 people in the category "rubbish is very common" that were victims of a crime, this represents 30.88% of all the people in the "rubbish is very common" category (your row percent), 2.79% of all the people in the "victim of a crime" category (your column percent), and 0.57% of all the people in the sample.
 
-Notice that although "rubbcomm" is an ordinal variable, the order in which it gets printed does not make logical sense. We can check the order of the encoding using the `levels()` function.
+Let's check the level of measurement of the "rubbcomm" variable with the `class()` function:
+
+
+```r
+class(BCS0708$rubbcomm)
+```
+
+```
+## [1] "character"
+```
+
+It is categorical, we know, but note that R consdiers this "character" rather than "factor" which is what we would like. To make sure that R knows this is a factor, we can convert it with the `as.factor()` function. PAY ATTENTION: we are *not* recoding, so we use `as.factor()` with a dot (as.dot.factor), and we are **not using** the `as_factor()` from the haven package which we would use to recode if this were a .dta file (it's not!). 
+
+
+
+```r
+BCS0708$rubbcomm <- as.factor(BCS0708$rubbcomm)
+```
+
+Now in the table above, we notice that although "rubbcomm" is an ordinal variable, the order in which it gets printed does not make logical sense. We can check the order of the encoding using the `levels()` function.
 
 
 ```r
@@ -84,7 +107,8 @@ levels(BCS0708$rubbcomm)
 ```
 
 ```
-## NULL
+## [1] "fairly common"     "not at all common" "not very common"  
+## [4] "very common"
 ```
 
 As we can see the order makes little sense. We should reorder the factor levels to make them follow a logical order. There are multiple ways of doing this, some of which we have already seen. This is one possible way of doing it.
@@ -138,15 +162,13 @@ with(BCS0708, CrossTable(rubbcomm, bcsvictim, prop.chisq=FALSE, prop.c=FALSE, pr
 ## 
 ```
 
-Much less cluttered. Now we only see in the counts and the row percentages. **Marginal frequencies** appear along the right and the bottom. *Row marginals* show the total number of cases in each row: 204 people perceive rubbish as very common in the area they're living in areas where , 1244 perceive rubbish is fairly common in their area, etc. *Column marginals* indicate the total number of cases in each column: 9318 non-victims and 2358 victims.
+Much less cluttered. Now we only see in the counts and the row percentages. **Marginal frequencies** appear along the right and the bottom. *Row marginals* show the total number of cases in each row: 204 people perceive rubbish as very common in the area they're living in areas where , 1244 perceive rubbish is fairly common in their area, etc. *Column marginals* indicate the total number of cases in each column: 8804 non-victims and 2261 victims.
 
 In the central cells we see the total number for each combination of categories and now only the row percentage. So the total in each of those cells is expressed as the percentage of cases in that row. So, for example, 63 people who perceive rubbish as very common in their area who are a victim of a crime represent 30.88%% of all people in that row (n=204). If we had asked for the column percentages the 63 people who live in areas where rubbish is very common and are victims would be divided by the 2261 victim people in the study. *Changing the denominator when computing the percentage changes the meaning of the percentage*.
 
 This can sound a bit confusing now. But as long as you remember the first rule we gave you before you should be fine: if your dependent defines the rows ask for the column percentages, if your dependent defines the columns ask for the row percentages. There are always students that get this wrong in the assignments and loose points as a result. Don't let it be you.
 
 The second rule for reading cross tabulations the right way is this: **you make the comparisons across the right percentages (see first rule) in the direction where they do not add up to a hundred**. Another way of saying this is that you compare the percentages for each level of your dependent variable across the levels of your independent variable. In this case we would, for example, compare what percentage of people who perceive rubbish as common in their area are victims of crime. We focus in the second column here (being victim of a crime) because typically that's what we want to study, this is our outcome of interest (e.g., victimisation). We can see rubbish seems to matter a bit. For example, 30.88% of people who live in areas where rubbish is very common have been victimised. By contrast only 15.54% of people who live in areas where rubbish is not at all common have been victimised in the previous year.
-
-If this is confusing you may enjoy this [online tutorial](http://sonet.nottingham.ac.uk/rlos/ucel/cross_tab_data/main.html) on cross-tabulations looking at cause of mortality for music stars. Cross tabs are very commonly used, so it is important you understand well how they work.
 
 ## Expected frequencies and Chi-Square
 
@@ -227,23 +249,23 @@ Notice that R is telling us that the minimum expected frequency is 41.68. Why? T
 
 
 ```r
-with(BCS0708, fisher.test(rubbcomm, bcsvictim))
+fisher.test(BCS0708$rubbcomm, BCS0708$bcsvictim)
 ```
 
-You will most likely get an error message telling you to increase the size of the workspace. When this happens you may try following the recommendation provided (increasing the size of the workspace for the calculation) and using a hybrid approximation of the exact probabilities.
+You will most likely get an error message telling you to increase the size of the workspace. When this happens you may try following the recommendation provided (consider using 'simulate.p.value=TRUE'): 
 
 
 ```r
-fisher.test(BCS0708$rubbcomm, BCS0708$bcsvictim, workspace = 2e+07, hybrid = TRUE)
+fisher.test(BCS0708$rubbcomm, BCS0708$bcsvictim, simulate.p.value=TRUE)
 ```
 
 ```
 ## 
-## 	Fisher's Exact Test for Count Data hybrid using asym.chisq. iff (exp=5,
-## 	perc=80, Emin=1)
+## 	Fisher's Exact Test for Count Data with simulated p-value (based on
+## 	2000 replicates)
 ## 
 ## data:  BCS0708$rubbcomm and BCS0708$bcsvictim
-## p-value < 2.2e-16
+## p-value = 0.0004998
 ## alternative hypothesis: two.sided
 ```
 
@@ -592,4 +614,3 @@ Odd ratios are ratios of odds, not probability ratios. You cannot say that urban
 It is also very important that you interpret these quantities carefully. You will often see media reports announcing things such as that chocolate consumption will double your risk of some terrible disease. What that means is that the percentage of cases of individuals that take chocolate and present the condition is twice as large as those that do not take chocolate and present the condition. But you also need to know what those percentages are to put it in the right context. If those probabilities are very low to start with, well, does it really matter?
 
 ![increased risk](https://www.explainxkcd.com/wiki/images/1/11/increased_risk.png)
-
