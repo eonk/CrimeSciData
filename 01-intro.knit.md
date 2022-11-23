@@ -735,15 +735,4 @@ What is more. I would suggest you go to the Tools drop down menu, select Global 
 ![](imgs/neversave.png)
 
 
-```r
-1 + 1
-```
-
-```
-## [1] 2
-```
-
-
-
-
 
