@@ -23,7 +23,7 @@
 <meta name="author" content="Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)" />
 
 
-<meta name="date" content="2022-11-18" />
+<meta name="date" content="2022-11-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -148,9 +148,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.7" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#using-objects"><i class="fa fa-check"></i><b>1.7</b> Using objects</a></li>
 <li class="chapter" data-level="1.8" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#more-on-objects"><i class="fa fa-check"></i><b>1.8</b> More on objects</a></li>
 <li class="chapter" data-level="1.9" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#naming-conventions-for-objects-in-r"><i class="fa fa-check"></i><b>1.9</b> Naming conventions for objects in R</a></li>
-<li class="chapter" data-level="1.10" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#vectors"><i class="fa fa-check"></i><b>1.10</b> Vectors</a></li>
-<li class="chapter" data-level="1.11" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#factors"><i class="fa fa-check"></i><b>1.11</b> Factors</a></li>
-<li class="chapter" data-level="1.12" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#data-frame"><i class="fa fa-check"></i><b>1.12</b> Data frame</a></li>
+<li class="chapter" data-level="1.10" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#r-object-types-vectors"><i class="fa fa-check"></i><b>1.10</b> R object types: vectors</a></li>
+<li class="chapter" data-level="1.11" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#r-object-types-data-frame"><i class="fa fa-check"></i><b>1.11</b> R object types: Data frame</a></li>
+<li class="chapter" data-level="1.12" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#r-data-types-factors"><i class="fa fa-check"></i><b>1.12</b> R data types: Factors</a></li>
 <li class="chapter" data-level="1.13" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#exploring-data"><i class="fa fa-check"></i><b>1.13</b> Exploring data</a></li>
 <li class="chapter" data-level="1.14" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#how-to-use-comment"><i class="fa fa-check"></i><b>1.14</b> How to use ‘comment’</a></li>
 <li class="chapter" data-level="1.15" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#quitting-rstudio"><i class="fa fa-check"></i><b>1.15</b> Quitting RStudio</a></li>
@@ -290,11 +290,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Modelling Criminological Data</h1>
 <p class="author"><em>Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)</em></p>
-<p class="date"><em>2022-11-18</em></p>
+<p class="date"><em>2022-11-26</em></p>
 </div>
 <div id="preface" class="section level1 unnumbered hasAnchor">
 <h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This is the lab note you will be using during the labs for the module <em>Modelling Criminological Data</em>. Every week you will have to use these materials during the lab sessions. The idea is that you read this lab note and try to run the code we provide in your own machine. Try not to just ‘copy and paste’ the codes in the lab note. Try to understand them. Along the way you will see you have to complete a series of exercises to check that you are correctly understanding the materials that we introduce. We hope you find these materials useful. This lab note is a work in process, so if you have any suggestions/find some errors, please don’t hesitate to get in touch by submitting an issue to the <a href="https://github.com/eonk/mcd_book">GitHub repository</a> or via email on <a href="mailto:eon.kim@manchester.ac.uk" class="email">eon.kim@manchester.ac.uk</a>/<a href="mailto:joanna.hill@manchester.ac.uk" class="email">joanna.hill@manchester.ac.uk</a></p>
+<p>This is the lab note you will be using during the labs for the module <em>Modelling Criminological Data</em>. Every week you will have to use these materials during the lab sessions. The idea is that you read this lab note and try to run the code we provide in your own machine. Try not to just ‘copy and paste’ the codes in the lab note. Try to understand them. Along the way you will see you have to complete a series of exercises to check that you are correctly understanding the materials that we introduce. We hope you find these materials useful. This lab note is a work in process, so if you have any suggestions/find some errors, please don’t hesitate to get in touch by submitting an issue to the <a href="https://github.com/eonk/mcd_book">GitHub repository</a> or via email on <a href="mailto:eon.kim@manchester.ac.uk" class="email">eon.kim@manchester.ac.uk</a>.</p>
 
 </div>
             </section>

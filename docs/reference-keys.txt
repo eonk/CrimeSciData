@@ -8,9 +8,9 @@ more-on-packages
 using-objects
 more-on-objects
 naming-conventions-for-objects-in-r
-vectors
-factors
-data-frame
+r-object-types-vectors
+r-object-types-data-frame
+r-data-types-factors
 exploring-data
 how-to-use-comment
 quitting-rstudio
