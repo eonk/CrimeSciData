@@ -5,9 +5,7 @@ It is the final week, so let me start with some general reflections to wrap up t
 
 And with that, let's move to this final session. We are not going to cover new techniques today. What there may be a few tips about presentation that you may find helpful. The document in Blackboard about how to write your analytical report is quite detailed already. But there a few additional tips you may find helpful. 
 
-
 ##Tips for the assignment
-
 
 You should all now be familiar with the assignment you have to do. In the Blackboard page for this course unit you can obtain the essay question and additional guidance we have prepared. You can see as well [here](https://github.com/eonk/mcd_book/blob/main/files_docs/STEPS%20IN%20THE%20ANALYSIS%20REQUIRED%20FOR%20THE%20ESSAY.pdf). This guidance aims to answer most of the questions about what you need to do and how. It is very detailed and it has been built with the feedback from the many students that have taken this module before. That guidance aims to provide you a helping hand during the process. It also includes a file in how to think about the writing of your essay -see [here](https://github.com/eonk/mcd_book/blob/main/files_docs/WRITING%20THE%20ESSAY.pdf).
 

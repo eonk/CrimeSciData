@@ -318,7 +318,7 @@ library(arm)
 ```
 
 ```
-## Working directory is /Users/EonKim/Desktop/R/MCD_book/mcd_book
+## Working directory is /Users/eonkim/Desktop/R/MCD_book
 ```
 
 ```
@@ -356,13 +356,6 @@ We can also use **forest plots** in much the same way than we did for linear reg
 
 ```r
 library(sjPlot)
-```
-
-```
-## Learn more about sjPlot with 'browseVignettes("sjPlot")'.
-```
-
-```r
 plot_model(fitl_1)
 ```
 

@@ -26,7 +26,7 @@ data-wrangling-with-dplyr
 using-dplyr-single-verbs
 using-dplyr-for-grouped-operations
 making-comparisons-with-numerical-outcomes
-data-visualisation-with-r-week-2
+data-visualisation-with-r
 introduction
 anatomy-of-a-plot
 what-graph-should-i-use
@@ -39,7 +39,7 @@ scatterplot-matrix
 titles-legends-and-themes-in-ggplot2
 plotting-categorical-data-bar-charts
 further-resources
-refresher-on-descriptive-statistics-data-carpentry-prep-for-week-3
+refresher-on-descriptive-statistics-data-carpentry
 introduction-1
 getting-some-data-from-eurobarometer
 thinking-about-your-data-filtering-cases
@@ -55,7 +55,7 @@ central-tendency
 dispersion
 bivariate-analysis
 further-resources-1
-foundations-of-statistical-inference-confidence-intervals-week-3
+foundations-of-statistical-inference-confidence-intervals
 introduction-2
 generating-random-data
 sampling-data-and-sampling-variability
@@ -65,7 +65,7 @@ asymptotic-confidence-intervals-for-means-and-proportions-using-r
 a-brief-intro-to-resampling-and-bootstraping
 what-about-comparisons-sampling-distribution-for-the-difference-of-two-means
 comparing-means-visually-by-using-error-bars-representing-confidence-intervals-inference-by-eye
-hypotheses-week-4
+hypotheses
 the-logic-of-hypothesis-testing
 comparing-means-across-two-groups-the-t-test
 what-does-a-significant-effect-mean
