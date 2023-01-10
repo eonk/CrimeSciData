@@ -23,7 +23,7 @@
 <meta name="author" content="Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)" />
 
 
-<meta name="date" content="2023-01-08" />
+<meta name="date" content="2023-01-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -143,9 +143,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#open-up-and-explore-rstudio"><i class="fa fa-check"></i><b>1.2</b> Open up and explore RStudio</a></li>
 <li class="chapter" data-level="1.3" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#customising-the-rstudio-look"><i class="fa fa-check"></i><b>1.3</b> Customising the RStudio look</a></li>
 <li class="chapter" data-level="1.4" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#getting-organised-r-projects"><i class="fa fa-check"></i><b>1.4</b> Getting organised: R Projects</a></li>
-<li class="chapter" data-level="1.5" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#talk-to-your-computer"><i class="fa fa-check"></i><b>1.5</b> Talk to your computer</a></li>
+<li class="chapter" data-level="1.5" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#functions-talk-to-your-computer"><i class="fa fa-check"></i><b>1.5</b> Functions: Talk to your computer</a></li>
 <li class="chapter" data-level="1.6" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#more-on-packages"><i class="fa fa-check"></i><b>1.6</b> More on packages</a></li>
-<li class="chapter" data-level="1.7" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#using-objects"><i class="fa fa-check"></i><b>1.7</b> Using objects</a></li>
+<li class="chapter" data-level="1.7" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#objects-creating-an-object"><i class="fa fa-check"></i><b>1.7</b> Objects: creating an object</a></li>
 <li class="chapter" data-level="1.8" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#more-on-objects"><i class="fa fa-check"></i><b>1.8</b> More on objects</a></li>
 <li class="chapter" data-level="1.9" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#naming-conventions-for-objects-in-r"><i class="fa fa-check"></i><b>1.9</b> Naming conventions for objects in R</a></li>
 <li class="chapter" data-level="1.10" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#r-object-types-vectors"><i class="fa fa-check"></i><b>1.10</b> R object types: vectors</a></li>
@@ -344,8 +344,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>You can create these subdirectories using Windows Explorer or the Files window in R Studio.</p>
 </div>
-<div id="talk-to-your-computer" class="section level2 hasAnchor" number="1.5">
-<h2><span class="header-section-number">1.5</span> Talk to your computer<a href="a-first-lesson-about-r.html#talk-to-your-computer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="functions-talk-to-your-computer" class="section level2 hasAnchor" number="1.5">
+<h2><span class="header-section-number">1.5</span> Functions: Talk to your computer<a href="a-first-lesson-about-r.html#functions-talk-to-your-computer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>So far we hace covered an introduction to the main interface you will be using and talk about RStudio projects. In this unit you will be using this interface and using and creating files within your RStudio projects to produce analysis based on programming code that you will need to write using the R language.</p>
 <p>Let’s write some very simple code using R to talk to your computer. First open a new script within the project you just created. Type the following instructions in the script window. After you are done click in the top right corner where it says <em>Run</em> (if you prefer quick shortcuts, you can select the text and then press Ctrl + Enter):</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="a-first-lesson-about-r.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;I love stats&quot;</span>)</span></code></pre></div>
@@ -419,8 +419,8 @@ As indicated above, the window in the bottom left corner is the main <strong>con
 <p>This is an important feature of arguments in functions. We said how different functions admits different arguments. Here by specifying <code>cow</code> the function is printing that particular animal. But who is it that when we didn’t specify a particular kind of animal we still got a result? That happened because functions always have default arguments that are necessary for them to run and that you do not have to make explicit. Default arguments are implicit and do not have to be typed. The <code>say</code> function has a default argument <code>random</code> which will print a random character or animal. It is only when you want to change the default that you need to make an alternative animal explicit.</p>
 <p>Remember, you only have to install a package that is not already installed once. But if you want to use it in a given session you will have to load it within that session using the <code>library</code> function. Once you load it within a session the package will remain loaded until you terminate your session (for example, by closing R Studio). Do not forget this.</p>
 </div>
-<div id="using-objects" class="section level2 hasAnchor" number="1.7">
-<h2><span class="header-section-number">1.7</span> Using objects<a href="a-first-lesson-about-r.html#using-objects" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="objects-creating-an-object" class="section level2 hasAnchor" number="1.7">
+<h2><span class="header-section-number">1.7</span> Objects: creating an object<a href="a-first-lesson-about-r.html#objects-creating-an-object" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We have seen how the first argument that the “say” function takes is the text that we want to convert into speech for our given animal. We could write the text directly into the function (as we did above), but now we are going to do something different. We are going to create an object to store the text.</p>
 <p>An <strong>object</strong>? What do I mean? In the same way that everything you do in R you do with functions (your verbs), everything that exist in R is an object. You can think of objects as boxes where you put stuff. In this case we are going to create an object called <em>my_text</em> and inside this object we are going to store the text “I love stats”. How do you do this? We will use the code below:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="a-first-lesson-about-r.html#cb12-1" aria-hidden="true" tabindex="-1"></a>my_text <span class="ot">&lt;-</span> <span class="st">&quot;I love stats.&quot;</span></span></code></pre></div>
@@ -601,13 +601,14 @@ As indicated above, the window in the bottom left corner is the main <strong>con
 ## 4    Chang  Ravenclaw
 ## 5   Hagrid Gryffindor
 ## 6  Diggory Hufflepuff</code></pre>
-<p>Use <code>str(HarryPotter$house)</code> and see that R says. R will list all observations in the variable, right? Now we are going to convert <code>house</code> a character variable into a factor variable, meaning that, R will categories the data.</p>
+<p>Use <code>str(HarryPotter$house)</code> and see what R says. R will list all observations in the variable, right? Now we are going to convert <code>house</code>, a character variable, into a factor variable <code>house_f</code> meaning that R will categorise the variable.</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="a-first-lesson-about-r.html#cb55-1" aria-hidden="true" tabindex="-1"></a>HarryPotter<span class="sc">$</span>house_f <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(HarryPotter<span class="sc">$</span>house)</span>
 <span id="cb55-2"><a href="a-first-lesson-about-r.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(HarryPotter<span class="sc">$</span>house_f)</span></code></pre></div>
 <pre><code>##  Factor w/ 4 levels &quot;Gryffindor&quot;,&quot;Hufflepuff&quot;,..: 1 4 3 3 1 2</code></pre>
 <div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="a-first-lesson-about-r.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(HarryPotter<span class="sc">$</span>house_f)</span></code></pre></div>
 <pre><code>## [1] &quot;Gryffindor&quot; &quot;Hufflepuff&quot; &quot;Ravenclaw&quot;  &quot;Slytherin&quot;</code></pre>
-<p>Now can you clearly understand what <strong>factor</strong> means in R? Factors are used to represent categorical data. Once created, factors can contain pre-defined set values, known as <code>levels</code>. Like we just converted 6 character data into 4 factors data!</p>
+<p>Now can you clearly understand what <strong>factor</strong> means in R? Factors are used to represent categorical data. Once created, factors can contain pre-defined set values, known as <code>levels</code>. Like we just converted 6 character data (<code>house</code>) into 4 factor data! (<code>house_f</code>).</p>
+<p><img src="imgs/as_factor.png" style="width:80.0%" /></p>
 </div>
 <div id="exploring-data" class="section level2 hasAnchor" number="1.13">
 <h2><span class="header-section-number">1.13</span> Exploring data<a href="a-first-lesson-about-r.html#exploring-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>

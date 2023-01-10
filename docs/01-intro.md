@@ -84,7 +84,7 @@ With simple projects a single script file and a data file is all you may have. B
 
 You can create these subdirectories using Windows Explorer or the Files window in R Studio. 
 
-## Talk to your computer
+## Functions: Talk to your computer
 So far we hace covered an introduction to the main interface you will be using and talk about RStudio projects. In this unit you will be using this interface and using and creating files within your RStudio projects to produce analysis based on programming code that you will need to write using the R language.
 
 Let's write some very simple code using R to talk to your computer. First open a new script within the project you just created. Type the following instructions in the script window. After you are done click in the top right corner where it says *Run* (if you prefer quick shortcuts, you can select the text and then press Ctrl +  Enter):
@@ -225,7 +225,7 @@ This is an important feature of arguments in functions. We said how different fu
 
 Remember, you only have to install a package that is not already installed once. But if you want to use it in a given session you will have to load it within that session using the `library` function. Once you load it within a session the package will remain loaded until you terminate your session (for example, by closing R Studio). Do not forget this.
 
-## Using objects
+## Objects: creating an object
 We have seen how the first argument that the "say" function takes is the text that we want to convert into speech for our given animal. We could write the text directly into the function (as we did above), but now we are going to do something different. We are going to create an object to store the text.
 
 An **object**? What do I mean? In the same way that everything you do in R you do with functions (your verbs), everything that exist in R is an object. You can think of objects as boxes where you put stuff. In this case we are going to create an object called *my_text* and inside this object we are going to store the text "I love stats". How do you do this? We will use the code below:
@@ -601,7 +601,7 @@ HarryPotter
 ## 6  Diggory Hufflepuff
 ```
 
-Use `str(HarryPotter$house)` and see that R says. R will list all observations in the variable, right? Now we are going to convert `house` a character variable into a factor variable,  meaning that, R will categories the data. 
+Use `str(HarryPotter$house)` and see what R says. R will list all observations in the variable, right? Now we are going to convert `house`, a character variable, into a factor variable `house_f`   meaning that R will categorise the variable.
 
 
 ```r
@@ -621,7 +621,9 @@ levels(HarryPotter$house_f)
 ## [1] "Gryffindor" "Hufflepuff" "Ravenclaw"  "Slytherin"
 ```
 
-Now can you clearly understand what **factor** means in R? Factors are used to represent categorical data. Once created, factors can contain pre-defined set values, known as `levels`. Like we just converted 6 character data into 4 factors data! 
+Now can you clearly understand what **factor** means in R? Factors are used to represent categorical data. Once created, factors can contain pre-defined set values, known as `levels`. Like we just converted 6 character data (`house`) into 4 factor data! (`house_f`).
+
+![](imgs/as_factor.png){width=80%}
 
 ## Exploring data
 Ok, let's now have a quick look at the data. There are so many different ways of producing summary stats for data stored in R that is impossible to cover them all! We will just introduce a few functions that you may find useful for summarising data. Before we do any of that it is important you get a sense for what is available in this data set. Go to the help tab and in the search box input the name of the data frame, this will take you to the documentation for this data frame. Here you can see a list of the available variables.

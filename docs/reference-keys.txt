@@ -3,9 +3,9 @@ install-r-rstudio
 open-up-and-explore-rstudio
 customising-the-rstudio-look
 getting-organised-r-projects
-talk-to-your-computer
+functions-talk-to-your-computer
 more-on-packages
-using-objects
+objects-creating-an-object
 more-on-objects
 naming-conventions-for-objects-in-r
 r-object-types-vectors

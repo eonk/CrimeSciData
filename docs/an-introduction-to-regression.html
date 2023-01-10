@@ -23,7 +23,7 @@
 <meta name="author" content="Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)" />
 
 
-<meta name="date" content="2023-01-08" />
+<meta name="date" content="2023-01-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -143,9 +143,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.2" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#open-up-and-explore-rstudio"><i class="fa fa-check"></i><b>1.2</b> Open up and explore RStudio</a></li>
 <li class="chapter" data-level="1.3" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#customising-the-rstudio-look"><i class="fa fa-check"></i><b>1.3</b> Customising the RStudio look</a></li>
 <li class="chapter" data-level="1.4" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#getting-organised-r-projects"><i class="fa fa-check"></i><b>1.4</b> Getting organised: R Projects</a></li>
-<li class="chapter" data-level="1.5" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#talk-to-your-computer"><i class="fa fa-check"></i><b>1.5</b> Talk to your computer</a></li>
+<li class="chapter" data-level="1.5" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#functions-talk-to-your-computer"><i class="fa fa-check"></i><b>1.5</b> Functions: Talk to your computer</a></li>
 <li class="chapter" data-level="1.6" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#more-on-packages"><i class="fa fa-check"></i><b>1.6</b> More on packages</a></li>
-<li class="chapter" data-level="1.7" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#using-objects"><i class="fa fa-check"></i><b>1.7</b> Using objects</a></li>
+<li class="chapter" data-level="1.7" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#objects-creating-an-object"><i class="fa fa-check"></i><b>1.7</b> Objects: creating an object</a></li>
 <li class="chapter" data-level="1.8" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#more-on-objects"><i class="fa fa-check"></i><b>1.8</b> More on objects</a></li>
 <li class="chapter" data-level="1.9" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#naming-conventions-for-objects-in-r"><i class="fa fa-check"></i><b>1.9</b> Naming conventions for objects in R</a></li>
 <li class="chapter" data-level="1.10" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#r-object-types-vectors"><i class="fa fa-check"></i><b>1.10</b> R object types: vectors</a></li>
@@ -633,7 +633,7 @@ If you want to change this you may need to reorder the levels. See <a href="http
 <p>Communicating your results in a clear manner is incredibly important. We have seen the tabular results produced by R. If you want to use them in a paper you may need to do some tidying up of those results. There are a number of packages (<code>textreg</code>, <code>stargazer</code>) that automatise that process. They take your <code>lm</code> objects and produce tables that you can put straight away in your reports or papers. One popular trend in presenting results is the <strong>coefficient plot</strong> as an alternative to the table of regression coefficients. There are various ways of producing coefficient plots with R for a variety of models. See <a href="http://www.carlislerainey.com/2012/06/30/coefficient-plots-in-r/">here</a> and <a href="http://www.carlislerainey.com/2012/07/03/an-improvement-to-coefficient-plots/">here</a>, for example.</p>
 <p>We are going to use instead the <code>plot_model()</code> function of the <code>sjPlot</code> package, that makes it easier to produce this sort of plots. You can find a more detailed tutorial about this function <a href="http://rpubs.com/sjPlot/sjplm">here</a>. See below for an example:</p>
 <div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb592-1"><a href="an-introduction-to-regression.html#cb592-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span></code></pre></div>
-<pre><code>## Learn more about sjPlot with &#39;browseVignettes(&quot;sjPlot&quot;)&#39;.</code></pre>
+<pre><code>## #refugeeswelcome</code></pre>
 <p>Let’s try with a more complex example:</p>
 <div class="sourceCode" id="cb594"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb594-1"><a href="an-introduction-to-regression.html#cb594-1" aria-hidden="true" tabindex="-1"></a>fit_4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(log_viol_r <span class="sc">~</span> unemployed <span class="sc">+</span> largest50 <span class="sc">+</span> black <span class="sc">+</span> fborn <span class="sc">+</span> log_incarceraton, <span class="at">data=</span>df)</span>
 <span id="cb594-2"><a href="an-introduction-to-regression.html#cb594-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(fit_4)</span></code></pre></div>
