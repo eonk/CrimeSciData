@@ -1,0 +1,196 @@
+"","country","prison_pop","continent","gdpPercap","is_eu"
+"1","Norway",129,"Europe",49357.19017,"Other Europe"
+"2","Australia",15,"Oceania",34435.36744,NA
+"3","Switzerland",137,"Europe",37506.41907,"Other Europe"
+"4","Netherlands",137,"Europe",36797.93332,"EU-15 State"
+"5","United States",128,"Americas",42951.65309,NA
+"6","Germany",134,"Europe",32170.37442,"EU-15 State"
+"7","New Zealand",45,"Oceania",25185.00911,NA
+"8","Canada",8,"Americas",36319.23501,NA
+"9","Singapore",58,"Asia",47143.17964,NA
+"10","Denmark",130,"Europe",35278.41874,"EU-15 State"
+"11","Ireland",140,"Europe",40675.99635,"EU-15 State"
+"12","Sweden",124,"Europe",33859.74835,"EU-15 State"
+"13","Iceland",104,"Europe",36180.78919,"Other Europe"
+"14","United Kingdom",24,"Europe",33203.26128,"Other Europe"
+"15","Korea (Republic of)",145,NA,NA,NA
+"16","Hong Kong, China (SAR)",13,NA,NA,NA
+"17","Japan",109,"Asia",31656.06806,NA
+"18","Liechtenstein",60,NA,NA,NA
+"19","Israel",54,"Asia",25523.2771,NA
+"20","France",144,"Europe",30470.0167,"EU-15 State"
+"21","Luxembourg",12,NA,NA,"EU-15 State"
+"22","Belgium",4,"Europe",33692.60508,"EU-15 State"
+"23","Austria",144,"Europe",36126.4927,"EU-15 State"
+"24","Finland",116,"Europe",33207.0844,"EU-15 State"
+"25","Slovenia",123,"Europe",25768.25759,"New EU State"
+"26","Italy",3,"Europe",28569.7197,"EU-15 State"
+"27","Spain",23,"Europe",28821.0637,"EU-15 State"
+"28","Czech Republic",30,"Europe",22833.30851,"New EU State"
+"29","Greece",6,"Europe",27538.41188,"EU-15 State"
+"30","Brunei Darussalam",12,NA,NA,NA
+"31","Qatar",119,NA,NA,NA
+"32","Cyprus",3,NA,NA,"New EU State"
+"33","Estonia",59,NA,NA,"New EU State"
+"34","Saudi Arabia",35,"Asia",21654.83194,NA
+"35","Poland",52,"Europe",15389.92468,"New EU State"
+"36","Lithuania",84,NA,NA,"New EU State"
+"37","Slovakia",41,NA,NA,"New EU State"
+"38","Andorra",90,NA,NA,NA
+"39","Malta",22,NA,NA,"New EU State"
+"40","United Arab Emirates",59,NA,NA,NA
+"41","Portugal",18,"Europe",20509.64777,"EU-15 State"
+"42","Chile",65,"Americas",13171.63885,NA
+"43","Hungary",40,"Europe",18008.94444,"New EU State"
+"44","Cuba",110,"Americas",8948.102923,NA
+"45","Bahrain",68,"Asia",29796.04834,NA
+"46","Kuwait",19,"Asia",47306.98978,NA
+"47","Croatia",4,"Europe",14619.22272,"New EU State"
+"48","Latvia",77,NA,NA,"New EU State"
+"49","Argentina",23,"Americas",12779.37964,NA
+"50","Uruguay",71,"Americas",10611.46299,NA
+"51","Montenegro",50,"Europe",9253.896111,NA
+"52","Bahamas",101,NA,NA,NA
+"53","Belarus",86,NA,NA,NA
+"54","Romania",31,"Europe",10808.47561,"New EU State"
+"55","Libya",136,"Africa",12057.49928,NA
+"56","Oman",120,"Asia",22316.19287,NA
+"57","Russian Federation",105,NA,NA,NA
+"58","Bulgaria",27,"Europe",10680.79282,"New EU State"
+"59","Barbados",112,NA,NA,NA
+"60","Palau",75,NA,NA,NA
+"61","Antigua and Barbuda",94,NA,NA,NA
+"62","Malaysia",16,"Asia",12451.6558,NA
+"63","Mauritius",48,"Africa",10956.99112,NA
+"64","Trinidad and Tobago",71,"Americas",18008.50924,NA
+"65","Panama",96,"Americas",9809.185636,NA
+"66","Lebanon",8,"Asia",10461.05868,NA
+"67","Venezuela (Bolivarian Republic of)",34,NA,NA,NA
+"68","Costa Rica",81,"Americas",9645.06142,NA
+"69","Turkey",38,"Europe",8458.276384,NA
+"70","Kazakhstan",75,NA,NA,NA
+"71","Seychelles",126,NA,NA,NA
+"72","Mexico",51,"Americas",11977.57496,NA
+"73","Sri Lanka",16,"Asia",3970.095407,NA
+"74","Saint Kitts and Nevis",127,NA,NA,NA
+"75","Iran (Islamic Republic of)",72,NA,NA,NA
+"76","Azerbaijan",97,NA,NA,NA
+"77","Serbia",21,"Europe",9786.534714,NA
+"78","Jordan",141,"Asia",4519.461171,NA
+"79","Grenada",100,NA,NA,NA
+"80","Georgia",56,NA,NA,NA
+"81","Brazil",67,"Americas",9065.800825,NA
+"82","Peru",48,"Americas",7408.905561,NA
+"83","Ukraine",78,NA,NA,NA
+"84","The former Yugoslav Republic of Macedonia",12,NA,NA,NA
+"85","Belize",106,NA,NA,NA
+"86","Bosnia and Herzegovina",135,"Europe",7446.298803,NA
+"87","Armenia",36,NA,NA,NA
+"88","Fiji",37,NA,NA,NA
+"89","Thailand",93,"Asia",7458.396327,NA
+"90","Tunisia",47,"Africa",7092.923025,NA
+"91","Saint Vincent and the Grenadines",89,NA,NA,NA
+"92","China",11,"Asia",4959.114854,NA
+"93","Dominica",92,NA,NA,NA
+"94","Algeria",35,"Africa",6223.367465,NA
+"95","Albania",32,"Europe",5937.029526,NA
+"96","Jamaica",28,"Americas",7320.880262,NA
+"97","Saint Lucia",82,NA,NA,NA
+"98","Ecuador",25,"Americas",6873.262326,NA
+"99","Colombia",62,"Americas",7006.580419,NA
+"100","Tonga",26,NA,NA,NA
+"101","Suriname",40,NA,NA,NA
+"102","Dominican Republic",61,"Americas",6025.374752,NA
+"103","Turkmenistan",55,NA,NA,NA
+"104","Mongolia",73,"Asia",3095.772271,NA
+"105","Maldives",79,NA,NA,NA
+"106","Samoa",57,NA,NA,NA
+"107","Palestine, State of",1,NA,NA,NA
+"108","Indonesia",117,"Asia",3540.651564,NA
+"109","Botswana",49,"Africa",12569.85177,NA
+"110","Egypt",135,"Africa",5581.180998,NA
+"111","Paraguay",8,"Americas",4172.838464,NA
+"112","Gabon",46,"Africa",13206.48452,NA
+"113","Bolivia (Plurinational State of)",20,NA,NA,NA
+"114","Moldova (Republic of)",42,NA,NA,NA
+"115","El Salvador",99,"Americas",5728.353514,NA
+"116","Uzbekistan",28,NA,NA,NA
+"117","Philippines",6,"Asia",3190.481016,NA
+"118","Syrian Arab Republic",116,NA,NA,NA
+"119","South Africa",74,"Africa",9269.657808,NA
+"120","Iraq",5,"Asia",4471.061906,NA
+"121","Viet Nam",22,NA,NA,NA
+"122","Guyana",64,NA,NA,NA
+"123","Cape Verde",66,NA,NA,NA
+"124","Micronesia (Federated States of)",135,NA,NA,NA
+"125","Kyrgyzstan",39,NA,NA,NA
+"126","Guatemala",2,"Americas",5186.050003,NA
+"127","Namibia",44,"Africa",4811.060429,NA
+"128","Timor-Leste",63,NA,NA,NA
+"129","Morocco",53,"Africa",3820.17523,NA
+"130","Honduras",29,"Americas",3548.330846,NA
+"131","Vanuatu",132,NA,NA,NA
+"132","Nicaragua",29,"Americas",2749.320965,NA
+"133","Tajikistan",15,NA,NA,NA
+"134","Kiribati",7,NA,NA,NA
+"135","India",76,"Asia",2452.210407,NA
+"136","Cambodia",3,"Asia",1713.778686,NA
+"137","Bhutan",17,NA,NA,NA
+"138","Ghana",113,"Africa",1327.60891,NA
+"139","Lao People's Democratic Republic",125,NA,NA,NA
+"140","Congo",80,NA,NA,NA
+"141","Zambia",9,"Africa",1271.211593,NA
+"142","Sao Tome and Principe",13,"Africa",1598.435089,NA
+"143","Bangladesh",98,"Asia",1391.253792,NA
+"144","Equatorial Guinea",141,"Africa",12154.08975,NA
+"145","Nepal",107,"Asia",1091.359778,NA
+"146","Pakistan",91,"Asia",2605.94758,NA
+"147","Kenya",11,"Africa",1463.249282,NA
+"148","Swaziland",72,"Africa",4513.480643,NA
+"149","Angola",2,"Africa",4797.231267,NA
+"150","Myanmar",10,"Asia",944,NA
+"151","Rwanda",108,"Africa",863.0884639,NA
+"152","Nigeria",83,"Africa",2013.977305,NA
+"153","Cameroon",9,"Africa",2042.09524,NA
+"154","Yemen",114,NA,NA,NA
+"155","Madagascar",139,"Africa",1044.770126,NA
+"156","Zimbabwe",14,"Africa",469.7092981,NA
+"157","Solomon Islands",114,NA,NA,NA
+"158","Papua New Guinea",107,NA,NA,NA
+"159","Tanzania (United Republic of)",133,NA,NA,NA
+"160","Comoros",33,"Africa",986.1478792,NA
+"161","Mauritania",102,"Africa",1803.151496,NA
+"162","Lesotho",11,"Africa",1569.331442,NA
+"163","Senegal",121,"Africa",1712.472136,NA
+"164","Uganda",143,"Africa",1056.380121,NA
+"165","Benin",131,"Africa",1441.284873,NA
+"166","Togo",121,"Africa",882.9699438,NA
+"167","Sudan",115,"Africa",2602.394995,NA
+"168","Haiti",142,"Americas",1201.637154,NA
+"169","Afghanistan",132,"Asia",974.5803384,NA
+"170","Djibouti",138,"Africa",2082.481567,NA
+"171","C<99>te d'Ivoire",87,NA,NA,NA
+"172","Gambia",115,"Africa",752.7497265,NA
+"173","Ethiopia",18,"Africa",690.8055759,NA
+"174","Malawi",132,"Africa",759.3499101,NA
+"175","Liberia",103,"Africa",414.5073415,NA
+"176","Mali",88,"Africa",1042.581557,NA
+"177","Guinea-Bissau",1,"Africa",579.231743,NA
+"178","Mozambique",122,"Africa",823.6856205,NA
+"179","Guinea",63,"Africa",942.6542111,NA
+"180","Burundi",129,"Africa",430.0706916,NA
+"181","Burkina Faso",70,"Africa",1217.032994,NA
+"182","Eritrea",1,"Africa",641.3695236,NA
+"183","Sierra Leone",111,"Africa",862.5407561,NA
+"184","Chad",95,"Africa",1704.063724,NA
+"185","Central African Republic",43,"Africa",706.016537,NA
+"186","Congo (Democratic Republic of the)",85,NA,NA,NA
+"187","Niger",98,"Africa",619.6768924,NA
+"188","South Sudan",122,NA,NA,NA
+"189","Tuvalu",10,NA,NA,NA
+"190","Somalia",1,"Africa",926.1410683,NA
+"191","San Marino",118,NA,NA,NA
+"192","Nauru",69,NA,NA,NA
+"193","Monaco",130,NA,NA,NA
+"194","Marshall Islands",116,NA,NA,NA
+"195","Korea (Democratic People's Rep. of)",1,NA,NA,NA
