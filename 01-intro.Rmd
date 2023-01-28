@@ -54,19 +54,19 @@ Technically, a RStudio project is just a directory (a folder) with the name of t
 
 When a project is reopened, R Studio opens every file and data view that was open when the project was closed last time around. Let's learn how to create a project. Go to the *File* drown menu and select *New Project*.
 
-![](imgs/newproject.PNG){width=80%}
+![](imgs/newproject.png){width=80%}
 
 That will open a dialog box where you ask to specify what kind of directory you want to create. Select new working directory in this dialog box.
 
-![](imgs/newproject2.PNG){width=80%}
+![](imgs/newproject2.png){width=80%}
 
 Now you get another dialog box (at least you have an older version of R Studio) where you have to specify what kind of project you want to create. Select the first option *New Project*.
 
-![](imgs/newproject3.PNG){width=80%}
+![](imgs/newproject3.png){width=80%}
 
 Finally, you get to select a name for your project (in the image below I use the code for this course unit, but you can use any sensible name you prefer) and you will need to specify the folder/directory in which to place this directory. If you are using a cluster machine use the P: drive, otherwise select what you prefer in your laptop (preferably, to avoid problems later, not your desktop in Windows machines).
 
-![](imgs/newproject4.PNG){width=80%}
+![](imgs/newproject4.png){width=80%}
 
 With simple projects a single script file and a data file is all you may have. But with more complex projects, things can rapidly become messy. So you may want to create subdirectories within this project folder. I typically use the following structure in my own work to put all files of a certain type in the same subdirectory:
 
@@ -488,4 +488,4 @@ Keep in mind though that you should not then panic if you open your next R Studi
 
 What is more. I would suggest you go to the Tools drop down menu, select Global Options, and make sure you select "Never" where it says "Save workspace". Then click "Apply". This way you will never be asked to save what is in your global environment when you terminate a session.
 
-![](imgs/neversave.PNG){width=80%}
+![](imgs/neversave.png){width=80%}
