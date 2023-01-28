@@ -58,15 +58,15 @@ When a project is reopened, R Studio opens every file and data view that was ope
 
 That will open a dialog box where you ask to specify what kind of directory you want to create. Select new working directory in this dialog box.
 
-![](imgs/newproject2.png){width=80%}
+<img src="https://user-images.githubusercontent.com/98951792/215291834-4b1ef9b9-7423-4f1f-8df3-316c3b520875.png">
 
 Now you get another dialog box (at least you have an older version of R Studio) where you have to specify what kind of project you want to create. Select the first option *New Project*.
 
-![](imgs/newproject3.png){width=80%}
+<img src="https://user-images.githubusercontent.com/98951792/215292002-901f94d9-ac91-472d-8e08-0367dedb8a7b.png">
 
 Finally, you get to select a name for your project (in the image below I use the code for this course unit, but you can use any sensible name you prefer) and you will need to specify the folder/directory in which to place this directory. If you are using a cluster machine use the P: drive, otherwise select what you prefer in your laptop (preferably, to avoid problems later, not your desktop in Windows machines).
 
-![](imgs/newproject4.png){width=80%}
+<img src="https://user-images.githubusercontent.com/98951792/215292026-e843c5d4-8c9a-433a-bcc8-009bf46d8de9.png">
 
 With simple projects a single script file and a data file is all you may have. But with more complex projects, things can rapidly become messy. So you may want to create subdirectories within this project folder. I typically use the following structure in my own work to put all files of a certain type in the same subdirectory:
 
@@ -761,4 +761,4 @@ Keep in mind though that you should not then panic if you open your next R Studi
 
 What is more. I would suggest you go to the Tools drop down menu, select Global Options, and make sure you select "Never" where it says "Save workspace". Then click "Apply". This way you will never be asked to save what is in your global environment when you terminate a session.
 
-![](imgs/neversave.png){width=80%}
+<img src="https://user-images.githubusercontent.com/98951792/215292052-cbb36812-e7a7-4a7f-b2e4-57ea93918274.png"> 
