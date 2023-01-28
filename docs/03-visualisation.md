@@ -118,7 +118,7 @@ ggplot(data = fbo, aes(x = club_supported, y=banning_orders)) + #data
 
 <img src="03-visualisation_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
-The first line above begins a plot by calling the `ggplot()` function, and putting the data into it. You have to name your dataframe witg the `data` argument, and then, within the `aes()` command you pass the specific variables which you want to plot. In this case, we only want to see the distribution of one variable, banning orders, in the y axis and we will plot the club supported in the x axis. 
+The first line above begins a plot by calling the `ggplot()` function, and putting the data into it. You have to name your dataframe with the `data` argument, and then, within the `aes()` command you pass the specific variables which you want to plot. In this case, we only want to see the distribution of one variable, banning orders, in the y axis and we will plot the club supported in the x axis. 
 
 The second line is where we add the *geometry*. This is where we tell R what we want the graph to be. Here we say we want it to be points by using `geom_points`. You can see a list of all possible geoms [here](https://ggplot2.tidyverse.org/reference/). 
 

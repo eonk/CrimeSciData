@@ -101,7 +101,6 @@ Damn! We have one question but several variables! This is common when the questi
 
 ```{r}
 class(eb85_3$qb10_1)
-
 ```
 
 This is a vector labelled by haven. We could see what labels were used using the `attributes` function.
@@ -189,7 +188,6 @@ df <- mutate(df,
        at_sexviol = qb10_1 + qb10_2 + qb10_3 + qb10_4 +
          qb10_5 + qb10_6 + qb10_7 + qb10_8 + qb10_9)
 table(df$at_sexviol)
-
 ```
 
 We have a skewed distribution. Most people in the survey consider that none of the identified circumstances are valid excuses for having sexual intercourse without consent. On the other hand, only a minority of individuals (124) consider that all of these 9 circumstances are valid excuses for having sex without consent. A high score in this count variable is telling you the participant is more likely to accept a number of circumstances in which sexual intercourse without consent is acceptable. You may read more about count data of this kind [here](https://en.wikipedia.org/wiki/Count_data).
@@ -232,7 +230,6 @@ One of the variables we selected is the country in which the participant lives. 
 
 ```{r, message=FALSE, warnings=FALSE}
 table(df$isocntry)
-
 ```
 
 There are 30 countries in the sample. You may consider that for the purposes of your analysis maybe that is too much. For the sake of this tutorial, let's say that maybe you are not really interested in national differences but in regional differences across different parts of Europe. Say you may want to explore whether these attitudes are different across Western/Central Europe, Scandinavian countries, Mediterranean countries, and Eastern Europe. You do not have a variable with these categories but since you have a variable that gives you the nations you could create such a variable. How would you do that?
@@ -256,7 +253,6 @@ First, let's create four lists, which contain the codes for countries we would l
 
 
 ```{r}
-
 western_list <- c("AT", "BE", "CZ", "DE-E", "DE-W", 
                   "FR", "GB-GBN", "GB-NIR", "IE", "LU", "NL")
 
@@ -265,13 +261,11 @@ eastern_list <- c("BG" , "EE", "HU", "LT" , "LV" , "PL" , "RO", "SK")
 northern_list <- c("DK", "FI", "SE")
 
 southern_list <- c("CY", "ES", "GR", "HR" , "IT" , "MT", "PT", "SI")
-
 ```
 
 Now that we have these lists, our condition will be to evaluate whether the value for each row for the `isocntry` variable falls within one of these, and *when* this is the *case* then code if appropriately: 
 
 ```{r, message=FALSE, warning=FALSE}
-
 df <- df %>% 
     mutate(region = case_when(isocntry %in% western_list ~ "Western", 
                               isocntry %in% eastern_list ~ "Eastern",
@@ -289,7 +283,6 @@ Once you have created the variable you could start exploring if there is any ass
 ```{r}
 library(vcd)
 mosaic(~region + at_sexviol, data = df)
-
 ```
 
 In a mosaic plot like this the height of the region levels indicate how big that group is. You can see there are many more observations in our sample that come from Western countries than from Northern countries. Here what we are interested is the length. We see that Northern countries have proportionally more people in the zero category than any other group. On the other hand, Eastern countries have the fewer zeros (so looking as if attitudes more permissive towards sexual violence are more common there, even if still a minority). We will come back to this kind of plots later on this semester.
@@ -320,7 +313,6 @@ If you prefer the *tydiverse* dialect (that aims to save you typing among other 
 
 ```{r}
 df <- rename(df, gender=d10)
-
 ```
 
 If you now check the names of the variables (with the `names` function) in `df` you will see what has happened:
@@ -434,7 +426,6 @@ Let's look at the *politics* variable.
 class(df$politics)
 table(df$politics)
 sum(is.na(df$politics))
-
 ```
 
 It looks as if we have no missing data. Right? Well, appearances can be deceiving sometimes.
@@ -629,28 +620,21 @@ The *mean* is the average and it is useful when we want to summarise a variable 
 For example, the mean value for our political scale variable is: 
 
 ```{r}
-
 mean(df$politics_n, na.rm = TRUE)
-
 ```
 
 To address this sensitivity, the *median* is a better measure because it is a robust estimate, which means that it is not easily swayed by extreme values. It is the middle value of the distribution. 
 
 ```{r}
-
 median(df$politics_n, na.rm = TRUE)
-
 ```
 
 The *mode* helps give an idea of what is the most typical value in the distribution, which is the most frequently occurring case in the data. While mean and median apply to numeric variables, the mode is most useful when describing categorical variables. For example, you may want to know the most frequently occurring category. To query the mode, we use the function `mlv()` (acronym for **m**ost **l**ikely **v**alues) from the `modeest` package to answer this question: 
 <br>
 
 ```{r}
-
 library(modeest)
-
 mlv(df$f_occup)
-
 ```
 
 <!-- ### **Dispersion in Nominal and Ordinal Variables** -->
@@ -695,9 +679,7 @@ You always want to talk about dispersion as well. If you have a numeric variable
 
 
 ```{r}
-
 max(df$politics_n, na.rm = TRUE) - min(df$politics_n, na.rm = TRUE)
-
 ```
 
 
@@ -706,7 +688,6 @@ You also want to talk about the **variance** ( $s^2$ ), which tells you about sp
 ```{r}
 var(df$politics_n, na.rm = TRUE)
 sd(df$politics_n, na.rm = TRUE)
-
 ```
 
 Visual representations of dispersions such as a histogram are also handy for getting an overview of your data. 
@@ -720,11 +701,9 @@ We've touched on this already in week two, when we looked at using the `group_by
 
 
 ```{r}
-
 politics_by_occ <- df %>% 
     group_by(f_occup) %>% 
     summarise(mean_poli_score = mean(politics_n, na.rm = TRUE))
-
 
 politics_by_occ
 ```
@@ -749,6 +728,4 @@ There are many other ways to recode variables and create new variables based in 
 You should also look for the `dplyr` documentation for the functions mutate() and recode().
 
 If you would like to combine several variables into one for your analysis in more complex ways but do not know how to do that, please do get in touch. Also do not hesitate to approach us if you have any other specific queries.
-
-
 

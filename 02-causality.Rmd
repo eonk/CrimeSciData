@@ -270,7 +270,7 @@ Now let's load the package:
 library(dplyr)
 ```
 
-Notice that when you run this package you get a series of warnings in the conseole. It is telling us that some functions from certain packages are being "masked". One the things with a language like R is that sometimes packages introduce functions that have the same name than others that are already loaded into your session. When that happens the newly loaded ones will over-ride the previous ones. You can still use them but you will have to refer to them explicitly. Otherwise R will assume you are using the function most recently loaded:
+Notice that when you run this package you get a series of warnings in the console. It is telling us that some functions from certain packages are being "masked". One the things with a language like R is that sometimes packages introduce functions that have the same name than others that are already loaded into your session. When that happens the newly loaded ones will over-ride the previous ones. You can still use them but you will have to refer to them explicitly. Otherwise R will assume you are using the function most recently loaded:
 
 ```{r, eval=FALSE}
 #Example:

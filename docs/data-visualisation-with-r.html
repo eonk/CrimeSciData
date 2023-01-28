@@ -23,7 +23,7 @@
 <meta name="author" content="Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)" />
 
 
-<meta name="date" content="2023-01-10" />
+<meta name="date" content="2023-01-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -92,7 +92,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -105,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -349,7 +349,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb131-2"><a href="data-visualisation-with-r.html#cb131-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>() <span class="sc">+</span>                 <span class="co">#geometry</span></span>
 <span id="cb131-3"><a href="data-visualisation-with-r.html#cb131-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()                     <span class="co">#backgroud coordinate system</span></span></code></pre></div>
 <p><img src="03-visualisation_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>The first line above begins a plot by calling the <code>ggplot()</code> function, and putting the data into it. You have to name your dataframe witg the <code>data</code> argument, and then, within the <code>aes()</code> command you pass the specific variables which you want to plot. In this case, we only want to see the distribution of one variable, banning orders, in the y axis and we will plot the club supported in the x axis.</p>
+<p>The first line above begins a plot by calling the <code>ggplot()</code> function, and putting the data into it. You have to name your dataframe with the <code>data</code> argument, and then, within the <code>aes()</code> command you pass the specific variables which you want to plot. In this case, we only want to see the distribution of one variable, banning orders, in the y axis and we will plot the club supported in the x axis.</p>
 <p>The second line is where we add the <em>geometry</em>. This is where we tell R what we want the graph to be. Here we say we want it to be points by using <code>geom_points</code>. You can see a list of all possible geoms <a href="https://ggplot2.tidyverse.org/reference/">here</a>.</p>
 <p>The third line is where we can tweak the display of the graph. Here I used <code>theme_bw()</code> which is a nice clean theme. You can try with other themes. To get a list of themes you can also see the resource <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">here</a>. If you want more variety you can explore the package <a href="https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/"><code>ggthemes</code></a>.</p>
 <div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="data-visualisation-with-r.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> fbo, <span class="fu">aes</span>(<span class="at">x =</span> club_supported, <span class="at">y=</span>banning_orders)) <span class="sc">+</span>     <span class="co">#data</span></span>

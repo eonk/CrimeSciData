@@ -23,7 +23,7 @@
 <meta name="author" content="Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)" />
 
 
-<meta name="date" content="2023-01-10" />
+<meta name="date" content="2023-01-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -293,7 +293,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">1.1</span> Install R &amp; RStudio<a href="a-first-lesson-about-r.html#install-r-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We recommend that you use your own laptops for this course. If you have not already, then please download and install R and RStudio onto your laptops.
 - click <a href="https://www.youtube.com/watch?v=eD07NznguA4">here</a> for instructions using Windows or
-- <a href="https://www.youtube.com/watch?v=cX532N_XLIs&amp;list=PLqzoL9-eJTNDw71zWePXyHx3_cm_fMP8S">here</a> for instructions using a Mac. If you are using a Mac it would be convenient that you use the most up to date version of OS or, at least one compatible with the most recent version of R. Read <a href="">this</a> if you want to check how to do that.</p>
+- <a href="https://www.youtube.com/watch?v=cX532N_XLIs&amp;list=PLqzoL9-eJTNDw71zWePXyHx3_cm_fMP8S">here</a> for instructions using a Mac. If you are using a Mac it would be convenient that you use the most up to date version of OS or, at least one compatible with the most recent version of R. Read <a href="https://www.howtogeek.com/350906/how-to-check-which-version-of-macos-youre-using/">this</a> if you want to check how to do that.</p>
 <p>If you prefer, you can always use any of the PCs in the computer cluster. All of them already have the software installed.</p>
 </div>
 <div id="open-up-and-explore-rstudio" class="section level2 hasAnchor" number="1.2">
@@ -954,18 +954,18 @@ As indicated above, the window in the bottom left corner is the main <strong>con
 </tr>
 </tbody>
 </table>
-<p>Apart from summary statistics, last semester we discussed a variety of ways to graphically display variables. In week 3 we covered scatterplots, a graphical device to show the relationship between two quantitative variables. I don’t know if you remember the amount of point and click you had to do in Excel for getting this done. If not you can review the notes <a href="https://rawgit.com/maczokni/MSCD/master/Lesson_3.html#visualising-the-differences-between-groups">here</a>.</p>
+<p>Apart from summary statistics, last semester we discussed a variety of ways to graphically display variables. In week 3 of ‘Making Sense of Criminological Data’ covered scatterplots, a graphical device to show the relationship between two quantitative variables. I don’t know if you remember the amount of point and click you had to do in Excel for getting this done. If not you can review the notes <a href="https://maczokni.github.io/MSCD_labs/week3.html">here</a>.</p>
 </div>
 <div id="how-to-use-comment" class="section level2 hasAnchor" number="1.14">
 <h2><span class="header-section-number">1.14</span> How to use ‘comment’<a href="a-first-lesson-about-r.html#how-to-use-comment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the bits of code above, you will have noticed parts that were grayed out. See for example in the last example provided. You can see that after the hashtag, all the text is being grayed out. What is this? What’s going on?</p>
 <p>These are <strong>comments</strong>. Comments are simply annotations that R will know is not code (and therefore doesn’t attempt to understand and execute). We use the hash-tag symbol to specify to R that what comes after is not programming code, but simply bits of notes that we write to remind ourselves what the code is actually doing. Including these comments will help you to understand your code when you come back to it.</p>
 <p>To create a comment you use the hashtag/ number sign <code>#</code> followed by some text. Whenever the R engine sees the number sign it knows that what follows is not code to be executed. You can use this sign to include <em>annotations</em> when you are coding. These annotations are a helpful reminder to yourself (and others reading your code) of <strong>what</strong> the code is doing and (even more important) <strong>why</strong> you are doing it.</p>
-<p>It is good practice to often use annotations. You can use these annotations in your code to explain your reasoning and to create “scannable” headings in your code. That way after you save your script you will be able to share it with others or return to it at a later point and understand what you were doing when you first created it -see <a href="http://www.screenr.com/1VN8">here for further details on annotations and in how to save a script when working with the basic R interface</a>.</p>
-<p>Just keep in mind:
-+ You need one <code>#</code> per line, and anything after that is a comment that is not executed by R.</p>
+<p>It is good practice to often use annotations. You can use these annotations in your code to explain your reasoning and to create “scannable” headings in your code. That way after you save your script you will be able to share it with others or return to it at a later point and understand what you were doing when you first created it -see <a href="http://mercury.webster.edu/aleshunas/R_learning_infrastructure/R%20scripts.html">here for further details on annotations and in how to save a script when working with the basic R interface</a>.</p>
+<p>Just keep in mind:</p>
 <ul>
-<li>You can use spaces after (its not like a hashtag on twitter).</li>
+<li><p>You need one <code>#</code> per line, and anything after that is a comment that is not executed by R.</p></li>
+<li><p>You can use spaces after (its not like a hashtag on twitter).</p></li>
 </ul>
 </div>
 <div id="quitting-rstudio" class="section level2 hasAnchor" number="1.15">
@@ -1039,6 +1039,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

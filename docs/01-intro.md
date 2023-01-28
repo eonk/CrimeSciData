@@ -3,7 +3,7 @@
 ## Install R & RStudio
 We recommend that you use your own laptops for this course. If you have not already, then please download and install R and RStudio onto your laptops. 
 - click [here](https://www.youtube.com/watch?v=eD07NznguA4) for instructions using Windows or
-- [here](https://www.youtube.com/watch?v=cX532N_XLIs&list=PLqzoL9-eJTNDw71zWePXyHx3_cm_fMP8S) for instructions using a Mac. If you are using a Mac it would be convenient that you use the most up to date version of OS or, at least one compatible with the most recent version of R. Read [this]() if you want to check how to do that.
+- [here](https://www.youtube.com/watch?v=cX532N_XLIs&list=PLqzoL9-eJTNDw71zWePXyHx3_cm_fMP8S) for instructions using a Mac. If you are using a Mac it would be convenient that you use the most up to date version of OS or, at least one compatible with the most recent version of R. Read [this](https://www.howtogeek.com/350906/how-to-check-which-version-of-macos-youre-using/) if you want to check how to do that.
 
 If you prefer, you can always use any of the PCs in the computer cluster. All of them already have the software installed. 
 
@@ -733,7 +733,7 @@ skim(hate_crimes)
 |numeric   |hate_crimes_per_100k_splc   |         4|     0.9215686|            NA|            NA|              NA|                 NA|                   NA| 3.040930e-01|    0.2527086| 6.744680e-02| 1.427066e-01| 2.261971e-01| 3.569347e-01|     1.522302|▇▂▁▁▁        |
 |numeric   |avg_hatecrimes_per_100k_fbi |         1|     0.9803922|            NA|            NA|              NA|                 NA|                   NA| 2.367613e+00|    1.7142450| 2.669408e-01| 1.293139e+00| 1.987068e+00| 3.184344e+00|    10.953480|▇▅▁▁▁        |
 
-Apart from summary statistics, last semester we discussed a variety of ways to graphically display variables. In week 3 we covered scatterplots, a graphical device to show the relationship between two quantitative variables. I don't know if you remember the amount of point and click you had to do in Excel for getting this done. If not you can review the notes [here](https://rawgit.com/maczokni/MSCD/master/Lesson_3.html#visualising-the-differences-between-groups).
+Apart from summary statistics, last semester we discussed a variety of ways to graphically display variables. In week 3 of 'Making Sense of Criminological Data' covered scatterplots, a graphical device to show the relationship between two quantitative variables. I don't know if you remember the amount of point and click you had to do in Excel for getting this done. If not you can review the notes [here](https://maczokni.github.io/MSCD_labs/week3.html).
 
 ## How to use 'comment'
 In the bits of code above, you will have noticed parts that were grayed out. See for example in the last example provided. You can see that after the hashtag, all the text is being grayed out. What is this? What's going on? 
@@ -742,9 +742,10 @@ These are **comments**. Comments are simply annotations that R will know is not 
 
 To create a comment you use the hashtag/ number sign `#` followed by some text. Whenever the R engine sees the number sign it knows that what follows is not code to be executed. You can use this sign to include *annotations* when you are coding. These annotations are a helpful reminder to yourself (and others reading your code) of **what** the code is doing and (even more important) **why** you are doing it. 
 
-It is good practice to often use annotations. You can use these annotations in your code to explain your reasoning and to create "scannable" headings in your code. That way after you save your script you will be able to share it with others or return to it at a later point and understand what you were doing when you first created it -see [here for further details on annotations and in how to save a script when working with the basic R interface](http://www.screenr.com/1VN8).
+It is good practice to often use annotations. You can use these annotations in your code to explain your reasoning and to create "scannable" headings in your code. That way after you save your script you will be able to share it with others or return to it at a later point and understand what you were doing when you first created it -see [here for further details on annotations and in how to save a script when working with the basic R interface](http://mercury.webster.edu/aleshunas/R_learning_infrastructure/R%20scripts.html).
 
 Just keep in mind: 
+
 + You need one `#` per line, and anything after that is a comment that is not executed by R.
 
 + You can use spaces after (its not like a hashtag on twitter). 

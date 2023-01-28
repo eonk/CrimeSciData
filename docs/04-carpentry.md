@@ -1149,7 +1149,6 @@ The *mode* helps give an idea of what is the most typical value in the distribut
 
 ```r
 library(modeest)
-
 mlv(df$f_occup)
 ```
 
@@ -1244,7 +1243,6 @@ politics_by_occ <- df %>%
     group_by(f_occup) %>% 
     summarise(mean_poli_score = mean(politics_n, na.rm = TRUE))
 
-
 politics_by_occ
 ```
 
@@ -1292,6 +1290,4 @@ There are many other ways to recode variables and create new variables based in 
 You should also look for the `dplyr` documentation for the functions mutate() and recode().
 
 If you would like to combine several variables into one for your analysis in more complex ways but do not know how to do that, please do get in touch. Also do not hesitate to approach us if you have any other specific queries.
-
-
 
