@@ -66,7 +66,7 @@ knitr::include_graphics('imgs/firstlookatdata.jpg', dpi = NA)
 
 As Mara Averick (somebody you want to follow in twitter at @dataanndme if you want to be in top of R related resources) suggests this also makes for good relationship advice!
 
-![](imgs/relationships.png){width=80%}
+<img src="https://user-images.githubusercontent.com/98951792/215890363-7911fbd7-e020-41a3-991f-3e2863a94170.PNG">
 
 Here we are going to introduce a few functions that will help you to start making sense for what you have just downloaded. Summarising the data is the first step in any analysis and it is also used for finding out potential problems with the data. Regarding the latter you want to look out for: missing values; values outside the expected range (e.g., someone aged 200 years); values that seem to be in the wrong units; mislabeled variables; or variables that seem to be the wrong class (e.g., a quantitative variable encoded as a factor). 
 
@@ -112,7 +112,7 @@ class(banbox$num_stores)
 
 We talked about numeric vectors in week one. It is simply a collection of numbers. But what is a labelled vector? This is a new type of vector introduced by the *haven* package. **Labelled vectors** are categorical variables that have labels. Go to the *Environment* panel and left click in the banbox object. This should open the data browser in the top left quadrant of RStudio.
 
-![](imgs/dataview_causality.png)
+<img src="https://user-images.githubusercontent.com/98951792/215890726-b8a9ca15-b889-4fb6-a4be-62463bdfba93.PNG">
 
 If you look carefully you will see that the various columns that include categorical variables only contain numbers. In many statistical environments, such as STATA or SPSS, this is a common standard. The variables have a numeric value for each observation and then each of these numeric values is associated with a label. This kind of made sense when computer memory was an issue - for this was an efficient way of saving resources. It also made manual data input quicker. These days it makes perhaps less sense. But labelled vectors give you a chance to reproduce data from other statistical environments without losing any fidelity in the import process. See what happens if we try to summarise this labelled vector. We will use the `table()` to provide a count of observations on the various valid values of the *crime* variable. It is a function to obtain your frequency distribution.
 

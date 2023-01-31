@@ -52,6 +52,13 @@ dim(eb85_3)
 ## [1] 27818   483
 ```
 
+Alternatively, you can import the file from the webiste where we keep the data:
+
+```r
+urlfile<- "https://www.dropbox.com/s/f2s31sva7s8hzfa/ZA6695_v2-0-0.dta?dl=1"
+eb85_3 <- read_dta(url(urlfile))
+```
+
 We can see there are 27818 cases (survey participants) and 483 variables. 
 
 ## Thinking about your data: filtering cases
@@ -397,7 +404,7 @@ library(vcd)
 mosaic(~region + at_sexviol, data = df)
 ```
 
-<img src="04-carpentry_files/figure-html/unnamed-chunk-21-1.png" width="672" />
+<img src="04-carpentry_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
 In a mosaic plot like this the height of the region levels indicate how big that group is. You can see there are many more observations in our sample that come from Western countries than from Northern countries. Here what we are interested is the length. We see that Northern countries have proportionally more people in the zero category than any other group. On the other hand, Eastern countries have the fewer zeros (so looking as if attitudes more permissive towards sexual violence are more common there, even if still a minority). We will come back to this kind of plots later on this semester.
 
@@ -1075,7 +1082,7 @@ vis_dat(df_f)
 ## Please use `gather()` instead.
 ```
 
-<img src="04-carpentry_files/figure-html/unnamed-chunk-54-1.png" width="672" />
+<img src="04-carpentry_files/figure-html/unnamed-chunk-55-1.png" width="672" />
 
 Nice one! You get a visual representations of how your variables are encoded in this dataframe. You have several categorical variables such as region, f_gender, f_urban, and f_occup. We see that region is encoded as a `character` vector, whereas the others are `factors`. For the purposes of this course, it is generally better to have your categorical variables encoded as factors. So one of the next steps in our data prep may be to recode region as a factor. 
 
@@ -1104,7 +1111,7 @@ The othe piece of info you get with `vis_dat` is the prevalence of missing data 
 vis_miss(df_f)
 ```
 
-<img src="04-carpentry_files/figure-html/unnamed-chunk-58-1.png" width="672" />
+<img src="04-carpentry_files/figure-html/unnamed-chunk-59-1.png" width="672" />
 
 You can find more details about how to explore missing data in the vignette of the `naniar` package [here](http://naniar.njtierney.com/articles/getting-started-w-naniar.html).
 

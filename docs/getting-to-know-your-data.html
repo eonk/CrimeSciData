@@ -23,7 +23,7 @@
 <meta name="author" content="Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)" />
 
 
-<meta name="date" content="2023-01-28" />
+<meta name="date" content="2023-01-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -328,7 +328,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>What is the first thing you need to ask yourself when you look at a dataset? Data are often too big to look at the whole thing. It is almost always impossible to eyeball the entire dataset and see what you have in terms of interesting patterns or potential problems. It is often a case of information overload and we want to be able to extract what is relevant and important about it. But where do you start? You can find a brief but very useful overview put together by Steph de Silva in the image below. Read it before we carry on.</p>
 <p><img src="imgs/firstlookatdata.jpg" /><!-- --></p>
 <p>As Mara Averick (somebody you want to follow in twitter at <span class="citation">@dataanndme</span> if you want to be in top of R related resources) suggests this also makes for good relationship advice!</p>
-<p><img src="imgs/relationships.PNG" style="width:80.0%" /></p>
+<p><img src="https://user-images.githubusercontent.com/98951792/215890363-7911fbd7-e020-41a3-991f-3e2863a94170.PNG"></p>
 <p>Here we are going to introduce a few functions that will help you to start making sense for what you have just downloaded. Summarising the data is the first step in any analysis and it is also used for finding out potential problems with the data. Regarding the latter you want to look out for: missing values; values outside the expected range (e.g., someone aged 200 years); values that seem to be in the wrong units; mislabeled variables; or variables that seem to be the wrong class (e.g., a quantitative variable encoded as a factor).</p>
 <p>Lets start by the basic things you always look first in a datasets. You can see in the Environment window that banbox has 14813 observations (rows) of 62 variables (columns). You can also obtain this information using code. Here you want the <strong>DIM</strong>ensions of the dataframe (the number of rows and columns) so you use the <code>dim()</code> function:</p>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="getting-to-know-your-data.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(banbox)</span></code></pre></div>
@@ -373,7 +373,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="getting-to-know-your-data.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(banbox<span class="sc">$</span>num_stores)</span></code></pre></div>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
 <p>We talked about numeric vectors in week one. It is simply a collection of numbers. But what is a labelled vector? This is a new type of vector introduced by the <em>haven</em> package. <strong>Labelled vectors</strong> are categorical variables that have labels. Go to the <em>Environment</em> panel and left click in the banbox object. This should open the data browser in the top left quadrant of RStudio.</p>
-<p><img src="imgs/dataview_causality.PNG" /></p>
+<p><img src="https://user-images.githubusercontent.com/98951792/215890726-b8a9ca15-b889-4fb6-a4be-62463bdfba93.PNG"></p>
 <p>If you look carefully you will see that the various columns that include categorical variables only contain numbers. In many statistical environments, such as STATA or SPSS, this is a common standard. The variables have a numeric value for each observation and then each of these numeric values is associated with a label. This kind of made sense when computer memory was an issue - for this was an efficient way of saving resources. It also made manual data input quicker. These days it makes perhaps less sense. But labelled vectors give you a chance to reproduce data from other statistical environments without losing any fidelity in the import process. See what happens if we try to summarise this labelled vector. We will use the <code>table()</code> to provide a count of observations on the various valid values of the <em>crime</em> variable. It is a function to obtain your frequency distribution.</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="getting-to-know-your-data.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(banbox<span class="sc">$</span>crime)</span></code></pre></div>
 <pre><code>## 

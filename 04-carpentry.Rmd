@@ -47,6 +47,12 @@ eb85_3 <- read_dta("datasets/ZA6695_v2-0-0.dta")
 dim(eb85_3)
 ```
 
+Alternatively, you can import the file from the webiste where we keep the data:
+```{r}
+urlfile<- "https://www.dropbox.com/s/f2s31sva7s8hzfa/ZA6695_v2-0-0.dta?dl=1"
+eb85_3 <- read_dta(url(urlfile))
+```
+
 We can see there are `r nrow(eb85_3)` cases (survey participants) and `r ncol(eb85_3)` variables. 
 
 ## Thinking about your data: filtering cases

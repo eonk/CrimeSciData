@@ -23,7 +23,7 @@
 <meta name="author" content="Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)" />
 
 
-<meta name="date" content="2023-01-28" />
+<meta name="date" content="2023-01-31" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -356,8 +356,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The R languages uses <strong>functions</strong> to tell the computer what to do. In the R <em>language</em> functions are the <em>verbs</em>. You can think of functions as predefined commands that somebody has already programmed into R and tell R what to do. Here you learnt your first R function: <em>print</em>. All this function does is to ask R to print whatever it is you want in the main console (see the window in the bottom left corner).</p>
 <p>In R, you can pass a number of <strong>arguments</strong> to any function. These arguments control what the function will do in each case. The arguments appear between brackets. Here we passed the text “I love stats” as an argument. Once you execute the program, by clicking on <em>Run</em>, the R engine sends this to the CPU of your machine in the form of binary code and this produces a result. In this case we see that result printed in the main console.</p>
 <p>Every R function admits different kind of arguments. Learning R involves not only learning different functions but also learning what are the valid arguments you can pass to each function.</p>
-<p><img src="imgs/consoleresults.png" style="width:80.0%" />
-As indicated above, the window in the bottom left corner is the main <strong>console</strong>.You will see that the words “I love stats” appear printed there. If rather than using R Studio you were working directly from R, that’s all you would get: the main console where you can write code interactively (rather than all the different windows you see in R Studio). You can write your code directly in the main console and execute it line by line in an interactive fashion. However, we will be running code from scripts, so that you get used to the idea of properly documenting all the steps you take,</p>
+<p><img src="imgs/consoleresults.png" style="width:80.0%" /></p>
+<p>As indicated above, the window in the bottom left corner is the main <strong>console</strong>.You will see that the words “I love stats” appear printed there. If rather than using R Studio you were working directly from R, that’s all you would get: the main console where you can write code interactively (rather than all the different windows you see in R Studio). You can write your code directly in the main console and execute it line by line in an interactive fashion. However, we will be running code from scripts, so that you get used to the idea of properly documenting all the steps you take.</p>
 </div>
 <div id="more-on-packages" class="section level2 hasAnchor" number="1.6">
 <h2><span class="header-section-number">1.6</span> More on packages<a href="a-first-lesson-about-r.html#more-on-packages" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -538,7 +538,7 @@ As indicated above, the window in the bottom left corner is the main <strong>con
 <p>As you can see in R, as in any other language, there are multiple ways of saying the same thing. Programmers aim to produce code that has been optimised: it is short and quick. It is likely that as you develop your R skills you find increasingly more efficient ways of asking R how to do things. What this means too is that when you go for help, from your peers or us, we may teach you slightly different ways of getting the right result. As long as you get the right result that’s what at this point really matters.</p>
 <p>These are silly toy examples of data frames. In this course, we will use real data. Next week we will learn in greater detail how to read data into R. But you should also know that R comes with pre-installed data sets. Some packages in fact are nothing but collections of data frames.</p>
 <p>Let’s have a look at some of them. We are going to look at some data that are part of the <em>fivethirtyeight</em> package. This package contains data sets and code behind the stories in <a href="http://fivethirtyeight.com/">this particular online newspaper</a>. This package is not part of the base installation of R, so you will need to install it first. I won’t give you the code for it. See if you can figure it out by looking at previous examples.</p>
-<p>Done? Ok, now we are going to look at the data sets that are included in this package. Remember first we have to install and load the package if we want to use it:</p>
+<p>Done? Ok, now we are going to look at the data sets that are included in this package. Remember first we have to <strong>install</strong> and <strong>load</strong> the package if we want to use it:</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="a-first-lesson-about-r.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fivethirtyeight)</span></code></pre></div>
 <pre><code>## Some larger datasets need to be installed separately, like senators and
 ## house_district_forecast. To install these, we recommend you install the
@@ -580,10 +580,10 @@ As indicated above, the window in the bottom left corner is the main <strong>con
 <span id="cb47-2"><a href="a-first-lesson-about-r.html#cb47-2" aria-hidden="true" tabindex="-1"></a>the_smiths <span class="co">#auto-print the factor</span></span></code></pre></div>
 <pre><code>## [1] Morrisey Marr     Rourke   Joyce   
 ## Levels: Joyce Marr Morrisey Rourke</code></pre>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="a-first-lesson-about-r.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Alternatively for similar result using the as.factor() function</span></span>
-<span id="cb49-2"><a href="a-first-lesson-about-r.html#cb49-2" aria-hidden="true" tabindex="-1"></a>the_smiths_char <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Morrisey&quot;</span>, <span class="st">&quot;Marr&quot;</span>, <span class="st">&quot;Rourke&quot;</span>, <span class="st">&quot;Joyce&quot;</span>) <span class="co">#create a character vector</span></span>
-<span id="cb49-3"><a href="a-first-lesson-about-r.html#cb49-3" aria-hidden="true" tabindex="-1"></a>the_smiths_f <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(the_smiths_char) <span class="co">#create a factor using a character vector</span></span>
-<span id="cb49-4"><a href="a-first-lesson-about-r.html#cb49-4" aria-hidden="true" tabindex="-1"></a>the_smiths_f <span class="co">#auto-print factor</span></span></code></pre></div>
+<p>Alternatively for similar result using the as.factor() function. Here you will create <code>the_smiths_char</code> object and then transform it to a factor variable, <code>the_smiths_f</code>.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="a-first-lesson-about-r.html#cb49-1" aria-hidden="true" tabindex="-1"></a>the_smiths_char <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Morrisey&quot;</span>, <span class="st">&quot;Marr&quot;</span>, <span class="st">&quot;Rourke&quot;</span>, <span class="st">&quot;Joyce&quot;</span>) <span class="co">#create a character vector</span></span>
+<span id="cb49-2"><a href="a-first-lesson-about-r.html#cb49-2" aria-hidden="true" tabindex="-1"></a>the_smiths_f <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(the_smiths_char) <span class="co">#create a factor using a character vector</span></span>
+<span id="cb49-3"><a href="a-first-lesson-about-r.html#cb49-3" aria-hidden="true" tabindex="-1"></a>the_smiths_f <span class="co">#auto-print factor</span></span></code></pre></div>
 <pre><code>## [1] Morrisey Marr     Rourke   Joyce   
 ## Levels: Joyce Marr Morrisey Rourke</code></pre>
 <p>Factors in R can be seen as vectors with more information added. This extra information consists of a record of the distinct values in that vector, called <strong>levels</strong>. If you want to know the levels in a given factor you can use the <code>levels()</code> function:</p>
@@ -601,11 +601,11 @@ As indicated above, the window in the bottom left corner is the main <strong>con
 ## 4    Chang  Ravenclaw
 ## 5   Hagrid Gryffindor
 ## 6  Diggory Hufflepuff</code></pre>
-<p>Use <code>str(HarryPotter$house)</code> and see what R says. R will list all observations in the variable, right? Now we are going to convert <code>house</code>, a character variable, into a factor variable <code>house_f</code> meaning that R will categorise the variable.</p>
+<p>Use <code>str(HarryPotter$house)</code> and see what R says. R will list all observations in the variable and says it’s a character variable, right? Now we are going to convert <code>house</code>, a character variable, into a factor variable <code>house_f</code> meaning that R will categorise the variable.</p>
 <div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="a-first-lesson-about-r.html#cb55-1" aria-hidden="true" tabindex="-1"></a>HarryPotter<span class="sc">$</span>house_f <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(HarryPotter<span class="sc">$</span>house)</span>
 <span id="cb55-2"><a href="a-first-lesson-about-r.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(HarryPotter<span class="sc">$</span>house_f)</span></code></pre></div>
 <pre><code>##  Factor w/ 4 levels &quot;Gryffindor&quot;,&quot;Hufflepuff&quot;,..: 1 4 3 3 1 2</code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="a-first-lesson-about-r.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(HarryPotter<span class="sc">$</span>house_f)</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="a-first-lesson-about-r.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(HarryPotter<span class="sc">$</span>house_f) <span class="co">#try &#39;levels(HarryPotter$house)&#39; and find the difference</span></span></code></pre></div>
 <pre><code>## [1] &quot;Gryffindor&quot; &quot;Hufflepuff&quot; &quot;Ravenclaw&quot;  &quot;Slytherin&quot;</code></pre>
 <p>Now can you clearly understand what <strong>factor</strong> means in R? Factors are used to represent categorical data. Once created, factors can contain pre-defined set values, known as <code>levels</code>. Like we just converted 6 character data (<code>house</code>) into 4 factor data! (<code>house_f</code>).</p>
 <p><img src="imgs/as_factor.png" style="width:80.0%" /></p>

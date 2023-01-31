@@ -111,7 +111,8 @@ In R, you can pass a number of **arguments** to any function. These arguments co
 Every R function admits different kind of arguments. Learning R involves not only learning different functions but also learning what are the valid arguments you can pass to each function. 
 
 ![](imgs/consoleresults.PNG){width=80%}
-As indicated above, the window in the bottom left corner is the main **console**.You will see that the words "I love stats" appear printed there.  If rather than using R Studio you were working directly from R, that's all you would get: the main console where you can write code interactively (rather than all the different windows you see in R Studio). You can write your code directly in the main console and execute it line by line in an interactive fashion. However, we will be running code from scripts, so that you get used to the idea of properly documenting all the steps you take,
+
+As indicated above, the window in the bottom left corner is the main **console**.You will see that the words "I love stats" appear printed there.  If rather than using R Studio you were working directly from R, that's all you would get: the main console where you can write code interactively (rather than all the different windows you see in R Studio). You can write your code directly in the main console and execute it line by line in an interactive fashion. However, we will be running code from scripts, so that you get used to the idea of properly documenting all the steps you take. 
 
 ## More on packages
 Before we described packages as elements that add the functionality of R. What most packages do is they introduce new functions that allow you to ask R to do new different things.
@@ -479,7 +480,7 @@ These are silly toy examples of data frames. In this course, we will use real da
 
 Let's have a look at some of them. We are going to look at some data that are part of the *fivethirtyeight* package. This package contains data sets and code behind the stories in [this particular online newspaper](http://fivethirtyeight.com/). This package is not part of the base installation of R, so you will need to install it first. I won't give you the code for it. See if you can figure it out by looking at previous examples.
 
-Done? Ok, now we are going to look at the data sets that are included in this package. Remember first we have to install and load the package if we want to use it:
+Done? Ok, now we are going to look at the data sets that are included in this package. Remember first we have to **install** and **load** the package if we want to use it:
 
 
 ```r
@@ -557,9 +558,10 @@ the_smiths #auto-print the factor
 ## [1] Morrisey Marr     Rourke   Joyce   
 ## Levels: Joyce Marr Morrisey Rourke
 ```
+Alternatively for similar result using the as.factor() function. Here you will create `the_smiths_char` object and then transform it to a factor variable, `the_smiths_f`.
+
 
 ```r
-#Alternatively for similar result using the as.factor() function
 the_smiths_char <- c("Morrisey", "Marr", "Rourke", "Joyce") #create a character vector
 the_smiths_f <- as.factor(the_smiths_char) #create a factor using a character vector
 the_smiths_f #auto-print factor
@@ -585,6 +587,7 @@ Notice that the levels appear printed by alphabetical order (Try `levels(the_smi
 
 Let's look at one more example here. Let's say we are making data about Hogwarts Houses which divided into four houses; Gryffindor, Hufflepuff, Ravenclaw and Slytherin. 
 
+
 ```r
 #We create a dataframe called HarryPotter with two variables, a character vector called name and a character vector called house
 HarryPotter <- data.frame(name = c("Potter", "Malfoy", "Lovegood", "Chang", "Hagrid", "Diggory"), house = c("Gryffindor", "Slytherin", "Ravenclaw", "Ravenclaw", "Gryffindor", "Hufflepuff"))
@@ -601,7 +604,7 @@ HarryPotter
 ## 6  Diggory Hufflepuff
 ```
 
-Use `str(HarryPotter$house)` and see what R says. R will list all observations in the variable, right? Now we are going to convert `house`, a character variable, into a factor variable `house_f`   meaning that R will categorise the variable.
+Use `str(HarryPotter$house)` and see what R says. R will list all observations in the variable and says it's a character variable, right? Now we are going to convert `house`, a character variable, into a factor variable `house_f` meaning that R will categorise the variable.
 
 
 ```r
@@ -614,7 +617,7 @@ str(HarryPotter$house_f)
 ```
 
 ```r
-levels(HarryPotter$house_f)
+levels(HarryPotter$house_f) #try 'levels(HarryPotter$house)' and find the difference
 ```
 
 ```
