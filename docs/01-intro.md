@@ -540,94 +540,6 @@ Go now to the global environment panel and left click on the data frame "hate_cr
 
 ![](imgs/dataview.PNG){width=80%}
 
-## R data types: Factors
-
-An important thing to understand in R is that categorical (ordered, also called ordinal, or unordered, also called nominal) data are *typically* encoded as **factors**, which are just a special type of vector.  A factor is simply an integer vector that can contain *only predefined values* (this bit is very important), and is used to store categorical data. Factors are treated specially by many data analytic and visualisation functions. This makes sense because they are essentially different from quantitative variables.
-
-Although you can use numbers to represent categories, *using factors with labels is better than using integers to represent categories* because factors are self-describing (having a variable that has values "Male" and "Female" is better than a variable that has values "1" and "2" to represent male and female). When R reads data in other formats (e.g., comma separated), by default it will automatically convert all character variables into factors. If you rather keep these variables as simple character vectors you need to explicitly ask R to do so. We will come back to this next week with some examples.
-
-Factors can also be created with the `factor()` function concatenating a series of *character* elements. You will notice that is printed differently from a simply character vector and that it tells us the levels of the factor (look at the second printed line).
-
-
-```r
-the_smiths <- factor(c("Morrisey", "Marr", "Rourke", "Joyce")) #create a new factor
-the_smiths #auto-print the factor
-```
-
-```
-## [1] Morrisey Marr     Rourke   Joyce   
-## Levels: Joyce Marr Morrisey Rourke
-```
-Alternatively for similar result using the as.factor() function. Here you will create `the_smiths_char` object and then transform it to a factor variable, `the_smiths_f`.
-
-
-```r
-the_smiths_char <- c("Morrisey", "Marr", "Rourke", "Joyce") #create a character vector
-the_smiths_f <- as.factor(the_smiths_char) #create a factor using a character vector
-the_smiths_f #auto-print factor
-```
-
-```
-## [1] Morrisey Marr     Rourke   Joyce   
-## Levels: Joyce Marr Morrisey Rourke
-```
-
-Factors in R can be seen as vectors with more information added. This extra information consists of a record of the distinct values in that vector, called **levels**. If you want to know the levels in a given factor you can use the `levels()` function:
-
-
-```r
-levels(the_smiths_f)
-```
-
-```
-## [1] "Joyce"    "Marr"     "Morrisey" "Rourke"
-```
-
-Notice that the levels appear printed by alphabetical order (Try `levels(the_smiths_char)` and see what R says. Yes, `the_smiths_char` and `the_smiths_f` are different!). There will be situations when this is not the most convenient order (e.g., *Dec, Jan, Mar (Alphabetical order)* instead of *Jan, Mar, Dec*). Later on we will discuss in these tutorials how to reorder your factor levels when you need to.
-
-Let's look at one more example here. Let's say we are making data about Hogwarts Houses which divided into four houses; Gryffindor, Hufflepuff, Ravenclaw and Slytherin. 
-
-
-```r
-#We create a dataframe called HarryPotter with two variables, a character vector called name and a character vector called house
-HarryPotter <- data.frame(name = c("Potter", "Malfoy", "Lovegood", "Chang", "Hagrid", "Diggory"), house = c("Gryffindor", "Slytherin", "Ravenclaw", "Ravenclaw", "Gryffindor", "Hufflepuff"))
-HarryPotter
-```
-
-```
-##       name      house
-## 1   Potter Gryffindor
-## 2   Malfoy  Slytherin
-## 3 Lovegood  Ravenclaw
-## 4    Chang  Ravenclaw
-## 5   Hagrid Gryffindor
-## 6  Diggory Hufflepuff
-```
-
-Use `str(HarryPotter$house)` and see what R says. R will list all observations in the variable and says it's a character variable, right? Now we are going to convert `house`, a character variable, into a factor variable `house_f` meaning that R will categorise the variable.
-
-
-```r
-HarryPotter$house_f <- as.factor(HarryPotter$house)
-str(HarryPotter$house_f)
-```
-
-```
-##  Factor w/ 4 levels "Gryffindor","Hufflepuff",..: 1 4 3 3 1 2
-```
-
-```r
-levels(HarryPotter$house_f) #try 'levels(HarryPotter$house)' and find the difference
-```
-
-```
-## [1] "Gryffindor" "Hufflepuff" "Ravenclaw"  "Slytherin"
-```
-
-Now can you clearly understand what **factor** means in R? Factors are used to represent categorical data. Once created, factors can contain pre-defined set values, known as `levels`. Like we just converted 6 character data (`house`) into 4 factor data! (`house_f`).
-
-![](imgs/as_factor.png){width=80%}
-
 ## Exploring data
 Ok, let's now have a quick look at the data. There are so many different ways of producing summary stats for data stored in R that is impossible to cover them all! We will just introduce a few functions that you may find useful for summarising data. Before we do any of that it is important you get a sense for what is available in this data set. Go to the help tab and in the search box input the name of the data frame, this will take you to the documentation for this data frame. Here you can see a list of the available variables.
 
@@ -738,6 +650,94 @@ skim(hate_crimes)
 
 Apart from summary statistics, last semester we discussed a variety of ways to graphically display variables. In week 3 of 'Making Sense of Criminological Data' covered scatterplots, a graphical device to show the relationship between two quantitative variables. I don't know if you remember the amount of point and click you had to do in Excel for getting this done. If not you can review the notes [here](https://maczokni.github.io/MSCD_labs/week3.html).
 
+## R data types: Factors
+
+An important thing to understand in R is that categorical (ordered, also called ordinal, or unordered, also called nominal) data are *typically* encoded as **factors**, which are just a special type of vector.  A factor is simply an integer vector that can contain *only predefined values* (this bit is very important), and is used to store categorical data. Factors are treated specially by many data analytic and visualisation functions. This makes sense because they are essentially different from quantitative variables.
+
+Although you can use numbers to represent categories, *using factors with labels is better than using integers to represent categories* because factors are self-describing (having a variable that has values "Male" and "Female" is better than a variable that has values "1" and "2" to represent male and female). When R reads data in other formats (e.g., comma separated), by default it will automatically convert all character variables into factors. If you rather keep these variables as simple character vectors you need to explicitly ask R to do so. We will come back to this next week with some examples.
+
+Factors can also be created with the `factor()` function concatenating a series of *character* elements. You will notice that is printed differently from a simply character vector and that it tells us the levels of the factor (look at the second printed line).
+
+
+```r
+the_smiths <- factor(c("Morrisey", "Marr", "Rourke", "Joyce")) #create a new factor
+the_smiths #auto-print the factor
+```
+
+```
+## [1] Morrisey Marr     Rourke   Joyce   
+## Levels: Joyce Marr Morrisey Rourke
+```
+Alternatively for similar result using the as.factor() function. Here you will create `the_smiths_char` object and then transform it to a factor variable, `the_smiths_f`.
+
+
+```r
+the_smiths_char <- c("Morrisey", "Marr", "Rourke", "Joyce") #create a character vector
+the_smiths_f <- as.factor(the_smiths_char) #create a factor using a character vector
+the_smiths_f #auto-print factor
+```
+
+```
+## [1] Morrisey Marr     Rourke   Joyce   
+## Levels: Joyce Marr Morrisey Rourke
+```
+
+Factors in R can be seen as vectors with more information added. This extra information consists of a record of the distinct values in that vector, called **levels**. If you want to know the levels in a given factor you can use the `levels()` function:
+
+
+```r
+levels(the_smiths_f)
+```
+
+```
+## [1] "Joyce"    "Marr"     "Morrisey" "Rourke"
+```
+
+Notice that the levels appear printed by alphabetical order (Try `levels(the_smiths_char)` and see what R says. Yes, `the_smiths_char` and `the_smiths_f` are different!). There will be situations when this is not the most convenient order (e.g., *Dec, Jan, Mar (Alphabetical order)* instead of *Jan, Mar, Dec*). Later on we will discuss in these tutorials how to reorder your factor levels when you need to.
+
+Let's look at one more example here. Let's say we are making data about Hogwarts Houses which divided into four houses; Gryffindor, Hufflepuff, Ravenclaw and Slytherin. 
+
+
+```r
+#We create a dataframe called HarryPotter with two variables, a character vector called name and a character vector called house
+HarryPotter <- data.frame(name = c("Potter", "Malfoy", "Lovegood", "Chang", "Hagrid", "Diggory"), house = c("Gryffindor", "Slytherin", "Ravenclaw", "Ravenclaw", "Gryffindor", "Hufflepuff"))
+HarryPotter
+```
+
+```
+##       name      house
+## 1   Potter Gryffindor
+## 2   Malfoy  Slytherin
+## 3 Lovegood  Ravenclaw
+## 4    Chang  Ravenclaw
+## 5   Hagrid Gryffindor
+## 6  Diggory Hufflepuff
+```
+
+Use `str(HarryPotter$house)` and see what R says. R will list all observations in the variable and says it's a character variable, right? Now we are going to convert `house`, a character variable, into a factor variable `house_f` meaning that R will categorise the variable.
+
+
+```r
+HarryPotter$house_f <- as.factor(HarryPotter$house)
+str(HarryPotter$house_f)
+```
+
+```
+##  Factor w/ 4 levels "Gryffindor","Hufflepuff",..: 1 4 3 3 1 2
+```
+
+```r
+levels(HarryPotter$house_f) #try 'levels(HarryPotter$house)' and find the difference
+```
+
+```
+## [1] "Gryffindor" "Hufflepuff" "Ravenclaw"  "Slytherin"
+```
+
+Now can you clearly understand what **factor** means in R? Factors are used to represent categorical data. Once created, factors can contain pre-defined set values, known as `levels`. Like we just converted 6 character data (`house`) into 4 factor data! (`house_f`).
+
+![](imgs/as_factor.png){width=80%}
+
 ## How to use 'comment'
 In the bits of code above, you will have noticed parts that were grayed out. See for example in the last example provided. You can see that after the hashtag, all the text is being grayed out. What is this? What's going on? 
 
@@ -765,3 +765,6 @@ Keep in mind though that you should not then panic if you open your next R Studi
 What is more. I would suggest you go to the Tools drop down menu, select Global Options, and make sure you select "Never" where it says "Save workspace". Then click "Apply". This way you will never be asked to save what is in your global environment when you terminate a session.
 
 <img src="https://user-images.githubusercontent.com/98951792/215292052-cbb36812-e7a7-4a7f-b2e4-57ea93918274.png"> 
+
+## Exercise for this week
+Once you finish your lab session, don't forget to do this [Exercise](https://eonk.shinyapps.io/MCD_ex) and have a chance to sum-up this week's R codes.

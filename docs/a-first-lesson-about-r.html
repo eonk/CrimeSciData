@@ -23,7 +23,7 @@
 <meta name="author" content="Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)" />
 
 
-<meta name="date" content="2023-01-31" />
+<meta name="date" content="2023-02-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -150,10 +150,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.9" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#naming-conventions-for-objects-in-r"><i class="fa fa-check"></i><b>1.9</b> Naming conventions for objects in R</a></li>
 <li class="chapter" data-level="1.10" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#r-object-types-vectors"><i class="fa fa-check"></i><b>1.10</b> R object types: vectors</a></li>
 <li class="chapter" data-level="1.11" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#r-object-types-data-frame"><i class="fa fa-check"></i><b>1.11</b> R object types: Data frame</a></li>
-<li class="chapter" data-level="1.12" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#r-data-types-factors"><i class="fa fa-check"></i><b>1.12</b> R data types: Factors</a></li>
-<li class="chapter" data-level="1.13" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#exploring-data"><i class="fa fa-check"></i><b>1.13</b> Exploring data</a></li>
+<li class="chapter" data-level="1.12" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#exploring-data"><i class="fa fa-check"></i><b>1.12</b> Exploring data</a></li>
+<li class="chapter" data-level="1.13" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#r-data-types-factors"><i class="fa fa-check"></i><b>1.13</b> R data types: Factors</a></li>
 <li class="chapter" data-level="1.14" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#how-to-use-comment"><i class="fa fa-check"></i><b>1.14</b> How to use ‘comment’</a></li>
 <li class="chapter" data-level="1.15" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#quitting-rstudio"><i class="fa fa-check"></i><b>1.15</b> Quitting RStudio</a></li>
+<li class="chapter" data-level="1.16" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#exercise-for-this-week"><i class="fa fa-check"></i><b>1.16</b> Exercise for this week</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html"><i class="fa fa-check"></i><b>2</b> Getting to know your data</a>
 <ul>
@@ -571,60 +572,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Go now to the global environment panel and left click on the data frame “hate_crimes”. This will open the data viewer in the top left section of R Studio. What you get there is a spreadsheet with 12 variables and 51 observations. Each variable in this case is providing you with information (demographics, voting patterns, and hate crime) about each of the US states.</p>
 <p><img src="imgs/dataview.png" style="width:80.0%" /></p>
 </div>
-<div id="r-data-types-factors" class="section level2 hasAnchor" number="1.12">
-<h2><span class="header-section-number">1.12</span> R data types: Factors<a href="a-first-lesson-about-r.html#r-data-types-factors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>An important thing to understand in R is that categorical (ordered, also called ordinal, or unordered, also called nominal) data are <em>typically</em> encoded as <strong>factors</strong>, which are just a special type of vector. A factor is simply an integer vector that can contain <em>only predefined values</em> (this bit is very important), and is used to store categorical data. Factors are treated specially by many data analytic and visualisation functions. This makes sense because they are essentially different from quantitative variables.</p>
-<p>Although you can use numbers to represent categories, <em>using factors with labels is better than using integers to represent categories</em> because factors are self-describing (having a variable that has values “Male” and “Female” is better than a variable that has values “1” and “2” to represent male and female). When R reads data in other formats (e.g., comma separated), by default it will automatically convert all character variables into factors. If you rather keep these variables as simple character vectors you need to explicitly ask R to do so. We will come back to this next week with some examples.</p>
-<p>Factors can also be created with the <code>factor()</code> function concatenating a series of <em>character</em> elements. You will notice that is printed differently from a simply character vector and that it tells us the levels of the factor (look at the second printed line).</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="a-first-lesson-about-r.html#cb47-1" aria-hidden="true" tabindex="-1"></a>the_smiths <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;Morrisey&quot;</span>, <span class="st">&quot;Marr&quot;</span>, <span class="st">&quot;Rourke&quot;</span>, <span class="st">&quot;Joyce&quot;</span>)) <span class="co">#create a new factor</span></span>
-<span id="cb47-2"><a href="a-first-lesson-about-r.html#cb47-2" aria-hidden="true" tabindex="-1"></a>the_smiths <span class="co">#auto-print the factor</span></span></code></pre></div>
-<pre><code>## [1] Morrisey Marr     Rourke   Joyce   
-## Levels: Joyce Marr Morrisey Rourke</code></pre>
-<p>Alternatively for similar result using the as.factor() function. Here you will create <code>the_smiths_char</code> object and then transform it to a factor variable, <code>the_smiths_f</code>.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="a-first-lesson-about-r.html#cb49-1" aria-hidden="true" tabindex="-1"></a>the_smiths_char <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Morrisey&quot;</span>, <span class="st">&quot;Marr&quot;</span>, <span class="st">&quot;Rourke&quot;</span>, <span class="st">&quot;Joyce&quot;</span>) <span class="co">#create a character vector</span></span>
-<span id="cb49-2"><a href="a-first-lesson-about-r.html#cb49-2" aria-hidden="true" tabindex="-1"></a>the_smiths_f <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(the_smiths_char) <span class="co">#create a factor using a character vector</span></span>
-<span id="cb49-3"><a href="a-first-lesson-about-r.html#cb49-3" aria-hidden="true" tabindex="-1"></a>the_smiths_f <span class="co">#auto-print factor</span></span></code></pre></div>
-<pre><code>## [1] Morrisey Marr     Rourke   Joyce   
-## Levels: Joyce Marr Morrisey Rourke</code></pre>
-<p>Factors in R can be seen as vectors with more information added. This extra information consists of a record of the distinct values in that vector, called <strong>levels</strong>. If you want to know the levels in a given factor you can use the <code>levels()</code> function:</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="a-first-lesson-about-r.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(the_smiths_f)</span></code></pre></div>
-<pre><code>## [1] &quot;Joyce&quot;    &quot;Marr&quot;     &quot;Morrisey&quot; &quot;Rourke&quot;</code></pre>
-<p>Notice that the levels appear printed by alphabetical order (Try <code>levels(the_smiths_char)</code> and see what R says. Yes, <code>the_smiths_char</code> and <code>the_smiths_f</code> are different!). There will be situations when this is not the most convenient order (e.g., <em>Dec, Jan, Mar (Alphabetical order)</em> instead of <em>Jan, Mar, Dec</em>). Later on we will discuss in these tutorials how to reorder your factor levels when you need to.</p>
-<p>Let’s look at one more example here. Let’s say we are making data about Hogwarts Houses which divided into four houses; Gryffindor, Hufflepuff, Ravenclaw and Slytherin.</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="a-first-lesson-about-r.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co">#We create a dataframe called HarryPotter with two variables, a character vector called name and a character vector called house</span></span>
-<span id="cb53-2"><a href="a-first-lesson-about-r.html#cb53-2" aria-hidden="true" tabindex="-1"></a>HarryPotter <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Potter&quot;</span>, <span class="st">&quot;Malfoy&quot;</span>, <span class="st">&quot;Lovegood&quot;</span>, <span class="st">&quot;Chang&quot;</span>, <span class="st">&quot;Hagrid&quot;</span>, <span class="st">&quot;Diggory&quot;</span>), <span class="at">house =</span> <span class="fu">c</span>(<span class="st">&quot;Gryffindor&quot;</span>, <span class="st">&quot;Slytherin&quot;</span>, <span class="st">&quot;Ravenclaw&quot;</span>, <span class="st">&quot;Ravenclaw&quot;</span>, <span class="st">&quot;Gryffindor&quot;</span>, <span class="st">&quot;Hufflepuff&quot;</span>))</span>
-<span id="cb53-3"><a href="a-first-lesson-about-r.html#cb53-3" aria-hidden="true" tabindex="-1"></a>HarryPotter</span></code></pre></div>
-<pre><code>##       name      house
-## 1   Potter Gryffindor
-## 2   Malfoy  Slytherin
-## 3 Lovegood  Ravenclaw
-## 4    Chang  Ravenclaw
-## 5   Hagrid Gryffindor
-## 6  Diggory Hufflepuff</code></pre>
-<p>Use <code>str(HarryPotter$house)</code> and see what R says. R will list all observations in the variable and says it’s a character variable, right? Now we are going to convert <code>house</code>, a character variable, into a factor variable <code>house_f</code> meaning that R will categorise the variable.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="a-first-lesson-about-r.html#cb55-1" aria-hidden="true" tabindex="-1"></a>HarryPotter<span class="sc">$</span>house_f <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(HarryPotter<span class="sc">$</span>house)</span>
-<span id="cb55-2"><a href="a-first-lesson-about-r.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(HarryPotter<span class="sc">$</span>house_f)</span></code></pre></div>
-<pre><code>##  Factor w/ 4 levels &quot;Gryffindor&quot;,&quot;Hufflepuff&quot;,..: 1 4 3 3 1 2</code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="a-first-lesson-about-r.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(HarryPotter<span class="sc">$</span>house_f) <span class="co">#try &#39;levels(HarryPotter$house)&#39; and find the difference</span></span></code></pre></div>
-<pre><code>## [1] &quot;Gryffindor&quot; &quot;Hufflepuff&quot; &quot;Ravenclaw&quot;  &quot;Slytherin&quot;</code></pre>
-<p>Now can you clearly understand what <strong>factor</strong> means in R? Factors are used to represent categorical data. Once created, factors can contain pre-defined set values, known as <code>levels</code>. Like we just converted 6 character data (<code>house</code>) into 4 factor data! (<code>house_f</code>).</p>
-<p><img src="imgs/as_factor.png" style="width:80.0%" /></p>
-</div>
-<div id="exploring-data" class="section level2 hasAnchor" number="1.13">
-<h2><span class="header-section-number">1.13</span> Exploring data<a href="a-first-lesson-about-r.html#exploring-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="exploring-data" class="section level2 hasAnchor" number="1.12">
+<h2><span class="header-section-number">1.12</span> Exploring data<a href="a-first-lesson-about-r.html#exploring-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Ok, let’s now have a quick look at the data. There are so many different ways of producing summary stats for data stored in R that is impossible to cover them all! We will just introduce a few functions that you may find useful for summarising data. Before we do any of that it is important you get a sense for what is available in this data set. Go to the help tab and in the search box input the name of the data frame, this will take you to the documentation for this data frame. Here you can see a list of the available variables.</p>
 <p><img src="imgs/codebook.png" style="width:80.0%" /></p>
 <p>Let’s start with the <em>mean</em>. This function takes as an argument the numeric variable for which you want to obtain the mean. Because of the way that R works you cannot simply put the name of the variable you have to tell R as well in which data frame is that variable located. To do that you write the name of the data frame, the dollar sign(<code>$</code>), and then the name of the variable you want to summarise. If you want to obtain the mean of the variable that gives us the proportion of people that voted for Donald Trump you can use the following expression:</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="a-first-lesson-about-r.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(hate_crimes<span class="sc">$</span>share_vote_trump)</span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="a-first-lesson-about-r.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(hate_crimes<span class="sc">$</span>share_vote_trump)</span></code></pre></div>
 <pre><code>## [1] 0.49</code></pre>
 <p>This code is saying look inside the “hate_crimes” dataset object and find the “share_vote_trump” variable, then print the mean. The <code>$</code> is used when you want to find a particular component of an object. In the case of dataframes that component typically will be one of the vectors (variables). But we will see other uses for other kind of objects as we move through the course.</p>
 <p>Another function you may want to use with numeric variables is <code>summary()</code>:</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="a-first-lesson-about-r.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(hate_crimes<span class="sc">$</span>share_vote_trump)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="a-first-lesson-about-r.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(hate_crimes<span class="sc">$</span>share_vote_trump)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##   0.040   0.415   0.490   0.490   0.575   0.700</code></pre>
 <p>This gives you the five number summary (minimum, first quartile, median, third quartile, and maximum, plus the mean and the count of missing values if there are any).</p>
 <p>You don’t have to specify a variable you can ask for these summaries from the whole data frame:</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="a-first-lesson-about-r.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(hate_crimes)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="a-first-lesson-about-r.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(hate_crimes)</span></code></pre></div>
 <pre><code>##     state           state_abbrev       median_house_inc share_unemp_seas 
 ##  Length:51          Length:51          Min.   :35521    Min.   :0.02800  
 ##  Class :character   Class :character   1st Qu.:48657    1st Qu.:0.04200  
@@ -662,7 +624,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>I am only going to introduce one of them here <em>skimr</em>. It is neat and is maintained by one of my former stats teachers, the criminologist <a href="https://www.lehman.edu/academics/sociology/faculty-waring.php">Elin Waring</a>, an example of kindness and dedication to her students.</p>
 <p>You will need to install it before anything else. Use the code you have learnt to do so and then load it. I won’t be providing you the code for it, by now you should now how to do this.</p>
 <p>Once you have loaded the <em>skimr</em> package you can use it. Its main function is <em>skim</em>. Like <em>summary</em> for data frames, skim presents results for all the columns and the statistics will depend on the class of the variable. However, the results are displayed and stored in a nicer way - though we won’t get into the details of this right now.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="a-first-lesson-about-r.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(hate_crimes)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="a-first-lesson-about-r.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(hate_crimes)</span></code></pre></div>
 <table style="width:100%;">
 <colgroup>
 <col width="3%" />
@@ -956,6 +918,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>Apart from summary statistics, last semester we discussed a variety of ways to graphically display variables. In week 3 of ‘Making Sense of Criminological Data’ covered scatterplots, a graphical device to show the relationship between two quantitative variables. I don’t know if you remember the amount of point and click you had to do in Excel for getting this done. If not you can review the notes <a href="https://maczokni.github.io/MSCD_labs/week3.html">here</a>.</p>
 </div>
+<div id="r-data-types-factors" class="section level2 hasAnchor" number="1.13">
+<h2><span class="header-section-number">1.13</span> R data types: Factors<a href="a-first-lesson-about-r.html#r-data-types-factors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>An important thing to understand in R is that categorical (ordered, also called ordinal, or unordered, also called nominal) data are <em>typically</em> encoded as <strong>factors</strong>, which are just a special type of vector. A factor is simply an integer vector that can contain <em>only predefined values</em> (this bit is very important), and is used to store categorical data. Factors are treated specially by many data analytic and visualisation functions. This makes sense because they are essentially different from quantitative variables.</p>
+<p>Although you can use numbers to represent categories, <em>using factors with labels is better than using integers to represent categories</em> because factors are self-describing (having a variable that has values “Male” and “Female” is better than a variable that has values “1” and “2” to represent male and female). When R reads data in other formats (e.g., comma separated), by default it will automatically convert all character variables into factors. If you rather keep these variables as simple character vectors you need to explicitly ask R to do so. We will come back to this next week with some examples.</p>
+<p>Factors can also be created with the <code>factor()</code> function concatenating a series of <em>character</em> elements. You will notice that is printed differently from a simply character vector and that it tells us the levels of the factor (look at the second printed line).</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="a-first-lesson-about-r.html#cb54-1" aria-hidden="true" tabindex="-1"></a>the_smiths <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">&quot;Morrisey&quot;</span>, <span class="st">&quot;Marr&quot;</span>, <span class="st">&quot;Rourke&quot;</span>, <span class="st">&quot;Joyce&quot;</span>)) <span class="co">#create a new factor</span></span>
+<span id="cb54-2"><a href="a-first-lesson-about-r.html#cb54-2" aria-hidden="true" tabindex="-1"></a>the_smiths <span class="co">#auto-print the factor</span></span></code></pre></div>
+<pre><code>## [1] Morrisey Marr     Rourke   Joyce   
+## Levels: Joyce Marr Morrisey Rourke</code></pre>
+<p>Alternatively for similar result using the as.factor() function. Here you will create <code>the_smiths_char</code> object and then transform it to a factor variable, <code>the_smiths_f</code>.</p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="a-first-lesson-about-r.html#cb56-1" aria-hidden="true" tabindex="-1"></a>the_smiths_char <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Morrisey&quot;</span>, <span class="st">&quot;Marr&quot;</span>, <span class="st">&quot;Rourke&quot;</span>, <span class="st">&quot;Joyce&quot;</span>) <span class="co">#create a character vector</span></span>
+<span id="cb56-2"><a href="a-first-lesson-about-r.html#cb56-2" aria-hidden="true" tabindex="-1"></a>the_smiths_f <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(the_smiths_char) <span class="co">#create a factor using a character vector</span></span>
+<span id="cb56-3"><a href="a-first-lesson-about-r.html#cb56-3" aria-hidden="true" tabindex="-1"></a>the_smiths_f <span class="co">#auto-print factor</span></span></code></pre></div>
+<pre><code>## [1] Morrisey Marr     Rourke   Joyce   
+## Levels: Joyce Marr Morrisey Rourke</code></pre>
+<p>Factors in R can be seen as vectors with more information added. This extra information consists of a record of the distinct values in that vector, called <strong>levels</strong>. If you want to know the levels in a given factor you can use the <code>levels()</code> function:</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="a-first-lesson-about-r.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(the_smiths_f)</span></code></pre></div>
+<pre><code>## [1] &quot;Joyce&quot;    &quot;Marr&quot;     &quot;Morrisey&quot; &quot;Rourke&quot;</code></pre>
+<p>Notice that the levels appear printed by alphabetical order (Try <code>levels(the_smiths_char)</code> and see what R says. Yes, <code>the_smiths_char</code> and <code>the_smiths_f</code> are different!). There will be situations when this is not the most convenient order (e.g., <em>Dec, Jan, Mar (Alphabetical order)</em> instead of <em>Jan, Mar, Dec</em>). Later on we will discuss in these tutorials how to reorder your factor levels when you need to.</p>
+<p>Let’s look at one more example here. Let’s say we are making data about Hogwarts Houses which divided into four houses; Gryffindor, Hufflepuff, Ravenclaw and Slytherin.</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="a-first-lesson-about-r.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co">#We create a dataframe called HarryPotter with two variables, a character vector called name and a character vector called house</span></span>
+<span id="cb60-2"><a href="a-first-lesson-about-r.html#cb60-2" aria-hidden="true" tabindex="-1"></a>HarryPotter <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">&quot;Potter&quot;</span>, <span class="st">&quot;Malfoy&quot;</span>, <span class="st">&quot;Lovegood&quot;</span>, <span class="st">&quot;Chang&quot;</span>, <span class="st">&quot;Hagrid&quot;</span>, <span class="st">&quot;Diggory&quot;</span>), <span class="at">house =</span> <span class="fu">c</span>(<span class="st">&quot;Gryffindor&quot;</span>, <span class="st">&quot;Slytherin&quot;</span>, <span class="st">&quot;Ravenclaw&quot;</span>, <span class="st">&quot;Ravenclaw&quot;</span>, <span class="st">&quot;Gryffindor&quot;</span>, <span class="st">&quot;Hufflepuff&quot;</span>))</span>
+<span id="cb60-3"><a href="a-first-lesson-about-r.html#cb60-3" aria-hidden="true" tabindex="-1"></a>HarryPotter</span></code></pre></div>
+<pre><code>##       name      house
+## 1   Potter Gryffindor
+## 2   Malfoy  Slytherin
+## 3 Lovegood  Ravenclaw
+## 4    Chang  Ravenclaw
+## 5   Hagrid Gryffindor
+## 6  Diggory Hufflepuff</code></pre>
+<p>Use <code>str(HarryPotter$house)</code> and see what R says. R will list all observations in the variable and says it’s a character variable, right? Now we are going to convert <code>house</code>, a character variable, into a factor variable <code>house_f</code> meaning that R will categorise the variable.</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="a-first-lesson-about-r.html#cb62-1" aria-hidden="true" tabindex="-1"></a>HarryPotter<span class="sc">$</span>house_f <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(HarryPotter<span class="sc">$</span>house)</span>
+<span id="cb62-2"><a href="a-first-lesson-about-r.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(HarryPotter<span class="sc">$</span>house_f)</span></code></pre></div>
+<pre><code>##  Factor w/ 4 levels &quot;Gryffindor&quot;,&quot;Hufflepuff&quot;,..: 1 4 3 3 1 2</code></pre>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="a-first-lesson-about-r.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(HarryPotter<span class="sc">$</span>house_f) <span class="co">#try &#39;levels(HarryPotter$house)&#39; and find the difference</span></span></code></pre></div>
+<pre><code>## [1] &quot;Gryffindor&quot; &quot;Hufflepuff&quot; &quot;Ravenclaw&quot;  &quot;Slytherin&quot;</code></pre>
+<p>Now can you clearly understand what <strong>factor</strong> means in R? Factors are used to represent categorical data. Once created, factors can contain pre-defined set values, known as <code>levels</code>. Like we just converted 6 character data (<code>house</code>) into 4 factor data! (<code>house_f</code>).</p>
+<p><img src="imgs/as_factor.png" style="width:80.0%" /></p>
+</div>
 <div id="how-to-use-comment" class="section level2 hasAnchor" number="1.14">
 <h2><span class="header-section-number">1.14</span> How to use ‘comment’<a href="a-first-lesson-about-r.html#how-to-use-comment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the bits of code above, you will have noticed parts that were grayed out. See for example in the last example provided. You can see that after the hashtag, all the text is being grayed out. What is this? What’s going on?</p>
@@ -976,6 +977,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Keep in mind though that you should not then panic if you open your next R Studio session and you don’t see any objects in your environment. The good news is you can generate them quickly enough (if you really need them) by re-running your scripts. I would suggest that at this point it may be helpful for you to get into this habit as well. I suspect otherwise you will be in week 9 of the semester and have an environment full of garbage you don’t really need.</p>
 <p>What is more. I would suggest you go to the Tools drop down menu, select Global Options, and make sure you select “Never” where it says “Save workspace”. Then click “Apply”. This way you will never be asked to save what is in your global environment when you terminate a session.</p>
 <p><img src="https://user-images.githubusercontent.com/98951792/215292052-cbb36812-e7a7-4a7f-b2e4-57ea93918274.png"></p>
+</div>
+<div id="exercise-for-this-week" class="section level2 hasAnchor" number="1.16">
+<h2><span class="header-section-number">1.16</span> Exercise for this week<a href="a-first-lesson-about-r.html#exercise-for-this-week" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Once you finish your lab session, don’t forget to do this <a href="https://eonk.shinyapps.io/MCD_ex">Exercise</a> and have a chance to sum-up this week’s R codes.</p>
 
 </div>
 </div>

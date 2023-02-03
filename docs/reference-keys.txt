@@ -10,10 +10,11 @@ more-on-objects
 naming-conventions-for-objects-in-r
 r-object-types-vectors
 r-object-types-data-frame
-r-data-types-factors
 exploring-data
+r-data-types-factors
 how-to-use-comment
 quitting-rstudio
+exercise-for-this-week
 getting-to-know-your-data
 causality-in-social-sciences
 getting-data-thanks-to-reproducibility
