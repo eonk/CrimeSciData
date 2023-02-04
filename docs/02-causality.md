@@ -24,6 +24,10 @@ In this session we will look at data from a randomised trial that tried to estab
 
 Last week we introduced the notion of reproducible research and said that using and publishing code (particularly if using open source tools like R) is the way that [many researchers](https://osf.io/?gclid=EAIaIQobChMIq-jM6MuY2QIV7Z3tCh04vAycEAAYASAAEgLptPD_BwE) around the world think that science ought to be done. This way of operating makes research more open, more credible, and more legitimate. It also means that we can more easily access the data used in published research. For this session we are going to use the data from [this](https://academic.oup.com/qje/article/133/1/191/4060073) and [this paper](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.p20171003) study. In this research project, the authors tried to answer the question of whether criminal antecedents and other personal characteristics have an impact on access to employment. You can find more details about this work in [episode 8](https://www.probablecausation.com/podcasts/episode-8-amanda-agan) of *Probable Causation*, the criminology podcast.
 
+If you want to know more about 'Ban the Box' to encourage ‘fair chance recruitment’ practices in the UK, you can find more information [here](https://recruit.unlock.org.uk/fair-chance-recruitment/ban-the-box/) and also can watch a [video](https://www.youtube.com/watch?v=eM1nVA6hwlI&t=32s) from Leo Burnett who helped promote the importance of giving people a chance to explain their past.
+
+[<img src="https://user-images.githubusercontent.com/98951792/216791945-7bda2e7b-ad2b-4836-b1df-dbcf3a7c54a9.png">](https://www.youtube.com/watch?v=eM1nVA6hwlI&t=32s)
+
 [Amanda Agan](http://economics.rutgers.edu/people/626-amanda-agan) and [Sonja Starr](https://www.law.umich.edu/FacultyBio/Pages/FacultyBio.aspx?FacID=sbstarr) developed a randomised experiment in which they created 15,220 fake resumes randomly generating these critical characteristics (such as having a criminal record) and used these resumes to send online job applications to low-skill, entry level job openings in New Jersey and New York City. All the fictitious applicants were male and about 21 to 22 years old. These kind of experiments are very common among researchers that want to explore through these "audits" whether some personal characteristics are discriminated against in the labor market.
 
 Because Amanda Agan and Sonja Starr conformed to reproducible standards when doing their research we can access this data from the *Harvard Dataverse* (a repository for open research data). Click [here](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VPHMNT) to locate the data.
@@ -174,7 +178,7 @@ table(banbox$crime)
 ## 7323 7490
 ```
 
-So, we see that we have 7490 observations classed as 1 and 7323 classed as 2. If only we knew what those numbers represent! Well, we actually do. We will use the `attributes()` function to see the different "compartments"" within your "box", your object.
+So, we see that we have 7490 observations classed as 1 and 7323 classed as 2. If only we knew what those numbers represent! Well, we actually do. We will use the `attributes()` function to see the different "compartments" within your "box", your object.
 
 
 ```r
@@ -255,7 +259,7 @@ So far we have a looked at single columns in your dataframe one at the time. But
 
 For example, we can use the `lapply()` function to look at each column and get its class. To do so, we have to pass two arguments to the `lapply()` function, the first is the name of the dataframe, to tell it what to look through, and the second is the function we want it to apply to every column of that function. 
 
-So we want to type `lapply` + `(`+ `name of dataframe` + `,` + `name of function` + `)` 
+So we want to type `lapply('name of dataframe', 'name of function')` 
 
 Which is: 
 
@@ -263,7 +267,7 @@ Which is:
 lapply(banbox, class)
 ```
 
-As you can see many variables are classed as labelled. This is common with survey data. Many of the questions in social surveys measure the answers as categorical variables (e.g., these are nominal or ordinal level measures). In fact, with this dataset there are many variables that are encoded as numeric that really aren't. Welcome to real world data, where things can be a bit messy and need tidying!
+As you can see many variables are classed as 'labelled'. This is common with survey data. Many of the questions in social surveys measure the answers as categorical variables (e.g., these are nominal or ordinal level measures). In fact, with this dataset there are many variables that are encoded as numeric that really aren't. Welcome to real world data, where things can be a bit messy and need tidying!
 
 See for example the variable black:
 
@@ -286,7 +290,7 @@ table(banbox$black)
 ## 7406 7407
 ```
 
-We know that this variable measures whether someone is black or not. When people use 0 and 1 to code binary responses, typically they use a 1 to denote a positive response, a yes. So, I think it is fair to assume that a 1 here means the respondent is black. Because this variable is of class numeric we cannot simply use as_factor to assign the pre-existing labels and create a new factor. In this case we don't have preexisting labels, since this is not a labelled vector. So what can we do to tidy this variable? We'll we need to do some further work.
+We know that this variable measures whether someone is black or not. When people use 0 and 1 to code binary responses, typically they use a 1 to denote a positive response, a yes. So, I think it is fair to assume that a 1 here means the respondent is black. Because this variable is of class numeric we cannot simply use `as_factor()` to assign the pre-existing labels and create a new factor. In this case we don't have preexisting labels, since this is not a labelled vector. So what can we do to tidy this variable? We'll we need to do some further work.
 
 
 ```r
@@ -301,8 +305,7 @@ class(banbox$black_f)
 ```
 
 ```r
-#But if you print the frequency distribution you will see the
-#data are still presented in relation to 0 and 1
+#But if you print the frequency distribution you will see the data are still presented in relation to 0 and 1
 table(banbox$black_f)
 ```
 
@@ -313,8 +316,7 @@ table(banbox$black_f)
 ```
 
 ```r
-#You can use the levels function to see the levels, the 
-#categories, in your factor
+#You can use the levels function to see the levels, the categories, in your factor
 levels(banbox$black_f)
 ```
 
@@ -329,18 +331,18 @@ So, all we have done is create a new column that is a factor but still refers to
 #We are using the levels function to access them and change
 #them to the levels we specify with the c() function. Be
 #careful here, because the order we specify here will map 
-#out to the order of the existing levels. So given that 1 is 
-#black and black is the second level (as shown when printing
-#the results above) you want to make sure that in the c()
+#out to the order of the existing levels. 
+#So given that 1 is black and black is the second level 
+#(as shown when printing the results above) you want to make sure that in the c()
 #you write black as the second level.
-levels(banbox$black_f) <- c("White", "Black")
+levels(banbox$black_f) <- c("non-Black", "Black")
 table(banbox$black_f)
 ```
 
 ```
 ## 
-## White Black 
-##  7406  7407
+## non-Black     Black 
+##      7406      7407
 ```
 
 This gives you an idea of the kind of transformations you often want to perform to make your data more useful for your purposes. But let's keep looking at functions you can use to explore your dataset. 
@@ -408,18 +410,19 @@ There is a whole field of statistics devoted to doing analysis when missing data
 The data analysis workflow has a number of stages. The diagram below (produced by Hadley Wickham) is a nice illustration of this process:
 
 ![](imgs/data-science-explore.png)
+
 We have started to see different ways of bringing data into R. And we have also started to see how we can explore our data. It is now time we start discussing one of the following stages, **transform**. A good deal of time and effort in data analysis is devoted to this. You get your data and then you have to do some transformations to it so that you can answer the questions you want to address in your research. We have already seen, for example, how to turn variables into factors, but there are other things you may want to do.
 
 R offers a great deal of flexibility in how to transform your data, Here we are going to illustrate some of the functionality of the *dplyr* package for data carpentry (a term people use to refer to this kind of operations). This package is part of the tydiverse and it aims to provide a friendly and modern take on how to work with dataframes (or tibbles) in R. It offers, as the authors of the package put it, "a flexible grammar of data manipulation". 
 
 Dplyr aims to provide a function for each basic verbs of data manipulation:
 
-+ `*filter()*` to select cases based on their values.
-+ `*arrange()*` to reorder the cases.
-+ `*select()*` and `*rename()*` to select variables based on their names.
-+ `*mutate()*` and `*transmute()*` to add new variables that are functions of existing variables.
-+ `*summarise()*` to condense multiple values to a single value.
-+ `*sample_n()*` and `*sample_frac()*` to take random samples.
++ `filter()` to select cases based on their values.
++ `arrange()` to reorder the cases.
++ `select()` and `rename()` to select variables based on their names.
++ `mutate()` and `transmute()` to add new variables that are functions of existing variables.
++ `summarise()` to condense multiple values to a single value.
++ `sample_n()` and `sample_frac()` to take random samples.
 
 In this session we will introduce and practice some of these. But we won't have time to cover everything. There is, however, a very nice set of vignettes for this package in the help files, so you can try to go through those if you want a greater degree of detail or more practice. 
 
@@ -475,9 +478,8 @@ Ok, let's filter out some information we are interested in from `bandbox`. If we
 
 
 ```r
-#We will store the results of filtering the data in a new 
-#object that I am calling aer (short for the name of the 
-#journal in which the paper was published)
+#We will store the results of filtering the data in a new object that I am calling aer  
+#(short for the name of the journal in which the paper was published)
 
 aer2017<- filter(banbox, crimbox == 1, pre == 1)
 ```
@@ -486,7 +488,7 @@ Notice that the number of cases equals the number of cases reported by the autho
 
 You may have noticed in the code above that I wrote "`==`" instead of "`=`". Logical operators in R are not written exactly the same way than in normal practice. Keep this in mind when you get error messages from running your code. Often the source of your error may be that you are writing the logical operators the wrong way (as far as R is concerned). Look [here](https://www.statmethods.net/management/operators.html) for valid logic operators in R.
 
-Sometimes you may want to select only a few variables. Earlier we said that real life data may have hundreds of variables and only a few of those may be relevant for your analysis. Say you only want "crime", "ged" (a ged is a high school equivalence diploma rather than a proper high school diploma and is sometimes seen as inferior), "empgap" (a gap year on employment), "black_f", "response", and "daystoresponse" from this dataset. For this kind of operations you use the `select()` function.
+Earlier we said that real life data may have hundreds of variables and only a few of those may be relevant for your analysis. For this week's analysis, we want to select only a few variables that might be highly related with 'Discrimination in Employment'. Say you only want "crime", "ged" (a ged is a high school equivalence diploma rather than a proper high school diploma and is sometimes seen as inferior), "empgap" (a gap year on employment), "black_f", "response", and "daystoresponse" from this dataset. For this kind of operations you use the `select()` function.
 
 The syntax of this function is easy. First we name the dataframe object ("aer2017") and then we list the variables. The order in which we list the variables within the select function will determine the order in which those columns appear in the new dataframe we are creating. So this is a handy function to use if you want to change the order of your columns for some reason. Since I am pretty confident I am not making a mistake I will transform the original "aer2017" tibble rather than creating an entirely new object.
 
@@ -506,16 +508,16 @@ interpret labels than 0 and 1).
 
 
 ```r
-by_antecedents <- group_by(aer2017, as_factor(crime))
+aer2017_by_antecedent <- group_by(aer2017, as_factor(crime))
 
 #Then we run the summarise function to provide some useful
 #summaries of the groups we are using: the number of cases
 #and the mean of the response variable
-results <- summarise(by_antecedents,
+results_1 <- summarise(aer2017_by_antecedent,
   count = n(),
   outcome = mean(response, na.rm = TRUE))
 
-results #auto-print the results stored in the newly created object
+results_1 #auto-print the results stored in the newly created object
 ```
 
 ```
@@ -529,7 +531,6 @@ results #auto-print the results stored in the newly created object
 Let's look at the code in the `summarise` function above. First we are asking R to place the results in an object we are calling "results". Then we are specifying that we want to group the data in the way we specified in our `group_by()` function before, that is by criminal record. Then we pass two arguments. Each of these arguments is creating a new variable in the resulting object called "results". The first variable we are creating is called "*count*" by saying this equals "n()" we are specifying to R that this new variable simply counts the number of cases in each of the grouping categories. The second variable we are creating is called "*outcome*" and to compute this variable we are asking R to compute the mean of the variable response for each of the two groups of applicants defined in "by_antecedents" (those with records, those without). Remember that the variable response in the "aer2017" dataframe was coded as numeric variable, even though in truth is categorical in nature (there was a response, or not, from the employers). It doesn't really matter. Taking the mean of a binary variable in this case is mathematically equivalent to computing a proportion as we discussed earlier.
 
 So, what we see here is that about 13.6% of applicants with no criminal record received a positive response from the employers, whereas only 8% of those with criminal records did receive such a response. Given that the assignation of a criminal record was randomised to the applicants, there's a pretty good chance that no other [**confounders**](https://en.wikipedia.org/wiki/Confounding) are influencing this outcome. And that is the beauty of randomised experiments. You may be in a position to make stronger claims about your results.
-
 
 
 
@@ -555,18 +556,18 @@ We could do as before and get results by groups. Let's look at the impact of rac
 
 
 ```r
-by_race <- group_by(banbox, black_f)
-results_2 <- summarise(by_race,
+banbox_by_race <- group_by(banbox, black_f)
+results_2 <- summarise(banbox_by_race,
   avg_delay = mean(daystoresponse, na.rm = TRUE))
 results_2
 ```
 
 ```
 ## # A tibble: 2 × 2
-##   black_f avg_delay
-##   <fct>       <dbl>
-## 1 White        18.7
-## 2 Black        20.4
+##   black_f   avg_delay
+##   <fct>         <dbl>
+## 1 non-Black      18.7
+## 2 Black          20.4
 ```
 
 We can see that the average delay seems to be longer for 'Black' applicants than 'White' applicants. 
