@@ -1079,7 +1079,9 @@ vis_dat(df_f)
 
 ```
 ## Warning: `gather_()` was deprecated in tidyr 1.2.0.
-## Please use `gather()` instead.
+## ℹ Please use `gather()` instead.
+## ℹ The deprecated feature was likely used in the visdat package.
+##   Please report the issue at <]8;;https://github.com/ropensci/visdat/issueshttps://github.com/ropensci/visdat/issues]8;;>.
 ```
 
 <img src="04-carpentry_files/figure-html/unnamed-chunk-55-1.png" width="672" />

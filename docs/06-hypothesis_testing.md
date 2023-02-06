@@ -261,12 +261,12 @@ ggplot(BCS0708, aes(ethgrp2, tcviolent, fill=ethgrp2)) +
 ```
 
 ```
-## Warning: `guides(<scale> = FALSE)` is deprecated. Please use `guides(<scale> =
-## "none")` instead.
+## Warning: The `<scale>` argument of `guides()` cannot be `FALSE`. Use "none" instead as
+## of ggplot2 3.3.4.
 ```
 
 ```
-## Warning: Removed 3242 rows containing non-finite values (stat_boxplot).
+## Warning: Removed 3242 rows containing non-finite values (`stat_boxplot()`).
 ```
 
 <img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-7-1.png" width="672" />
@@ -281,11 +281,6 @@ ggplot(na.omit(BCS0708[,c("ethgrp2", "tcviolent")]), aes(x=reorder (ethgrp2, tcv
   geom_boxplot() +
   coord_flip() + #We are flipping the coordinates to avoid the overprinting of the factor levels
   guides(fill=FALSE)
-```
-
-```
-## Warning: `guides(<scale> = FALSE)` is deprecated. Please use `guides(<scale> =
-## "none")` instead.
 ```
 
 <img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-8-1.png" width="672" />
@@ -514,7 +509,7 @@ ggplot(BCS0708, aes(x = tcviolent)) +
 ```
 
 ```
-## Warning: Removed 3242 rows containing non-finite values (stat_density).
+## Warning: Removed 3242 rows containing non-finite values (`stat_density()`).
 ```
 
 <img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-19-1.png" width="672" />
@@ -535,7 +530,7 @@ ggplot(BCS0708, aes(x = ptcviolent)) +
 ```
 
 ```
-## Warning: Removed 3242 rows containing non-finite values (stat_density).
+## Warning: Removed 3242 rows containing non-finite values (`stat_density()`).
 ```
 
 <img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-21-1.png" width="672" />
@@ -549,7 +544,7 @@ ggplot(BCS0708, aes(x = log10(ptcviolent))) +
 ```
 
 ```
-## Warning: Removed 3242 rows containing non-finite values (stat_density).
+## Warning: Removed 3242 rows containing non-finite values (`stat_density()`).
 ```
 
 <img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-22-1.png" width="672" />
@@ -577,7 +572,7 @@ ggplot(BCS0708, aes(x = bctcviolent)) +
 ```
 
 ```
-## Warning: Removed 3242 rows containing non-finite values (stat_density).
+## Warning: Removed 3242 rows containing non-finite values (`stat_density()`).
 ```
 
 <img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-24-1.png" width="672" />
@@ -637,8 +632,8 @@ t1waybt(tcviolent ~ ethgrp2, data = BCS0708, tr = .05, nboot = 599)
 ## 
 ## Test statistic: 45.3591 
 ## p-value: 0 
-## Variance explained: 0.079 
-## Effect size: 0.281
+## Variance explained: 0.085 
+## Effect size: 0.292
 ```
 
 As with the standard ANOVA and the Welch version, we still get a significant result.

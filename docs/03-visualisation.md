@@ -656,7 +656,8 @@ ggplot(Boston, aes(x = medv, y = crim)) +
 ```
 
 ```
-## Warning: Ignoring unknown parameters: fun.y
+## Warning in geom_line(stat = "summary", fun.y = mean): Ignoring unknown
+## parameters: `fun.y`
 ```
 
 <img src="03-visualisation_files/figure-html/unnamed-chunk-44-1.png" width="672" />
@@ -668,6 +669,11 @@ With only about 500 cases there are loads of ups and downs. If you have many mor
 ggplot(Boston, aes(x = medv, y = crim)) +
   geom_point(alpha=.4) +
   geom_smooth(colour="red", size=1, se=FALSE) #We'll explain later this semester what the se argument does, colour is simply asking for a red line instead of blue (which I personally find harder to see. I'm also making the line a bit thicker with size 1)
+```
+
+```
+## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
 ```
 
 <img src="03-visualisation_files/figure-html/unnamed-chunk-45-1.png" width="672" />
@@ -910,6 +916,11 @@ The `stat_` function apart from counting the cases in each levels computes their
 ```r
 ggplot(BCS0708, aes(x=walkday)) +
   geom_bar(mapping = aes(y = ..prop..))
+```
+
+```
+## Warning: The dot-dot notation (`..prop..`) was deprecated in ggplot2 3.4.0.
+## ℹ Please use `after_stat(prop)` instead.
 ```
 
 <img src="03-visualisation_files/figure-html/unnamed-chunk-64-1.png" width="672" />

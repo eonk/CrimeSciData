@@ -318,7 +318,7 @@ library(arm)
 ```
 
 ```
-## Working directory is /Users/EonKim/Desktop/R/MCD_book/mcd_book
+## Working directory is /Users/eonkim/Desktop/R/MCD_book
 ```
 
 ```

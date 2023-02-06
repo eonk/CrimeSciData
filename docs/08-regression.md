@@ -125,6 +125,11 @@ ggplot(df, aes(x = log_viol_r)) +
   ggtitle("Density estimate and mean of log violent crime rate")
 ```
 
+```
+## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+```
+
 <img src="08-regression_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 
@@ -147,7 +152,8 @@ If we plot the conditional means we can see that the mean *log_viol_r* for citie
 
 
 ```
-## Warning: Ignoring unknown parameters: fun.y
+## Warning in geom_line(data = df, aes(x = round(unemployed/0.12) * 0.12, y =
+## log_viol_r), : Ignoring unknown parameters: `fun.y`
 ```
 
 ```
@@ -168,7 +174,7 @@ ggplot(data = df, aes(x = unemployed, y = log_viol_r)) +
 ```
 
 ```
-## `geom_smooth()` using formula 'y ~ x'
+## `geom_smooth()` using formula = 'y ~ x'
 ```
 
 <img src="08-regression_files/figure-html/unnamed-chunk-10-1.png" width="672" />
@@ -183,14 +189,12 @@ The linear model then is a model that takes the form of the equation of a straig
 
 
 ```
-## Warning: Ignoring unknown parameters: fun.y
+## Warning in geom_line(data = df, aes(x = round(unemployed/0.12) * 0.12, y =
+## log_viol_r), : Ignoring unknown parameters: `fun.y`
 ```
 
 ```
-## `geom_smooth()` using formula 'y ~ x'
-```
-
-```
+## `geom_smooth()` using formula = 'y ~ x'
 ## No summary function supplied, defaulting to `mean_se()`
 ```
 
@@ -632,7 +636,7 @@ library(sjPlot)
 ```
 
 ```
-## #refugeeswelcome
+## Learn more about sjPlot with 'browseVignettes("sjPlot")'.
 ```
 
 Let's try with a more complex example:

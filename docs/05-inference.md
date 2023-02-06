@@ -153,6 +153,11 @@ ggplot(fake_population, aes(x = IQ, colour = offender)) +
   geom_vline(data = IQ_means, mapping = aes(xintercept = IQ, colour = offender), linetype = "dashed", size = 1)
 ```
 
+```
+## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+```
+
 <img src="05-inference_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
 So, now we have our fake population data. In this case, because we generated the data ourselves, we know what the "population"" data looks like and we know what the summary statistics for the various attributes (IQ, crime) of the population are. But in real life we don't normally have access to full population data. It is not practical or economic. It is for this reason we rely on samples.

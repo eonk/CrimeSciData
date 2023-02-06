@@ -23,7 +23,7 @@
 <meta name="author" content="Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)" />
 
 
-<meta name="date" content="2023-02-04" />
+<meta name="date" content="2023-02-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -92,7 +92,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
+code span.bu { } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -105,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.im { } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -305,8 +305,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="getting-data-thanks-to-reproducibility" class="section level2 hasAnchor" number="2.2">
 <h2><span class="header-section-number">2.2</span> Getting data thanks to reproducibility<a href="getting-to-know-your-data.html#getting-data-thanks-to-reproducibility" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Last week we introduced the notion of reproducible research and said that using and publishing code (particularly if using open source tools like R) is the way that <a href="https://osf.io/?gclid=EAIaIQobChMIq-jM6MuY2QIV7Z3tCh04vAycEAAYASAAEgLptPD_BwE">many researchers</a> around the world think that science ought to be done. This way of operating makes research more open, more credible, and more legitimate. It also means that we can more easily access the data used in published research. For this session we are going to use the data from <a href="https://academic.oup.com/qje/article/133/1/191/4060073">this</a> and <a href="https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.p20171003">this paper</a> study. In this research project, the authors tried to answer the question of whether criminal antecedents and other personal characteristics have an impact on access to employment. You can find more details about this work in <a href="https://www.probablecausation.com/podcasts/episode-8-amanda-agan">episode 8</a> of <em>Probable Causation</em>, the criminology podcast.</p>
-<p>If you want to know more about ‘Ban the Box’ to encourage ‘fair chance recruitment’ practices in the UK, you can find more information <a href="https://recruit.unlock.org.uk/fair-chance-recruitment/ban-the-box/">here</a> and also can watch a <a href="https://www.youtube.com/watch?v=eM1nVA6hwlI&amp;t=32s">video</a> from Leo Burnett who helped promote the importance of giving people a chance to explain their past.</p>
-<p><a href="https://www.youtube.com/watch?v=eM1nVA6hwlI&amp;t=32s"><img src="https://user-images.githubusercontent.com/98951792/216791945-7bda2e7b-ad2b-4836-b1df-dbcf3a7c54a9.png"></a></p>
+<p>If you want to know more about ‘Ban the Box’ to encourage ‘fair chance recruitment’ practices in the UK, you can find more information <a href="https://recruit.unlock.org.uk/fair-chance-recruitment/ban-the-box/">here</a> and also can watch a video from Leo Burnett who helped promote the importance of giving people a chance to explain their past.</p>
+<iframe src="https://www.youtube.com/embed/eM1nVA6hwlI" width="672" height="400px" data-external="1">
+</iframe>
 <p><a href="http://economics.rutgers.edu/people/626-amanda-agan">Amanda Agan</a> and <a href="https://www.law.umich.edu/FacultyBio/Pages/FacultyBio.aspx?FacID=sbstarr">Sonja Starr</a> developed a randomised experiment in which they created 15,220 fake resumes randomly generating these critical characteristics (such as having a criminal record) and used these resumes to send online job applications to low-skill, entry level job openings in New Jersey and New York City. All the fictitious applicants were male and about 21 to 22 years old. These kind of experiments are very common among researchers that want to explore through these “audits” whether some personal characteristics are discriminated against in the labor market.</p>
 <p>Because Amanda Agan and Sonja Starr conformed to reproducible standards when doing their research we can access this data from the <em>Harvard Dataverse</em> (a repository for open research data). Click <a href="https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/VPHMNT">here</a> to locate the data.</p>
 <p><img src="imgs/harvarddataverse.PNG" /></p>
@@ -590,7 +591,7 @@ interpret labels than 0 and 1).</p>
 <div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="getting-to-know-your-data.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb124-2"><a href="getting-to-know-your-data.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(banbox, <span class="fu">aes</span>(<span class="at">y =</span> daystoresponse, <span class="at">x =</span> black_f)) <span class="sc">+</span> </span>
 <span id="cb124-3"><a href="getting-to-know-your-data.html#cb124-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() </span></code></pre></div>
-<p><img src="02-causality_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p><img src="02-causality_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <p>Watch <a href="https://www.khanacademy.org/math/probability/data-distributions-a1/box--whisker-plots-a1/v/reading-box-and-whisker-plots">this video</a> and see if you can interpret the results portrayed here. What do you think?</p>
 <p>Overall the outcomes are worse for ‘Black’ applicants, and in fact, the authors find that employers substantially increase discrimination on the basis of race after ban the box goes into effect.You can now replicate these findings with the data provided. by applying the new skills you’ve learned this week!</p>
 
