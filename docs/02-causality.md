@@ -585,5 +585,7 @@ ggplot(banbox, aes(y = daystoresponse, x = black_f)) +
 
 Watch [this video](https://www.khanacademy.org/math/probability/data-distributions-a1/box--whisker-plots-a1/v/reading-box-and-whisker-plots) and see if you can interpret the results portrayed here. What do you think?
 
-
 Overall the outcomes are worse for 'Black' applicants, and in fact, the authors find that employers substantially increase discrimination on the basis of race after ban the box goes into effect.You can now replicate these findings with the data provided. by applying the new skills you've learned this week!
+
+## Exercise for this week
+Once you finish your lab session, don't forget to do this [Exercise](https://eonk.shinyapps.io/MCD_ex) and have a chance to sum-up this week's R codes.

@@ -27,6 +27,7 @@ data-wrangling-with-dplyr
 using-dplyr-single-verbs
 using-dplyr-for-grouped-operations
 making-comparisons-with-numerical-outcomes
+exercise-for-this-week-1
 data-visualisation-with-r
 introduction
 anatomy-of-a-plot
