@@ -632,21 +632,37 @@ skim(hate_crimes)
 ```
 
 
-|skim_type |skim_variable               | n_missing| complete_rate| character.min| character.max| character.empty| character.n_unique| character.whitespace| numeric.mean|   numeric.sd|   numeric.p0|  numeric.p25|  numeric.p50|  numeric.p75| numeric.p100|numeric.hist |
-|:---------|:---------------------------|---------:|-------------:|-------------:|-------------:|---------------:|------------------:|--------------------:|------------:|------------:|------------:|------------:|------------:|------------:|------------:|:------------|
-|character |state                       |         0|     1.0000000|             4|            20|               0|                 51|                    0|           NA|           NA|           NA|           NA|           NA|           NA|           NA|NA           |
-|character |state_abbrev                |         0|     1.0000000|             2|             2|               0|                 51|                    0|           NA|           NA|           NA|           NA|           NA|           NA|           NA|NA           |
-|numeric   |median_house_inc            |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 5.522361e+04| 9208.4781698| 3.552100e+04| 4.865700e+04| 5.491600e+04| 6.071900e+04| 76165.000000|▂▆▇▅▂        |
-|numeric   |share_unemp_seas            |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 4.956860e-02|    0.0106981| 2.800000e-02| 4.200000e-02| 5.100000e-02| 5.750000e-02|     0.073000|▅▇▇▇▂        |
-|numeric   |share_pop_metro             |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 7.501961e-01|    0.1815873| 3.100000e-01| 6.300000e-01| 7.900000e-01| 8.950000e-01|     1.000000|▁▂▅▆▇        |
-|numeric   |share_pop_hs                |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 8.691176e-01|    0.0340732| 7.990000e-01| 8.405000e-01| 8.740000e-01| 8.980000e-01|     0.918000|▃▅▃▆▇        |
-|numeric   |share_non_citizen           |         3|     0.9411765|            NA|            NA|              NA|                 NA|                   NA| 5.458330e-02|    0.0310770| 1.000000e-02| 3.000000e-02| 4.500000e-02| 8.000000e-02|     0.130000|▇▆▆▂▂        |
-|numeric   |share_white_poverty         |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 9.176470e-02|    0.0247148| 4.000000e-02| 7.500000e-02| 9.000000e-02| 1.000000e-01|     0.170000|▂▇▃▂▁        |
-|numeric   |gini_index                  |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 4.537647e-01|    0.0208908| 4.190000e-01| 4.400000e-01| 4.540000e-01| 4.665000e-01|     0.532000|▆▇▅▁▁        |
-|numeric   |share_non_white             |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 3.156863e-01|    0.1649152| 6.000000e-02| 1.950000e-01| 2.800000e-01| 4.200000e-01|     0.810000|▇▇▆▂▁        |
-|numeric   |share_vote_trump            |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 4.900000e-01|    0.1187097| 4.000000e-02| 4.150000e-01| 4.900000e-01| 5.750000e-01|     0.700000|▁▁▆▇▇        |
-|numeric   |hate_crimes_per_100k_splc   |         4|     0.9215686|            NA|            NA|              NA|                 NA|                   NA| 3.040930e-01|    0.2527086| 6.744680e-02| 1.427066e-01| 2.261971e-01| 3.569347e-01|     1.522302|▇▂▁▁▁        |
-|numeric   |avg_hatecrimes_per_100k_fbi |         1|     0.9803922|            NA|            NA|              NA|                 NA|                   NA| 2.367613e+00|    1.7142450| 2.669408e-01| 1.293139e+00| 1.987068e+00| 3.184344e+00|    10.953480|▇▅▁▁▁        |
+\begin{tabular}{l|l|r|r|r|r|r|r|r|r|r|r|r|r|r|r|l}
+\hline
+skim\_type & skim\_variable & n\_missing & complete\_rate & character.min & character.max & character.empty & character.n\_unique & character.whitespace & numeric.mean & numeric.sd & numeric.p0 & numeric.p25 & numeric.p50 & numeric.p75 & numeric.p100 & numeric.hist\\
+\hline
+character & state & 0 & 1.0000000 & 4 & 20 & 0 & 51 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
+\hline
+character & state\_abbrev & 0 & 1.0000000 & 2 & 2 & 0 & 51 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
+\hline
+numeric & median\_house\_inc & 0 & 1.0000000 & NA & NA & NA & NA & NA & 5.522361e+04 & 9208.4781698 & 3.552100e+04 & 4.865700e+04 & 5.491600e+04 & 6.071900e+04 & 76165.000000 & ▂▆▇▅▂\\
+\hline
+numeric & share\_unemp\_seas & 0 & 1.0000000 & NA & NA & NA & NA & NA & 4.956860e-02 & 0.0106981 & 2.800000e-02 & 4.200000e-02 & 5.100000e-02 & 5.750000e-02 & 0.073000 & ▅▇▇▇▂\\
+\hline
+numeric & share\_pop\_metro & 0 & 1.0000000 & NA & NA & NA & NA & NA & 7.501961e-01 & 0.1815873 & 3.100000e-01 & 6.300000e-01 & 7.900000e-01 & 8.950000e-01 & 1.000000 & ▁▂▅▆▇\\
+\hline
+numeric & share\_pop\_hs & 0 & 1.0000000 & NA & NA & NA & NA & NA & 8.691176e-01 & 0.0340732 & 7.990000e-01 & 8.405000e-01 & 8.740000e-01 & 8.980000e-01 & 0.918000 & ▃▅▃▆▇\\
+\hline
+numeric & share\_non\_citizen & 3 & 0.9411765 & NA & NA & NA & NA & NA & 5.458330e-02 & 0.0310770 & 1.000000e-02 & 3.000000e-02 & 4.500000e-02 & 8.000000e-02 & 0.130000 & ▇▆▆▂▂\\
+\hline
+numeric & share\_white\_poverty & 0 & 1.0000000 & NA & NA & NA & NA & NA & 9.176470e-02 & 0.0247148 & 4.000000e-02 & 7.500000e-02 & 9.000000e-02 & 1.000000e-01 & 0.170000 & ▂▇▃▂▁\\
+\hline
+numeric & gini\_index & 0 & 1.0000000 & NA & NA & NA & NA & NA & 4.537647e-01 & 0.0208908 & 4.190000e-01 & 4.400000e-01 & 4.540000e-01 & 4.665000e-01 & 0.532000 & ▆▇▅▁▁\\
+\hline
+numeric & share\_non\_white & 0 & 1.0000000 & NA & NA & NA & NA & NA & 3.156863e-01 & 0.1649152 & 6.000000e-02 & 1.950000e-01 & 2.800000e-01 & 4.200000e-01 & 0.810000 & ▇▇▆▂▁\\
+\hline
+numeric & share\_vote\_trump & 0 & 1.0000000 & NA & NA & NA & NA & NA & 4.900000e-01 & 0.1187097 & 4.000000e-02 & 4.150000e-01 & 4.900000e-01 & 5.750000e-01 & 0.700000 & ▁▁▆▇▇\\
+\hline
+numeric & hate\_crimes\_per\_100k\_splc & 4 & 0.9215686 & NA & NA & NA & NA & NA & 3.040930e-01 & 0.2527086 & 6.744680e-02 & 1.427066e-01 & 2.261971e-01 & 3.569347e-01 & 1.522302 & ▇▂▁▁▁\\
+\hline
+numeric & avg\_hatecrimes\_per\_100k\_fbi & 1 & 0.9803922 & NA & NA & NA & NA & NA & 2.367613e+00 & 1.7142450 & 2.669408e-01 & 1.293139e+00 & 1.987068e+00 & 3.184344e+00 & 10.953480 & ▇▅▁▁▁\\
+\hline
+\end{tabular}
 
 Apart from summary statistics, last semester we discussed a variety of ways to graphically display variables. In week 3 of 'Making Sense of Criminological Data' covered scatterplots, a graphical device to show the relationship between two quantitative variables. I don't know if you remember the amount of point and click you had to do in Excel for getting this done. If not you can review the notes [here](https://maczokni.github.io/MSCD_labs/week3.html).
 
@@ -766,5 +782,5 @@ What is more. I would suggest you go to the Tools drop down menu, select Global 
 
 <img src="https://user-images.githubusercontent.com/98951792/215292052-cbb36812-e7a7-4a7f-b2e4-57ea93918274.png"> 
 
-## Exercise for this week
+## Summary: exercise for this week
 Once you finish your lab session, don't forget to do this [Exercise](https://eonk.shinyapps.io/MCD_ex) and have a chance to sum-up this week's R codes.

@@ -26,7 +26,7 @@ Last week we introduced the notion of reproducible research and said that using 
 
 If you want to know more about 'Ban the Box' to encourage ‘fair chance recruitment’ practices in the UK, you can find more information [here](https://recruit.unlock.org.uk/fair-chance-recruitment/ban-the-box/) and also can watch a video from Leo Burnett who helped promote the importance of giving people a chance to explain their past.
 
-<iframe src="https://www.youtube.com/embed/eM1nVA6hwlI" width="672" height="400px" data-external="1"></iframe>
+<iframe src="https://www.youtube.com/embed/eM1nVA6hwlI" width="100%" height="400px" data-external="1"></iframe>
 
 [Amanda Agan](http://economics.rutgers.edu/people/626-amanda-agan) and [Sonja Starr](https://www.law.umich.edu/FacultyBio/Pages/FacultyBio.aspx?FacID=sbstarr) developed a randomised experiment in which they created 15,220 fake resumes randomly generating these critical characteristics (such as having a criminal record) and used these resumes to send online job applications to low-skill, entry level job openings in New Jersey and New York City. All the fictitious applicants were male and about 21 to 22 years old. These kind of experiments are very common among researchers that want to explore through these "audits" whether some personal characteristics are discriminated against in the labor market.
 
@@ -66,7 +66,7 @@ Some other file types need other packages. For example, to read in comma separat
 
 What is the first thing you need to ask yourself when you look at a dataset? Data are often too big to look at the whole thing. It is almost always impossible to eyeball the entire dataset and see what you have in terms of interesting patterns or potential problems. It is often a case of information overload and we want to be able to extract what is relevant and important about it. But where do you start?  You can find a brief but very useful overview put together by Steph de Silva in the image below. Read it before we carry on.
 
-![](imgs/firstlookatdata.jpg)<!-- -->
+![](imgs/firstlookatdata.jpg)<!-- --> 
 
 As Mara Averick (somebody you want to follow in twitter at @dataanndme if you want to be in top of R related resources) suggests this also makes for good relationship advice!
 
@@ -521,7 +521,7 @@ results_1 #auto-print the results stored in the newly created object
 ```
 
 ```
-## # A tibble: 2 × 3
+## # A tibble: 2 x 3
 ##   `as_factor(crime)` count outcome
 ##   <fct>              <int>   <dbl>
 ## 1 No Crime            1319  0.136 
@@ -563,7 +563,7 @@ results_2
 ```
 
 ```
-## # A tibble: 2 × 2
+## # A tibble: 2 x 2
 ##   black_f   avg_delay
 ##   <fct>         <dbl>
 ## 1 non-Black      18.7
@@ -581,11 +581,12 @@ ggplot(banbox, aes(y = daystoresponse, x = black_f)) +
   geom_boxplot() 
 ```
 
-<img src="02-causality_files/figure-html/unnamed-chunk-30-1.png" width="672" />
+![](02-causality_files/figure-latex/unnamed-chunk-30-1.pdf)<!-- --> 
 
 Watch [this video](https://www.khanacademy.org/math/probability/data-distributions-a1/box--whisker-plots-a1/v/reading-box-and-whisker-plots) and see if you can interpret the results portrayed here. What do you think?
 
 Overall the outcomes are worse for 'Black' applicants, and in fact, the authors find that employers substantially increase discrimination on the basis of race after ban the box goes into effect.You can now replicate these findings with the data provided. by applying the new skills you've learned this week!
 
-## Exercise for this week
+## Summary: exercise for this week
+
 Once you finish your lab session, don't forget to do this [Exercise](https://eonk.shinyapps.io/MCD_ex) and have a chance to sum-up this week's R codes.

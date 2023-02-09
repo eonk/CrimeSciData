@@ -390,5 +390,6 @@ Watch [this video](https://www.khanacademy.org/math/probability/data-distributio
 
 Overall the outcomes are worse for 'Black' applicants, and in fact, the authors find that employers substantially increase discrimination on the basis of race after ban the box goes into effect.You can now replicate these findings with the data provided. by applying the new skills you've learned this week!
 
-## Exercise for this week
+## Summary: exercise for this week
+
 Once you finish your lab session, don't forget to do this [Exercise](https://eonk.shinyapps.io/MCD_ex) and have a chance to sum-up this week's R codes.
