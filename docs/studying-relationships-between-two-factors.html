@@ -23,7 +23,7 @@
 <meta name="author" content="Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)" />
 
 
-<meta name="date" content="2023-02-09" />
+<meta name="date" content="2023-02-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -296,13 +296,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>In earlier sessions we have covered how to run frequency distributions using the <code>table()</code> function. Cross tabulations, also called <strong>contingency tables</strong>, are essentially crossed frequency distributions, where you plot the frequency distributions of more than one variable simultaneously. This semester we are only going to explore <strong>two-way cross tabulations</strong>, that is contingency tables where we plot the frequency distribution of two variables at the same time. Frequency distributions are a useful way of exploring categorical variables that do not have too many categories. By extension, cross tabulations are a useful way of exploring relationships between two categorical variables that do not have too many levels or categories.</p>
 <p>As we learned during the first week we can get results from R in a variety of ways. You can produce basic tables with some of the core functions in R. However, in order to produce the sort of cross-tabs we will use, I suggest you install and load the package <code>gmodels</code>. This package allows you to produce cross tabulations in a format similar to the one used by commercial statistical packages SPSS and SAS. Since some of you may have some previous experience with SPSS we will use the SPSS format. Cross-tabs with this package are more useful for our purposes than the default you may get with the core R <code>table()</code> function.</p>
 <p>We will begin the session by loading again the BCS 2007/2008 data from previous weeks.</p>
-<div class="sourceCode" id="cb494"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb494-1"><a href="studying-relationships-between-two-factors.html#cb494-1" aria-hidden="true" tabindex="-1"></a><span class="do">##R in Windows have some problems with https addresses, that&#39;s why we need to do this first:</span></span>
-<span id="cb494-2"><a href="studying-relationships-between-two-factors.html#cb494-2" aria-hidden="true" tabindex="-1"></a>urlfile<span class="ot">&lt;-</span><span class="st">&#39;https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv&#39;</span></span>
-<span id="cb494-3"><a href="studying-relationships-between-two-factors.html#cb494-3" aria-hidden="true" tabindex="-1"></a><span class="co">#We create a data frame object reading the data from the remote .csv file</span></span>
-<span id="cb494-4"><a href="studying-relationships-between-two-factors.html#cb494-4" aria-hidden="true" tabindex="-1"></a>BCS0708<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="fu">url</span>(urlfile))</span></code></pre></div>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb493-1"><a href="studying-relationships-between-two-factors.html#cb493-1" aria-hidden="true" tabindex="-1"></a><span class="do">##R in Windows have some problems with https addresses, that&#39;s why we need to do this first:</span></span>
+<span id="cb493-2"><a href="studying-relationships-between-two-factors.html#cb493-2" aria-hidden="true" tabindex="-1"></a>urlfile<span class="ot">&lt;-</span><span class="st">&#39;https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv&#39;</span></span>
+<span id="cb493-3"><a href="studying-relationships-between-two-factors.html#cb493-3" aria-hidden="true" tabindex="-1"></a><span class="co">#We create a data frame object reading the data from the remote .csv file</span></span>
+<span id="cb493-4"><a href="studying-relationships-between-two-factors.html#cb493-4" aria-hidden="true" tabindex="-1"></a>BCS0708<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="fu">url</span>(urlfile))</span></code></pre></div>
+<pre><code>## Installing package into &#39;/Users/EonKim/Library/R/x86_64/4.2/library&#39;
+## (as &#39;lib&#39; is unspecified)</code></pre>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpfT6YrM/downloaded_packages</code></pre>
+##  /var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpgUg06a/downloaded_packages</code></pre>
 <p>We will start by producing a cross tabulation of victimisation (“bcsvictim”), a categorical unordered variable, by whether the presence of rubbish in the streets is a problem in the area of residence (“rubbcomm”), another categorical unordered variable. Broken windows theory would argue we should see a relationship. We will use the following code:</p>
 <div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb496-1"><a href="studying-relationships-between-two-factors.html#cb496-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gmodels)</span>
 <span id="cb496-2"><a href="studying-relationships-between-two-factors.html#cb496-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(BCS0708, <span class="fu">CrossTable</span>(rubbcomm, bcsvictim, <span class="at">prop.chisq =</span> <span class="cn">FALSE</span>, <span class="at">format =</span> <span class="fu">c</span>(<span class="st">&quot;SPSS&quot;</span>)))</span></code></pre></div>

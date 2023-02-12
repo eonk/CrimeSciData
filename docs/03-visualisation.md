@@ -82,11 +82,9 @@ fbo <- read_csv(url(urlfile))
 ## * `` -> `...1`
 ```
 
-
 You can also find this on the Blackboard page for this week's learning materials. If you download from there, make sure to save this file in your project directory, possibly in a subfolder called "Datasets". Then you can read in from there.
 
 One thing from the first lab we mentioned is conventions in the naming ob objects. This also applies to the names of your variables (i.e. your column names) within your data. If you look at the fbo dataframe, either with the `View()` function, or by printing the names of the columns with the `names()` function, you can see, this dataset violates that requirement: 
-
 
 
 ```r
@@ -103,7 +101,6 @@ To address this, we can use a function called `clean_names()` which lives inside
 
 ```r
 library(janitor)
-
 fbo <- clean_names(fbo)
 ```
 
@@ -149,8 +146,8 @@ OK what if we don't want it to be points, but instead we wanted it to be a bar g
 
 ```r
 ggplot(data = fbo, aes(x = club_supported, y=banning_orders)) +   #data
-   geom_bar(stat = "identity") +                                  #geometry
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))                                                       #backgroud coordinate system
+  geom_bar(stat = "identity") +                                   #geometry
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))        #backgroud coordinate system
 ```
 
 ![](03-visualisation_files/figure-latex/unnamed-chunk-8-1.pdf)<!-- --> 
@@ -163,10 +160,10 @@ Well this is the beauty of the layering approach of `ggplot2`. You can layer on 
 
 
 ```r
-ggplot(data = fbo, aes(x = club_supported, y=banning_orders)) +  #data
-  geom_bar(stat = "identity") +                                  #geometry 1 
-  geom_point()+                                                  #geometry 2
-theme(axis.text.x = element_text(angle = 90, hjust = 1))                                                      #backgroud coordinate system
+ggplot(data = fbo, aes(x = club_supported, y=banning_orders)) + #data
+  geom_bar(stat = "identity") +                                 #geometry 1 
+  geom_point() +                                                #geometry 2
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))      #backgroud coordinate system
 ```
 
 ![](03-visualisation_files/figure-latex/unnamed-chunk-9-1.pdf)<!-- --> 
@@ -179,7 +176,7 @@ ggplot(data = fbo, aes(x = club_supported, y=banning_orders)) +  #data
   geom_bar(stat = "identity") +                                  #geometry 1 
   geom_point() +                                                 #geometry 2
   geom_hline(yintercept = mean(fbo$banning_orders)) +            #mean line
-theme(axis.text.x = element_text(angle = 90, hjust = 1))                                                      #backgroud coordinate system
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))       #backgroud coordinate system
 ```
 
 ![](03-visualisation_files/figure-latex/unnamed-chunk-10-1.pdf)<!-- --> 
@@ -781,22 +778,23 @@ ggpairs(Boston_spm)
 ```
 
 ![](03-visualisation_files/figure-latex/unnamed-chunk-54-1.pdf)<!-- --> 
+
 The diagonal set of boxes that go from the top left to the bottom right gives you the univariate density plot for each of the variables. So, for example, at the very top left you have the density plot for the *crim* variable. If you look underneath this one, you see a scatterplot between *crim* and *medv*. In this case *crim* defines the X axis and *medv* the Y axis, which is why it looks a bit different from the one we saw earlier. The labels in the top and the left tell you what variables are plot in each faceted rectangle. I the top right hand side of this matrix you see that the rectangles say "corr" and the give you a number. These numbers are **correlation coefficients**, which are a metric we use to indicate the strength of a relationship between two quantitative or numeric variables. The close to one (whether positive or negative) this value is the stronger the relationship is. The closer to zero the weaker the relationship. The stronger relationship here is between *crime* and *medv*. The fact that is negative indicates that as the values in one increase, the values in the other tend to decrease. So high values of crime correspond to low values of property prices -as we saw earlier. This coefficient is a summary number of this relationship. We will come back to it later on. For now keep in mind this metric only works well is the relationship should see in the scatterplot is well represented by a straight line. If the relationship is curvilinear it will be a very bad metric that you should not trust.
+
+![](imgs/ggpairs.png){width=80%}
 
 R gives you a lot of flexibility and there are often competing packages that aim to do similar things. So, for example, for a scatterplot matrix you could also use the `spm` function from the `car` package.
 
 
 ```r
 library(car)
+ #The regLine argument is used to avoid displaying something we will cover in week 8, regression analysis.
 spm(Boston_spm, regLine=FALSE)
 ```
 
 ![](03-visualisation_files/figure-latex/unnamed-chunk-55-1.pdf)<!-- --> 
 
-```r
-#The regLine argument is used to avoid displaying something we will cover in week 8.
-```
-This is a bit different form the one below because  rather than displaying the correlation coefficients, what you get is another set of scatterplot but with the Y and X axis rotated. You can see the matrix is symmetrical. So the first scatterplot that you see in the top row (second column from the left) shows the relationship between *medv* (in the X axis) and *crim* (in the Y axis). Which is the same relationship shown in the first scatterplot in the second row (first column), only here *crim* defines the X axis and *medv* the Y axis. In this scatterplot you can see, although not very well, that smoothed lines representing the relationship have been added to the plots.
+This is a bit different from the one above because rather than displaying the values of correlation coefficient, what you get is another set of scatterplot but with the Y and X axis rotated. You can see the matrix is symmetrical. So the first scatterplot that you see in the top row (second column from the left) shows the relationship between *medv* (in the X axis) and *crim* (in the Y axis). Which is the same relationship shown in the first scatterplot in the second row (first column), only here *crim* defines the X axis and *medv* the Y axis. In this scatterplot you can see, although not very well, that smoothed lines representing the relationship have been added to the plots.
 
 
 ```r
@@ -805,6 +803,7 @@ spm(Boston_spm, smooth=list(col.smooth="red"), regLine=FALSE)
 ```
 
 ![](03-visualisation_files/figure-latex/unnamed-chunk-56-1.pdf)<!-- --> 
+
 And you can also condition in a third variable. For example, we could condition on whether the areas bound the Charles River (variable *chas*).
 
 
@@ -820,7 +819,6 @@ Getting results, once you get the knack of it, is only half of the way. The othe
 ## Titles, legends, and themes in ggplot2
 
 We have introduced a number of various graphical tools, but what if you want to customise the way the produce graphic looks like? Here I am just going to give you some code for how to modify the titles and legends you use. For adding a title for a `ggplot` graph you use `ggtitle()`.
-
 
 
 ```r
@@ -999,7 +997,7 @@ You can also use `coord_flip()` with other `ggplot` plots (e.g., boxplots).
 
 A particular type of bar chart is the divergent stacked bar chart, often used to visualise [**Likert scales**](http://en.wikipedia.org/wiki/Likert_scale). You may want to look at some of the options available for it via the [HH package](http://www.jstatsoft.org/v57/i05/paper), or [sjPlot](http://strengejacke.wordpress.com/2013/07/17/plotting-likert-scales-net-stacked-distributions-with-ggplot-rstats/). But we won't cover them here in detail.
 
-Keep in mind that knowing *how* to get R to produce a particular visualisation is only half the job. The other half is knowing *when* to produce a particular kind of visualisation. [This blog](https://solomonmessing.wordpress.com/2014/10/11/when-to-use-stacked-barcharts/), for example, discusses some of the problems with stacked bar charts and the exceptional circumstances in which you may want to use them.
+Keep in mind that knowing *how* to get R to produce a particular visualisation is only half the job. The other half is knowing *when* to produce a particular kind of visualisation. [This blog](https://solomonmg.github.io/post/when-to-use-stacked-barcharts/), for example, discusses some of the problems with stacked bar charts and the exceptional circumstances in which you may want to use them.
 
 There are other tools sometimes used for visualising categorical data. Pie charts is one of them. However, as mentioned at the beginning, many people advocate strongly against using pie charts and therefore this is the only pie chart you will see in this course:
 
@@ -1035,10 +1033,8 @@ Fourth, **resources for visualisations we don't have the time to cover**. R is w
 
 For example, if you like maps, **R can also be used to produce visualisations of spatial data**. There are various resources to learn how to do this and we teach this in our *Crime Mapping* module in the third year.
 
-
 [^1]: Tufte, Edward (2001) *The visual display of quantitative information.* 2nd Edition. Graphic Press.
 [^2]: Few, Stephen (2012) *Show me the numbers: designing graphics and tables to enlighten.* 2nd Edition. Analytics Press.
 [^3]: Cairo, Alberto (2016) *The truthful art: data, charts, and maps for communication.* New Riders.
 [^4]: Split into two groups.
 [^5]: [This](http://tomhopper.me/2010/08/30/graphing-highly-skewed-data/) is an interesting blog entry in solutions when you have highly skewed data. 
-
