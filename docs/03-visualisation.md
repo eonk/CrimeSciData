@@ -74,12 +74,12 @@ fbo <- read_csv(url(urlfile))
 ```
 ## New names:
 ## Rows: 119 Columns: 4
-## -- Column specification
-## -------------------------------------------------------- Delimiter: "," chr
+## ── Column specification
+## ──────────────────────────────────────────────────────── Delimiter: "," chr
 ## (2): Club.Supported, League.of.the.Club.Supported dbl (2): ...1, Banning.Orders
-## i Use `spec()` to retrieve the full column specification for this data. i
+## ℹ Use `spec()` to retrieve the full column specification for this data. ℹ
 ## Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## * `` -> `...1`
+## • `` -> `...1`
 ```
 
 You can also find this on the Blackboard page for this week's learning materials. If you download from there, make sure to save this file in your project directory, possibly in a subfolder called "Datasets". Then you can read in from there.
@@ -113,7 +113,7 @@ ggplot(data = fbo, aes(x = club_supported, y=banning_orders)) + #data
   theme_bw()                     #backgroud coordinate system
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-5-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
 The first line above begins a plot by calling the `ggplot()` function, and putting the data into it. You have to name your dataframe with the `data` argument, and then, within the `aes()` command you pass the specific variables which you want to plot. In this case, we only want to see the distribution of one variable, banning orders, in the y axis and we will plot the club supported in the x axis. 
 
@@ -128,7 +128,7 @@ ggplot(data = fbo, aes(x = club_supported, y=banning_orders)) +     #data
   theme_dark()                                                      #backgroud coordinate system
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-6-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
 Changing the theme is not all you can do with the third element. For example here you can't really read the axis labels, because they're all overlapping. One solution would be to rotate your axis labels 90 degrees, with the following code: `axis.text.x = element_text(angle = 90, hjust = 1)`. You pass this code to the `theme` argument. 
 
@@ -139,7 +139,7 @@ ggplot(data = fbo, aes(x = club_supported, y=banning_orders)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))                                   
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-7-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 OK what if we don't want it to be points, but instead we wanted it to be a bar graph?
 
@@ -150,7 +150,7 @@ ggplot(data = fbo, aes(x = club_supported, y=banning_orders)) +   #data
   theme(axis.text.x = element_text(angle = 90, hjust = 1))        #backgroud coordinate system
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-8-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 
 You might notice here we pass an argument `stat = "identity"` to `geo_bar()` function. This is because you can have a bar graph where the height of the bar shows frequency (`stat = "count"`), or where the height is taken from a variable in your dataframe (`stat = "identity"`). Here we specified a y-value (height) as the banning_orders variable. 
 
@@ -166,7 +166,7 @@ ggplot(data = fbo, aes(x = club_supported, y=banning_orders)) + #data
   theme(axis.text.x = element_text(angle = 90, hjust = 1))      #backgroud coordinate system
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-9-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-9-1.png" width="672" />
 
 You can add other things too. For example you can add the mean number of *banning_orders*:
 
@@ -179,7 +179,7 @@ ggplot(data = fbo, aes(x = club_supported, y=banning_orders)) +  #data
   theme(axis.text.x = element_text(angle = 90, hjust = 1))       #backgroud coordinate system
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-10-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 This is basically all you need to know to build a graph! So far we have introduced a lot of code some of which you may not fully understand. Don't worry too much, we just wanted to give you a quick introduction to some of the possibilities. Later in the session we will go back to some of these functions in a slower way. The take away from this section is to understand the basic elements of the grammar of graphics.
 
@@ -218,7 +218,7 @@ ggplot(data = fbo, aes(x = banning_orders)) +
   geom_histogram()
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-11-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
 Now to split this by *league_of_the_club_supported*, you use `facet_wrap()` in the coordinate layer of the plot.
 
@@ -229,7 +229,7 @@ ggplot(data = fbo, aes(x = banning_orders)) +
   facet_wrap(~league_of_the_club_supported)
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-12-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 
 Well you can see there's different distribution in each league. But is this easy to compare? Maybe another approach would make it easier? 
 Personally I like boxplots (we will explain them in greater detail below) for showing distribution. So let's try:
@@ -240,7 +240,7 @@ ggplot(data = fbo, aes(x = league_of_the_club_supported, y = banning_orders)) +
   geom_boxplot() 
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-13-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 
 This makes the comparison significantly easier, right? But the order is strange! Remember we talked about factors in previous weeks? Well the good thing about factors is that we can arrange them in their natural order. If we don't describe an order, then R uses the alphabetical order. So let's reorder our factor. To do that we are specifying the levels in the order in which we want to be embedded within the factor. We use code we introduced last week to do this.
 
@@ -257,7 +257,7 @@ ggplot(data = fbo, aes(x = league_of_the_club_supported, y = banning_orders)) +
   geom_boxplot() 
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-15-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
 Now this is great! We can see that the higher the league the more banning orders they have. Any ideas why?
 
@@ -290,7 +290,7 @@ ggplot(Boston, aes(x = crim)) +
   geom_histogram()
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-17-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 So you can see that `ggplot` works in a way that you can add a series of additional specifications (layers, annotations). In this simple plot the `ggplot` function simply maps *crim* as the variable to be displayed (as one of the **aesthetics**) and the dataset. Then you add the `geom_histogram` to tell R that you want this variable to be represented as a histogram. Later we will see what other things you can add.
 
@@ -302,7 +302,7 @@ ggplot(Boston, aes(x = crim)) +
   geom_histogram(binwidth = 1) 
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-18-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 We can pass arguments to the the geoms, as you see. Here we are changing the size of the bins (for further details on other arguments you can check the help files). Using bin-width of 1 we are essentially creating a bar for every one unit increase in the percent rate of crime. We can still see that most towns have a very low level of crime.
 
@@ -368,7 +368,7 @@ ggplot(Boston, aes(x = crim)) +
   facet_grid(lowval ~ .) 
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-22-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
 Visually this may not look great, but it begins to tell a story. We can see that there is a considerable lower proportion of towns with low levels of crime in the group of towns that have cheaper homes. It is a flatter, less skewed distribution. You can see how the `facet_grid()` expression is telling R to create the histogram of the variable mentioned in the `ggplot` function for the groups defined by the categorical input of interest (the factor *lowval*).
 
@@ -382,7 +382,7 @@ ggplot(Boston, aes(x = crim, fill = lowval)) +
   theme(legend.position = "none")
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-23-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-23-1.png" width="672" />
 
 The `fill` argument within the `aes` is telling R what variable to assign colours. Now each of the levels (groups) defined by the *lowval* variable will have a different colour. The `theme` statement that we add is telling R not to place a legend in the graphic explaining that red is higher value and the greenish colour is low value. We can already see that without a label.
 
@@ -394,7 +394,7 @@ ggplot(Boston, aes(x = crim, fill = lowval)) +
   geom_histogram(position = "identity", alpha = 0.4)
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-24-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-24-1.png" width="672" />
 
 In the code above, the `fill` argument identifies again the factor variable in the dataset grouping the cases. Also, `position = identity` tells R to overlay the distributions and `alpha` asks for the degree of transparency, a lower value (e.g., 0.2) will be more transparent.
 
@@ -406,7 +406,7 @@ ggplot(Boston, aes(x = log10(crim + 1), fill = lowval)) +
   geom_histogram(position = "identity", alpha = 0.4)
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-25-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-25-1.png" width="672" />
 
 The plot now is a bit clearer. It seems pretty evident that the distribution of crime is quite different between these two types of towns.
 
@@ -420,7 +420,7 @@ ggplot(Boston, aes(x = crim)) +
   geom_density() 
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-26-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-26-1.png" width="672" />
 
 In a density plot, we attempt to visualize the underlying probability distribution of the data by drawing an appropriate continuous curve. So in a density plot then the area under the lines sum to 1 and the Y, vertical, axis now gives you the estimated (guessed) probability for the different values in the X, horizontal, axis. This curve is guessed from the data and the method we use for this guessing or estimation is called kernel density estimation. You can read more about density plots [here](https://serialmentor.com/dataviz/histograms-density-plots.html).
 
@@ -435,7 +435,7 @@ ggplot(Boston, aes(x = log10(crim + 1), colour = lowval)) +
   geom_density() 
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-27-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-27-1.png" width="672" />
 
 Or you could use transparencies:
 
@@ -445,7 +445,7 @@ ggplot(Boston, aes(x = log10(crim + 1), fill = lowval)) +
   geom_density(alpha = .3)
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-28-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-28-1.png" width="672" />
 
 Did you notice the difference with the comparative histograms? By using density plots we are rescaling to ensure the same area for each of the levels in our grouping variable. This makes it easier to compare two groups that have different frequencies. The areas under the curve add up to 1 for both of the groups, whereas in the histogram the area within the bars represent the number of cases in each of the groups. If you have many more cases in one group than the other it may be difficult to make comparisons or to clearly see the distribution for the group with fewer cases. So, this is one of the reasons why you may want to use density plots.
 
@@ -485,7 +485,7 @@ library(ggridges)
 ggplot(Boston, aes(x = log10(crim + 1), y = as.factor(dec_medv))) + geom_density_ridges()
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-31-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-31-1.png" width="672" />
 
 We can see that the distribution of crime is particularly different when we focus in the three deciles with the lowest level of income. For more details on this kind of plot you can read the [vignette](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html) for this package.
 
@@ -503,7 +503,7 @@ ggplot(Boston, aes(x = 1, y = medv)) +
   theme(axis.title.x = element_blank())
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-32-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-32-1.png" width="672" />
 
 Boxplots, however, really come to life when you do use them to compare the distribution of a quantitative variable across various groups. Let's look at the distribution of *log(crime)* across cheaper and more expensive areas:
 
@@ -513,7 +513,7 @@ ggplot(Boston, aes(x = lowval, y=log10(crim + 1))) +
   geom_boxplot()
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-33-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-33-1.png" width="672" />
 
 With a boxplot like this you can see straight away that the bulk of cheaper areas are very different from the bulk of more expensive areas. The first quartile of the distribution for low areas about matches the point at which we start to see **outliers** for the more expensive areas.
 
@@ -536,7 +536,7 @@ ggplot(BCS0708, aes(x = ethgrp2, y = tcviolent)) +
   geom_boxplot()
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-35-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-35-1.png" width="672" />
 
 Nice. But could be nicer. To start with we could order the groups along the X axis so that the ethnic groups are positioned according to their level of worry. Secondly, we may want to exclude the information for the NA cases on ethnicity (represented by a flat line).
 
@@ -548,7 +548,7 @@ ggplot(filter(BCS0708, !is.na(ethgrp2) & !is.na(tcviolent)),
         geom_boxplot()
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-36-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-36-1.png" width="672" />
 
 The `filter` function from `dplyr` is using a logical argument to tell R to only use the cases that do not have NA values in the two variables that we are using. The exclamation mark followed by `is.na` and then the name of a variable is R way of saying "the contrary of is NA for the specified variable". So in essence we are saying to R just look at data that is not NA in these variables. The `reorder` function on the other hand is asking R to reorder the levels in ethnicity according to the median value of worry of violent crime. Since we are using those functions *within* the `ggplot` function this subsetting and this reordering (as with `as.factor` earlier) are not introducing permanent changes in your original dataset. If you prefer to reorder according to the mean you only need to change that parameter after the `FUN` option (e.g, `FUN = mean`).
 
@@ -569,7 +569,7 @@ ggplot(Boston, aes(x = medv, y = crim)) +
   geom_point()
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-37-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-37-1.png" width="672" />
 
 Each point represents a case in our dataset and the coordinates attached to it in this two dimensional plane are given by their value in the Y (crime) and X (median value of the properties) variables. 
 
@@ -587,7 +587,7 @@ ggplot(Boston, aes(x = medv, y = crim)) +
   geom_point(alpha=.4) #you will have to test different values for alpha
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-38-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-38-1.png" width="672" />
 
 Why this is an issue may be more evident with the `BCS0708 data`. Compare the two plots:
 
@@ -597,7 +597,7 @@ ggplot(BCS0708, aes(x = age, y = tcviolent)) +
   geom_point()
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-39-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-39-1.png" width="672" />
 
 
 ```r
@@ -605,7 +605,7 @@ ggplot(BCS0708, aes(x = age, y = tcviolent)) +
   geom_point(alpha=.2)
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-40-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-40-1.png" width="672" />
 
 The second plot gives us a better idea of where the observations seem to concentrate in a way that we could not see with the first.
 
@@ -619,7 +619,7 @@ ggplot(BCS0708, aes(x = age, y = tcviolent)) +
   geom_point(alpha=.2, position="jitter") #Alternatively you could replace geom_point() with geom_jitter() in which case you don't need to specify the position
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-41-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-41-1.png" width="672" />
 
 Another alternative for solving overplotting is to **bin the data** into rectangles and map the density of the points to the fill of the colour of the rectangles.
 
@@ -629,7 +629,7 @@ ggplot(BCS0708, aes(x = age, y = tcviolent)) +
   stat_bin2d()
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-42-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-42-1.png" width="672" />
 
 
 ```r
@@ -639,7 +639,7 @@ ggplot(BCS0708, aes(x = age, y = tcviolent)) +
   scale_fill_gradient(low = "lightblue", high = "red") #change colors
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-43-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-43-1.png" width="672" />
 
 What this is doing is creating boxes within the two dimensional plane; counting the number of points within those boxes; and attaching a colour to the box in function of the density of points within each of the rectangles.
 
@@ -653,10 +653,11 @@ ggplot(Boston, aes(x = medv, y = crim)) +
 ```
 
 ```
-## Warning: Ignoring unknown parameters: fun.y
+## Warning in geom_line(stat = "summary", fun.y = mean): Ignoring unknown
+## parameters: `fun.y`
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-44-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-44-1.png" width="672" />
 
 With only about 500 cases there are loads of ups and downs. If you have many more cases for each level of X the line would look less rough. You can, in any case, produce a smoother line using `geom_smooth` instead. We will discuss later this semester how this line is computed (although you will see the R output tells you, you are using something call the "loess" method). For now just know that is a line that tries to *estimate*, to guess, the typical value for Y for each value of X.
 
@@ -667,7 +668,12 @@ ggplot(Boston, aes(x = medv, y = crim)) +
   geom_smooth(colour="red", size=1, se=FALSE) #We'll explain later this semester what the se argument does, colour is simply asking for a red line instead of blue (which I personally find harder to see. I'm also making the line a bit thicker with size 1)
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-45-1.pdf)<!-- --> 
+```
+## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+```
+
+<img src="03-visualisation_files/figure-html/unnamed-chunk-45-1.png" width="672" />
 
 As you can see here you produce a smoother line than with the conditional means. The line, as the scatterplot, seems to be suggesting an overall curvilinear relationship that almost flattens out once property values hit $20k. 
 
@@ -684,7 +690,7 @@ ggplot(Boston, aes(x = medv, y = crim, colour = as.factor(chas))) +
   geom_point() 
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-46-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-46-1.png" width="672" />
 
 Curiously, we can see that there's quite a few of those expensive areas with high levels of crime that seem to be located by the river. Maybe that is a particularly attractive area?
 
@@ -697,7 +703,7 @@ ggplot(Boston, aes(x = medv, y = crim, colour = as.factor(chas))) +
   geom_smooth(se=FALSE, size=1) #I am doing the lines thicker to see them better
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-47-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-47-1.png" width="672" />
 
 You can see how the relationship between crime and property values is more marked for areas not bordering the river, mostly because you have considerably fewer cheaper areas bordering the river. Notice as well the upward trend in the green line at high values of *medv*. As we saw there seems to be quite a few of those particularly more expensive areas that have high crime and seem to be by the river.
 
@@ -709,7 +715,7 @@ ggplot(Boston, aes(x = medv, y = crim, colour = lstat)) +
   geom_point() 
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-48-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-48-1.png" width="672" />
 
 As one could predict *lstat* and *medv* seem to be correlated. The areas with low status tend to be the areas with cheaper properties (and more crime) and the areas with higher status tend to be the areas with more expensive properties (and less crime).
 
@@ -721,7 +727,7 @@ ggplot(Boston, aes(x = medv, y = crim, size = lstat)) +
   geom_point() #You may want to add alpha for some transparency here.
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-49-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-49-1.png" width="672" />
 
 If you have larger samples and the patterns are not clear (as we saw when looking at the relationship between age and worry of violent crime) conditioning in a third variable can produce hard to read scatterplots (even if you use transparencies and jittering). Let's look at the relationship between worry for violent crime and age conditioned on victimisation during the previous year:
 
@@ -731,7 +737,7 @@ ggplot(BCS0708, aes(x = age, y = tcviolent, colour = bcsvictim)) +
   geom_point(alpha=.4, position="jitter")
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-50-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-50-1.png" width="672" />
 
 You can possibly notice that there are more green points in the left hand side (since victimisation tend to be more common among youth). But it is hard to read the relationship with age. We could try to use facets instead using `facet_grid`?
 
@@ -742,7 +748,7 @@ ggplot(BCS0708, aes(x = age, y = tcviolent)) +
   facet_grid( .~ bcsvictim)
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-51-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-51-1.png" width="672" />
 
 It is still hard to see anything, though perhaps you can notice the lower density the points in the bottom right corner in the facet displaying victims of crime. In a case like this may be helpful to draw a smooth line
 
@@ -753,7 +759,7 @@ ggplot(BCS0708, aes(x = age, y = tcviolent, colour = bcsvictim)) +
   geom_smooth(size=1.5, se=FALSE)
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-52-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-52-1.png" width="672" />
 
 What we see here is that for the most part the relationship of age and worry for violent crime looks quite flat, regardless of whether you have been a victim of crime or not. At least, for most people. However, once we get to the 60s things seem to change a bit. Those over 62 that have not been a victim of crime in the past year start to manifest a lower concern with crime as they age (in comparison with those that have been a victim of crime).
 
@@ -777,9 +783,9 @@ library(GGally)
 ggpairs(Boston_spm)
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-54-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-54-1.png" width="672" />
 
-The diagonal set of boxes that go from the top left to the bottom right gives you the univariate density plot for each of the variables. So, for example, at the very top left you have the density plot for the *crim* variable. If you look underneath this one, you see a scatterplot between *crim* and *medv*. In this case *crim* defines the X axis and *medv* the Y axis, which is why it looks a bit different from the one we saw earlier. The labels in the top and the left tell you what variables are plot in each faceted rectangle. I the top right hand side of this matrix you see that the rectangles say "corr" and the give you a number. These numbers are **correlation coefficients**, which are a metric we use to indicate the strength of a relationship between two quantitative or numeric variables. The close to one (whether positive or negative) this value is the stronger the relationship is. The closer to zero the weaker the relationship. The stronger relationship here is between *crime* and *medv*. The fact that is negative indicates that as the values in one increase, the values in the other tend to decrease. So high values of crime correspond to low values of property prices -as we saw earlier. This coefficient is a summary number of this relationship. We will come back to it later on. For now keep in mind this metric only works well is the relationship should see in the scatterplot is well represented by a straight line. If the relationship is curvilinear it will be a very bad metric that you should not trust.
+The diagonal set of boxes that go from the top left to the bottom right gives you the univariate density plot for each of the variables. So, for example, at the very top left you have the density plot for the *crim* variable. If you look underneath this one, you see a scatterplot between *crim* and *medv*. In this case *crim* defines the X axis and *medv* the Y axis, which is why it looks a bit different from the one we saw earlier. The labels in the top and the left tell you what variables are plot in each faceted rectangle. I the top right hand side of this matrix you see that the rectangles say "corr" and the give you a number. These numbers are **correlation coefficients**, which are a metric we use to indicate the strength of a relationship between two quantitative or numeric variables. The close to 1.000 (whether positive or negative) this value is the stronger the relationship is. The closer to zero the weaker the relationship. The stronger relationship here is between *medv* and *istat* (correlation coefficient value: -0.738). The fact that is negative indicates that as the values in one increase, the values in the other tend to decrease. So high values of crime correspond to low values of property prices -as we saw earlier. This coefficient is a summary number of this relationship. We will come back to it later on. For now keep in mind this metric only works well is the relationship should see in the scatterplot is well represented by a straight line. If the relationship is curvilinear it will be a very bad metric that you should not trust.
 
 ![](imgs/ggpairs.png){width=80%}
 
@@ -792,7 +798,7 @@ library(car)
 spm(Boston_spm, regLine=FALSE)
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-55-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-55-1.png" width="672" />
 
 This is a bit different from the one above because rather than displaying the values of correlation coefficient, what you get is another set of scatterplot but with the Y and X axis rotated. You can see the matrix is symmetrical. So the first scatterplot that you see in the top row (second column from the left) shows the relationship between *medv* (in the X axis) and *crim* (in the Y axis). Which is the same relationship shown in the first scatterplot in the second row (first column), only here *crim* defines the X axis and *medv* the Y axis. In this scatterplot you can see, although not very well, that smoothed lines representing the relationship have been added to the plots.
 
@@ -802,7 +808,7 @@ library(car)
 spm(Boston_spm, smooth=list(col.smooth="red"), regLine=FALSE)
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-56-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-56-1.png" width="672" />
 
 And you can also condition in a third variable. For example, we could condition on whether the areas bound the Charles River (variable *chas*).
 
@@ -812,7 +818,7 @@ Boston_spm <- dplyr::select(Boston, crim, medv, lstat, chas)
 spm(~crim+medv+lstat, data=Boston_spm, groups=Boston_spm$chas, by.groups=TRUE, smooth=FALSE, regLine=FALSE)
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-57-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-57-1.png" width="672" />
 
 Getting results, once you get the knack of it, is only half of the way. The other, and more important, half is trying to make sense of the results. What are the stories this data is telling us?  R cannot do that for you. For this you need to use a better tool: **your brain** (scepticism, curiosity, creativity, a lifetime of knowledge) and what Kaiser Fung calls ["numbersense"](http://www.amazon.co.uk/Numbersense-How-Data-Your-Advantage/dp/0071799664).
 
@@ -828,7 +834,7 @@ ggplot(Boston, aes(x = medv, y = crim, colour = as.factor(chas))) +
   ggtitle("Fig 1.Crime, Property Value and River Proximity of Boston Towns")
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-58-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-58-1.png" width="672" />
 
 If you don't like the default background theme for `ggplot` you can use a theme as discussed at the start, for example with creating a black and white background by adding `theme_bw()` as a layer:
 
@@ -840,7 +846,7 @@ ggplot(Boston, aes(x = medv, y = crim, colour = as.factor(chas))) +
   theme_bw()
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-59-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-59-1.png" width="672" />
 
 As we said earlier `ggthemes` gives you additional themes you could use. So, for example, you can use the style inspired by *The Economist* magazine.
 
@@ -853,7 +859,7 @@ ggplot(Boston, aes(x = medv, y = crim, colour = as.factor(chas))) +
   theme_economist()
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-60-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-60-1.png" width="672" />
 
 Using `labs()` you can change the text of axis labels (and the legend title), which may be handy if your variables have cryptic names. Equally you can manually name the labels in a legend. The value for *chas* are 0 and 1. This is not informative. We can change that.
 
@@ -868,7 +874,7 @@ ggplot(Boston, aes(x = medv, y = crim, colour = as.factor(chas))) +
   scale_colour_discrete(labels = c("No", "Yes"))
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-61-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-61-1.png" width="672" />
 
 Sometimes you may want to present several plots together. For this the `gridExtra` package is very good. You will first need to install it and then load it. You can then create several plots and put them all in the same image.
 
@@ -884,7 +890,7 @@ p3 <- qplot(x=medv, data=Boston)
 grid.arrange(p1, p2, p3, ncol=3) #ncol tells R we want them side by side, if you want them one in top of the other try ncol=1, in this case, however ncol=2 would possibly be the better solution. Try it!
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-62-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-62-1.png" width="672" />
 
 We don't have time to get into the detail of all the customisation features available for `ggplot2`. You can find some [additional solutions](https://bbc.github.io/rcookbook/) in the cookbook put together by the data journalists at the BBC or in Kieran Healy free online [book](https://socviz.co/).
 
@@ -898,7 +904,7 @@ ggplot(BCS0708, aes(x=walkday)) +
   geom_bar()
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-63-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-63-1.png" width="672" />
 
 You can see in the Y axis the label *count*. This is not a variable in your data. When you run a `geom_bar` like this you are invoking as a hidden default a call to the `stat_` function. In this case what is happening is that this function is *counting* the number of cases in each of the levels of *walkday* and this count is what is used to map the height of each of the bars.
 
@@ -910,7 +916,12 @@ ggplot(BCS0708, aes(x=walkday)) +
   geom_bar(mapping = aes(y = ..prop..))
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-64-1.pdf)<!-- --> 
+```
+## Warning: The dot-dot notation (`..prop..`) was deprecated in ggplot2 3.4.0.
+## ℹ Please use `after_stat(prop)` instead.
+```
+
+<img src="03-visualisation_files/figure-html/unnamed-chunk-64-1.png" width="672" />
 As Kieran Helay (2018) indicates:
 
 *"The resulting plot is still not right. We no longer have a count on the y-axis, but the proportions of the bars all have a value of 1, so all the bars are the same height. We want them to sum to 1, so that we get the number of observations per" (level) "as a proportion of the total number of observations. This is a grouping issue again...  we need to tell ggplot to ignore the x-categories when calculating denominator of the proportion, and use the total number observations instead. To do so we specify group = 1 inside the `aes()` call. The value of 1 is just a kind of “dummy group” that tells ggplot to use the whole dataset when establishing the denominator for its prop calculations."*
@@ -921,7 +932,7 @@ ggplot(BCS0708, aes(x=walkday)) +
   geom_bar(mapping = aes(y = ..prop.., group = 1))
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-65-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-65-1.png" width="672" />
 
 Unfortunately, the levels in this factor are ordered by alphabetical order, which is confusing. We can modify this by reordering the factors levels first -click [here](http://www.cookbook-r.com/Manipulating_data/Changing_the_order_of_levels_of_a_factor/) for more details. You could do this within the `ggplot` function (just for the visualisation), but in real life you would want to sort out your factor levels in an appropriate manner more permanently. As discussed last week, this is the sort of thing you do as part of pre-processing your data. And then plot.
 
@@ -945,7 +956,7 @@ ggplot(subset(BCS0708, !is.na(walkdayR)), aes(x=walkdayR)) +
   geom_bar(mapping = aes(y = ..prop.., group = 1))
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-67-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-67-1.png" width="672" />
 
 We can also map a second variable to the aesthetics, for example, let's look at ethnicity in relation to feelings of safety. For this we produce a **stacked bar chart**.
 
@@ -956,7 +967,7 @@ ggplot(data=bcs_bar, aes(x=walkdayR, fill=ethgrp2)) +
   geom_bar()
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-68-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-68-1.png" width="672" />
 
 These sort of stacked bar charts are not terribly helpful if you are interested in understanding the relationship between these two variables. It is hard to see if any group is proportionally more likely to feel safe or not.
 
@@ -968,7 +979,7 @@ ggplot(data=bcs_bar, aes(x=walkdayR, fill=ethgrp2)) +
   geom_bar(position = "fill")
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-69-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-69-1.png" width="672" />
 
 Now we can more easily compare proportions across groups, since all the bars have the same height. But it is more difficult to see how many people there are within each level of the X variable.
 
@@ -979,7 +990,7 @@ p <- ggplot(data=bcs_bar, aes(x=walkdayR, fill=ethgrp2)) + geom_bar(position = "
 p
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-70-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-70-1.png" width="672" />
 
 Now we have a bar chart where the values of ethnicity are broken down across the levels of fear of crime, with a proportion showing on the y-axis. Looking at the bars you will see that they do not sum to one within each level of fear. Instead, the bars for any particular ethnicity sum to one across all the levels of fear. You can see for example that nearly 75% of the White respondents are in the "Very Safe" level, whereas for example less than 60% of the Black respondents feel "Very Safe".
 
@@ -991,7 +1002,7 @@ Sometimes, you may want to flip the axis, so that the bars are displayed horizon
 p + coord_flip()
 ```
 
-![](03-visualisation_files/figure-latex/unnamed-chunk-71-1.pdf)<!-- --> 
+<img src="03-visualisation_files/figure-html/unnamed-chunk-71-1.png" width="672" />
 
 You can also use `coord_flip()` with other `ggplot` plots (e.g., boxplots).
 
