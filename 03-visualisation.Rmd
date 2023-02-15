@@ -87,7 +87,6 @@ fbo <- clean_names(fbo)
 Now let's explore the question of number of banning orders for clubs in different leagues. But as a first step, let's just plot the number of banning orders for each club. Let's build this plot:
 
 ```{r}
-
 ggplot(data = fbo, aes(x = club_supported, y=banning_orders)) + #data
    geom_point() +                 #geometry
   theme_bw()                     #backgroud coordinate system
@@ -108,8 +107,8 @@ ggplot(data = fbo, aes(x = club_supported, y=banning_orders)) +     #data
 Changing the theme is not all you can do with the third element. For example here you can't really read the axis labels, because they're all overlapping. One solution would be to rotate your axis labels 90 degrees, with the following code: `axis.text.x = element_text(angle = 90, hjust = 1)`. You pass this code to the `theme` argument. 
 
 ```{r}
-ggplot(data = fbo, aes(x = club_supported, y=banning_orders)) +     
-   geom_point() +                                                   
+ggplot(data = fbo, aes(x = club_supported, y=banning_orders)) + 
+  geom_point() + 
   theme(axis.text.x = element_text(angle = 90, hjust = 1))                                   
 ```
 
@@ -200,7 +199,6 @@ This makes the comparison significantly easier, right? But the order is strange!
 
 ```{r}
 fbo$league_of_the_club_supported <- factor(fbo$league_of_the_club_supported, levels = c("Premier League", "Championship", "League One", "League Two", "Other clubs"))
-  
 ```
 
 And now create the plot again!
@@ -253,7 +251,6 @@ We can pass arguments to the the geoms, as you see. Here we are changing the siz
 Let's sum the number of towns with a value lower than 1 in the per capita crime rate. We use the sum function for this, specifying we are only interested in adding cases where the value of the variable *crim* is lower than 1.
 
 ```{r}
-
 sum(Boston$crim < 1)
 ```
 
@@ -272,10 +269,8 @@ Often we visualise data because we want to compare distributions. **Most of data
 How can we create a categorical variable based on information from a quantitative variable? Let's see the following code and pay attention to it and the explanation below.
 
 ```{r}
-
 Boston$lowval[Boston$medv <= 17.02] <- "Low value" 
 Boston$lowval[Boston$medv > 17.02] <- "Higher value"
-
 ```
 
 First we tell R to create a new vector (*lowval*) in the Boston data frame. This vector will be assigned the character value "Low value" when the condition within the square brackets is met. That is, we are saying that whenever the value in *medv* is below 17.02 then the new variable *lowval* will equal "Low value". I have chosen 17.02 as this is the first quartile for *medv*. Then we tell R that when the value is greater than 17.02 we will assign those cases to a new textual category called "Higher Value".
@@ -359,7 +354,6 @@ Did you notice the difference with the comparative histograms? By using density 
 
 Density plots are a good choice when you want to compare up to three groups. If you have many more groups you may want to consider other alternatives. One such alternative is the **ridgeline plot**, also often called the Joy Division plot (since it was immortalised in the cover of one of their albums):
 
-
 ![](imgs/joydivision.png)
 
 They can be produced with the `ggridges` package. Before we dichotomised the variable *medv* in a manual way, we can use more direct ways of splitting numerical variables into various categories using information already embedded on them. Say we want to split *medv* into deciles. We could use the `mutate` function in `dplyr` for this.
@@ -382,8 +376,6 @@ We can now use this new variable to illustrate the use of the `ggridge` package.
 ```{r, message=FALSE}
 library(ggridges)
 ggplot(Boston, aes(x = log10(crim + 1), y = as.factor(dec_medv))) + geom_density_ridges()
-
-
 ```
 
 We can see that the distribution of crime is particularly different when we focus in the three deciles with the lowest level of income. For more details on this kind of plot you can read the [vignette](https://cran.r-project.org/web/packages/ggridges/vignettes/introduction.html) for this package.
