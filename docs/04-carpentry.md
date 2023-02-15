@@ -55,8 +55,7 @@ dim(eb85_3)
 Alternatively, you can import the file from the webiste where we keep the data:
 
 ```r
-urlfile<- "https://www.dropbox.com/s/f2s31sva7s8hzfa/ZA6695_v2-0-0.dta?dl=1"
-eb85_3 <- read_dta(url(urlfile))
+eb85_3 <- read_dta("https://www.dropbox.com/s/f2s31sva7s8hzfa/ZA6695_v2-0-0.dta?dl=1")
 ```
 
 We can see there are 27818 cases (survey participants) and 483 variables. 
@@ -104,12 +103,12 @@ The first thing you need to do is to think about what variables you are going to
 
 For the sake of this exercise we are assuming the thing you are interested in explaining or better understanding is attitudes regarding sexual violence. So, before anything else you would need to spend some time thinking about how this survey measures these attitudes. You would need to screen the questionnaire and the codebook to identify these variables and their names in the dataset. Have a look at the questionnaire. The questions about gender violence start at the bottom of page 7. Which of these questions are questions about attitudes towards sexual violence?
 
-
 Once you have all of this you would need to think about which of these survey questions and items make more sense for your research question. This is something where you will need to use your common sense but also your understanding of the literature in the topic. Criminologists and survey researchers spend a lot of time thinking about what is the best way of asking questions about topics or concepts of interest. They often debate and write about this. In data analysis measurement is key and is the process of systematically assigning numbers to objects and their properties, to facilitate the use of mathematics in studying and describing objects and their relationships. So, as part of your essay, you will need to consider what do researchers consider are good questions to measure, to tap into, the abstract concepts you are studying.
 
 There are many items in this survey that relate to this topic, but for purposes of continuing our illustration we are going to focus on the answers to question *QB10*. This question asks respondents to identify in what circumstances may be justified to have sexual intercourse without consent. The participants are read a list of items (e.g., "flirting before hand") and they can select various of them if so they wish. 
-<img src="imgs/qb10a.png" width="960" />
 
+
+\includegraphics[width=26.65in]{imgs/qb10a} 
 
 What name is associated with this variable? Well you can see that depending on which thing they asked about, it might be `qb10_1`, `qb10_2`, `qb10_3`, etc etc!
 
@@ -305,7 +304,7 @@ Pay attention to the code above. When we want to recode based in a condition we 
 
 Notice that once we do the recoding and rerun the frequency distribution you will see we achieved what we wanted. Now all those missing cases are not counted as zero.
 
-Summated scales like the one we created here are quick and not the most kosher way of combining several questions into a single measure. In research methods you probably learnt that we often work with theoretical constructs that we do not observe directly (e.g., self control, anomie, collective efficacy, etc.). We often call these **latent variables**. In order to study these constructs we create measures or scales that are based in **observed variables** (those we actually include and ask in the survey). [This](https://www.ismanet.org/doctoryourspirit/pdfs/Beck-Depression-Inventory-BDI.pdf) is a famous measure of *depression* often used in research. As you can see we have different questions (our oberved variables) that we think are related to our latent or not observed (directly) variable (*depression*). You can also see there are several items or questions all of which we researchers think are linked to depression in this scale. If you provide positive answers to many of these questions we may think that you have this unobserved thing we call *depression*. 
+Summated scales like the one we created here are quick and not the most kosher way of combining several questions into a single measure. In research methods you probably learnt that we often work with theoretical constructs that we do not observe directly (e.g., self control, anomie, collective efficacy, etc.). We often call these **latent variables**. In order to study these constructs we create measures or scales that are based in **observed variables** (those we actually include and ask in the survey). [This](https://www.ismanet.org/doctoryourspirit/pdfs/Beck-Depression-Inventory-BDI.pdf) is a famous measure of *depression* often used in research. As you can see we have different questions (our oberved variables) that we think are related to our latent or not observed (directly) variable (*depression*). You can also see there are several items or questions all of which we researchers think are linked to depression in this scale. If you provide positive answers to many of these questions we may think that you have this unobserved thing we call *depression*.
 
 When measuring latent variables it is a good idea to have multiple items that all capture aspects of the unobserved variable we are really interested in measuring. There is a whole field of statistics that focuses in how to analise if your observed variables are good indicators of your unobserved variable (**psychometry** is how we call this field in psychology) and also that focuses on how to best combine the answers to our observed variables in a single score (**latent variable modelling**). Some of the scores in the Crime Survey for England and Wales that you may use for your essay have been created with this more advanced methods (some of the measures on confidence in the police, for example). Summated scales are not really the best way to do this. But these are more advanced topics that are covered in upper level undergraduate or postgraduate courses. So for now, we will use summated scales as a convenient if imperfect way of aggregating observed variables.
 
@@ -349,11 +348,9 @@ class(df$isocntry)
 
 Ok, this is a categorical unordered variable, we know that. But this kind of variables could be encoded into R as either *character* vectors, *factor* variables, or as we have seen as well as *haven_labelled*. How you recode a variable is contingent in how it is encoded. Here we are going to show you how you would do the recoding with a *character* variable such as *isocntry* into another character variable we will call *region*. We will see later examples for how to recode *factors*.
 
-
 We will have a variable with four new categories (Western, Southern, Eastern, and Northern) whenever the right conditions are met. For this we can use the `case_when()` function, also from the `dplyr` package. What this does, is it goes through every *case*, and does something *when* it is true. We wrap this in the `mutate()` function, which allows us to create a new variable. We'll call this new variable "region". 
 
 First, let's create four lists, which contain the codes for countries we would like to code Western, Eastern, Northern, and Southern: 
-
 
 
 ```r
@@ -404,7 +401,7 @@ library(vcd)
 mosaic(~region + at_sexviol, data = df)
 ```
 
-<img src="04-carpentry_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+![](04-carpentry_files/figure-latex/unnamed-chunk-22-1.pdf)<!-- --> 
 
 In a mosaic plot like this the height of the region levels indicate how big that group is. You can see there are many more observations in our sample that come from Western countries than from Northern countries. Here what we are interested is the length. We see that Northern countries have proportionally more people in the zero category than any other group. On the other hand, Eastern countries have the fewer zeros (so looking as if attitudes more permissive towards sexual violence are more common there, even if still a minority). We will come back to this kind of plots later on this semester.
 
@@ -669,7 +666,6 @@ levels(df$occup2) <- list("Self-employed" =
                           "Retired" =  "Retired, unable to work",
                           "Student" = "Student")
 ```
-
 
 One of the things you need to be very careful with when recoding factors or character variables is that you need to input the chunk of texts in the existing variables exactly as they appear in the variable. Otherwise you will get into trouble. So, for example, if in the code above you wrote `fishermen` instead of `Fisherman` you would have 14 less cases in the `Self-Employed` level than you should have. When doing this kind of operations is always convenient to check that the categories add up correctly.
 
@@ -1079,12 +1075,10 @@ vis_dat(df_f)
 
 ```
 ## Warning: `gather_()` was deprecated in tidyr 1.2.0.
-## ℹ Please use `gather()` instead.
-## ℹ The deprecated feature was likely used in the visdat package.
-##   Please report the issue at <]8;;https://github.com/ropensci/visdat/issueshttps://github.com/ropensci/visdat/issues]8;;>.
+## Please use `gather()` instead.
 ```
 
-<img src="04-carpentry_files/figure-html/unnamed-chunk-55-1.png" width="672" />
+![](04-carpentry_files/figure-latex/unnamed-chunk-55-1.pdf)<!-- --> 
 
 Nice one! You get a visual representations of how your variables are encoded in this dataframe. You have several categorical variables such as region, f_gender, f_urban, and f_occup. We see that region is encoded as a `character` vector, whereas the others are `factors`. For the purposes of this course, it is generally better to have your categorical variables encoded as factors. So one of the next steps in our data prep may be to recode region as a factor. 
 
@@ -1113,18 +1107,15 @@ The othe piece of info you get with `vis_dat` is the prevalence of missing data 
 vis_miss(df_f)
 ```
 
-<img src="04-carpentry_files/figure-html/unnamed-chunk-59-1.png" width="672" />
+![](04-carpentry_files/figure-latex/unnamed-chunk-59-1.pdf)<!-- --> 
 
 You can find more details about how to explore missing data in the vignette of the `naniar` package [here](http://naniar.njtierney.com/articles/getting-started-w-naniar.html).
 
-
 ## A quick recap on descriptive statistics
-
 
 You have covered this extensively last semester, and we have also touched on this in the last three weeks, but just as a quick refresher. We can have a review of some descriptive statistics to end the week. 
 
 ### Central Tendency
-
 
 Central tendency refers to a descriptive summary of the centre of the data’s distribution; it takes the form of a single number that is meant to represent the middle or average of the data. The **mean**, **median**, and **mode** are common statistics of the central tendency. 
 
@@ -1242,7 +1233,6 @@ For categorical variables, a frequency table might show distribution, or again a
 
 ### Bivariate analysis
 
-
 We've touched on this already in week two, when we looked at using the `group_by()` and `summarise()` functions. Look back at week 2 for more detail. But for example, if we wanted to know what is the mean political score broken down by occupation, we would answer that question using these two functions: 
 
 
@@ -1256,7 +1246,7 @@ politics_by_occ
 ```
 
 ```
-## # A tibble: 18 × 2
+## # A tibble: 18 x 2
 ##    f_occup                                       mean_poli_score
 ##    <fct>                                                   <dbl>
 ##  1 Responsible for ordinary shopping, etc.                  5.23
@@ -1280,7 +1270,6 @@ politics_by_occ
 ```
 
 We can now begin to hypothesise whether there are differences political leanings between different occupations. Next week we will continue to expand on how we might actually go about generalising our conclusions from these observed descriptive analyses. 
-
 
 ## Further resources
 

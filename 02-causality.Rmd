@@ -45,15 +45,15 @@ You could just click "download" and then place the file in your project director
 urlfile <- "https://dataverse.harvard.edu/api/access/datafile/3036350"
 ```
 
-This  data file is a STATA .dta file in our working directory. To read STATA files we will need the *haven* package. This is a package developed for importing different kind of data files into R. If you don't have it you will need to install it. And then load it.
+This  data file is a STATA.dta file in our working directory. To read STATA files we will need the *haven* package. This is a package developed for importing different kind of data files into R. If you don't have it you will need to install it. And then load it.
 
 ```{r}
 library(haven)
 #Now we can use the 'read_dta' function, within this function we will
-#pass an argument, url, specifying to the read_dta function the need to
+#pass an argument, urlfile, specifying to the read_dta function the need to
 #make a url connection. The url function takes as an argument the url
 #we are using and that we encoded in the urlfile object in our case.
-banbox <- read_dta(url(urlfile))
+banbox <- read_dta(urlfile)
 ```
 
 You will need to pay attention to the file extension, to find the appropriate function to read in your file. For example, if something has the extension `.sav` that is a file used by the software SPSS. To read this, you would use the `read_spss()` function, also in the haven package. 

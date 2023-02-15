@@ -61,12 +61,9 @@ Let's have a look at some data about [banning orders](https://www.gov.uk/governm
 First you need to read the data. We keep this data in a website and you can download it with the following code:
 
 ```{r}
-# save URL into an object
-urlfile <- "https://raw.githubusercontent.com/eonk/dar_book/main/datasets/FootbalBanningOrders.csv"
-
-# load readr library and use read_csv() function
+# load readr library and import the data using read_csv() function
 library(readr)
-fbo <- read_csv(url(urlfile))
+fbo <- read_csv("https://raw.githubusercontent.com/eonk/dar_book/main/datasets/FootbalBanningOrders.csv")
 ```
 
 You can also find this on the Blackboard page for this week's learning materials. If you download from there, make sure to save this file in your project directory, possibly in a subfolder called "Datasets". Then you can read in from there.
@@ -804,8 +801,14 @@ Fourth, **resources for visualisations we don't have the time to cover**. R is w
 
 For example, if you like maps, **R can also be used to produce visualisations of spatial data**. There are various resources to learn how to do this and we teach this in our *Crime Mapping* module in the third year.
 
+
+
 [^1]: Tufte, Edward (2001) *The visual display of quantitative information.* 2nd Edition. Graphic Press.
+
 [^2]: Few, Stephen (2012) *Show me the numbers: designing graphics and tables to enlighten.* 2nd Edition. Analytics Press.
+
 [^3]: Cairo, Alberto (2016) *The truthful art: data, charts, and maps for communication.* New Riders.
+
 [^4]: Split into two groups.
+
 [^5]: [This](http://tomhopper.me/2010/08/30/graphing-highly-skewed-data/) is an interesting blog entry in solutions when you have highly skewed data. 

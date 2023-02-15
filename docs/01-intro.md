@@ -632,21 +632,37 @@ skim(hate_crimes)
 ```
 
 
-|skim_type |skim_variable               | n_missing| complete_rate| character.min| character.max| character.empty| character.n_unique| character.whitespace| numeric.mean|   numeric.sd|   numeric.p0|  numeric.p25|  numeric.p50|  numeric.p75| numeric.p100|numeric.hist |
-|:---------|:---------------------------|---------:|-------------:|-------------:|-------------:|---------------:|------------------:|--------------------:|------------:|------------:|------------:|------------:|------------:|------------:|------------:|:------------|
-|character |state                       |         0|     1.0000000|             4|            20|               0|                 51|                    0|           NA|           NA|           NA|           NA|           NA|           NA|           NA|NA           |
-|character |state_abbrev                |         0|     1.0000000|             2|             2|               0|                 51|                    0|           NA|           NA|           NA|           NA|           NA|           NA|           NA|NA           |
-|numeric   |median_house_inc            |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 5.522361e+04| 9208.4781698| 3.552100e+04| 4.865700e+04| 5.491600e+04| 6.071900e+04| 76165.000000|▂▆▇▅▂        |
-|numeric   |share_unemp_seas            |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 4.956860e-02|    0.0106981| 2.800000e-02| 4.200000e-02| 5.100000e-02| 5.750000e-02|     0.073000|▅▇▇▇▂        |
-|numeric   |share_pop_metro             |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 7.501961e-01|    0.1815873| 3.100000e-01| 6.300000e-01| 7.900000e-01| 8.950000e-01|     1.000000|▁▂▅▆▇        |
-|numeric   |share_pop_hs                |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 8.691176e-01|    0.0340732| 7.990000e-01| 8.405000e-01| 8.740000e-01| 8.980000e-01|     0.918000|▃▅▃▆▇        |
-|numeric   |share_non_citizen           |         3|     0.9411765|            NA|            NA|              NA|                 NA|                   NA| 5.458330e-02|    0.0310770| 1.000000e-02| 3.000000e-02| 4.500000e-02| 8.000000e-02|     0.130000|▇▆▆▂▂        |
-|numeric   |share_white_poverty         |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 9.176470e-02|    0.0247148| 4.000000e-02| 7.500000e-02| 9.000000e-02| 1.000000e-01|     0.170000|▂▇▃▂▁        |
-|numeric   |gini_index                  |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 4.537647e-01|    0.0208908| 4.190000e-01| 4.400000e-01| 4.540000e-01| 4.665000e-01|     0.532000|▆▇▅▁▁        |
-|numeric   |share_non_white             |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 3.156863e-01|    0.1649152| 6.000000e-02| 1.950000e-01| 2.800000e-01| 4.200000e-01|     0.810000|▇▇▆▂▁        |
-|numeric   |share_vote_trump            |         0|     1.0000000|            NA|            NA|              NA|                 NA|                   NA| 4.900000e-01|    0.1187097| 4.000000e-02| 4.150000e-01| 4.900000e-01| 5.750000e-01|     0.700000|▁▁▆▇▇        |
-|numeric   |hate_crimes_per_100k_splc   |         4|     0.9215686|            NA|            NA|              NA|                 NA|                   NA| 3.040930e-01|    0.2527086| 6.744680e-02| 1.427066e-01| 2.261971e-01| 3.569347e-01|     1.522302|▇▂▁▁▁        |
-|numeric   |avg_hatecrimes_per_100k_fbi |         1|     0.9803922|            NA|            NA|              NA|                 NA|                   NA| 2.367613e+00|    1.7142450| 2.669408e-01| 1.293139e+00| 1.987068e+00| 3.184344e+00|    10.953480|▇▅▁▁▁        |
+\begin{tabular}{l|l|r|r|r|r|r|r|r|r|r|r|r|r|r|r|l}
+\hline
+skim\_type & skim\_variable & n\_missing & complete\_rate & character.min & character.max & character.empty & character.n\_unique & character.whitespace & numeric.mean & numeric.sd & numeric.p0 & numeric.p25 & numeric.p50 & numeric.p75 & numeric.p100 & numeric.hist\\
+\hline
+character & state & 0 & 1.0000000 & 4 & 20 & 0 & 51 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
+\hline
+character & state\_abbrev & 0 & 1.0000000 & 2 & 2 & 0 & 51 & 0 & NA & NA & NA & NA & NA & NA & NA & NA\\
+\hline
+numeric & median\_house\_inc & 0 & 1.0000000 & NA & NA & NA & NA & NA & 5.522361e+04 & 9208.4781698 & 3.552100e+04 & 4.865700e+04 & 5.491600e+04 & 6.071900e+04 & 76165.000000 & ▂▆▇▅▂\\
+\hline
+numeric & share\_unemp\_seas & 0 & 1.0000000 & NA & NA & NA & NA & NA & 4.956860e-02 & 0.0106981 & 2.800000e-02 & 4.200000e-02 & 5.100000e-02 & 5.750000e-02 & 0.073000 & ▅▇▇▇▂\\
+\hline
+numeric & share\_pop\_metro & 0 & 1.0000000 & NA & NA & NA & NA & NA & 7.501961e-01 & 0.1815873 & 3.100000e-01 & 6.300000e-01 & 7.900000e-01 & 8.950000e-01 & 1.000000 & ▁▂▅▆▇\\
+\hline
+numeric & share\_pop\_hs & 0 & 1.0000000 & NA & NA & NA & NA & NA & 8.691176e-01 & 0.0340732 & 7.990000e-01 & 8.405000e-01 & 8.740000e-01 & 8.980000e-01 & 0.918000 & ▃▅▃▆▇\\
+\hline
+numeric & share\_non\_citizen & 3 & 0.9411765 & NA & NA & NA & NA & NA & 5.458330e-02 & 0.0310770 & 1.000000e-02 & 3.000000e-02 & 4.500000e-02 & 8.000000e-02 & 0.130000 & ▇▆▆▂▂\\
+\hline
+numeric & share\_white\_poverty & 0 & 1.0000000 & NA & NA & NA & NA & NA & 9.176470e-02 & 0.0247148 & 4.000000e-02 & 7.500000e-02 & 9.000000e-02 & 1.000000e-01 & 0.170000 & ▂▇▃▂▁\\
+\hline
+numeric & gini\_index & 0 & 1.0000000 & NA & NA & NA & NA & NA & 4.537647e-01 & 0.0208908 & 4.190000e-01 & 4.400000e-01 & 4.540000e-01 & 4.665000e-01 & 0.532000 & ▆▇▅▁▁\\
+\hline
+numeric & share\_non\_white & 0 & 1.0000000 & NA & NA & NA & NA & NA & 3.156863e-01 & 0.1649152 & 6.000000e-02 & 1.950000e-01 & 2.800000e-01 & 4.200000e-01 & 0.810000 & ▇▇▆▂▁\\
+\hline
+numeric & share\_vote\_trump & 0 & 1.0000000 & NA & NA & NA & NA & NA & 4.900000e-01 & 0.1187097 & 4.000000e-02 & 4.150000e-01 & 4.900000e-01 & 5.750000e-01 & 0.700000 & ▁▁▆▇▇\\
+\hline
+numeric & hate\_crimes\_per\_100k\_splc & 4 & 0.9215686 & NA & NA & NA & NA & NA & 3.040930e-01 & 0.2527086 & 6.744680e-02 & 1.427066e-01 & 2.261971e-01 & 3.569347e-01 & 1.522302 & ▇▂▁▁▁\\
+\hline
+numeric & avg\_hatecrimes\_per\_100k\_fbi & 1 & 0.9803922 & NA & NA & NA & NA & NA & 2.367613e+00 & 1.7142450 & 2.669408e-01 & 1.293139e+00 & 1.987068e+00 & 3.184344e+00 & 10.953480 & ▇▅▁▁▁\\
+\hline
+\end{tabular}
 
 Apart from summary statistics, last semester we discussed a variety of ways to graphically display variables. In week 3 of 'Making Sense of Criminological Data' covered scatterplots, a graphical device to show the relationship between two quantitative variables. I don't know if you remember the amount of point and click you had to do in Excel for getting this done. If not you can review the notes [here](https://maczokni.github.io/MSCD_labs/week3.html).
 
@@ -738,6 +754,34 @@ Now can you clearly understand what **factor** means in R? Factors are used to r
 
 ![](imgs/as_factor.png){width=80%}
 
+## How to import data
+
+Programmers are lazy, and the whole point of using code-based interfaces is that we get to avoid doing unneccessary work, like point-and-click downloading of files. And when data exists online in a suitable format, we can tell R to read the data in from the web directly, and cut out the middle man (that being ourseves in our pointing-and-clicking activity). 
+
+How can we do this? Well think about what we do when we read in a file. We say, hello R, i would like to create a new object please and I will call this new object `my_dataframe`. We do this by typing the name we are giving the object and the assignment function `<-`(assignment operator), Right? Then on the right hand side of the assignment function, there is the value that we are assigning the variable. So it could be a bit of text (such as when you're creating a `urlfile` object and you pass it the string `"path to my file"`), or it could be some function, for example when you read a csv file with the `read_csv()` function. 
+
+So if we're reading a csv, we also need to specify *where* to read the csv from. Where should R look to find this data? This is where normally you are putting in the path to your file, right? Something like: 
+
+
+```r
+my_dataframe <- read_csv('PATH_OR_URL_TO_CSV_FILE')
+```
+
+Well what if your data does not live on your laptop or PC? Well, if there is a way that R can still access this data just by following a path, then this approach will still work! So how can we apply this to getting the Licensed Premises data from the web? 
+
+You know when you right click on the link, and select "Save As..." or whatever you click on to save? You could, also select "Copy Link Address". This just copies the webpage where this data is stored. Give it a go! Copy the address, and then paste it into your browser. It will take you to a blank page where a forced download of the data will begin. So what if you pasted this into the `read_csv()` function? 
+
+
+```r
+my_dataframe <- read_csv("www.data.com/data you want to import.csv")
+#file.choose() brings up a file explorer window that allows you to interactively choose a file path to work with.
+my_dataframe <- read_csv(file.choose())
+```
+
+Well in this case, the my_data object would be assigned the value returned from the read.csv() function reading in the file from the 'urlfile' you provided. File path is no mysterious thing, file path is simply the *path* to the *file* you want to read. If this is a website, then so be it. 
+
+R also can read Stata (.dta) files using the `read_dta()` function in the Haven package, SPSS (.sav) files using the `read_spss()` function also in the Haven Package. There are so many different ways, codes we can use to import data into R. In this course, you will learn one by one! 
+
 ## How to use 'comment'
 In the bits of code above, you will have noticed parts that were grayed out. See for example in the last example provided. You can see that after the hashtag, all the text is being grayed out. What is this? What's going on? 
 
@@ -753,7 +797,7 @@ Just keep in mind:
 
 + You can use spaces after (its not like a hashtag on twitter). 
 
-## Quitting RStudio
+## How to Quit RStudio
 At some point, you will quit your R/R Studio session. I know, hard to visualise, right? Why would you want to do that? Anyhow, when that happens R Studio will ask you a hard question: "Save work space image to bla bla bla/.RData?" What to do? What does that even mean?
 
 If you say "yes" what will happen is that all the objects you have in your environment will be preserved, alongside the *History* (which you can access in the top right set of windows) listing all the functions you have run within your session. So, next time you open this project all will be there. If you think that what is *real* is those objects and that history, well then you may think that's what you want to do.

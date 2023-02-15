@@ -467,6 +467,32 @@ Now can you clearly understand what **factor** means in R? Factors are used to r
 
 ![](imgs/as_factor.png){width=80%}
 
+## How to import data
+
+Programmers are lazy, and the whole point of using code-based interfaces is that we get to avoid doing unneccessary work, like point-and-click downloading of files. And when data exists online in a suitable format, we can tell R to read the data in from the web directly, and cut out the middle man (that being ourseves in our pointing-and-clicking activity). 
+
+How can we do this? Well think about what we do when we read in a file. We say, hello R, i would like to create a new object please and I will call this new object `my_dataframe`. We do this by typing the name we are giving the object and the assignment function `<-`(assignment operator), Right? Then on the right hand side of the assignment function, there is the value that we are assigning the variable. So it could be a bit of text (such as when you're creating a `urlfile` object and you pass it the string `"path to my file"`), or it could be some function, for example when you read a csv file with the `read_csv()` function. 
+
+So if we're reading a csv, we also need to specify *where* to read the csv from. Where should R look to find this data? This is where normally you are putting in the path to your file, right? Something like: 
+
+```{r, eval=FALSE}
+my_dataframe <- read_csv('PATH_OR_URL_TO_CSV_FILE')
+```
+
+Well what if your data does not live on your laptop or PC? Well, if there is a way that R can still access this data just by following a path, then this approach will still work! So how can we apply this to getting the Licensed Premises data from the web? 
+
+You know when you right click on the link, and select "Save As..." or whatever you click on to save? You could, also select "Copy Link Address". This just copies the webpage where this data is stored. Give it a go! Copy the address, and then paste it into your browser. It will take you to a blank page where a forced download of the data will begin. So what if you pasted this into the `read_csv()` function? 
+
+```{r, eval=FALSE}
+my_dataframe <- read_csv("www.data.com/data you want to import.csv")
+#file.choose() brings up a file explorer window that allows you to interactively choose a file path to work with.
+my_dataframe <- read_csv(file.choose())
+```
+
+Well in this case, the my_data object would be assigned the value returned from the read.csv() function reading in the file from the 'urlfile' you provided. File path is no mysterious thing, file path is simply the *path* to the *file* you want to read. If this is a website, then so be it. 
+
+R also can read Stata (.dta) files using the `read_dta()` function in the Haven package, SPSS (.sav) files using the `read_spss()` function also in the Haven Package. There are so many different ways, codes we can use to import data into R. In this course, you will learn one by one! 
+
 ## How to use 'comment'
 In the bits of code above, you will have noticed parts that were grayed out. See for example in the last example provided. You can see that after the hashtag, all the text is being grayed out. What is this? What's going on? 
 
@@ -482,7 +508,7 @@ Just keep in mind:
 
 + You can use spaces after (its not like a hashtag on twitter). 
 
-## Quitting RStudio
+## How to Quit RStudio
 At some point, you will quit your R/R Studio session. I know, hard to visualise, right? Why would you want to do that? Anyhow, when that happens R Studio will ask you a hard question: "Save work space image to bla bla bla/.RData?" What to do? What does that even mean?
 
 If you say "yes" what will happen is that all the objects you have in your environment will be preserved, alongside the *History* (which you can access in the top right set of windows) listing all the functions you have run within your session. So, next time you open this project all will be there. If you think that what is *real* is those objects and that history, well then you may think that's what you want to do.

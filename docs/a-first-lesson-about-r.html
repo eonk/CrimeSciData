@@ -23,7 +23,7 @@
 <meta name="author" content="Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)" />
 
 
-<meta name="date" content="2023-02-14" />
+<meta name="date" content="2023-02-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -92,7 +92,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -105,7 +105,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -152,9 +152,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.11" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#r-object-types-data-frame"><i class="fa fa-check"></i><b>1.11</b> R object types: Data frame</a></li>
 <li class="chapter" data-level="1.12" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#exploring-data"><i class="fa fa-check"></i><b>1.12</b> Exploring data</a></li>
 <li class="chapter" data-level="1.13" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#r-data-types-factors"><i class="fa fa-check"></i><b>1.13</b> R data types: Factors</a></li>
-<li class="chapter" data-level="1.14" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#how-to-use-comment"><i class="fa fa-check"></i><b>1.14</b> How to use ‘comment’</a></li>
-<li class="chapter" data-level="1.15" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#quitting-rstudio"><i class="fa fa-check"></i><b>1.15</b> Quitting RStudio</a></li>
-<li class="chapter" data-level="1.16" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#summary-exercise-for-this-week"><i class="fa fa-check"></i><b>1.16</b> Summary: exercise for this week</a></li>
+<li class="chapter" data-level="1.14" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#how-to-import-data"><i class="fa fa-check"></i><b>1.14</b> How to import data</a></li>
+<li class="chapter" data-level="1.15" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#how-to-use-comment"><i class="fa fa-check"></i><b>1.15</b> How to use ‘comment’</a></li>
+<li class="chapter" data-level="1.16" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#how-to-quit-rstudio"><i class="fa fa-check"></i><b>1.16</b> How to Quit RStudio</a></li>
+<li class="chapter" data-level="1.17" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#summary-exercise-for-this-week"><i class="fa fa-check"></i><b>1.17</b> Summary: exercise for this week</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html"><i class="fa fa-check"></i><b>2</b> Getting to know your data</a>
 <ul>
@@ -958,8 +959,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now can you clearly understand what <strong>factor</strong> means in R? Factors are used to represent categorical data. Once created, factors can contain pre-defined set values, known as <code>levels</code>. Like we just converted 6 character data (<code>house</code>) into 4 factor data! (<code>house_f</code>).</p>
 <p><img src="imgs/as_factor.png" style="width:80.0%" /></p>
 </div>
-<div id="how-to-use-comment" class="section level2 hasAnchor" number="1.14">
-<h2><span class="header-section-number">1.14</span> How to use ‘comment’<a href="a-first-lesson-about-r.html#how-to-use-comment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="how-to-import-data" class="section level2 hasAnchor" number="1.14">
+<h2><span class="header-section-number">1.14</span> How to import data<a href="a-first-lesson-about-r.html#how-to-import-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Programmers are lazy, and the whole point of using code-based interfaces is that we get to avoid doing unneccessary work, like point-and-click downloading of files. And when data exists online in a suitable format, we can tell R to read the data in from the web directly, and cut out the middle man (that being ourseves in our pointing-and-clicking activity).</p>
+<p>How can we do this? Well think about what we do when we read in a file. We say, hello R, i would like to create a new object please and I will call this new object <code>my_dataframe</code>. We do this by typing the name we are giving the object and the assignment function <code>&lt;-</code>(assignment operator), Right? Then on the right hand side of the assignment function, there is the value that we are assigning the variable. So it could be a bit of text (such as when you’re creating a <code>urlfile</code> object and you pass it the string <code>"path to my file"</code>), or it could be some function, for example when you read a csv file with the <code>read_csv()</code> function.</p>
+<p>So if we’re reading a csv, we also need to specify <em>where</em> to read the csv from. Where should R look to find this data? This is where normally you are putting in the path to your file, right? Something like:</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="a-first-lesson-about-r.html#cb66-1" aria-hidden="true" tabindex="-1"></a>my_dataframe <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&#39;PATH_OR_URL_TO_CSV_FILE&#39;</span>)</span></code></pre></div>
+<p>Well what if your data does not live on your laptop or PC? Well, if there is a way that R can still access this data just by following a path, then this approach will still work! So how can we apply this to getting the Licensed Premises data from the web?</p>
+<p>You know when you right click on the link, and select “Save As…” or whatever you click on to save? You could, also select “Copy Link Address”. This just copies the webpage where this data is stored. Give it a go! Copy the address, and then paste it into your browser. It will take you to a blank page where a forced download of the data will begin. So what if you pasted this into the <code>read_csv()</code> function?</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="a-first-lesson-about-r.html#cb67-1" aria-hidden="true" tabindex="-1"></a>my_dataframe <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;www.data.com/data you want to import.csv&quot;</span>)</span>
+<span id="cb67-2"><a href="a-first-lesson-about-r.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="co">#file.choose() brings up a file explorer window that allows you to interactively choose a file path to work with.</span></span>
+<span id="cb67-3"><a href="a-first-lesson-about-r.html#cb67-3" aria-hidden="true" tabindex="-1"></a>my_dataframe <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">file.choose</span>())</span></code></pre></div>
+<p>Well in this case, the my_data object would be assigned the value returned from the read.csv() function reading in the file from the ‘urlfile’ you provided. File path is no mysterious thing, file path is simply the <em>path</em> to the <em>file</em> you want to read. If this is a website, then so be it.</p>
+<p>R also can read Stata (.dta) files using the <code>read_dta()</code> function in the Haven package, SPSS (.sav) files using the <code>read_spss()</code> function also in the Haven Package. There are so many different ways, codes we can use to import data into R. In this course, you will learn one by one!</p>
+</div>
+<div id="how-to-use-comment" class="section level2 hasAnchor" number="1.15">
+<h2><span class="header-section-number">1.15</span> How to use ‘comment’<a href="a-first-lesson-about-r.html#how-to-use-comment" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In the bits of code above, you will have noticed parts that were grayed out. See for example in the last example provided. You can see that after the hashtag, all the text is being grayed out. What is this? What’s going on?</p>
 <p>These are <strong>comments</strong>. Comments are simply annotations that R will know is not code (and therefore doesn’t attempt to understand and execute). We use the hash-tag symbol to specify to R that what comes after is not programming code, but simply bits of notes that we write to remind ourselves what the code is actually doing. Including these comments will help you to understand your code when you come back to it.</p>
 <p>To create a comment you use the hashtag/ number sign <code>#</code> followed by some text. Whenever the R engine sees the number sign it knows that what follows is not code to be executed. You can use this sign to include <em>annotations</em> when you are coding. These annotations are a helpful reminder to yourself (and others reading your code) of <strong>what</strong> the code is doing and (even more important) <strong>why</strong> you are doing it.</p>
@@ -970,8 +985,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>You can use spaces after (its not like a hashtag on twitter).</p></li>
 </ul>
 </div>
-<div id="quitting-rstudio" class="section level2 hasAnchor" number="1.15">
-<h2><span class="header-section-number">1.15</span> Quitting RStudio<a href="a-first-lesson-about-r.html#quitting-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="how-to-quit-rstudio" class="section level2 hasAnchor" number="1.16">
+<h2><span class="header-section-number">1.16</span> How to Quit RStudio<a href="a-first-lesson-about-r.html#how-to-quit-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>At some point, you will quit your R/R Studio session. I know, hard to visualise, right? Why would you want to do that? Anyhow, when that happens R Studio will ask you a hard question: “Save work space image to bla bla bla/.RData?” What to do? What does that even mean?</p>
 <p>If you say “yes” what will happen is that all the objects you have in your environment will be preserved, alongside the <em>History</em> (which you can access in the top right set of windows) listing all the functions you have run within your session. So, next time you open this project all will be there. If you think that what is <em>real</em> is those objects and that history, well then you may think that’s what you want to do.</p>
 <p>Truth is what is real is your scripts and the data that your scripts use as inputs. You don’t need anything that is in your environment, because you can recreate those things by re-running your scripts. I like keeping things tidy, so when I am asked whether I want to save the image, my answer is always no. Most long time users of R never save the workspace, nor care about saving the history either. Remember what is real is your scripts and the data.</p>
@@ -979,8 +994,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>What is more. I would suggest you go to the Tools drop down menu, select Global Options, and make sure you select “Never” where it says “Save workspace”. Then click “Apply”. This way you will never be asked to save what is in your global environment when you terminate a session.</p>
 <p><img src="https://user-images.githubusercontent.com/98951792/215292052-cbb36812-e7a7-4a7f-b2e4-57ea93918274.png"></p>
 </div>
-<div id="summary-exercise-for-this-week" class="section level2 hasAnchor" number="1.16">
-<h2><span class="header-section-number">1.16</span> Summary: exercise for this week<a href="a-first-lesson-about-r.html#summary-exercise-for-this-week" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="summary-exercise-for-this-week" class="section level2 hasAnchor" number="1.17">
+<h2><span class="header-section-number">1.17</span> Summary: exercise for this week<a href="a-first-lesson-about-r.html#summary-exercise-for-this-week" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Once you finish your lab session, don’t forget to do this <a href="https://eonk.shinyapps.io/MCD_ex">Exercise</a> and have a chance to sum-up this week’s R codes.</p>
 
 </div>
