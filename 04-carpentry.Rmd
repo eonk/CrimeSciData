@@ -50,6 +50,7 @@ dim(eb85_3)
 Alternatively, you can import the file from the webiste where we keep the data:
 ```{r}
 eb85_3 <- read_dta("https://www.dropbox.com/s/f2s31sva7s8hzfa/ZA6695_v2-0-0.dta?dl=1")
+dim(eb85_3)
 ```
 
 We can see there are `r nrow(eb85_3)` cases (survey participants) and `r ncol(eb85_3)` variables. 

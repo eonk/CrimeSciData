@@ -758,27 +758,32 @@ Now can you clearly understand what **factor** means in R? Factors are used to r
 
 Programmers are lazy, and the whole point of using code-based interfaces is that we get to avoid doing unneccessary work, like point-and-click downloading of files. And when data exists online in a suitable format, we can tell R to read the data in from the web directly, and cut out the middle man (that being ourseves in our pointing-and-clicking activity). 
 
-How can we do this? Well think about what we do when we read in a file. We say, hello R, i would like to create a new object please and I will call this new object `my_dataframe`. We do this by typing the name we are giving the object and the assignment function `<-`(assignment operator), Right? Then on the right hand side of the assignment function, there is the value that we are assigning the variable. So it could be a bit of text (such as when you're creating a `urlfile` object and you pass it the string `"path to my file"`), or it could be some function, for example when you read a csv file with the `read_csv()` function. 
+How can we do this? Well think about what we do when we read in a file. We say, "Dear R, I would like to create a new object please and I will call this new object `my_dataframe`". We do this by typing the name we are giving the object and the assignment function `<-`(assignment operator). Then on the right hand side of the assignment function, there is the value that we are assigning the variable. So it could be a bit of text (such as when you're creating a `my_text` object and you pass it the string "I love stats"), or it could be some function, for example when you read a csv file with the `read_csv()` function.
 
-So if we're reading a csv, we also need to specify *where* to read the csv from. Where should R look to find this data? This is where normally you are putting in the path to your file, right? Something like: 
+So if we're reading a csv, we also need to specify *where* to read the csv from. Where should R look to find this data? This is where normally you are putting in the path to your file, right? 
+
+Something like: 
 
 
 ```r
 my_dataframe <- read_csv('PATH_OR_URL_TO_CSV_FILE')
 ```
 
-Well what if your data does not live on your laptop or PC? Well, if there is a way that R can still access this data just by following a path, then this approach will still work! So how can we apply this to getting the Licensed Premises data from the web? 
+Well what if your data does not live on your laptop or PC? Well, if there is a way that R can still access this data just by following a path, then this approach will still work! 
+Tips! please keep your folders simple. Just use one data folder for this module amd do not creat mutiple folders such as 'data for week 1', 'data for week 2' something like this. 
 
-You know when you right click on the link, and select "Save As..." or whatever you click on to save? You could, also select "Copy Link Address". This just copies the webpage where this data is stored. Give it a go! Copy the address, and then paste it into your browser. It will take you to a blank page where a forced download of the data will begin. So what if you pasted this into the `read_csv()` function? 
+All data we will use in the module are in the blackboard but we will also provide the links of where we saved the data for you. You know when you right click on the link, and select "Save As..." or whatever you click on to save? You could, also select "Copy Link Address". This just copies the webpage where this data is stored. Give it a go! Copy the address, and then paste it into your browser. It will take you to a blank page where a forced download of the data will begin. So what if you pasted this into the `read_csv()` function? 
 
 
 ```r
+#example 1: when you download data directly fro the webpage, you will use this code.
 my_dataframe <- read_csv("www.data.com/data you want to import.csv")
+#example 2: when you download data from BB and save it to your computer, you can use file.choose() 
 #file.choose() brings up a file explorer window that allows you to interactively choose a file path to work with.
 my_dataframe <- read_csv(file.choose())
 ```
 
-Well in this case, the my_data object would be assigned the value returned from the read.csv() function reading in the file from the 'urlfile' you provided. File path is no mysterious thing, file path is simply the *path* to the *file* you want to read. If this is a website, then so be it. 
+In the first example, the my_dataframe object would be assigned the value returned from the read.csv() function reading in the file from the 'url' link you provided. File path is no mysterious thing, file path is simply the *path* to the *file* you want to read. If this is a website, then so be it. 
 
 R also can read Stata (.dta) files using the `read_dta()` function in the Haven package, SPSS (.sav) files using the `read_spss()` function also in the Haven Package. There are so many different ways, codes we can use to import data into R. In this course, you will learn one by one! 
 
