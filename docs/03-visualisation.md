@@ -25,15 +25,15 @@ library(ggplot2)
 
 The grammar of graphics upon which this package is based on defines various components of a graphic. Some of the most important are:
 
--**The data**: For using `ggplot2` the data has to be stored as a data frame or tibble.
++**The data**: For using `ggplot2` the data has to be stored as a data frame or tibble.
 
--**The geoms**: They describe the objects that represent the data (e.g., points, lines, polygons, etc..). This is what gets drawn. And you can have various different types layered over each other in the same visualisation.
++**The geoms**: They describe the objects that represent the data (e.g., points, lines, polygons, etc..). This is what gets drawn. And you can have various different types layered over each other in the same visualisation.
 
--**The aesthetics**: They describe the visual characteristics that represent data (e.g., position, size, colour, shape, transparency).
++**The aesthetics**: They describe the visual characteristics that represent data (e.g., position, size, colour, shape, transparency).
 
--**Facets**: They describe how data is split into subsets and displayed as multiple small graphs.
++**Facets**: They describe how data is split into subsets and displayed as multiple small graphs.
 
--**Stats**: They describe statistical transformations that typically summarise data.
++**Stats**: They describe statistical transformations that typically summarise data.
 
 Let's take it one step at the time.
 
@@ -274,7 +274,7 @@ library(MASS)
 data(Boston)
 ```
 
-This package has a dataframe called *Boston*. This has data about Housing Values in suburbs of Boston (USA). To access the codebook (how you find out what variables are) use the "?". 
+This package has a dataframe called *Boston*. This has data about Housing Values in suburbs of Boston (USA). To access the codebook (how you find out what variables are) use the "?", `?Boxton`.
 
 OK so let's make a graph about the variable which represents the per capita crime rate by town (*crim*).
 
@@ -334,7 +334,7 @@ Boston$lowval[Boston$medv <= 17.02] <- "Low value"
 Boston$lowval[Boston$medv > 17.02] <- "Higher value"
 ```
 
-First we tell R to create a new vector (*lowval*) in the Boston data frame. This vector will be assigned the character value "Low value" when the condition within the square brackets is met. That is, we are saying that whenever the value in *medv* is below 17.02 then the new variable *lowval* will equal "Low value". I have chosen 17.02 as this is the first quartile for *medv*. Then we tell R that when the value is greater than 17.02 we will assign those cases to a new textual category called "Higher Value".
+First we tell R to create a new vector (*lowval*) in the Boston data frame. This vector will be assigned the character value "Low value" when the condition within the square brackets is met. That is, we are saying that whenever the value in *medv* is below 17.02 then the new variable *lowval* will equal "Low value". I have chosen 17.02 as this is the first quartile for *medv*(try this code`summary(Boston$medv)` and find 17.02). Then we tell R that when the value is greater than 17.02 we will assign those cases to a new textual category called "Higher Value".
 
 The variable we created was a character vector (as we can see if we run the `class` function). so we are going to transform it into a factor using the `as.factor` function (many functions designed to work with categorical variables expect a factor as an input, not just a character vector). If we rerun the `class` function we will see we changed the original variable
 
@@ -517,10 +517,8 @@ This can be even more helpful when you have various groups. Let's try an example
 
 
 ```r
-##R in Windows have some problems with https addresses, that's why we need to do this first:
-urlfile<-'https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv'
-#We create a data frame object reading the data from the remote .csv file
-BCS0708<-read.csv(url(urlfile))
+#We create a data frame object reading the data from the webaddress.csv file
+BCS0708<-read.csv("https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv")
 ```
 
 This dataset contains a quantitative variable that measures the level of worry for crime (*tcviolent*): high scores represent high levels of worry. We are going to see how the score in this variable changes according to ethnicity (*ethgrp2*).
@@ -612,16 +610,20 @@ One way of dealing with this particular problem is by **jittering**. Jittering i
 
 ```r
 ggplot(BCS0708, aes(x = age, y = tcviolent)) +
-  geom_point(alpha=.2, position="jitter") #Alternatively you could replace geom_point() with geom_jitter() in which case you don't need to specify the position
+  geom_point(alpha=.2, position="jitter") 
 ```
 
 ![](03-visualisation_files/figure-latex/unnamed-chunk-41-1.pdf)<!-- --> 
+
+```r
+#Alternatively you could replace geom_point() with geom_jitter() in which case you don't need to specify the position
+```
 
 Another alternative for solving overplotting is to **bin the data** into rectangles and map the density of the points to the fill of the colour of the rectangles.
 
 
 ```r
-ggplot(BCS0708, aes(x = age, y = tcviolent)) +
+ggplot(BCS0708, aes(x = age, y = tcviolent)) + 
   stat_bin2d()
 ```
 
@@ -1028,6 +1030,9 @@ Third, *blogs on data visualisation*. If you use [Feedly](https://feedly.com/ind
 Fourth, **resources for visualisations we don't have the time to cover**. R is way ahead some of the more popular data analysis programs you may be more familiar with (e.g SPSS or Excel). There's many things you can do. 
 
 For example, if you like maps, **R can also be used to produce visualisations of spatial data**. There are various resources to learn how to do this and we teach this in our *Crime Mapping* module in the third year.
+
+## Summary: exercise for this week
+Once you finish your lab session, don't forget to do this [Exercise](https://eonk.shinyapps.io/MCD_ex) and have a chance to sum-up this week's R codes.
 
 
 

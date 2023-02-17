@@ -56,6 +56,11 @@ Alternatively, you can import the file from the webiste where we keep the data:
 
 ```r
 eb85_3 <- read_dta("https://www.dropbox.com/s/f2s31sva7s8hzfa/ZA6695_v2-0-0.dta?dl=1")
+dim(eb85_3)
+```
+
+```
+## [1] 27818   483
 ```
 
 We can see there are 27818 cases (survey participants) and 483 variables. 
