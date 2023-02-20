@@ -1,5 +1,5 @@
-tab:unnamed-chunk-40
-tab:unnamed-chunk-42
+tab:unnamed-chunk-39
+tab:unnamed-chunk-41
 a-first-lesson-about-r
 install-r-rstudio
 open-up-and-explore-rstudio

@@ -312,9 +312,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="getting-some-data-from-eurobarometer" class="section level2 hasAnchor" number="4.2">
 <h2><span class="header-section-number">4.2</span> Getting some data from Eurobarometer<a href="refresher-on-descriptive-statistics-data-carpentry.html#getting-some-data-from-eurobarometer" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>We’re going to go ahead and download some data for the session today, specifically data from a <em>Eurobarometer</em>. Eurobarometers are opinion polls conducted regularly on behalf of the European Commission since 1973. Some of them ask the same questions over time to evaluate changes in European’s views in a variety of subjects (standard Eurobarometers). Others are focused on special topics and are conducted less regularly (special Eurobarometers). They are a useful source of datasets that you could use, for exampple, for your undergraduate dissertation. Here is the video providing an overview of Eurobarometer 2018. a bit sad video, but anyone who wants to know about Eurobarometer in 1 mins.</p>
-<iframe src="https://youtu.be/yTufHITtGBA" width="672" height="400px" data-external="1">
-</iframe>
+<p>We’re going to go ahead and download some data for the session today, specifically data from a <em>Eurobarometer</em>. Eurobarometers are opinion polls conducted regularly on behalf of the European Commission since 1973. Some of them ask the same questions over time to evaluate changes in European’s views in a variety of subjects (standard Eurobarometers). Others are focused on special topics and are conducted less regularly (special Eurobarometers). They are a useful source of datasets that you could use, for exampple, for your undergraduate dissertation.</p>
 <p>The data from these surveys is accessible through the data catalogue of GESIS, a data warehouse at the <em>Leibniz Institute for the Social Sciences</em> in Germany. For downloading data from GESIS you have to register with them (following the registration link) <a href="https://login.gesis.org/realms/gesis/login-actions/registration?client_id=js-login&amp;tab_id=6knmqH-4kbI">here</a>. Once you activate your registration you should be able to access the data at GESIS.</p>
 <p><img src="imgs/register.PNG" /></p>
 <p>GESIS has a section of their website devoted to the Eurobarometer survey. You can access that section <a href="https://www.gesis.org/eurobarometer-data-service/home/">here</a>. You could navigate this webpage to find the data we will be using for this tutorial, but to save time I will provide you a direct link to it. We will be using the special Eurobarometer 85.3 form 2016. This survey among other things asked Europeans about their views on gender violence.</p>
@@ -500,7 +498,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb246-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcd)</span></code></pre></div>
 <pre><code>## Loading required package: grid</code></pre>
 <div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb248-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaic</span>(<span class="sc">~</span>region <span class="sc">+</span> at_sexviol, <span class="at">data =</span> df)</span></code></pre></div>
-<p><img src="04-carpentry_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<p><img src="04-carpentry_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <p>In a mosaic plot like this the height of the region levels indicate how big that group is. You can see there are many more observations in our sample that come from Western countries than from Northern countries. Here what we are interested is the length. We see that Northern countries have proportionally more people in the zero category than any other group. On the other hand, Eastern countries have the fewer zeros (so looking as if attitudes more permissive towards sexual violence are more common there, even if still a minority). We will come back to this kind of plots later on this semester.</p>
 </div>
 <div id="working-with-apparently-cryptic-variable-names-and-levels" class="section level2 hasAnchor" number="4.7">
@@ -701,7 +699,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb280-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
 <span id="cb280-2"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb280-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(df<span class="sc">$</span>politics)</span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-40">Table 4.1: </span>Data summary</caption>
+<caption><span id="tab:unnamed-chunk-39">Table 4.1: </span>Data summary</caption>
 <tbody>
 <tr class="odd">
 <td align="left">Name</td>
@@ -788,7 +786,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>If you try this now, you will see it works:</p>
 <div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb282-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(df<span class="sc">$</span>politics_n)</span></code></pre></div>
 <table>
-<caption><span id="tab:unnamed-chunk-42">Table 4.2: </span>Data summary</caption>
+<caption><span id="tab:unnamed-chunk-41">Table 4.2: </span>Data summary</caption>
 <tbody>
 <tr class="odd">
 <td align="left">Name</td>
@@ -1019,7 +1017,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ℹ Please use `gather()` instead.
 ## ℹ The deprecated feature was likely used in the visdat package.
 ##   Please report the issue at &lt;]8;;https://github.com/ropensci/visdat/issueshttps://github.com/ropensci/visdat/issues]8;;&gt;.</code></pre>
-<p><img src="04-carpentry_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
+<p><img src="04-carpentry_files/figure-html/unnamed-chunk-53-1.png" width="672" /></p>
 <p>Nice one! You get a visual representations of how your variables are encoded in this dataframe. You have several categorical variables such as region, urban_f, urban_f, and occup_f. We see that region is encoded as a <code>character</code> vector, whereas the others are <code>factors</code>. For the purposes of this course, it is generally better to have your categorical variables encoded as factors. So one of the next steps in our data prep may be to recode region as a factor.</p>
 <div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb306-1"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb306-1" aria-hidden="true" tabindex="-1"></a>df_f<span class="sc">$</span>f_region <span class="ot">&lt;-</span> <span class="fu">as.factor</span>(df_f<span class="sc">$</span>region)</span></code></pre></div>
 <p>We can also see we have age, a quantitative variable, <em>age</em>, encoded as <code>haven_labelled</code>. We could as well encoded as <code>numeric</code>.</p>
@@ -1028,7 +1026,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb308-1"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb308-1" aria-hidden="true" tabindex="-1"></a>df_f<span class="sc">$</span>at_sexviol <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(df_f<span class="sc">$</span>at_sexviol)</span></code></pre></div>
 <p>The othe piece of info you get with <code>vis_dat</code> is the prevalence of missing data (NA) for each variable (the dark horizontal cases represent a missing case in the variable). We can summarise missing data visually more clearly with <code>vis_miss</code>.</p>
 <div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb309-1"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb309-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vis_miss</span>(df_f)</span></code></pre></div>
-<p><img src="04-carpentry_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<p><img src="04-carpentry_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
 <p>You can find more details about how to explore missing data in the vignette of the <code>naniar</code> package <a href="http://naniar.njtierney.com/articles/getting-started-w-naniar.html">here</a>.</p>
 </div>
 <div id="a-quick-recap-on-descriptive-statistics" class="section level2 hasAnchor" number="4.11">

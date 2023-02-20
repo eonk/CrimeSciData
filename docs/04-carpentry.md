@@ -23,9 +23,7 @@ In this module we expect you to download a survey dataset for analysis. These da
 
 ## Getting some data from Eurobarometer
 
-We're going to go ahead and download some data for the session today, specifically data from a *Eurobarometer*. Eurobarometers are opinion polls conducted regularly on behalf of the European Commission since 1973. Some of them ask the same questions over time to evaluate changes in European's views in a variety of subjects (standard Eurobarometers). Others are focused on special topics and are conducted less regularly (special Eurobarometers). They are a useful source of datasets that you could use, for exampple, for your undergraduate dissertation. Here is the video providing an overview of Eurobarometer 2018. a bit sad video, but anyone who wants to know about Eurobarometer in 1 mins.
-
-<iframe src="https://youtu.be/yTufHITtGBA" width="672" height="400px" data-external="1"></iframe>
+We're going to go ahead and download some data for the session today, specifically data from a *Eurobarometer*. Eurobarometers are opinion polls conducted regularly on behalf of the European Commission since 1973. Some of them ask the same questions over time to evaluate changes in European's views in a variety of subjects (standard Eurobarometers). Others are focused on special topics and are conducted less regularly (special Eurobarometers). They are a useful source of datasets that you could use, for exampple, for your undergraduate dissertation. 
 
 The data from these surveys is accessible through the data catalogue of GESIS, a data warehouse at the *Leibniz Institute for the Social Sciences* in Germany. For downloading data from GESIS you have to register with them (following the registration link) [here](https://login.gesis.org/realms/gesis/login-actions/registration?client_id=js-login&tab_id=6knmqH-4kbI). Once you activate your registration you should be able to access the data at GESIS.
 
@@ -412,7 +410,7 @@ library(vcd)
 mosaic(~region + at_sexviol, data = df)
 ```
 
-<img src="04-carpentry_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="04-carpentry_files/figure-html/unnamed-chunk-22-1.png" width="672" />
 
 In a mosaic plot like this the height of the region levels indicate how big that group is. You can see there are many more observations in our sample that come from Western countries than from Northern countries. Here what we are interested is the length. We see that Northern countries have proportionally more people in the zero category than any other group. On the other hand, Eastern countries have the fewer zeros (so looking as if attitudes more permissive towards sexual violence are more common there, even if still a minority). We will come back to this kind of plots later on this semester.
 
@@ -750,7 +748,7 @@ skim(df$politics)
 ```
 
 
-Table: (\#tab:unnamed-chunk-40)Data summary
+Table: (\#tab:unnamed-chunk-39)Data summary
 
 |                         |            |
 |:------------------------|:-----------|
@@ -785,7 +783,7 @@ skim(df$politics_n)
 ```
 
 
-Table: (\#tab:unnamed-chunk-42)Data summary
+Table: (\#tab:unnamed-chunk-41)Data summary
 
 |                         |              |
 |:------------------------|:-------------|
@@ -1050,7 +1048,7 @@ vis_dat(df_f)
 ##   Please report the issue at <]8;;https://github.com/ropensci/visdat/issueshttps://github.com/ropensci/visdat/issues]8;;>.
 ```
 
-<img src="04-carpentry_files/figure-html/unnamed-chunk-54-1.png" width="672" />
+<img src="04-carpentry_files/figure-html/unnamed-chunk-53-1.png" width="672" />
 
 Nice one! You get a visual representations of how your variables are encoded in this dataframe. You have several categorical variables such as region, urban_f, urban_f, and occup_f. We see that region is encoded as a `character` vector, whereas the others are `factors`. For the purposes of this course, it is generally better to have your categorical variables encoded as factors. So one of the next steps in our data prep may be to recode region as a factor. 
 
@@ -1079,7 +1077,7 @@ The othe piece of info you get with `vis_dat` is the prevalence of missing data 
 vis_miss(df_f)
 ```
 
-<img src="04-carpentry_files/figure-html/unnamed-chunk-58-1.png" width="672" />
+<img src="04-carpentry_files/figure-html/unnamed-chunk-57-1.png" width="672" />
 
 You can find more details about how to explore missing data in the vignette of the `naniar` package [here](http://naniar.njtierney.com/articles/getting-started-w-naniar.html).
 
