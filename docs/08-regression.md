@@ -88,7 +88,7 @@ ggplot(df, aes(x = viol_r)) +
   geom_histogram()
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-4-1.pdf)<!-- --> 
+<img src="08-regression_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
 As you can see is skewed. Violence is our target variable, the one we want to better understand. You may remember from when we cover ANOVA that some times we have to make transformations to variables so that the assumptions of the models we use are better respected. We will discuss this a bit in greater depth later. For now, just trust us in that rather than using *viol_r* we are going to use the logarithmic transformation of the violence rate, *log_viol_r*.
 
@@ -99,7 +99,7 @@ ggplot(df, aes(x = log_viol_r)) +
   geom_histogram()
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-5-1.pdf)<!-- --> 
+<img src="08-regression_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
 Let's look at the scatterplot between the log of the violence rate and unemployment:
 
@@ -109,7 +109,7 @@ ggplot(df, aes(x = unemployed, y = log_viol_r)) +
   geom_point(alpha=.2, position="jitter") 
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-6-1.pdf)<!-- --> 
+<img src="08-regression_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
 What do you think when looking at this scatterplot? Is there a relationship between violence and unemployment? Does it look as if cities that have a high score on the X axis (unemployment) also have a high score on the Y axis (violent crime)? It may be a bit hard to see but I would think there is certainly a trend. 
 
@@ -125,7 +125,12 @@ ggplot(df, aes(x = log_viol_r)) +
   ggtitle("Density estimate and mean of log violent crime rate")
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-7-1.pdf)<!-- --> 
+```
+## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+```
+
+<img src="08-regression_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
 
 ```r
@@ -147,14 +152,15 @@ If we plot the conditional means we can see that the mean *log_viol_r* for citie
 
 
 ```
-## Warning: Ignoring unknown parameters: fun.y
+## Warning in geom_line(data = df, aes(x = round(unemployed/0.12) * 0.12, y =
+## log_viol_r), : Ignoring unknown parameters: `fun.y`
 ```
 
 ```
 ## No summary function supplied, defaulting to `mean_se()`
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-9-1.pdf)<!-- --> 
+<img src="08-regression_files/figure-html/unnamed-chunk-9-1.png" width="672" />
 
 Linear regression tackles this problem using a slightly different approach. Rather than focusing on the conditional mean (smoothed or not), it draws a straight line that tries to capture the trend in the data. If we focus in the region of the scatterplot that are less sparse we see that this is an upward trend, suggesting that as the level of unemployment increases so does the level of violent crime. 
 
@@ -168,10 +174,10 @@ ggplot(data = df, aes(x = unemployed, y = log_viol_r)) +
 ```
 
 ```
-## `geom_smooth()` using formula 'y ~ x'
+## `geom_smooth()` using formula = 'y ~ x'
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-10-1.pdf)<!-- --> 
+<img src="08-regression_files/figure-html/unnamed-chunk-10-1.png" width="672" />
 
 The `geom_smooth` function asks for a geom with the regression line, `method=lm` asks for the linear regression line, `se=FALSE` asks for just the line to be printed, the other arguments specify the colour and thickness of the line.
 
@@ -183,18 +189,16 @@ The linear model then is a model that takes the form of the equation of a straig
 
 
 ```
-## Warning: Ignoring unknown parameters: fun.y
+## Warning in geom_line(data = df, aes(x = round(unemployed/0.12) * 0.12, y =
+## log_viol_r), : Ignoring unknown parameters: `fun.y`
 ```
 
 ```
-## `geom_smooth()` using formula 'y ~ x'
-```
-
-```
+## `geom_smooth()` using formula = 'y ~ x'
 ## No summary function supplied, defaulting to `mean_se()`
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-11-1.pdf)<!-- --> 
+<img src="08-regression_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
 As De Veaux et al (2012: 179) highlight: "like all models of the real world, the line will be wrong, wrong in the sense that it can't match reality exactly. But it can help us understand how the variables are associated". A map is never a perfect representation of the world, the same happens with statistical models. Yet, as with maps, models can be helpful.
 
@@ -473,7 +477,7 @@ fit_2 <- lm(log_viol_r ~ largest50, data=df)
 
 Notice that there is nothing different in how we ask for the model. And see below the regression line:
 
-![](08-regression_files/figure-latex/unnamed-chunk-24-1.pdf)<!-- --> 
+<img src="08-regression_files/figure-html/unnamed-chunk-24-1.png" width="672" />
 
 Although in the plot we still see a line, what we are really estimating here is the average of *log_viol_r* for each of the two categories. 
 
@@ -631,10 +635,6 @@ We are going to use instead the `plot_model()` function of the `sjPlot` package,
 library(sjPlot)
 ```
 
-```
-## Learn more about sjPlot with 'browseVignettes("sjPlot")'.
-```
-
 Let's try with a more complex example:
 
 
@@ -643,7 +643,7 @@ fit_4 <- lm(log_viol_r ~ unemployed + largest50 + black + fborn + log_incarcerat
 plot_model(fit_4)
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-30-1.pdf)<!-- --> 
+<img src="08-regression_files/figure-html/unnamed-chunk-30-1.png" width="672" />
 
 <!-- Be advised to use these plots judiciously. There may be other sort of plots that may be [more appropriate](http://www.carlislerainey.com/2012/07/06/why-i-dont-like-coefficient-plots/) for what you want to communicate to your audience than the coefficient plot.-->
 
@@ -654,7 +654,7 @@ You can further customise this:
 plot_model(fit_4, title="Violence across cities")
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-31-1.pdf)<!-- --> 
+<img src="08-regression_files/figure-html/unnamed-chunk-31-1.png" width="672" />
 
 What you see plotted here is the point estimates (the circles), the confidence intervals around those estimates (the longer the line the less precise the estimate), and the colours represent whether the effect is negative (red) or positive (blue). There are other packages that also provide similar functionality, like the `dotwhisker` package that you may want to explore, see more details [here](https://cran.r-project.org/web/packages/dotwhisker/vignettes/dotwhisker-vignette.html).
 
@@ -873,7 +873,7 @@ library(effects)
 plot(allEffects(fit_3), ask=FALSE)
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-35-1.pdf)<!-- --> 
+<img src="08-regression_files/figure-html/unnamed-chunk-35-1.png" width="672" />
 
 Notice that the line has a confidence interval drawn around it (to reflect the likely impact of sampling variation) and that the predicted means for smaller and largest cities (when controlling for unemployment) also have a confidence interval.
 
@@ -993,7 +993,7 @@ In this case the test for the interaction effect is non-significant, which sugge
 plot(allEffects(fit_5), ask=FALSE)
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-39-1.pdf)<!-- --> 
+<img src="08-regression_files/figure-html/unnamed-chunk-39-1.png" width="672" />
 
 Notice that essentially what we are doing is running two regression lines and testing whether the slope is different for the two groups. The intercept is different, we know that largest cities are more violent, but what we are testing here is whether violence goes up in a steeper fashion (and in the same direction) for one or the other group as unemployment goes up. We see that's not the case here. The estimated lines are almost parallel.
 

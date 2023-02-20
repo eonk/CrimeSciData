@@ -23,7 +23,11 @@ In this module we expect you to download a survey dataset for analysis. These da
 
 ## Getting some data from Eurobarometer
 
-We're going to go ahead and download some data for the session today, specifically data from a *Eurobarometer*. Eurobarometers are opinion polls conducted regularly on behalf of the European Commission since 1973. Some of them ask the same questions over time to evaluate changes in European's views in a variety of subjects (standard Eurobarometers). Others are focused on special topics and are conducted less regularly (special Eurobarometers). They are a useful source of datasets that you could use, for exampple, for your undergraduate dissertation.
+We're going to go ahead and download some data for the session today, specifically data from a *Eurobarometer*. Eurobarometers are opinion polls conducted regularly on behalf of the European Commission since 1973. Some of them ask the same questions over time to evaluate changes in European's views in a variety of subjects (standard Eurobarometers). Others are focused on special topics and are conducted less regularly (special Eurobarometers). They are a useful source of datasets that you could use, for exampple, for your undergraduate dissertation. Here is the video providing an overview of Eurobarometer 2018. a bit sad video, but anyone who wants to know about Eurobarometer in 1 mins.
+
+```{r echo=FALSE, fig.align='center', cache=TRUE}
+knitr::include_url("https://youtu.be/yTufHITtGBA")
+```
 
 The data from these surveys is accessible through the data catalogue of GESIS, a data warehouse at the *Leibniz Institute for the Social Sciences* in Germany. For downloading data from GESIS you have to register with them (following the registration link) [here](https://login.gesis.org/realms/gesis/login-actions/registration?client_id=js-login&tab_id=6knmqH-4kbI). Once you activate your registration you should be able to access the data at GESIS.
 
@@ -43,13 +47,15 @@ First, we will load the data into our session. Since the data is in STATA format
 
 ```{r}
 library(haven)
+#option 1: import from your local computer
 eb85_3 <- read_dta("datasets/ZA6695_v2-0-0.dta")
 dim(eb85_3)
 ```
 
 Alternatively, you can import the file from the webiste where we keep the data:
 ```{r}
-eb85_3 <- read_dta("https://www.dropbox.com/s/f2s31sva7s8hzfa/ZA6695_v2-0-0.dta?dl=1")
+#option 2: import from the webpage
+eb85_3 <- read_dta("https://www.dropbox.com/s/sul9ezr4k9aua70/ZA6695_v2-0-0.dta?dl=1")
 dim(eb85_3)
 ```
 
@@ -127,6 +133,7 @@ For the sake of illustration, let's say we are going to look at gender, politica
 The same way you try to identify the names of the variables for your outcome variable, you would need to do this for the variables you use to "explain" your outcome. Once you have done your variable selection you can subset your data to only include these.
 
 ```{r, eval = FALSE}
+#option 1: select()
 df <- select(eb85_3, qb10_1, qb10_2, qb10_3, qb10_4,
              qb10_5, qb10_6, qb10_7, qb10_8, qb10_9,
              qb10_10, qb10_11, qb10_12, d10, d11,
@@ -138,6 +145,7 @@ Ta-da! We now have a new object called *df* with only the variables we will be w
 If you `View` this object *df* you will notice that the selected variables appear in the order you selected them. If you wanted a different arrangement, for example you may have preferred to have *uniqid* as your first column, you could have modified the code like so:
 
 ```{r, eval=FALSE}
+#option 2: select()
 df <- select(eb85_3, uniqid, qb10_1, qb10_2, qb10_3, qb10_4,
              qb10_5, qb10_6, qb10_7, qb10_8, qb10_9,
              qb10_10, qb10_11, qb10_12, d10, d11,
@@ -147,12 +155,14 @@ df <- select(eb85_3, uniqid, qb10_1, qb10_2, qb10_3, qb10_4,
 Or if you just want to reorder one or few columns (for example you want to also move d1, d25 and d15 a to the front), you could use `everything()` afterwards to save some typing, as below:
 
 ```{r, eval=FALSE}
+#option 3: select()
 df <- select(df, uniqid, d1, d25, d15a, everything())
 ```
 
 If you want to add a lot of columns, it can save you some typing to have a good look at your data and see whether you can’t get to your selection by using chunks. Since *qb10_1* and the others are one after the other in the dataset we can use the `start.col:end.col` syntax like below:
 
 ```{r, eval=FALSE}
+#option 4: select()
 df <- select(eb85_3, uniqid, qb10_1:qb10_12, d10, d11,
              isocntry, d1, d25, d15a)
 ```
@@ -160,6 +170,7 @@ df <- select(eb85_3, uniqid, qb10_1:qb10_12, d10, d11,
 If you have a lot of columns with a similar structure you can use partial matching by adding `starts_with()`, `ends_with()` or `contains()` in your select statement. So, for example, an alternative to the syntax above we could use the following:
 
 ```{r, warning=FALSE}
+#option 5: select()
 df <- select(eb85_3, uniqid, starts_with("qb10"), d10, d11,
              isocntry, d1, d25, d15a)
 ```
@@ -169,6 +180,7 @@ Notice how the text we pass as an argument goes between double quotes.
 An alternative is to deselect columns by adding a minus sign in front of the column name. You can also deselect chunks of columns. **Don't execute the code below for this practical**, but if you wanted, for example to get rid of *uniqid* you could do the following:
 
 ```{r, eval=FALSE}
+#DO NOT RUN THIS. THIS IS AN EXAMPLE.
 df <- select(df, -uniqid)
 ```
 
@@ -208,9 +220,9 @@ table(df$qb10_11)
 table(df$qb10_12)
 ```
 
-There are 255 people that refused to answer and 1008 that did not know how to answer. If you add 1008, 255, and 18418 you get 19681. So our new variable is actually computing as zeroes people that did not know how to answer this question or refused to answer it. We do not want that. We do not know what these people think, so it would be wrong to assume that they consider that none of these circumstances are valid excuses for sexual intercourse without consent.
+In 'qb10_11', there are 255 people that refused to answer and, in 'qb10_12', 1008 that did not know how to answer. If you add 1008, 255, and 18418 you get 19681. So our new variable is actually computing as zeroes people that did not know how to answer this question or refused to answer it. We do not want that. We do not know what these people think, so it would be wrong to assume that they consider that none of these circumstances are valid excuses for sexual intercourse without consent.
 
-There are many ways to deal with this. He could simply filter out cases where we have values of 1 in these two variables (since we don't know their answers we could as well get rid of them). But we could also recode the variable to define this values as what they are NA (missing data, cases for which we have no valid information).
+There are many ways to deal with this. He could simply filter out cases where we have values of 1 in these two variables (since we don't know their answers we could as well get rid of them). But we could also re-code the variable to define this values as what they are NA (missing data, cases for which we have no valid information).
 
 ```{r}
 df$at_sexviol[df$qb10_11 == 1 | df$qb10_12 == 1] <- NA
@@ -256,11 +268,8 @@ First, let's create four lists, which contain the codes for countries we would l
 ```{r}
 western_list <- c("AT", "BE", "CZ", "DE-E", "DE-W", 
                   "FR", "GB-GBN", "GB-NIR", "IE", "LU", "NL")
-
 eastern_list <- c("BG" , "EE", "HU", "LT" , "LV" , "PL" , "RO", "SK")
-
 northern_list <- c("DK", "FI", "SE")
-
 southern_list <- c("CY", "ES", "GR", "HR" , "IT" , "MT", "PT", "SI")
 ```
 
@@ -307,12 +316,14 @@ colnames(data)[colnames(data)=="old_name"] <- "new_name"
 Of course, we need to change the names for valid ones in our case. So adapting that code we would write as follows:
 
 ```{r, eval=FALSE}
+#option 1: to change the names of a variable
 colnames(df)[colnames(df)=="d10"] <- "gender"
 ```
 
 If you prefer the *tydiverse* dialect (that aims to save you typing among other things), then you would use the `rename` function as below (beware if you already renamed *d10* using `colnames` there will be no longer a *d10* variable and therefore R will return an error).
 
 ```{r}
+#option 2: to change the names of a variable
 df <- rename(df, gender=d10)
 ```
 
@@ -328,7 +339,7 @@ If you want to change many variable names it may be more efficient doing it all 
 df <- select(df, uniqid, at_sexviol, gender, d11, d1, d25, d15a, region)
 ```
 
-Now we can change a bunch of names all at once with the following code:
+Now we can change a bunch of variables' names all at once with the following code:
 
 ```{r}
 names(df)[4:7] <- c("age", "politics", "urban", "occupation")
@@ -358,16 +369,16 @@ attributes(df$occupation)
 Having to look at this every time is not very convenient. You may prefer to simply use the labels directly. For this we can use the `as_factor` function from the `haven` package.
 
 ```{r, message=FALSE}
-df$f_occup <- as_factor(df$occupation)
-class(df$f_occup)
-table(df$f_occup)
+df$occup_f <- as_factor(df$occupation)
+class(df$occup_f)
+table(df$occup_f)
 ```
 
 Now you have easier to interpret output.
 
 ## Recoding factors
 
-As we said there are many different types of objects in R and depending on their nature the recoding procedures may vary. You may remember that many times categorical variables will be encoded as factors. Let's go back our newly created *f_occup*. We have 18 categories here. These are possibly too many. Some of them have to few cases, like *fisherman*. Although this is a fairly large dataset we only have 14 fisherman. It would be a bit brave to guess what fishermen across Europe think about sexual violence based in a sample of just 14 of them. 
+As we said there are many different types of objects in R and depending on their nature the recoding procedures may vary. You may remember that many times categorical variables will be encoded as factors. Let's go back our newly created *occup_f*. We have 18 categories here. These are possibly too many. Some of them have to few cases, like *fisherman*. Although this is a fairly large dataset we only have 14 fisherman. It would be a bit brave to guess what fishermen across Europe think about sexual violence based in a sample of just 14 of them. 
 
 This is a very common scenario when you analyse data. In these cases is helpful to think of ways of adding the groups with small counts (like fishermen in this case) to a broader but still meaningful category. People often refer to this as *collapsing categories*. You also have to think theoretically, do you have good enough reasons to think that there's ought to be meaningful differences in attitudes to sexual violence among these 18 groups? If you don't you may want to collapse into fewer categories that may make more sense.
 
@@ -382,12 +393,12 @@ As when we created the *region* variable the first thing to do is to come out wi
     7	Retired (4 in d15a)	
     8	Students (2 in d15a)
     
-It would be quicker to recode from *d15a* into a new variable (there would be less typing when dealing with numbers rather than labels). But here we are going to use this example to show you how to recode from a factor variable, so instead we will recode form *f_occup*. 
+It would be quicker to recode from *d15a* into a new variable (there would be less typing when dealing with numbers rather than labels). But here we are going to use this example to show you how to recode from a factor variable, so instead we will recode form *occup_f*. 
 
 As often in R, there are multiple ways of doing this. We could use `dplyr::recode`. But here we will show you how to do this using the `recode` function from the `car` library.
 
 ```{r,}
-df$occup2 <- df$f_occup
+df$occup2 <- df$occup_f
 levels(df$occup2) <- list("Self-employed" = 
                             c("Farmer" , "Fisherman" ,
                               "Professional (lawyer, etc.)" ,
@@ -419,7 +430,7 @@ For more details in how to recode factors and other potential scenarios you may 
 
 As we have already seen, you will have participants that do not provide you with valid answers for the questions in the survey. In general in any kind of data set you work with, whether it comes from surveys or not, you will have cases for which you won't have valid information for particular variables in your dataframe. Missing data is common. 
 
-Let's look at the *politics* variable.
+Let's look at the *politics* variable. 
 
 ```{r}
 class(df$politics)
@@ -427,52 +438,30 @@ table(df$politics)
 sum(is.na(df$politics))
 ```
 
-It looks as if we have no missing data. Right? Well, appearances can be deceiving sometimes.
-
 ![](imgs/leftrighta.png) 
 
-This is the question as it was asked from the survey respondents. Notice the difference in the response options and the categories in *politics*. We know that those that see themselves further to the left will have answer 1 and those that see themselves further to the right would have answer 10. What does 97 and 98 then refer to? If you look at the questionnaire you will see that those that refuse or don't know *in the questionnaire* are coded as 11 and 12.
+This is the question as it was asked from the survey respondents. Notice the difference in the response options and the categories in *politics*. We know that those that see themselves further to the left will have answer 1 and those that see themselves further to the right would have answer 10. In the codebook, what does 97 and 98 then refer to? If you look at the 'df' data, you will see that those that refuse or don't know *in the questionnaire* are shown as NA.
 
-Let's look closer at the `attributes`:
-
-```{r}
+Let’s look closer at the attributes:
+```{r, message=FALSE, eval=FALSE}
 attributes(df$politics)
 ```
 
-A tip if you don't want to see as much output. If you want to access directly only some of the attributes you can call them directly modifying the code as below:
+A tip if you don’t want to see as much output. If you want to access directly only some of the attributes you can call them directly modifying the code as below:
 
-```{r}
+```{r, eval=FALSE}
 attributes(df$politics)$labels
 ```
 
-Or we could use the `val_labels` function from the `labelled` package for the same result:
-
-```{r}
+Or we could use the val_labels function from the labelled package for the same result:
+```{r, eval=FALSE}
 library(labelled)
 val_labels(df$politics)
 ```
 
-
-Notice that though the questionnaire assigned a value of 11 to refusal and 12 to "don't know" answers, in the dataset those values are instead 97 and 98. You will see this often - 97, 98, 99, and similar codes are often used to denote missing data.
-
-You may have good theoretical reasons to preserve this in your analysis. Perhaps you think that people that did not answer this question have particular reasons not to do so and those reasons may be associated with their attitudes to violence. In that case you may want to somehow preserve them in your analysis. Absent that rationale you may just want to treat them as they are: missing data. You just have no way of knowing if these people are more or less lefty or conservative. So let's declare them as such for sake of explaining how you would do that:
+Let's check something:
 
 ```{r}
-df$politics[df$politics>=97] <- NA
-table(df$politics)
-```
-The equal or greater operator in R is written as `>=`. What we are saying in the first statement to R is that whenever *politics* has a value equal or greater than 97 we are going to recode those cases as `NA`, as missing data. Since this is a `haven_labelled` vector we can use numbers here rather than characters or factor levels as part of the recoding. That makes things a bit easier in that it saves typing. 
-Let's look a the results:
-
-```{r}
-summary(df$politics)
-```
-
-Now you see you have 6935 cases with missing data. As always it is good to check the original variable. We had 2766 and 4169 between refusals and "don't know" respondents. These add up to 6935. 
-
-Let's check something else:
-
-```{r, message=FALSE, eval=FALSE}
 library(skimr)
 skim(df$politics)
 ```
@@ -485,10 +474,11 @@ df$politics_n <-as.numeric(df$politics)
 
 If you try this now, you will see it works:
 
-```{r, eval=FALSE}
+```{r}
 skim(df$politics_n)
-
 ```
+
+You may have good theoretical reasons to preserve this in your analysis. Perhaps you think that people that did not answer this question have particular reasons not to do so and those reasons may be associated with their attitudes to violence. In that case you may want to somehow preserve them in your analysis not simply removing NA. Absent that rationale you may just want to treat them as they are: missing data. You just have no way of knowing if these people are more or less lefty or conservative. 
 
 If we want to see what percentage of cases is NA across our dataset we could use `colMeans` combined with `is.na`. This will compute the mean (the proportion) of cases that are NA in each of the columns of the dataframe:
 
@@ -499,48 +489,47 @@ colMeans(is.na(df))
 This is suspicious. Only the variables we have created and already sorted seem to have NA. This may be a function of the `haven_labelled` vectors behaving like with the original *politics* variable. Let's explore it. We can use the `val_labels` function from the `labelled` package to extract labels from the whole dataframe like this:
 
 ```{r}
+library(labelled)
 val_labels(df)
 ```
 
-Notice that in *urban* there are explicit codes for missing data but that these values won't be treated as such, at least we do something. Let's see how many cases we have in this scenario:
+Notice that in *urban* there are explicit codes 'DK: don't know' for missing data but that these values won't be treated as such, at least we do something. Let's see how many cases we have in this scenario:
 
 ```{r}
-table(df$urban)
+summary(df$urban)
 ```
 
 Not too bad. Let's sort this variable:
 
 ```{r}
-df$urban[df$urban>=8] <- NA
-df$f_urban <- as_factor(df$urban)
-table(df$f_urban)
-mean(is.na(df$f_urban))
+df$urban_f <- as_factor(df$urban)
+table(df$urban_f)
 ```
 
-You can see that even though have now no cases with a value of 8 or DK, the label appears printed in the output. This is still a valid level:
+You can see that even though the data is NA, the label appears printed in the output and shows 18 missing values. This is still a valid level:
 
 ```{r}
-levels(df$f_urban)
+levels(df$urban_f)
 ```
 
-So, we may want to remove it explicitly if we don't want output reminding us what we already know, that "there are not" DK cases (since now we call them and treat them as NA). For removing unused levels in a factor we use the `droplevels` function,
+So, we may want to remove it explicitly if we don't want output reminding us what we already know, that "there are not" DK level (since now we call them and treat them as NA).
 
 ```{r}
-df$f_urban <- droplevels(df$f_urban)
-table(df$f_urban)
+levels(df$urban_f)[levels(df$urban_f) == 'DK'] <- NA
+table(df$urban_f)
 ```
 
 Above also saw the codes for *gender* let's use `as_factor` again for this variable:
 
 ```{r}
-df$f_gender <- as_factor(df$gender)
+df$gender_f <- as_factor(df$gender)
 ```
 
 Let's just keep the variables we will retain for our final analysis:
 
 ```{r}
-df_f <- select(df, uniqid, at_sexviol, f_gender, age, politics_n,
-               f_urban, f_occup, region)
+df_f <- select(df, uniqid, at_sexviol, gender_f, age, politics_n,
+               urban_f, occup_f, region)
 ```
 
 We are going to do some further exploration of NA. Let's create a new variable that identifies the cases that have missing data in at least one of the columns in the data with the final variables for our analysis. For this we can use the `complete.cases` function that creates a logical vector indicating whether any of the cases has missing values in at least one column:
@@ -578,7 +567,7 @@ library(visdat)
 vis_dat(df_f)
 ```
 
-Nice one! You get a visual representations of how your variables are encoded in this dataframe. You have several categorical variables such as region, f_gender, f_urban, and f_occup. We see that region is encoded as a `character` vector, whereas the others are `factors`. For the purposes of this course, it is generally better to have your categorical variables encoded as factors. So one of the next steps in our data prep may be to recode region as a factor. 
+Nice one! You get a visual representations of how your variables are encoded in this dataframe. You have several categorical variables such as region, urban_f, urban_f, and occup_f. We see that region is encoded as a `character` vector, whereas the others are `factors`. For the purposes of this course, it is generally better to have your categorical variables encoded as factors. So one of the next steps in our data prep may be to recode region as a factor. 
 
 ```{r}
 df_f$f_region <- as.factor(df_f$region)
@@ -630,7 +619,7 @@ The *mode* helps give an idea of what is the most typical value in the distribut
 
 ```{r}
 library(modeest)
-mlv(df$f_occup)
+mlv(df$occup_f)
 ```
 
 <!-- ### **Dispersion in Nominal and Ordinal Variables** -->
@@ -647,7 +636,7 @@ mlv(df$f_occup)
 
 <!-- ```{r} -->
 
-<!-- mlv(df$f_occup) -->
+<!-- mlv(df$occup_f) -->
 
 <!-- ``` -->
 
@@ -655,11 +644,11 @@ mlv(df$f_occup)
 
 <!-- ```{r} -->
 
-<!-- table(df$f_occup) -->
+<!-- table(df$occup_f) -->
 
 <!-- ``` -->
 
-<!-- We can see from that it's `r nrow(df %>% filter(f_occup == mlv(df$f_occup)))`. So we could just assign this to our object:  -->
+<!-- We can see from that it's `r nrow(df %>% filter(occup_f == mlv(df$occup_f)))`. So we could just assign this to our object:  -->
 
 <!-- ```{r} -->
 
@@ -697,7 +686,7 @@ We've touched on this already in week two, when we looked at using the `group_by
 
 ```{r}
 politics_by_occ <- df %>% 
-    group_by(f_occup) %>% 
+    group_by(occup_f) %>% 
     summarise(mean_poli_score = mean(politics_n, na.rm = TRUE))
 
 politics_by_occ
