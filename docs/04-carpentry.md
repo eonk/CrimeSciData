@@ -53,10 +53,11 @@ dim(eb85_3)
 ## [1] 27818   483
 ```
 
-Alternatively, you can import the file from the webiste where we keep the data:
+Alternatively, you can import the file from the website where we keep the data:
 
 ```r
-#option 2: import from the webpage
+#option 2: import from the website
+library(haven)
 eb85_3 <- read_dta("https://www.dropbox.com/s/sul9ezr4k9aua70/ZA6695_v2-0-0.dta?dl=1")
 dim(eb85_3)
 ```
@@ -71,7 +72,9 @@ We can see there are 27818 cases (survey participants) and 483 variables.
 
 Imagine that we needed to write a report about attitudes to sexual violence.
 
-First, we would need to think if we wanted to use all cases in the data or only a subset of the cases. For example, when using something like the Eurobarometer we would need to consider if we are interested in exploring the substantive topic across Europe or only for some countries. Or alternatively you may want to focus your analysis only on men attitudes to sexual violence. In a situation like this you would need to filter cases. This decision needs to be guided by your theoretical interests and your driving research question.
+First, we would need to think if we wanted to use all cases in the data or only a subset of the cases. For example, when using something like the Eurobarometer we would need to consider if we are interested in exploring the substantive topic across Europe or only for some countries. Or alternatively you may want to focus your analysis only on men attitudes to sexual violence. In a situation like this you would need to filter cases. This decision needs to be guided by your theoretical interests and your driving research question. Here is a video about Eurobarometer. Not a fancy video but anyone who wants to know about Eurobarometer within a min, have a look. 
+
+<iframe src="https://www.youtube.com/embed/yTufHITtGBA" width="100%" height="400px" data-external="1"></iframe>
 
 So, for example, if we only wanted to work with the UK sample we would need to figure out if there is a variable that identifies the country in the dataset. To know this, we need to look at the *codebook* (sometimes called data dictionary). In this case, we can look at the interactive facility provided for GESIS for online data analysis, which provides an interactive online codebook for this dataset. You can access this facility in the link highlighted in the image below:
 
@@ -98,7 +101,7 @@ class(eb85_3$isocntry)
 uk_eb85_3 <- filter(eb85_3, isocntry %in% c("GB-GBN", "GB-NIR"))
 ```
 
-The variable *isocntry* is a character vector with codes for the different participating countries. Here we want to select all the cases in the survey that have either of two values in this vector (GB-GBN or GB-NIR). Since these values are text we need to use quotes to wrap them up. Because we are selecting more than one value we cannot simply say `isocntry == "GB-BGN"`. We also need the cases from Northern Ireland. So, we use a particular operator introduced by `dplyr` called the piping operator (`%in%`). The piping operator is essentially saying to R *"and then"*. Basically, here we are creating a vector with the values we want *and then* asking R to look at those values within tne list (containing the right labels) in the the *isocntry* vector so that we can filter everything else out.
+The variable *isocntry* is a character vector with codes for the different participating countries. Here we want to select all the cases in the survey that have either of two values in this vector (GB-GBN or GB-NIR). Since these values are text we need to use quotes to wrap them up. Because we are selecting more than one value we cannot simply say `isocntry == "GB-BGN"`. We also need the cases from Northern Ireland. So, we use a particular operator introduced by `dplyr` called  a built-in infix operator (`%in%`). The `%in%` operator is essentially saying to R 'returns logical vector' if there is a match or not for its left operand. Basically, here we are creating a vector with the values matching conditions provided in a vector using the c() function, so R to look at those values within the list (containing the right labels) in the the *isocntry* vector so that we can filter everything else out.
 
 If you run this code you will end up with a new object called `uk_eb85_3` that only has 1306 observations. We have now a dataset that only has the British participants.
 
@@ -114,7 +117,8 @@ Once you have all of this you would need to think about which of these survey qu
 
 There are many items in this survey that relate to this topic, but for purposes of continuing our illustration we are going to focus on the answers to question *QB10*. This question asks respondents to identify in what circumstances may be justified to have sexual intercourse without consent. The participants are read a list of items (e.g., "flirting before hand") and they can select various of them if so they wish. 
 
-<img src="imgs/qb10a.png" width="960" />
+
+\includegraphics[width=26.65in]{imgs/qb10a} 
 
 What name is associated with this variable? Well you can see that depending on which thing they asked about, it might be `qb10_1`, `qb10_2`, `qb10_3`, etc etc!
 
@@ -321,7 +325,6 @@ Summated scales like the one we created here are quick and not the most kosher w
 When measuring latent variables it is a good idea to have multiple items that all capture aspects of the unobserved variable we are really interested in measuring. There is a whole field of statistics that focuses in how to analise if your observed variables are good indicators of your unobserved variable (**psychometry** is how we call this field in psychology) and also that focuses on how to best combine the answers to our observed variables in a single score (**latent variable modelling**). Some of the scores in the Crime Survey for England and Wales that you may use for your essay have been created with this more advanced methods (some of the measures on confidence in the police, for example). Summated scales are not really the best way to do this. But these are more advanced topics that are covered in upper level undergraduate or postgraduate courses. So for now, we will use summated scales as a convenient if imperfect way of aggregating observed variables.
 
 <!-- can add cronbach alpha if we want -->
-
 ## Collapsing categories in character variables
 
 One of the variables we selected is the country in which the participant lives. Let's have a look at this variable.
@@ -410,7 +413,7 @@ library(vcd)
 mosaic(~region + at_sexviol, data = df)
 ```
 
-<img src="04-carpentry_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+![](04-carpentry_files/figure-latex/unnamed-chunk-23-1.pdf)<!-- --> 
 
 In a mosaic plot like this the height of the region levels indicate how big that group is. You can see there are many more observations in our sample that come from Western countries than from Northern countries. Here what we are interested is the length. We see that Northern countries have proportionally more people in the zero category than any other group. On the other hand, Eastern countries have the fewer zeros (so looking as if attitudes more permissive towards sexual violence are more common there, even if still a minority). We will come back to this kind of plots later on this semester.
 
@@ -650,8 +653,6 @@ As when we created the *region* variable the first thing to do is to come out wi
     
 It would be quicker to recode from *d15a* into a new variable (there would be less typing when dealing with numbers rather than labels). But here we are going to use this example to show you how to recode from a factor variable, so instead we will recode form *occup_f*. 
 
-As often in R, there are multiple ways of doing this. We could use `dplyr::recode`. But here we will show you how to do this using the `recode` function from the `car` library.
-
 
 ```r
 df$occup2 <- df$occup_f
@@ -717,7 +718,7 @@ sum(is.na(df$politics))
 
 ![](imgs/leftrighta.png) 
 
-This is the question as it was asked from the survey respondents. Notice the difference in the response options and the categories in *politics*. We know that those that see themselves further to the left will have answer 1 and those that see themselves further to the right would have answer 10. In the codebook, what does 97 and 98 then refer to? If you look at the 'df' data, you will see that those that refuse or don't know *in the questionnaire* are shown as NA.
+This is the question as it was asked from the survey respondents. Notice the difference in the response options and the categories in *politics*. We know that those that see themselves further to the left will have answer 1 and those that see themselves further to the right would have answer 10. In the codebook, what does 97 and 98 then refer to? According to the codebook, 97 refers to 'Refusal' and 98 means 'DK (don't know)'. If you look at the 'df' data, you will see that those two 'Refusal' or 'DK (don't know)' *in the questionnaire* are shown as NA in your dataframe. In sum, they both are shown as 'NA' but it has two levels: 'Refusal' and 'DK (don't know)'. Run the code below, and check we are not lying. 
 
 Let’s look closer at the attributes:
 
@@ -729,17 +730,21 @@ A tip if you don’t want to see as much output. If you want to access directly 
 
 
 ```r
+#option 1: only see labels
 attributes(df$politics)$labels
 ```
 
 Or we could use the val_labels function from the labelled package for the same result:
 
 ```r
+#option 2: only see labels
 library(labelled)
 val_labels(df$politics)
 ```
 
-Let's check something:
+You may have good theoretical reasons to preserve these NAs in your analysis. Perhaps you think that people that did not answer this question have particular reasons not to do so and those reasons may be associated with their attitudes to violence. In that case you may want to somehow preserve them in your analysis not simply removing NA. Absent that rationale you may just want to treat them as they are: missing data. You just have no way of knowing if these people are more or less lefty or conservative. 
+
+Let's check something about the `politics` variable:
 
 
 ```r
@@ -760,8 +765,6 @@ If you try this now, you will see it works:
 ```r
 skim(df$politics_n)
 ```
-
-You may have good theoretical reasons to preserve this in your analysis. Perhaps you think that people that did not answer this question have particular reasons not to do so and those reasons may be associated with their attitudes to violence. In that case you may want to somehow preserve them in your analysis not simply removing NA. Absent that rationale you may just want to treat them as they are: missing data. You just have no way of knowing if these people are more or less lefty or conservative. 
 
 If we want to see what percentage of cases is NA across our dataset we could use `colMeans` combined with `is.na`. This will compute the mean (the proportion) of cases that are NA in each of the columns of the dataframe:
 
@@ -869,7 +872,7 @@ val_labels(df)
 ## NULL
 ```
 
-Notice that in *urban* there are explicit codes 'DK: don't know' for missing data but that these values won't be treated as such, at least we do something. Let's see how many cases we have in this scenario:
+Look at the Urban and see the labels carefully. Notice that in *urban* there are explicit codes 'DK (don't know)' for missing data but that these values won't be treated as such, at least we do something. Let's see how many cases we have in this scenario:
 
 
 ```r
@@ -881,23 +884,27 @@ summary(df$urban)
 ##   1.000   1.000   2.000   1.957   3.000   3.000      18
 ```
 
-Not too bad. Let's sort this variable:
+18 Not too bad. Let's sort this variable:
 
 
 ```r
 df$urban_f <- as_factor(df$urban)
-table(df$urban_f)
+attributes(df$urban_f)
 ```
 
 ```
+## $levels
+## [1] "Rural area or village"      "Small or middle sized town"
+## [3] "Large town"                 "DK"                        
 ## 
-##      Rural area or village Small or middle sized town 
-##                       8563                      11881 
-##                 Large town                         DK 
-##                       7356                         18
+## $class
+## [1] "factor"
+## 
+## $label
+## [1] "TYPE OF COMMUNITY"
 ```
 
-You can see that even though the data is NA, the label appears printed in the output and shows 18 missing values. This is still a valid level:
+You can see that even though the data is NA, the levels 'DK (don't know)' appears printed in the output and shows 18 missing values. This is still a valid level:
 
 
 ```r
@@ -925,7 +932,7 @@ table(df$urban_f)
 ##                       7356
 ```
 
-Above also saw the codes for *gender* let's use `as_factor` again for this variable:
+Above also saw the codes for *gender*. Let's use `as_factor` again for this variable:
 
 
 ```r
@@ -980,7 +987,7 @@ The function `complete.cases` is returning what cases have missing data **in any
 
 Later this term we will cover forms of analysis (e.g., multiple regression) in which you have to work with multiple variables at the same time. This form of analysis require you to have information for all the cases and all the variables. Every case for which there is not information in one of the variables in your analysis is automatically excluded from such analysis. So the actual sample size you use when using these techniques is the sample size for which you have full information. In our example your sample size (when you do multiple regression analysis or any multivariate analysis) will be 20184 rather than 27818.
 
-This being the case it makes sense to exclude from your data all cases that have some missing information in the variables you will be using in your analisis. For this you can use the `na.omit` function. We create a new object (I name it "full_df", you can call it whatever) and put inside it the outcome of running `na.omit` in our original sample ("df_f").
+This being the case it makes sense to exclude from your data all cases that have some missing information in the variables you will be using in your analysis. For this you can use the `na.omit` function. We create a new object (I name it "full_df", you can call it whatever) and put inside it the outcome of running `na.omit` in our original sample ("df_f").
 
 
 ```r
@@ -1001,12 +1008,10 @@ vis_dat(df_f)
 
 ```
 ## Warning: `gather_()` was deprecated in tidyr 1.2.0.
-## ℹ Please use `gather()` instead.
-## ℹ The deprecated feature was likely used in the visdat package.
-##   Please report the issue at <]8;;https://github.com/ropensci/visdat/issueshttps://github.com/ropensci/visdat/issues]8;;>.
+## Please use `gather()` instead.
 ```
 
-<img src="04-carpentry_files/figure-html/unnamed-chunk-53-1.png" width="672" />
+![](04-carpentry_files/figure-latex/unnamed-chunk-54-1.pdf)<!-- --> 
 
 Nice one! You get a visual representations of how your variables are encoded in this dataframe. You have several categorical variables such as region, urban_f, urban_f, and occup_f. We see that region is encoded as a `character` vector, whereas the others are `factors`. For the purposes of this course, it is generally better to have your categorical variables encoded as factors. So one of the next steps in our data prep may be to recode region as a factor. 
 
@@ -1035,7 +1040,7 @@ The othe piece of info you get with `vis_dat` is the prevalence of missing data 
 vis_miss(df_f)
 ```
 
-<img src="04-carpentry_files/figure-html/unnamed-chunk-57-1.png" width="672" />
+![](04-carpentry_files/figure-latex/unnamed-chunk-58-1.pdf)<!-- --> 
 
 You can find more details about how to explore missing data in the vignette of the `naniar` package [here](http://naniar.njtierney.com/articles/getting-started-w-naniar.html).
 
@@ -1174,7 +1179,7 @@ politics_by_occ
 ```
 
 ```
-## # A tibble: 18 × 2
+## # A tibble: 18 x 2
 ##    occup_f                                       mean_poli_score
 ##    <fct>                                                   <dbl>
 ##  1 Responsible for ordinary shopping, etc.                  5.23
