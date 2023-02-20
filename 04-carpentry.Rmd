@@ -62,7 +62,7 @@ We can see there are `r nrow(eb85_3)` cases (survey participants) and `r ncol(eb
 
 Imagine that we needed to write a report about attitudes to sexual violence.
 
-First, we would need to think if we wanted to use all cases in the data or only a subset of the cases. For example, when using something like the Eurobarometer we would need to consider if we are interested in exploring the substantive topic across Europe or only for some countries. Or alternatively you may want to focus your analysis only on men attitudes to sexual violence. In a situation like this you would need to filter cases. This decision needs to be guided by your theoretical interests and your driving research question. Here is a video about Eurobarometer. Not a fancy video but anyone who wants to know about Eurobarometer within a min, have a look. 
+First, we would need to think if we wanted to use all cases in the data or only a subset of the cases. For example, when using something like the Eurobarometer we would need to consider if we are interested in exploring the substantive topic across Europe or only for some countries. Or alternatively you may want to focus your analysis only on men attitudes to sexual violence. In a situation like this you would need to filter cases. This decision needs to be guided by your theoretical interests and your driving research question. Here is a video about Eurobarometer 2018. Not a fancy video but anyone who wants to know about Eurobarometer within a min, have a look. 
 
 ```{r echo=FALSE, fig.align='center', cache=TRUE}
 knitr::include_url("https://www.youtube.com/embed/yTufHITtGBA")
