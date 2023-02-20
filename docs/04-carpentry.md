@@ -747,27 +747,6 @@ library(skimr)
 skim(df$politics)
 ```
 
-
-Table: (\#tab:unnamed-chunk-39)Data summary
-
-|                         |            |
-|:------------------------|:-----------|
-|Name                     |df$politics |
-|Number of rows           |27818       |
-|Number of columns        |1           |
-|_______________________  |            |
-|Column type frequency:   |            |
-|numeric                  |1           |
-|________________________ |            |
-|Group variables          |None        |
-
-
-**Variable type: numeric**
-
-|skim_variable | n_missing| complete_rate| mean|   sd| p0| p25| p50| p75| p100|hist  |
-|:-------------|---------:|-------------:|----:|----:|--:|---:|---:|---:|----:|:-----|
-|data          |      6935|          0.75|  5.2| 2.21|  1|   4|   5|   7|   10|▂▃▇▃▂ |
-
 Mmmmm. The `summary` function worked, but other functions do not know to treat the values in the `haven_labelled` vector as a numeric. So, to avoid problems we may want to define as such (if we truly believe this is a quantitative rather than a categorical variable or at the very least are willing to treat it as quantitative).
 
 
@@ -781,27 +760,6 @@ If you try this now, you will see it works:
 ```r
 skim(df$politics_n)
 ```
-
-
-Table: (\#tab:unnamed-chunk-41)Data summary
-
-|                         |              |
-|:------------------------|:-------------|
-|Name                     |df$politics_n |
-|Number of rows           |27818         |
-|Number of columns        |1             |
-|_______________________  |              |
-|Column type frequency:   |              |
-|numeric                  |1             |
-|________________________ |              |
-|Group variables          |None          |
-
-
-**Variable type: numeric**
-
-|skim_variable | n_missing| complete_rate| mean|   sd| p0| p25| p50| p75| p100|hist  |
-|:-------------|---------:|-------------:|----:|----:|--:|---:|---:|---:|----:|:-----|
-|data          |      6935|          0.75|  5.2| 2.21|  1|   4|   5|   7|   10|▂▃▇▃▂ |
 
 You may have good theoretical reasons to preserve this in your analysis. Perhaps you think that people that did not answer this question have particular reasons not to do so and those reasons may be associated with their attitudes to violence. In that case you may want to somehow preserve them in your analysis not simply removing NA. Absent that rationale you may just want to treat them as they are: missing data. You just have no way of knowing if these people are more or less lefty or conservative. 
 

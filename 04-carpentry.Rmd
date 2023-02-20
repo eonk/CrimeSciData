@@ -457,7 +457,7 @@ val_labels(df$politics)
 
 Let's check something:
 
-```{r}
+```{r, eval=FALSE}
 library(skimr)
 skim(df$politics)
 ```
@@ -470,7 +470,7 @@ df$politics_n <-as.numeric(df$politics)
 
 If you try this now, you will see it works:
 
-```{r}
+```{r, eval=FALSE}
 skim(df$politics_n)
 ```
 

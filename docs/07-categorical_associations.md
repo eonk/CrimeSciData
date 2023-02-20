@@ -20,7 +20,7 @@ BCS0708<-read.csv(url(urlfile))
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/9p/2vm2p_ss60zcf4pr0135n4q80000gr/T//RtmpmOI3pq/downloaded_packages
+## 	/var/folders/9p/2vm2p_ss60zcf4pr0135n4q80000gr/T//Rtmp5U7MuT/downloaded_packages
 ```
 
 We will start by producing a cross tabulation of victimisation ("bcsvictim"), a categorical unordered variable, by whether the presence of rubbish in the streets is a problem in the area of residence ("rubbcomm"), another categorical unordered variable. Broken windows theory would argue we should see a relationship. We will use the following code:
