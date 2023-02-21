@@ -350,10 +350,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Sampling method: the data were obtained through <em>independent random sampling</em>. The BCS uses a complex survey design which would require the use of special procedures for hypothesis testing. However, those special procedures are well beyond the scope of this course and would typically be covered in more advanced courses. Therefore, for convenience we will proceed as if this assumption is met.</p></li>
 </ol>
 <p>You may also want to check for outliers by plotting the data, for in some cases this may distort your results, particularly with smaller samples. So we are ok with 1 and 2, and are going to proceed as if 4 is met. What about normality? With large samples you can relax this assumption. However, you may want to also check if your sample data are normally distributed.</p>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="hypotheses.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="do">##R in Windows have some problems with https addresses, that&#39;s why we need to do this first:</span></span>
-<span id="cb423-2"><a href="hypotheses.html#cb423-2" aria-hidden="true" tabindex="-1"></a>urlfile<span class="ot">&lt;-</span><span class="st">&#39;https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv&#39;</span></span>
-<span id="cb423-3"><a href="hypotheses.html#cb423-3" aria-hidden="true" tabindex="-1"></a><span class="co">#We create a data frame object reading the data from the remote .csv file</span></span>
-<span id="cb423-4"><a href="hypotheses.html#cb423-4" aria-hidden="true" tabindex="-1"></a>BCS0708<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="fu">url</span>(urlfile))</span></code></pre></div>
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb423-1"><a href="hypotheses.html#cb423-1" aria-hidden="true" tabindex="-1"></a>BCS0708<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb424-1"><a href="hypotheses.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb424-2"><a href="hypotheses.html#cb424-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(BCS0708, <span class="fu">aes</span>(<span class="at">x =</span> tcviolent, <span class="at">colour =</span> sex)) <span class="sc">+</span> <span class="co">#you will need to load the data as explained in week 1</span></span>
 <span id="cb424-3"><a href="hypotheses.html#cb424-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>() </span></code></pre></div>
@@ -642,8 +639,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Test statistic: 45.3591 
 ## p-value: 0 
-## Variance explained: 0.084 
-## Effect size: 0.29</code></pre>
+## Variance explained: 0.086 
+## Effect size: 0.293</code></pre>
 <p>As with the standard ANOVA and the Welch version, we still get a significant result.</p>
 </div>
 <div id="post-hoc-comparisons" class="section level3 hasAnchor" number="6.5.6">
@@ -708,7 +705,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Taking the square root of eta squared gives you the correlation between the metric and the categorical variable. Eta or the correlation is a measure of effect size; that is of the substantive impact of your categorical variable. In this case that value (square root of 0.02972) is around .17. That suggests that ethnicity has a small effect on fear of crime in this study (see page 58 of Field et al. 2012 for rules of thumb to interpret eta or r).</p>
 <p>You can also use the <code>ANOVA</code> function from the <code>lessR</code> package, which is a package designed to facilitate the learning of R.</p>
 <div class="sourceCode" id="cb479"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb479-1"><a href="hypotheses.html#cb479-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lessR)</span>
-<span id="cb479-2"><a href="hypotheses.html#cb479-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ANOVA</span>(tcviolent <span class="sc">~</span> ethgrp2, <span class="at">data =</span> BCS0708, <span class="at">brief=</span><span class="cn">TRUE</span>) <span class="co">#The brief argument set to TRUE excludes pairwise comparisons and extra text from being printed.</span></span></code></pre></div>
+<span id="cb479-2"><a href="hypotheses.html#cb479-2" aria-hidden="true" tabindex="-1"></a><span class="co">#The brief argument set to TRUE excludes pairwise comparisons and extra text from being printed.</span></span>
+<span id="cb479-3"><a href="hypotheses.html#cb479-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ANOVA</span>(tcviolent <span class="sc">~</span> ethgrp2, <span class="at">data =</span> BCS0708, <span class="at">brief=</span><span class="cn">TRUE</span>) </span></code></pre></div>
 <p><img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <pre><code>## 
 ##   BACKGROUND 

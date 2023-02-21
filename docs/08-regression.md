@@ -2,7 +2,6 @@
 
 ## Introduction: models in scientific research
 
-
 In science one of our main concerns is to develop models of the world, models that help us to understand the world a bit better or to predict how things will develop better. You can read more about modelling in scientific research [here](https://www.visionlearning.com/en/library/Process-of-Science/49/Modeling-in-Scientific-Research/153). Statistics provides a set of tools that help researchers build and test scientific models.
 
 Our models can be simple. We can think that unemployment is a factor that may help us to understand why cities differ in their level of violent crime. We could express such a model like this:
@@ -22,7 +21,7 @@ We will use a new dataset today, specifically the data used by Patrick Sharkey a
 
 ```r
 urlfile <- "https://dataverse.harvard.edu/api/access/datafile/:persistentId?persistentId=doi:10.7910/DVN/46WIH0/ARS2VS"
-sharkey <- read.table(url(urlfile), sep = '\t',header = T)
+sharkey <- read.table(urlfile, sep = '\t',header = T)
 ```
 
 As before we create an object with the permanent `url` address and then we use a function to read the data into R. The data that can be saved using an `api` is in tab separated format. For this then we use the `read.table` function from base R. We pass two arguments to the function `sep= '\t'` is telling R this file is tab separated. The `header = T` function is telling R that is TRUE (T) that this file has a first row that acts as a header (this row has the name of the variables).
@@ -629,10 +628,6 @@ We are going to use instead the `plot_model()` function of the `sjPlot` package,
 
 ```r
 library(sjPlot)
-```
-
-```
-## Learn more about sjPlot with 'browseVignettes("sjPlot")'.
 ```
 
 Let's try with a more complex example:

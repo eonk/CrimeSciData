@@ -90,7 +90,7 @@ fake_population$IQ[fake_population$offender == "Yes"] <- rnorm(35623, mean = 92,
 We can now have a look at the data. Let's plot the density of IQ for each of the two groups and have a look at the summary statistics. 
 
 ```{r, message=FALSE, warning=FALSE}
-##This will give us the mean IQ for the whole population
+#This will give us the mean IQ for the whole population
 mean(fake_population$IQ)
 #We will load the plyr package to get the means for IQ for each of the two offending groups
 library(plyr)
@@ -511,10 +511,7 @@ But statistics is all about comparisons. And making comparisons involves working
 Imagine that we want to know whether there is a difference in the level of fear experienced by males and females. Suppose we want to compare the average level of fear of violent crime across the two genders. We could use the data from the British Crime Survey we have been using so far (please load the data if you don't have it in your global environment from previous weeks). But we also need to take into account sampling variability. The estimated mean for fear of crime for males will be subject to some sampling error. The same for females. And the same for the difference between the two means.
 
 ```{r}
-##R in Windows have some problems with https addresses, that's why we need to do this first:
-urlfile<-'https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv'
-#We create a data frame object reading the data from the remote .csv file
-BCS0708<-read.csv(url(urlfile))
+BCS0708<-read.csv("https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv")
 ```
 
 We are going to use the `describeBy` function of the `psych` package to produce summary statistics by group.

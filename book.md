@@ -863,7 +863,7 @@ In this session we will look at data from a randomised trial that tried to estab
 
 Last week we introduced the notion of reproducible research and said that using and publishing code (particularly if using open source tools like R) is the way that [many researchers](https://osf.io/?gclid=EAIaIQobChMIq-jM6MuY2QIV7Z3tCh04vAycEAAYASAAEgLptPD_BwE) around the world think that science ought to be done. This way of operating makes research more open, more credible, and more legitimate. It also means that we can more easily access the data used in published research. For this session we are going to use the data from [this](https://academic.oup.com/qje/article/133/1/191/4060073) and [this paper](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.p20171003) study. In this research project, the authors tried to answer the question of whether criminal antecedents and other personal characteristics have an impact on access to employment. You can find more details about this work in [episode 8](https://www.probablecausation.com/podcasts/episode-8-amanda-agan) of *Probable Causation*, the criminology podcast.
 
-If you want to know more about 'Ban the Box' to encourage ‘fair chance recruitment’ practices in the UK, you can find more information [here](https://recruit.unlock.org.uk/fair-chance-recruitment/ban-the-box/) and also can watch a video from Leo Burnett who helped promote the importance of giving people a chance to explain their past.
+If you want to know more about 'Ban the Box: fair chance recruitment’ practices in the UK, you can find more information [here](https://recruit.unlock.org.uk/fair-chance-recruitment/ban-the-box/) and also can watch this short video from Leo Burnett who helped promote giving people a chance to explain their past. This could give you some better understanding about this issue.
 
 <iframe src="https://www.youtube.com/embed/eM1nVA6hwlI" width="100%" height="400px" data-external="1"></iframe>
 
@@ -879,20 +879,25 @@ You could just click "download" and then place the file in your project director
 
 
 ```r
-#First, let's create an object with the link, paste the copied address here:
-urlfile <- "https://dataverse.harvard.edu/api/access/datafile/3036350"
+#First, let's import the data using an url address:
+library(haven)
+banbox <- read_dta("https://dataverse.harvard.edu/api/access/datafile/3036350")
+
+##Window users! R in Windows have some problems with https addresses, that's why we need to do this first:
 ```
 
 This  data file is a STATA.dta file in our working directory. To read STATA files we will need the *haven* package. This is a package developed for importing different kind of data files into R. If you don't have it you will need to install it. And then load it.
 
 
 ```r
+##IF THE CODE ABOVE DOES NOT WORK, USE THIS CODE.
+##Window users! R in Windows have some problems with https addresses, in that case, try to use this code
+#First, let's create an object with the link, paste the copied address here:
+urlfile <- "https://dataverse.harvard.edu/api/access/datafile/3036350"
+
+#Now we can use the 'read_dta' and 'url' functions and import the data in the urlfile link
 library(haven)
-#Now we can use the 'read_dta' function, within this function we will
-#pass an argument, urlfile, specifying to the read_dta function the need to
-#make a url connection. The url function takes as an argument the url
-#we are using and that we encoded in the urlfile object in our case.
-banbox <- read_dta(urlfile)
+banbox <- read_dta(url(urlfile))
 ```
 
 You will need to pay attention to the file extension, to find the appropriate function to read in your file. For example, if something has the extension `.sav` that is a file used by the software SPSS. To read this, you would use the `read_spss()` function, also in the haven package. 
@@ -3832,7 +3837,7 @@ We can now have a look at the data. Let's plot the density of IQ for each of the
 
 
 ```r
-##This will give us the mean IQ for the whole population
+#This will give us the mean IQ for the whole population
 mean(fake_population$IQ)
 ```
 
@@ -4805,10 +4810,7 @@ Imagine that we want to know whether there is a difference in the level of fear 
 
 
 ```r
-##R in Windows have some problems with https addresses, that's why we need to do this first:
-urlfile<-'https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv'
-#We create a data frame object reading the data from the remote .csv file
-BCS0708<-read.csv(url(urlfile))
+BCS0708<-read.csv("https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv")
 ```
 
 We are going to use the `describeBy` function of the `psych` package to produce summary statistics by group.
@@ -5010,10 +5012,7 @@ You may also want to check for outliers by plotting the data, for in some cases 
 
 
 ```r
-##R in Windows have some problems with https addresses, that's why we need to do this first:
-urlfile<-'https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv'
-#We create a data frame object reading the data from the remote .csv file
-BCS0708<-read.csv(url(urlfile))
+BCS0708<-read.csv("https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv")
 ```
 
 
@@ -5569,8 +5568,8 @@ t1waybt(tcviolent ~ ethgrp2, data = BCS0708, tr = .05, nboot = 599)
 ## 
 ## Test statistic: 45.3591 
 ## p-value: 0 
-## Variance explained: 0.078 
-## Effect size: 0.28
+## Variance explained: 0.081 
+## Effect size: 0.284
 ```
 
 As with the standard ANOVA and the Welch version, we still get a significant result.
@@ -5663,7 +5662,8 @@ You can also use the `ANOVA` function from the `lessR` package, which is a packa
 
 ```r
 library(lessR)
-ANOVA(tcviolent ~ ethgrp2, data = BCS0708, brief=TRUE) #The brief argument set to TRUE excludes pairwise comparisons and extra text from being printed.
+#The brief argument set to TRUE excludes pairwise comparisons and extra text from being printed.
+ANOVA(tcviolent ~ ethgrp2, data = BCS0708, brief=TRUE) 
 ```
 
 ![](06-hypothesis_testing_files/figure-latex/unnamed-chunk-30-1.pdf)<!-- --> 
@@ -5750,9 +5750,7 @@ interpret_omega_squared(0.03, rules = "field2013")
 ## (Rules: field2013)
 ```
 
-
 Or Cohen (1992): 
-
 
 
 ```r
@@ -5763,8 +5761,6 @@ interpret_omega_squared(0.03, rules = "cohen1992")
 ## [1] "small"
 ## (Rules: cohen1992)
 ```
-
-
 
 Isn't that something! Soon you'll be learning how to write code that will write your whole essay for you! Alright that's enough for this week, well done for getting to the end!
 
@@ -5782,10 +5778,7 @@ We will begin the session by loading again the BCS 2007/2008 data from previous 
 
 
 ```r
-##R in Windows have some problems with https addresses, that's why we need to do this first:
-urlfile<-'https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv'
-#We create a data frame object reading the data from the remote .csv file
-BCS0708<-read.csv(url(urlfile))
+BCS0708<-read.csv("https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv")
 ```
 
 
@@ -5797,7 +5790,7 @@ BCS0708<-read.csv(url(urlfile))
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpjGd1Ph/downloaded_packages
+## 	/var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpdnWkhk/downloaded_packages
 ```
 
 We will start by producing a cross tabulation of victimisation ("bcsvictim"), a categorical unordered variable, by whether the presence of rubbish in the streets is a problem in the area of residence ("rubbcomm"), another categorical unordered variable. Broken windows theory would argue we should see a relationship. We will use the following code:
@@ -5869,7 +5862,6 @@ class(BCS0708$rubbcomm)
 ```
 
 It is categorical, we know, but note that R consdiers this "character" rather than "factor" which is what we would like. To make sure that R knows this is a factor, we can convert it with the `as.factor()` function. PAY ATTENTION: we are *not* recoding, so we use `as.factor()` with a dot (as.dot.factor), and we are **not using** the `as_factor()` from the haven package which we would use to recode if this were a .dta file (it's not!). 
-
 
 
 ```r
@@ -6177,6 +6169,7 @@ When you have two dichotomous nominal level variables, that is, two nominal leve
 
 They are the statistical equivalent of a tongue twister, so don't worry too much if you need to keep looking at this handout every time you want to interpret them. We are going to look at the relationship between victimisation and living in a rural/urban setting: 
 
+
 ```r
 with(BCS0708, CrossTable(rural2, bcsvictim, prop.c = FALSE, prop.t = FALSE, expected = TRUE, format = c("SPSS")))
 ```
@@ -6398,7 +6391,6 @@ It is also very important that you interpret these quantities carefully. You wil
 
 ## Introduction: models in scientific research
 
-
 In science one of our main concerns is to develop models of the world, models that help us to understand the world a bit better or to predict how things will develop better. You can read more about modelling in scientific research [here](https://www.visionlearning.com/en/library/Process-of-Science/49/Modeling-in-Scientific-Research/153). Statistics provides a set of tools that help researchers build and test scientific models.
 
 Our models can be simple. We can think that unemployment is a factor that may help us to understand why cities differ in their level of violent crime. We could express such a model like this:
@@ -6418,7 +6410,7 @@ We will use a new dataset today, specifically the data used by Patrick Sharkey a
 
 ```r
 urlfile <- "https://dataverse.harvard.edu/api/access/datafile/:persistentId?persistentId=doi:10.7910/DVN/46WIH0/ARS2VS"
-sharkey <- read.table(url(urlfile), sep = '\t',header = T)
+sharkey <- read.table(urlfile, sep = '\t',header = T)
 ```
 
 As before we create an object with the permanent `url` address and then we use a function to read the data into R. The data that can be saved using an `api` is in tab separated format. For this then we use the `read.table` function from base R. We pass two arguments to the function `sep= '\t'` is telling R this file is tab separated. The `header = T` function is telling R that is TRUE (T) that this file has a first row that acts as a header (this row has the name of the variables).
@@ -7025,10 +7017,6 @@ We are going to use instead the `plot_model()` function of the `sjPlot` package,
 
 ```r
 library(sjPlot)
-```
-
-```
-## Learn more about sjPlot with 'browseVignettes("sjPlot")'.
 ```
 
 Let's try with a more complex example:
@@ -7784,7 +7772,7 @@ library(sjPlot)
 ```
 
 ```
-## #refugeeswelcome
+## Learn more about sjPlot with 'browseVignettes("sjPlot")'.
 ```
 
 ```r
@@ -8269,15 +8257,11 @@ For any additional questions you can follow the sequential 5 "Bs" approach desig
 + **Buddy**: "Can one of my peers answer this question?" (if unconvinced by their answer you can move to the next B)
 + **Boss**: "If I have tried all the other Bs, then I can put up my hand but continue working" (and remember here you should first try to ask in the discussion board or the labs, and failing that make an appointment through office hours)
 
-
-
 A scientific report, like the one you are tasked to write, needs to be clear, well justified, and very efficient in the use of space. It will be helpful you finish ahead of time and **dedicate some time simply to edit your final essay**. This is, in fact, a general piece of advice for any essay you write. But in this case perhaps matters more. You will have done loads of things as part of your analysis, but will have very limited word count to tell the story of your analysis. Every word and every sentence must be needed. There is always a shorter and more parsimonious way of saying something! And, please, use the spelling editors of whatever app you use to write your essays. It is not cool to send essays with typos and grammar errors that any app can automatically detect these days.
 
 Here I am just going to cover a few things you can do to make this presentation a bit more succint and parsimonious.
 
-
 ##Summarising your variables
-
 
 The paper by Melde and Esbensen (2009) cited above provides an example of how you may want to describe in the text your variables. As noted you may not have as much space to get into so much detail, but the core idea you need to take home is that the reader needs to know what variables you are using and how they are measured. You will also need to provide a succint summary of the descriptive measures for your variables. Look at [this paper](https://journals.sagepub.com/doi/10.1177/1477370808095123) by Andromachi Tseloni and Christina Zarafonitou (2008). Below I reproduce a table from the pre-print version of this article with a summary of the variables they are using in their analysis:
 
@@ -8295,10 +8279,9 @@ As we have said we want you to look at whether your variables are associated bef
 
 Above I am reproducing an example of how you could do this. The example assumes you have a categorical dependent variable with four different categories (non-gang, gang only at T1, etc.). You can see how in this table the categories define the column (there is also one for the total sample, if you have something like this you are essentially providing also the summary descriptives for the whole). You can see that the rows define the levels for two categorical variables (gender and race/ethnicity) and two quantitative variables (age and a score for crime). For the categorical variables we have the appropriate percentages (as discussed in week 7) and for the quantitative variables we have the means and standard deviations. Remember how you set this table may differ depending the nature of your variables, but hopefully you get the idea. You can find a way to summarise the information. You could add a column to a table like this with the p values for your statistical tests (somehow indicating what that test was: chi square, F, etc.). Then you could discuss the more relevant of this in the narrative discussing your table.
 
-
 ##Some final words
 
-So, this is the end. At least for now. What we have done this semester is an introduction to the field of data analysis. But there is so much more to it. If you are planning a scientific career or want to work as an analyst in the private or public sector, the journey is just beginning. You could take some choices in the final year to continue this journey. There are some options within our degree (like Crime Mapping or the Quantitative Seconday Analysis Short Dissertation pathway, one of the possible modalities as the Short Dissertation). You could also take options in other degrees within the School of Social Science, our new home, that also have a focus on quant analysis (we can advise on these). After that you may want to think about our MRes in Criminology (Social Statistics), which focuses on quant analysis as part of the criminology track. You can see details [here](https://www.manchester.ac.uk/study/masters/courses/list/10377/mres-criminology-social-statistics/).
+So, this is the end. At least for now. What we have done this semester is an introduction to the field of data analysis. But there is so much more to it. If you are planning a scientific career or want to work as an analyst in the private or public sector, the journey is just beginning. You could take some choices in the final year to continue this journey. There are some options within our degree (like Crime Mapping or the Quantitative Secondary Analysis Short Dissertation pathway, one of the possible modalities as the Short Dissertation). You could also take options in other degrees within the School of Social Science, our new home, that also have a focus on quant analysis (we can advise on these). After that you may want to think about our MRes in Criminology (Social Statistics), which focuses on quant analysis as part of the criminology track. You can see details [here](https://www.manchester.ac.uk/study/masters/courses/list/10377/mres-criminology-social-statistics/).
 
 But there are many free courses offered as massive online open courses that you could take to consolidate or further expand what you have learnt this semester. Check out [Coursera](https://www.coursera.org/browse/data-science) or [edX](https://www.edx.org/course/subject/data-science) platforms for these. Many of those courses make you pay for a certificate (and if you want to get feedback), but you can watch the videos and use the materials for free in almost all of them. You may also want to have a look at [datacamp](https://www.datacamp.com). Most of their courses require a paid subscription, but there are many courses for free (particularly those created by the community).
 

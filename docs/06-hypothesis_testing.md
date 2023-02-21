@@ -78,10 +78,7 @@ You may also want to check for outliers by plotting the data, for in some cases 
 
 
 ```r
-##R in Windows have some problems with https addresses, that's why we need to do this first:
-urlfile<-'https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv'
-#We create a data frame object reading the data from the remote .csv file
-BCS0708<-read.csv(url(urlfile))
+BCS0708<-read.csv("https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv")
 ```
 
 
@@ -637,8 +634,8 @@ t1waybt(tcviolent ~ ethgrp2, data = BCS0708, tr = .05, nboot = 599)
 ## 
 ## Test statistic: 45.3591 
 ## p-value: 0 
-## Variance explained: 0.078 
-## Effect size: 0.28
+## Variance explained: 0.081 
+## Effect size: 0.284
 ```
 
 As with the standard ANOVA and the Welch version, we still get a significant result.
@@ -731,7 +728,8 @@ You can also use the `ANOVA` function from the `lessR` package, which is a packa
 
 ```r
 library(lessR)
-ANOVA(tcviolent ~ ethgrp2, data = BCS0708, brief=TRUE) #The brief argument set to TRUE excludes pairwise comparisons and extra text from being printed.
+#The brief argument set to TRUE excludes pairwise comparisons and extra text from being printed.
+ANOVA(tcviolent ~ ethgrp2, data = BCS0708, brief=TRUE) 
 ```
 
 ![](06-hypothesis_testing_files/figure-latex/unnamed-chunk-30-1.pdf)<!-- --> 
@@ -818,9 +816,7 @@ interpret_omega_squared(0.03, rules = "field2013")
 ## (Rules: field2013)
 ```
 
-
 Or Cohen (1992): 
-
 
 
 ```r
@@ -831,7 +827,5 @@ interpret_omega_squared(0.03, rules = "cohen1992")
 ## [1] "small"
 ## (Rules: cohen1992)
 ```
-
-
 
 Isn't that something! Soon you'll be learning how to write code that will write your whole essay for you! Alright that's enough for this week, well done for getting to the end!

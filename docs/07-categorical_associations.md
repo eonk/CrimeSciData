@@ -10,10 +10,7 @@ We will begin the session by loading again the BCS 2007/2008 data from previous 
 
 
 ```r
-##R in Windows have some problems with https addresses, that's why we need to do this first:
-urlfile<-'https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv'
-#We create a data frame object reading the data from the remote .csv file
-BCS0708<-read.csv(url(urlfile))
+BCS0708<-read.csv("https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv")
 ```
 
 
@@ -25,7 +22,7 @@ BCS0708<-read.csv(url(urlfile))
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpjGd1Ph/downloaded_packages
+## 	/var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpdnWkhk/downloaded_packages
 ```
 
 We will start by producing a cross tabulation of victimisation ("bcsvictim"), a categorical unordered variable, by whether the presence of rubbish in the streets is a problem in the area of residence ("rubbcomm"), another categorical unordered variable. Broken windows theory would argue we should see a relationship. We will use the following code:
@@ -97,7 +94,6 @@ class(BCS0708$rubbcomm)
 ```
 
 It is categorical, we know, but note that R consdiers this "character" rather than "factor" which is what we would like. To make sure that R knows this is a factor, we can convert it with the `as.factor()` function. PAY ATTENTION: we are *not* recoding, so we use `as.factor()` with a dot (as.dot.factor), and we are **not using** the `as_factor()` from the haven package which we would use to recode if this were a .dta file (it's not!). 
-
 
 
 ```r
@@ -404,6 +400,7 @@ Gamma, however, assumes a "linear" relationship, more in one of the variables, m
 When you have two dichotomous nominal level variables, that is, two nominal level variables that can take only two possible levels, one of the more commonly used measures to indicate the strength of an association are odd ratios. Odd ratios and relative risk are very commonly used in public health and in criminological research. If you have knowledge of betting, you may already know a thing or two about odds.
 
 They are the statistical equivalent of a tongue twister, so don't worry too much if you need to keep looking at this handout every time you want to interpret them. We are going to look at the relationship between victimisation and living in a rural/urban setting: 
+
 
 ```r
 with(BCS0708, CrossTable(rural2, bcsvictim, prop.c = FALSE, prop.t = FALSE, expected = TRUE, format = c("SPSS")))

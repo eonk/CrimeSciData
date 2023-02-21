@@ -122,7 +122,7 @@ We can now have a look at the data. Let's plot the density of IQ for each of the
 
 
 ```r
-##This will give us the mean IQ for the whole population
+#This will give us the mean IQ for the whole population
 mean(fake_population$IQ)
 ```
 
@@ -1095,10 +1095,7 @@ Imagine that we want to know whether there is a difference in the level of fear 
 
 
 ```r
-##R in Windows have some problems with https addresses, that's why we need to do this first:
-urlfile<-'https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv'
-#We create a data frame object reading the data from the remote .csv file
-BCS0708<-read.csv(url(urlfile))
+BCS0708<-read.csv("https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv")
 ```
 
 We are going to use the `describeBy` function of the `psych` package to produce summary statistics by group.

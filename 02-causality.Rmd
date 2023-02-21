@@ -24,7 +24,7 @@ In this session we will look at data from a randomised trial that tried to estab
 
 Last week we introduced the notion of reproducible research and said that using and publishing code (particularly if using open source tools like R) is the way that [many researchers](https://osf.io/?gclid=EAIaIQobChMIq-jM6MuY2QIV7Z3tCh04vAycEAAYASAAEgLptPD_BwE) around the world think that science ought to be done. This way of operating makes research more open, more credible, and more legitimate. It also means that we can more easily access the data used in published research. For this session we are going to use the data from [this](https://academic.oup.com/qje/article/133/1/191/4060073) and [this paper](https://pubs.aeaweb.org/doi/pdfplus/10.1257/aer.p20171003) study. In this research project, the authors tried to answer the question of whether criminal antecedents and other personal characteristics have an impact on access to employment. You can find more details about this work in [episode 8](https://www.probablecausation.com/podcasts/episode-8-amanda-agan) of *Probable Causation*, the criminology podcast.
 
-If you want to know more about 'Ban the Box' to encourage ‘fair chance recruitment’ practices in the UK, you can find more information [here](https://recruit.unlock.org.uk/fair-chance-recruitment/ban-the-box/) and also can watch a video from Leo Burnett who helped promote the importance of giving people a chance to explain their past.
+If you want to know more about 'Ban the Box: fair chance recruitment’ practices in the UK, you can find more information [here](https://recruit.unlock.org.uk/fair-chance-recruitment/ban-the-box/) and also can watch this short video from Leo Burnett who helped promote giving people a chance to explain their past. This could give you some better understanding about this issue.
 
 ```{r echo=FALSE, fig.align='center', cache=TRUE}
 knitr::include_url("https://www.youtube.com/embed/eM1nVA6hwlI")
@@ -41,19 +41,25 @@ In this page you can see a download section and some files that can be accessed.
 You could just click "download" and then place the file in your project directory. Alternatively, and preferably, you may want to use code to make your whole work more reproducible. Think of it this way, every time you click or use drop down menus you are doing things that others cannot reproduce because there won't be a written record of your steps. You will need though to do some clicking for finding out the required url you will use for writing your code. The file we want is the `AganStarrQJEData.dta`. Click in the name of this file. You will be taken to another webpage. On it you will see the download url. Copy and paste this url in your code below.
 
 ```{r bring data}
-#First, let's create an object with the link, paste the copied address here:
-urlfile <- "https://dataverse.harvard.edu/api/access/datafile/3036350"
+#First, let's import the data using an url address:
+library(haven)
+banbox <- read_dta("https://dataverse.harvard.edu/api/access/datafile/3036350")
+
+##Window users! R in Windows have some problems with https addresses, that's why we need to do this first:
+
 ```
 
 This  data file is a STATA.dta file in our working directory. To read STATA files we will need the *haven* package. This is a package developed for importing different kind of data files into R. If you don't have it you will need to install it. And then load it.
 
 ```{r}
+##IF THE CODE ABOVE DOES NOT WORK, USE THIS CODE.
+##Window users! R in Windows have some problems with https addresses, in that case, try to use this code
+#First, let's create an object with the link, paste the copied address here:
+urlfile <- "https://dataverse.harvard.edu/api/access/datafile/3036350"
+
+#Now we can use the 'read_dta' and 'url' functions and import the data in the urlfile link
 library(haven)
-#Now we can use the 'read_dta' function, within this function we will
-#pass an argument, urlfile, specifying to the read_dta function the need to
-#make a url connection. The url function takes as an argument the url
-#we are using and that we encoded in the urlfile object in our case.
-banbox <- read_dta(urlfile)
+banbox <- read_dta(url(urlfile))
 ```
 
 You will need to pay attention to the file extension, to find the appropriate function to read in your file. For example, if something has the extension `.sav` that is a file used by the software SPSS. To read this, you would use the `read_spss()` function, also in the haven package. 
