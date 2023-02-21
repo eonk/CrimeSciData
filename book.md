@@ -1,7 +1,7 @@
 --- 
 title: "Modelling Criminological Data"
 author: "Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)"
-date: "2023-02-20"
+date: "2023-02-21"
 site: bookdown::bookdown_site
 documentclass: book
 biblio-style: apalike
@@ -2731,6 +2731,7 @@ The thing is that doing that implies loosing information. We may think that some
 Another alternative could be to see how many of these circumstances are considered valid excuses for each individual and to produce a sum then for every respondent. Since there are 9 "excuses" we could have a sum from 0 to 9. This is a very rough **summated scale**. You can read more about the proper development of summated scales [here](https://pdfs.semanticscholar.org/aa84/dc485a07b920a957e9ef295e8dced8fa025c.pdf). 
 
 Let's do this. We are going to create a new variable that add up the responses to *qb10_1* all the way to *qb10_9*. For this we use the `mutate` function from the `dplyr` package.
+If you want to look the codebook again to see how *qb10_1* is measured, use this [link](https://www.dropbox.com/s/pvw2ipn45ygm6hm/ZA6695_cdb.pdf?dl=0) and go to page.384.
 
 
 ```r
@@ -2746,7 +2747,7 @@ table(df$at_sexviol)
 ## 19681  2529  2117  1643   841   416   255   155    57   124
 ```
 
-We have a skewed distribution. Most people in the survey consider that none of the identified circumstances are valid excuses for having sexual intercourse without consent. On the other hand, only a minority of individuals (124) consider that all of these 9 circumstances are valid excuses for having sex without consent. A high score in this count variable is telling you the participant is more likely to accept a number of circumstances in which sexual intercourse without consent is acceptable. You may read more about count data of this kind [here](https://en.wikipedia.org/wiki/Count_data).
+We have a skewed distribution. Most people (19681 here, right?) in the survey consider that none of the identified circumstances are valid excuses for having sexual intercourse without consent . On the other hand, only a minority of individuals (124) consider that all of these 9 circumstances are valid excuses for having sex without consent. A high score in this count variable is telling you the participant is more likely to accept a number of circumstances in which sexual intercourse without consent is acceptable. You may read more about count data of this kind [here](https://en.wikipedia.org/wiki/Count_data).
 
 Hold on for a second, though. There is a variable `qb10_10` that specifies people that answered "none of these" circumstances. In theory the number of people with a "1" in that variable (that is, selected this item) should equal 19681 (the number of zeros in our new variable). Let's check this out:
 
@@ -2761,7 +2762,7 @@ table(df$qb10_10)
 ##  9400 18418
 ```
 
-Oops! Something doesn't add up! Only 18418 people said that none of these circumstances were valid. So why when we add all the other items we end up with 19681 rather than 18418? Notice that there is also a qb10_11 and a qb10_12. These two items identify the people that refused to answer this question and those which did not know how to answer it. 
+Oops! Something doesn't add up! Only 18418 people said that none of these circumstances were valid. So why when we add all the other items we end up with 19681 rather than 18418? Notice that there is also a qb10_11 and a qb10_12. These two items identify the people that 'refused' to answer this question and those which 'did not know' how to answer it. 
 
 
 ```r
@@ -2800,7 +2801,7 @@ table(df$at_sexviol)
 ## 18418  2529  2117  1643   841   416   255   155    57   124
 ```
 
-Pay attention to the code above. When we want to recode based in a condition we use something like that. What we are saying with that code is that we are going to assign as "`NA`" (missing data) the cases for which the condition between the square brackets are met. Those conditions are as defined, when the participants answered don't know *or* (the logical operator for "or" is "|") refused to answer the question (that is when *qb10_11* or *qb10_12* equals 1). You can see other scenarios for recoding using this kind of syntax in the resources we link below. You can see other logical operators used in R [here](https://www.datamentor.io/r-programming/operator/).
+Pay attention to the code above. When we want to recode based in a condition we use something like that. What we are saying with that code is that we are going to assign as "`NA`" (missing data) the cases for which the condition between the square brackets are met. Those conditions are as defined, when the participants answered don't know *or* (the logical operator for "or" is "|") refused to answer the question (that is when *qb10_11* or *qb10_12* equals 1). You can see other scenarios for re-coding using this kind of syntax in the resources we link below. You can see other logical operators used in R [here](https://www.datamentor.io/r-programming/operator/).
 
 Notice that once we do the recoding and rerun the frequency distribution you will see we achieved what we wanted. Now all those missing cases are not counted as zero.
 
@@ -2922,6 +2923,7 @@ To start with we may want to change the name of the variable. One way to do this
 
 
 ```r
+#THIS IS AN EXMAPLE
 colnames(data)[colnames(data)=="old_name"] <- "new_name"
 ```
 
@@ -3135,7 +3137,7 @@ As when we created the *region* variable the first thing to do is to come out wi
     7	Retired (4 in d15a)	
     8	Students (2 in d15a)
     
-It would be quicker to recode from *d15a* into a new variable (there would be less typing when dealing with numbers rather than labels). But here we are going to use this example to show you how to recode from a factor variable, so instead we will recode form *occup_f*. 
+It would be quicker to recode from *d15a* ([here, see the page.618](https://www.dropbox.com/s/pvw2ipn45ygm6hm/ZA6695_cdb.pdf?dl=0)) into a new variable (there would be less typing when dealing with numbers rather than labels). But here we are going to use this example to show you how to recode from a factor variable, so instead we will recode form *occup_f*. 
 
 
 ```r
@@ -3171,7 +3173,7 @@ For more details in how to recode factors and other potential scenarios you may 
 
 As we have already seen, you will have participants that do not provide you with valid answers for the questions in the survey. In general in any kind of data set you work with, whether it comes from surveys or not, you will have cases for which you won't have valid information for particular variables in your dataframe. Missing data is common. 
 
-Let's look at the *politics* variable. 
+Let's explore the *politics* variable and see how many missing observations are in the variable.
 
 
 ```r
@@ -3183,13 +3185,12 @@ class(df$politics)
 ```
 
 ```r
-table(df$politics)
+summary(df$politics)
 ```
 
 ```
-## 
-##    1    2    3    4    5    6    7    8    9   10 
-## 1433  830 2161 2217 6690 2238 2056 1658  474 1126
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+##   1.000   4.000   5.000   5.196   7.000  10.000    6935
 ```
 
 ```r
@@ -3201,8 +3202,7 @@ sum(is.na(df$politics))
 ```
 
 ![](imgs/leftrighta.png) 
-
-This is the question as it was asked from the survey respondents. Notice the difference in the response options and the categories in *politics*. We know that those that see themselves further to the left will have answer 1 and those that see themselves further to the right would have answer 10. In the codebook, what does 97 and 98 then refer to? According to the codebook, 97 refers to 'Refusal' and 98 means 'DK (don't know)'. If you look at the 'df' data, you will see that those two 'Refusal' or 'DK (don't know)' *in the questionnaire* are shown as NA in your dataframe. In sum, they both are shown as 'NA' but it has two levels: 'Refusal' and 'DK (don't know)'. Run the code below, and check we are not lying. 
+This is the question as it was asked from the survey respondents. Notice the difference in the response options and the categories in *politics*. We know that those that see themselves further to the left will have answer 1 and those that see themselves further to the right would have answer 10. According to the codebook, 97 refers to 'Refusal' and 98 means 'DK (don't know)'. However, if you look at the 'df' data, you will see that those two 'Refusal' or 'DK (don't know)' *in the questionnaire* are shown as just NA. In sum, they both are shown as 'NA' but actually it has two levels: 'Refusal' and 'DK (don't know)'. Run the code below, and check we are not lying. 
 
 Let’s look closer at the attributes:
 
@@ -3214,14 +3214,14 @@ A tip if you don’t want to see as much output. If you want to access directly 
 
 
 ```r
-#option 1: only see labels
+#option 1: to see labels only
 attributes(df$politics)$labels
 ```
 
 Or we could use the val_labels function from the labelled package for the same result:
 
 ```r
-#option 2: only see labels
+#option 2: to see labels only
 library(labelled)
 val_labels(df$politics)
 ```
@@ -3232,21 +3232,21 @@ Let's check something about the `politics` variable:
 
 
 ```r
-library(skimr)
-skim(df$politics)
+class(df$politics)
 ```
 
-Mmmmm. The `summary` function worked, but other functions do not know to treat the values in the `haven_labelled` vector as a numeric. So, to avoid problems we may want to define as such (if we truly believe this is a quantitative rather than a categorical variable or at the very least are willing to treat it as quantitative).
+It say the values are the `haven_labelled` vector, not `numeric`. As we could to some descriptive statistics once we treat this ordinal variable as a quantitative variable, now we are going to transform this as a numeric variable. 
 
 
 ```r
 df$politics_n <-as.numeric(df$politics)
 ```
 
-If you try this now, you will see it works:
+If you try this, the results of `skim()` are printed horizontally, with one section per variable type and one row per variable.
 
 
 ```r
+library(skimr)
 skim(df$politics_n)
 ```
 
@@ -3264,7 +3264,7 @@ colMeans(is.na(df))
 ## 0.0000000000 0.0000000000 0.0000000000 0.0000000000 0.2492990150
 ```
 
-This is suspicious. Only the variables we have created and already sorted seem to have NA. This may be a function of the `haven_labelled` vectors behaving like with the original *politics* variable. Let's explore it. We can use the `val_labels` function from the `labelled` package to extract labels from the whole dataframe like this:
+Now, we are going to learn how to remove labels. Run the code below and look at the 'Urban' and see its labels carefully.
 
 
 ```r
@@ -3356,7 +3356,7 @@ val_labels(df)
 ## NULL
 ```
 
-Look at the Urban and see the labels carefully. Notice that in *urban* there are explicit codes 'DK (don't know)' for missing data but that these values won't be treated as such, at least we do something. Let's see how many cases we have in this scenario:
+Notice that in *urban* there are explicit codes 'DK (don't know)' (not two labels 'Refusal' and 'DK (don't know)' like the `politics` variable) for missing data but that these values won't be treated as such, at least we do something. Let's see how many cases we have in this scenario:
 
 
 ```r
@@ -3368,7 +3368,7 @@ summary(df$urban)
 ##   1.000   1.000   2.000   1.957   3.000   3.000      18
 ```
 
-18 Not too bad. Let's sort this variable:
+Not too bad. Let's sort this variable:
 
 
 ```r
@@ -5567,8 +5567,8 @@ t1waybt(tcviolent ~ ethgrp2, data = BCS0708, tr = .05, nboot = 599)
 ## 
 ## Test statistic: 45.3591 
 ## p-value: 0 
-## Variance explained: 0.091 
-## Effect size: 0.301
+## Variance explained: 0.083 
+## Effect size: 0.289
 ```
 
 As with the standard ANOVA and the Welch version, we still get a significant result.
@@ -5795,7 +5795,7 @@ BCS0708<-read.csv(url(urlfile))
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpoWfWlf/downloaded_packages
+## 	/var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpMvsnxm/downloaded_packages
 ```
 
 We will start by producing a cross tabulation of victimisation ("bcsvictim"), a categorical unordered variable, by whether the presence of rubbish in the streets is a problem in the area of residence ("rubbcomm"), another categorical unordered variable. Broken windows theory would argue we should see a relationship. We will use the following code:
@@ -7023,6 +7023,10 @@ We are going to use instead the `plot_model()` function of the `sjPlot` package,
 
 ```r
 library(sjPlot)
+```
+
+```
+## #refugeeswelcome
 ```
 
 Let's try with a more complex example:
