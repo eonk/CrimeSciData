@@ -2930,7 +2930,7 @@ Of course, we need to change the names for valid ones in our case. So adapting t
 
 
 ```r
-#option 1: to change the names of a variable
+#option 1: to change a variable name
 colnames(df)[colnames(df)=="d10"] <- "gender"
 ```
 
@@ -2938,7 +2938,7 @@ If you prefer the *tydiverse* dialect (that aims to save you typing among other 
 
 
 ```r
-#option 2: to change the names of a variable
+#option 2: to change a variable name
 df <- rename(df, gender=d10)
 ```
 
@@ -5569,8 +5569,8 @@ t1waybt(tcviolent ~ ethgrp2, data = BCS0708, tr = .05, nboot = 599)
 ## 
 ## Test statistic: 45.3591 
 ## p-value: 0 
-## Variance explained: 0.08 
-## Effect size: 0.282
+## Variance explained: 0.078 
+## Effect size: 0.28
 ```
 
 As with the standard ANOVA and the Welch version, we still get a significant result.
@@ -5797,7 +5797,7 @@ BCS0708<-read.csv(url(urlfile))
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpZIDRtN/downloaded_packages
+## 	/var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpjGd1Ph/downloaded_packages
 ```
 
 We will start by producing a cross tabulation of victimisation ("bcsvictim"), a categorical unordered variable, by whether the presence of rubbish in the streets is a problem in the area of residence ("rubbcomm"), another categorical unordered variable. Broken windows theory would argue we should see a relationship. We will use the following code:
@@ -7027,6 +7027,10 @@ We are going to use instead the `plot_model()` function of the `sjPlot` package,
 library(sjPlot)
 ```
 
+```
+## Learn more about sjPlot with 'browseVignettes("sjPlot")'.
+```
+
 Let's try with a more complex example:
 
 
@@ -7780,7 +7784,7 @@ library(sjPlot)
 ```
 
 ```
-## Learn more about sjPlot with 'browseVignettes("sjPlot")'.
+## #refugeeswelcome
 ```
 
 ```r

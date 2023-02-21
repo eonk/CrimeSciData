@@ -446,7 +446,7 @@ Of course, we need to change the names for valid ones in our case. So adapting t
 
 
 ```r
-#option 1: to change the names of a variable
+#option 1: to change a variable name
 colnames(df)[colnames(df)=="d10"] <- "gender"
 ```
 
@@ -454,7 +454,7 @@ If you prefer the *tydiverse* dialect (that aims to save you typing among other 
 
 
 ```r
-#option 2: to change the names of a variable
+#option 2: to change a variable name
 df <- rename(df, gender=d10)
 ```
 

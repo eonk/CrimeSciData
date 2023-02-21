@@ -317,14 +317,14 @@ colnames(data)[colnames(data)=="old_name"] <- "new_name"
 Of course, we need to change the names for valid ones in our case. So adapting that code we would write as follows:
 
 ```{r, eval=FALSE}
-#option 1: to change the names of a variable
+#option 1: to change a variable name
 colnames(df)[colnames(df)=="d10"] <- "gender"
 ```
 
 If you prefer the *tydiverse* dialect (that aims to save you typing among other things), then you would use the `rename` function as below (beware if you already renamed *d10* using `colnames` there will be no longer a *d10* variable and therefore R will return an error).
 
 ```{r}
-#option 2: to change the names of a variable
+#option 2: to change a variable name
 df <- rename(df, gender=d10)
 ```
 
