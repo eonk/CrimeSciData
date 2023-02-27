@@ -8,7 +8,7 @@ Think of the following two problems:
 
 You want to know the extent of intimate partner violence in a given country. You could look at police data. But not every instance of intimate partner violence gets reported to, or recorded by, the police. We know there is a large proportion of those instances that are not reflected in police statistics. You could do a survey. But it would not be practical to ask everybody in the country about this. So you select a sample and try to develop an estimate of what the extent of this problem is in the population based on what you observe in the sample. But, how can you be sure your sample guess, your estimate, is any good? Would you get a different estimate if you select a different sample?
 
-You conduct a study to evaluate the impact of a particular crime prevention program. You select a a number of areas as part of the study. Half of it you randomly allocate to your intervention and the other half to your control or comparison group. Imagine that you observe these areas after the intervention is implemented and you notice there is a difference. There is less crime in your intervention areas. How can you reach conclusions about the effectiveness of the intervention based on observations of differences on crime in these areas? What would have happened if your randomisation would have split your sample in different ways, would you still be able to observe an effect?
+You conduct a study to evaluate the impact of a particular crime prevention program. You select a number of areas as part of the study. Half of it you randomly allocate to your intervention and the other half to your control or comparison group. Imagine that you observe these areas after the intervention is implemented and you notice there is a difference. There is less crime in your intervention areas. How can you reach conclusions about the effectiveness of the intervention based on observations of differences on crime in these areas? What would have happened if your randomisation would have split your sample in different ways, would you still be able to observe an effect?
 
 For this and similar problems we need to apply statistical inference: a set of tools that allows us to draw inferences from sample data. In this session we will cover a set of important concepts that constitute the basis for statistical inference. In particular, we will approach this topic from the **frequentist** tradition. 
 
@@ -20,7 +20,7 @@ Unlike in previous and future sessions, the focus today will be less applied and
 
 For the purpose of today's session we are going to generate some fictitious data. We use real data in all other sessions but it is convenient for this session to have some randomly generated fake data (actually technically speaking pseudo-random data)[^1]. 
 
-So that all of us gets the same results (otherwise there would be random differences!), we need to use the `set.seed()` function. Basically your numbers are pseudo random because they're calculated by a number generating algorithm, and setting the *seed* gives it a number to "grow"" these pseudo random numbers out of. If you start with the same seed, you get the same set of random numbers. 
+So that all of us get the same results (otherwise there would be random differences!), we need to use the `set.seed()` function. Basically your numbers are pseudo random because they're calculated by a number generating algorithm, and setting the *seed* gives it a number to "grow"" these pseudo random numbers out of. If you start with the same seed, you get the same set of random numbers. 
 
 So to guarantee that all of us get the same randomly generated numbers, set your seed to 100:
 
@@ -75,7 +75,7 @@ We are now going to generate a normally distributed variable (watch [this short 
 
 We are going to pretend that this variable measures IQ. We are going to assume that this variable has a mean of 100 in the non-criminal population (pretending there is such a thing) with a standard deviation of 15 and a mean of 92 with a standard deviation of 20 in the criminal population. We are pretty much making up these figures.
 
-The first expression is asking R to generate random values from a normal distribution with mean 100 and standard deviation for every of the 64394 "non-offenders" in our fake population data frame. WARNING: If you run the `table()` function and the number of non-offenders you get is different, you will need to amend the code below accordingly (this will happen if you did not use the seed or generated the original skewed variable more than once).If you get the following message it means you are using the wrong number of people in each category: *number of items to replace is not a multiple of replacement lengthnumber of items to replace is not a multiple of replacement length*.
+The first expression is asking R to generate random values from a normal distribution with mean 100 and standard deviation for every of the 64394 "non-offenders" in our fake population data frame. WARNING: If you run the `table()` function and the number of non-offenders you get is different, you will need to amend the code below accordingly (this will happen if you did not use the seed or generated the original skewed variable more than once).If you get the following message it means you are using the wrong number of people in each category: *number of items to replace is not a multiple of replacement length number of items to replace is not a multiple of replacement length*.
 
 ```{r}
 fake_population$IQ[fake_population$offender == "No"] <- rnorm(64377, mean = 100, sd = 15)
@@ -107,7 +107,7 @@ ggplot(fake_population, aes(x = IQ, colour = offender)) +
   geom_vline(data = IQ_means, mapping = aes(xintercept = IQ, colour = offender), linetype = "dashed", size = 1)
 ```
 
-So, now we have our fake population data. In this case, because we generated the data ourselves, we know what the "population"" data looks like and we know what the summary statistics for the various attributes (IQ, crime) of the population are. But in real life we don't normally have access to full population data. It is not practical or economic. It is for this reason we rely on samples.
+So, now we have our fake population data. In this case, because we generated the data ourselves, we know what the "population" data looks like and we know what the summary statistics for the various attributes (IQ, crime) of the population are. But in real life we don't normally have access to full population data. It is not practical or economic. It is for this reason we rely on samples.
 
 ## Sampling data and sampling variability
 
@@ -201,7 +201,7 @@ sampd_IQ_100 <- do(50000) * with(sample(fake_population, 100), mean(IQ))
 sampd_IQ_1000 <- do(50000) * with(sample(fake_population, 1000), mean(IQ))  
 
 #Let's plot the results, notice how we have changed the aesthetics. 
-#We are definig them within each geom because we are using different data stored in different dataframes.
+#We are defining them within each geom because we are using different data stored in different dataframes.
 ggplot() + 
   geom_density(data = sampd_IQ_1000, aes(x = with, fill = "1000"), position = "identity", alpha = 0.4) +
    geom_density(data = sampd_IQ_100, aes(x = with, fill = "100"), position = "identity", alpha = 0.4) +
@@ -338,7 +338,7 @@ If you look inside the *ci_IQ* object using `View(ci_IQ)` you will see that ther
 
 Thus `r sum(ci_IQ$indx)` intervals contain the true population mean. If you feel playful (and curious) you may want to modify the code we have use above to check how many of a 100 or of 200 samples for example would contain the true population mean. It should be roughly around 95% of them. Pretty cool, isn't it?
 
-We can also plot these confidence intervals. First We are going to create an ID variable to identify each sample (I will need this as an input in the plot I will create). I will use the row name (that list the samples from 1 to 1 100) as my ID variable.
+We can also plot these confidence intervals. First, we are going to create an ID variable to identify each sample (I will need this as an input in the plot I will create). I will use the row name (that list the samples from 1 to 1 100) as my ID variable.
 
 ```{r}
 ci_IQ$id <- rownames(ci_IQ)
