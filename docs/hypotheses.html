@@ -23,7 +23,7 @@
 <meta name="author" content="Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)" />
 
 
-<meta name="date" content="2023-03-06" />
+<meta name="date" content="2023-03-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -233,12 +233,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5" data-path="hypotheses.html"><a href="hypotheses.html#comparing-means-across-several-groups-anova"><i class="fa fa-check"></i><b>6.5</b> Comparing means across several groups (ANOVA)</a>
 <ul>
 <li class="chapter" data-level="6.5.1" data-path="hypotheses.html"><a href="hypotheses.html#the-problem-with-multiple-comparisons"><i class="fa fa-check"></i><b>6.5.1</b> The problem with multiple comparisons</a></li>
-<li class="chapter" data-level="6.5.2" data-path="hypotheses.html"><a href="hypotheses.html#anova"><i class="fa fa-check"></i><b>6.5.2</b> ANOVA</a></li>
-<li class="chapter" data-level="6.5.3" data-path="hypotheses.html"><a href="hypotheses.html#checking-homogeneity-of-variance-and-dealing-with-unequal-spread"><i class="fa fa-check"></i><b>6.5.3</b> Checking homogeneity of variance and dealing with unequal spread</a></li>
-<li class="chapter" data-level="6.5.4" data-path="hypotheses.html"><a href="hypotheses.html#checking-normality-and-dealing-with-problems"><i class="fa fa-check"></i><b>6.5.4</b> Checking normality and dealing with problems</a></li>
-<li class="chapter" data-level="6.5.5" data-path="hypotheses.html"><a href="hypotheses.html#robust-anova"><i class="fa fa-check"></i><b>6.5.5</b> Robust ANOVA</a></li>
-<li class="chapter" data-level="6.5.6" data-path="hypotheses.html"><a href="hypotheses.html#post-hoc-comparisons"><i class="fa fa-check"></i><b>6.5.6</b> Post Hoc Comparisons</a></li>
-<li class="chapter" data-level="6.5.7" data-path="hypotheses.html"><a href="hypotheses.html#effect-size-for-anova"><i class="fa fa-check"></i><b>6.5.7</b> Effect size for ANOVA</a></li>
+<li class="chapter" data-level="6.5.2" data-path="hypotheses.html"><a href="hypotheses.html#visual-exploration-of-differences-in-the-distributions-across-the-groups"><i class="fa fa-check"></i><b>6.5.2</b> Visual exploration of differences in the distributions across the groups</a></li>
+<li class="chapter" data-level="6.5.3" data-path="hypotheses.html"><a href="hypotheses.html#anova"><i class="fa fa-check"></i><b>6.5.3</b> ANOVA</a></li>
+<li class="chapter" data-level="6.5.4" data-path="hypotheses.html"><a href="hypotheses.html#checking-homogeneity-of-variance-and-dealing-with-unequal-spread"><i class="fa fa-check"></i><b>6.5.4</b> Checking homogeneity of variance and dealing with unequal spread</a></li>
+<li class="chapter" data-level="6.5.5" data-path="hypotheses.html"><a href="hypotheses.html#checking-normality-and-dealing-with-problems"><i class="fa fa-check"></i><b>6.5.5</b> Checking normality and dealing with problems</a></li>
+<li class="chapter" data-level="6.5.6" data-path="hypotheses.html"><a href="hypotheses.html#robust-anova"><i class="fa fa-check"></i><b>6.5.6</b> Robust ANOVA</a></li>
+<li class="chapter" data-level="6.5.7" data-path="hypotheses.html"><a href="hypotheses.html#post-hoc-comparisons"><i class="fa fa-check"></i><b>6.5.7</b> Post Hoc Comparisons</a></li>
+<li class="chapter" data-level="6.5.8" data-path="hypotheses.html"><a href="hypotheses.html#effect-size-for-anova"><i class="fa fa-check"></i><b>6.5.8</b> Effect size for ANOVA</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="hypotheses.html"><a href="hypotheses.html#summary-exercise-for-this-week-5"><i class="fa fa-check"></i><b>6.6</b> Summary: exercise for this week</a></li>
 </ul></li>
@@ -453,7 +454,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="http://imgs.xkcd.com/comics/significant.png" /></p>
 <p>By running multiple comparisons you increase the change that you find significant differences by random chance alone. Imagine you throw a six face dice with numbers from 1 to 6. What is the probability of getting a 1? Right, 1/6. Now. Imagine that we throw the dice 6 times. What is the probability of getting a 1 at least once. Well, it would be the probability of getting a one each of the times multiplied by the number of times.</p>
 <p>You can think of a statistical test as equivalent to this. The more times you run the test the higher the probability that something will come out significant. As the number of comparisons (tests) increase, the chances that this will happen increase. So, instead of running multiple t tests, we will run a single ANOVA test that allow us to explore whether there are significant differences across the groups being compared.</p>
-<p>###Visual exploration of differences in the distributions across the groups</p>
+</div>
+<div id="visual-exploration-of-differences-in-the-distributions-across-the-groups" class="section level3 hasAnchor" number="6.5.2">
+<h3><span class="header-section-number">6.5.2</span> Visual exploration of differences in the distributions across the groups<a href="hypotheses.html#visual-exploration-of-differences-in-the-distributions-across-the-groups" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>We will look at the distribution of scores of fear of violent crime (<code>tcviolent</code>) vary across the ethnic groups indexed by the variable <code>ethgrp2</code>. Let’ visualise these differences:</p>
 <div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb437-1"><a href="hypotheses.html#cb437-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(BCS0708, <span class="fu">aes</span>(ethgrp2, tcviolent, <span class="at">fill=</span>ethgrp2)) <span class="sc">+</span> </span>
 <span id="cb437-2"><a href="hypotheses.html#cb437-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">outlier.size=</span><span class="dv">1</span>) <span class="sc">+</span> </span>
@@ -505,8 +508,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="06-hypothesis_testing_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>When you only have two groups you can use these graphs (error bars displaying confidence intervals) in a way equivalent to the way that you use a t test, but when you have multiple groups you need to think about the problem of multiple comparisons.</p>
 </div>
-<div id="anova" class="section level3 hasAnchor" number="6.5.2">
-<h3><span class="header-section-number">6.5.2</span> ANOVA<a href="hypotheses.html#anova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="anova" class="section level3 hasAnchor" number="6.5.3">
+<h3><span class="header-section-number">6.5.3</span> ANOVA<a href="hypotheses.html#anova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>So, again, we see some differences in means. Are these differences statistically significant? In other words, can we infer that they exist in the population from which the sample was drawn? For this we can run ANOVA and an F test.</p>
 <p>How does this test work? We run ANOVA because we want to decide if the sample means are different enough for us to be able to reject the null hypothesis that they are different in the population. Clearly, if they are very different between themselves in the sample we will be in a stronger position to do this. That should be clear: if you want to talk abut differences in the population observing big differences across the means in the sample gets you closer to that.</p>
 <p>What ANOVA does is to contrast the variability between the groups with the variability within the groups to produce a ratio: (Variability between the groups)/(Variability within the groups). If there is more variability between the groups than within the groups the more confidence we can have in a conclusion that the population means are not equal. Likewise, if there is more variation within the groups than between the groups, we will be in weaker ground to conclude that the population means are different. This <a href="https://www.youtube.com/watch?v=ITf4vHhyGpc">short video</a> explains it with an example.</p>
@@ -521,14 +524,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 3243 observations deleted due to missingness</code></pre>
 <p>The result is significant suggesting that there are some significant differences across the ethnic groups in fear of violent crime. The probability of observing this data, with the noted differences in means, if the null hypothesis were true is also very low (&lt;2e-16).</p>
-<p>Done, right? Well, not quite. Remember the steps in a hypothesis test. Before running the test we need to think and check the assumptions of the test, that should precede running the test. The ANOVA F test makes the following assumptions:<br />
-+ <strong>Independence assumption</strong>: the groups must be be independent of each other (this assumption would be violated if for example we compare a subjects performance before some treatment, again during the treatment, and then after the treatment: for this you would need something called <em>repeated measures ANOVA</em> which we don’t have the time to cover).<br />
-+ <strong>Randomisation condition</strong>: were the groups created through randomisation or in case of surveys are the data from each group a representative sample of that group? As with the t test, we are assuming simple random selection, which is not the case when the survey uses a complex survey design (but as we said then we will ignore this for convenience).<br />
-+ <strong>Equal variance assumption</strong> (also called the lovely names of homogeneity of variance or homoskedasticity): to check this assumption you need to check that the groups have similar variances (we’ll discuss this in greater length next). But it is important you know statisticians have discussed the degree to which this assumption matters, or in other words to what degree ANOVA is <em>robust</em> to violations of this assumptions. Is ANOVA robust (will give us results we can trust) when this assumption is violated? Andy Field and his co-authors (2012) discuss this at length in page 413. His view is that “when sample sizes are unequal, ANOVA is not robust to violations of homogeneity of variance” and we should proceed accordingly.<br />
-+ <strong>Normal population assumption</strong>: like the t test, we need to assume that the normal model is reasonable for the populations underlying each of the treatment groups.</p>
+<p>Done, right? Well, not quite. Remember the steps in a hypothesis test. Before running the test we need to think and check the assumptions of the test, that should precede running the test. The ANOVA F test makes the following assumptions:</p>
+<ul>
+<li><p><strong>Independence assumption</strong>: the groups must be be independent of each other (this assumption would be violated if for example we compare a subjects performance before some treatment, again during the treatment, and then after the treatment: for this you would need something called <em>repeated measures ANOVA</em> which we don’t have the time to cover).</p></li>
+<li><p><strong>Randomisation condition</strong>: were the groups created through randomisation or in case of surveys are the data from each group a representative sample of that group? As with the t test, we are assuming simple random selection, which is not the case when the survey uses a complex survey design (but as we said then we will ignore this for convenience).</p></li>
+<li><p><strong>Equal variance assumption</strong> (also called the lovely names of homogeneity of variance or homoskedasticity): to check this assumption you need to check that the groups have similar variances (we’ll discuss this in greater length next). But it is important you know statisticians have discussed the degree to which this assumption matters, or in other words to what degree ANOVA is <em>robust</em> to violations of this assumptions. Is ANOVA robust (will give us results we can trust) when this assumption is violated? Andy Field and his co-authors (2012) discuss this at length in page 413. His view is that “when sample sizes are unequal, ANOVA is not robust to violations of homogeneity of variance” and we should proceed accordingly.</p></li>
+<li><p><strong>Normal population assumption</strong>: like the t test, we need to assume that the normal model is reasonable for the populations underlying each of the treatment groups.</p></li>
+</ul>
 </div>
-<div id="checking-homogeneity-of-variance-and-dealing-with-unequal-spread" class="section level3 hasAnchor" number="6.5.3">
-<h3><span class="header-section-number">6.5.3</span> Checking homogeneity of variance and dealing with unequal spread<a href="hypotheses.html#checking-homogeneity-of-variance-and-dealing-with-unequal-spread" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="checking-homogeneity-of-variance-and-dealing-with-unequal-spread" class="section level3 hasAnchor" number="6.5.4">
+<h3><span class="header-section-number">6.5.4</span> Checking homogeneity of variance and dealing with unequal spread<a href="hypotheses.html#checking-homogeneity-of-variance-and-dealing-with-unequal-spread" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s start by discussing why we care about the spread of the groups. Remember that ANOVA contrasts variability between the groups with variability within each group. If the variability within the groups varies, we are making this pooled variance larger, reducing the F statistic, and making it less likely that we can reject the null hypothesis. So when you have this problem, the ANOVA test will usually be a conservative test that will reject your null hypothesis less often than it should.</p>
 <p>Look at the boxplots we produced. Does it look as if the spreads change systematically with the centres? Do the boxes with the bigger centres also have the wider spread? This sort of systematic trend may be more concerning than random differences in spread across the groups.</p>
 <p>We can also run a test that will check the homogeneity of variance. This is the <a href="http://en.wikipedia.org/wiki/Levene&#39;s_test">Levene Test</a>. We can run this test with the <code>leveneTest()</code> function of the <code>car</code> package.</p>
@@ -559,8 +564,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## F = 46.663, num df = 4.00, denom df = 155.14, p-value &lt; 2.2e-16</code></pre>
 <p>In this case, the substantive conclusion is unsurprisingly the same. You reject the null hypothesis given the low p value associated with the observed F value.</p>
 </div>
-<div id="checking-normality-and-dealing-with-problems" class="section level3 hasAnchor" number="6.5.4">
-<h3><span class="header-section-number">6.5.4</span> Checking normality and dealing with problems<a href="hypotheses.html#checking-normality-and-dealing-with-problems" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="checking-normality-and-dealing-with-problems" class="section level3 hasAnchor" number="6.5.5">
+<h3><span class="header-section-number">6.5.5</span> Checking normality and dealing with problems<a href="hypotheses.html#checking-normality-and-dealing-with-problems" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The F tests require the underlying errors to follow a Normal model. Stricto sensu, we need to check the Normal model is reasonable for the population underlying each group. We should start by looking at the side-by-side boxplots for indications of skewness. If they are all or most skewed in the same direction, the normal condition will fail. We also need to look at outliers within each group (particularly with smaller samples). You may also find it useful to compare the density estimates.</p>
 <div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb453-1"><a href="hypotheses.html#cb453-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">na.omit</span>(BCS0708[,<span class="fu">c</span>(<span class="st">&quot;ethgrp2&quot;</span>, <span class="st">&quot;tcviolent&quot;</span>)]), <span class="fu">aes</span>(<span class="at">x =</span> tcviolent, <span class="at">fill =</span> ethgrp2)) <span class="sc">+</span> </span>
 <span id="cb453-2"><a href="hypotheses.html#cb453-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> .<span class="dv">3</span>)</span></code></pre></div>
@@ -626,8 +631,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>As we said the normal probability plots using this function display a (red) straight line (which is how a normally distributed probability should look like in these plots) and then the dots (on black here) showing the actual distribution of data. You can see that the variable in which we took the 0.5 power of fear of crime (the first plotted) is a bit closer to the straight red line, but still showing some departure from normality.</p>
 <p>If we were happy with our transformations we could then run ANOVA as if the data was normal, only instead of comparing means on fear of violence we would be comparing means on whatever transformation we have made, scores of fear of crime raised to the 0.5 power (which to many mortals may sound rather obscure).</p>
 </div>
-<div id="robust-anova" class="section level3 hasAnchor" number="6.5.5">
-<h3><span class="header-section-number">6.5.5</span> Robust ANOVA<a href="hypotheses.html#robust-anova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="robust-anova" class="section level3 hasAnchor" number="6.5.6">
+<h3><span class="header-section-number">6.5.6</span> Robust ANOVA<a href="hypotheses.html#robust-anova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Wilcox (2005) describes a set of procedures for conducting robust ANOVA: ways of doing ANOVA when there are problems with its assumptions. When everything goes completely wrong with the assumptions, you may want to look at these options.</p>
 <p>For this we need to install the package that he has created for implementing these procedures in R.</p>
 <div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb472-1"><a href="hypotheses.html#cb472-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;WRS2&quot;</span>)</span></code></pre></div>
@@ -642,12 +647,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Test statistic: 45.3591 
 ## p-value: 0 
-## Variance explained: 0.078 
-## Effect size: 0.28</code></pre>
+## Variance explained: 0.082 
+## Effect size: 0.286</code></pre>
 <p>As with the standard ANOVA and the Welch version, we still get a significant result.</p>
 </div>
-<div id="post-hoc-comparisons" class="section level3 hasAnchor" number="6.5.6">
-<h3><span class="header-section-number">6.5.6</span> Post Hoc Comparisons<a href="hypotheses.html#post-hoc-comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="post-hoc-comparisons" class="section level3 hasAnchor" number="6.5.7">
+<h3><span class="header-section-number">6.5.7</span> Post Hoc Comparisons<a href="hypotheses.html#post-hoc-comparisons" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>So we are fairly certain there’s bound to be differences in the level of fear of crime across ethnic groups that may be reflective of those we see in our sample. In our sample (see below) the mean value of fear of violent crime across groups is different. The White group (.00) has the lowest level of fear and the Asian group the highest (.88). With the other groups with levels of fear of crime in between these two extremes: Chinese or Other (.34), Black (.50) and Mixed (.52).</p>
 <p>However, all the ANOVA test (and the Welch’s F test and the robust ANOVA) does is to tell you that there are significant differences across these categories. What it does not do is to tell you which of those differences are significant. In other words, we don’t know if, for example, the apparent difference between fear of crime for the White and the Chinese group is significant or not. We know that some of these differences are significant but we don’t know which ones. We can however run post hoc (after the fact) comparisons that would give us answers to these -although this would only make sense if the ANOVA (or equivalent) test has already detected some differences.</p>
 <p>There are different methods that have been proposed for doing post hoc multiple comparisons (see Field et al 2012 discussion in page 428-432). All of these methods try to take into account the problem of multiple comparisons and the way they modify the probability of finding a significant result, but they do it in a different way. Field et al. (2012) also explain how to compute a few different ones in pp. 447-451. I’m just going to illustrate one of these methods (Bonferroni adjustment) and you can learn about the others from Field et al. (2012).</p>
@@ -678,8 +683,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>And we can say that the Chinese/Other has more fear than the White group and less than the Asian but does not seem different from the mixed group or the Black.</p></li>
 </ul>
 </div>
-<div id="effect-size-for-anova" class="section level3 hasAnchor" number="6.5.7">
-<h3><span class="header-section-number">6.5.7</span> Effect size for ANOVA<a href="hypotheses.html#effect-size-for-anova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="effect-size-for-anova" class="section level3 hasAnchor" number="6.5.8">
+<h3><span class="header-section-number">6.5.8</span> Effect size for ANOVA<a href="hypotheses.html#effect-size-for-anova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>You can use the following programming code to get what is called as eta squared:</p>
 <div class="sourceCode" id="cb477"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb477-1"><a href="hypotheses.html#cb477-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary.lm</span>(fearmodel<span class="fl">.1</span>) </span></code></pre></div>
 <pre><code>## 

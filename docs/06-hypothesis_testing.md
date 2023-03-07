@@ -246,7 +246,7 @@ By running multiple comparisons you increase the change that you find significan
 
 You can think of a statistical test as equivalent to this. The more times you run the test the higher the probability that something will come out significant. As the number of comparisons (tests) increase, the chances that this will happen increase. So, instead of running multiple t tests, we will run a single ANOVA test that allow us to explore whether there are significant differences across the groups being compared. 
 
-###Visual exploration of differences in the distributions across the groups
+### Visual exploration of differences in the distributions across the groups
 
 We will look at the distribution of scores of fear of violent crime (`tcviolent`) vary across the ethnic groups indexed by the variable `ethgrp2`. Let' visualise these differences:
 
@@ -368,9 +368,13 @@ summary(fearmodel.1)
 The result is significant suggesting that there are some significant differences across the ethnic groups in fear of violent crime. The probability of observing this data, with the noted differences in means, if the null hypothesis were true is also very low (<2e-16).
 
 Done, right? Well, not quite. Remember the steps in a hypothesis test. Before running the test we need to think and check the assumptions of the test, that should precede running the test. The ANOVA F test makes the following assumptions:  
+
 + **Independence assumption**: the groups must be be independent of each other (this assumption would be violated if for example we compare a subjects performance before some treatment, again during the treatment, and then after the treatment: for this you would need something called *repeated measures ANOVA* which we don't have the time to cover).  
+
 + **Randomisation condition**: were the groups created through randomisation or in case of surveys are the data from each group a representative sample of that group? As with the t test, we are assuming simple random selection, which is not the case when the survey uses a complex survey design (but as we said then we will ignore this for convenience).  
+
 + **Equal variance assumption** (also called the lovely names of homogeneity of variance or homoskedasticity): to check this assumption you need to check that the groups have similar variances (we'll discuss this in greater length next). But it is important you know statisticians have discussed the degree to which this assumption matters, or in other words to what degree ANOVA is *robust*  to violations of this assumptions. Is ANOVA robust (will give us results we can trust) when this assumption is violated? Andy Field and his co-authors (2012) discuss this at length in page 413. His view is that "when sample sizes are unequal, ANOVA is not robust to violations of homogeneity of variance" and we should proceed accordingly.   
+
 + **Normal population assumption**: like the t test, we need to assume that the normal model is reasonable for the populations underlying each of the treatment groups.
 
 ### Checking homogeneity of variance and dealing with unequal spread
@@ -634,8 +638,8 @@ t1waybt(tcviolent ~ ethgrp2, data = BCS0708, tr = .05, nboot = 599)
 ## 
 ## Test statistic: 45.3591 
 ## p-value: 0 
-## Variance explained: 0.077 
-## Effect size: 0.278
+## Variance explained: 0.078 
+## Effect size: 0.279
 ```
 
 As with the standard ANOVA and the Welch version, we still get a significant result.

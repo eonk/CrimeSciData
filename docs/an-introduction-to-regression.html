@@ -23,7 +23,7 @@
 <meta name="author" content="Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)" />
 
 
-<meta name="date" content="2023-03-06" />
+<meta name="date" content="2023-03-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -233,12 +233,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5" data-path="hypotheses.html"><a href="hypotheses.html#comparing-means-across-several-groups-anova"><i class="fa fa-check"></i><b>6.5</b> Comparing means across several groups (ANOVA)</a>
 <ul>
 <li class="chapter" data-level="6.5.1" data-path="hypotheses.html"><a href="hypotheses.html#the-problem-with-multiple-comparisons"><i class="fa fa-check"></i><b>6.5.1</b> The problem with multiple comparisons</a></li>
-<li class="chapter" data-level="6.5.2" data-path="hypotheses.html"><a href="hypotheses.html#anova"><i class="fa fa-check"></i><b>6.5.2</b> ANOVA</a></li>
-<li class="chapter" data-level="6.5.3" data-path="hypotheses.html"><a href="hypotheses.html#checking-homogeneity-of-variance-and-dealing-with-unequal-spread"><i class="fa fa-check"></i><b>6.5.3</b> Checking homogeneity of variance and dealing with unequal spread</a></li>
-<li class="chapter" data-level="6.5.4" data-path="hypotheses.html"><a href="hypotheses.html#checking-normality-and-dealing-with-problems"><i class="fa fa-check"></i><b>6.5.4</b> Checking normality and dealing with problems</a></li>
-<li class="chapter" data-level="6.5.5" data-path="hypotheses.html"><a href="hypotheses.html#robust-anova"><i class="fa fa-check"></i><b>6.5.5</b> Robust ANOVA</a></li>
-<li class="chapter" data-level="6.5.6" data-path="hypotheses.html"><a href="hypotheses.html#post-hoc-comparisons"><i class="fa fa-check"></i><b>6.5.6</b> Post Hoc Comparisons</a></li>
-<li class="chapter" data-level="6.5.7" data-path="hypotheses.html"><a href="hypotheses.html#effect-size-for-anova"><i class="fa fa-check"></i><b>6.5.7</b> Effect size for ANOVA</a></li>
+<li class="chapter" data-level="6.5.2" data-path="hypotheses.html"><a href="hypotheses.html#visual-exploration-of-differences-in-the-distributions-across-the-groups"><i class="fa fa-check"></i><b>6.5.2</b> Visual exploration of differences in the distributions across the groups</a></li>
+<li class="chapter" data-level="6.5.3" data-path="hypotheses.html"><a href="hypotheses.html#anova"><i class="fa fa-check"></i><b>6.5.3</b> ANOVA</a></li>
+<li class="chapter" data-level="6.5.4" data-path="hypotheses.html"><a href="hypotheses.html#checking-homogeneity-of-variance-and-dealing-with-unequal-spread"><i class="fa fa-check"></i><b>6.5.4</b> Checking homogeneity of variance and dealing with unequal spread</a></li>
+<li class="chapter" data-level="6.5.5" data-path="hypotheses.html"><a href="hypotheses.html#checking-normality-and-dealing-with-problems"><i class="fa fa-check"></i><b>6.5.5</b> Checking normality and dealing with problems</a></li>
+<li class="chapter" data-level="6.5.6" data-path="hypotheses.html"><a href="hypotheses.html#robust-anova"><i class="fa fa-check"></i><b>6.5.6</b> Robust ANOVA</a></li>
+<li class="chapter" data-level="6.5.7" data-path="hypotheses.html"><a href="hypotheses.html#post-hoc-comparisons"><i class="fa fa-check"></i><b>6.5.7</b> Post Hoc Comparisons</a></li>
+<li class="chapter" data-level="6.5.8" data-path="hypotheses.html"><a href="hypotheses.html#effect-size-for-anova"><i class="fa fa-check"></i><b>6.5.8</b> Effect size for ANOVA</a></li>
 </ul></li>
 <li class="chapter" data-level="6.6" data-path="hypotheses.html"><a href="hypotheses.html#summary-exercise-for-this-week-5"><i class="fa fa-check"></i><b>6.6</b> Summary: exercise for this week</a></li>
 </ul></li>
@@ -640,7 +641,7 @@ If you want to change this you may need to reorder the levels. See <a href="http
 <p>Communicating your results in a clear manner is incredibly important. We have seen the tabular results produced by R. If you want to use them in a paper you may need to do some tidying up of those results. There are a number of packages (<code>textreg</code>, <code>stargazer</code>) that automatise that process. They take your <code>lm</code> objects and produce tables that you can put straight away in your reports or papers. One popular trend in presenting results is the <strong>coefficient plot</strong> as an alternative to the table of regression coefficients. There are various ways of producing coefficient plots with R for a variety of models. See <a href="http://www.carlislerainey.com/2012/06/30/coefficient-plots-in-r/">here</a> and <a href="http://www.carlislerainey.com/2012/07/03/an-improvement-to-coefficient-plots/">here</a>, for example.</p>
 <p>We are going to use instead the <code>plot_model()</code> function of the <code>sjPlot</code> package, that makes it easier to produce this sort of plots. You can find a more detailed tutorial about this function <a href="http://rpubs.com/sjPlot/sjplm">here</a>. See below for an example:</p>
 <div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb588-1"><a href="an-introduction-to-regression.html#cb588-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sjPlot)</span></code></pre></div>
-<pre><code>## Learn more about sjPlot with &#39;browseVignettes(&quot;sjPlot&quot;)&#39;.</code></pre>
+<pre><code>## Install package &quot;strengejacke&quot; from GitHub (`devtools::install_github(&quot;strengejacke/strengejacke&quot;)`) to load all sj-packages at once!</code></pre>
 <p>Let’s try with a more complex example:</p>
 <div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb590-1"><a href="an-introduction-to-regression.html#cb590-1" aria-hidden="true" tabindex="-1"></a>fit_4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(log_viol_r <span class="sc">~</span> unemployed <span class="sc">+</span> largest50 <span class="sc">+</span> black <span class="sc">+</span> fborn <span class="sc">+</span> log_incarceraton, <span class="at">data=</span>df)</span>
 <span id="cb590-2"><a href="an-introduction-to-regression.html#cb590-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_model</span>(fit_4)</span></code></pre></div>
