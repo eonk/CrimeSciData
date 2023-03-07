@@ -1,7 +1,7 @@
 --- 
 title: "Modelling Criminological Data"
 author: "Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)"
-date: "2023-02-27"
+date: "2023-03-06"
 site: bookdown::bookdown_site
 documentclass: book
 biblio-style: apalike
@@ -2791,7 +2791,7 @@ table(df$qb10_12)
 
 In 'qb10_11', there are 255 people that refused to answer and, in 'qb10_12', 1008 that did not know how to answer. If you add 1008, 255, and 18418 you get 19681. So our new variable is actually computing as zeroes people that did not know how to answer this question or refused to answer it. We do not want that. We do not know what these people think, so it would be wrong to assume that they consider that none of these circumstances are valid excuses for sexual intercourse without consent.
 
-There are many ways to deal with this. He could simply filter out cases where we have values of 1 in these two variables (since we don't know their answers we could as well get rid of them). But we could also re-code the variable to define this values as what they are NA (missing data, cases for which we have no valid information).
+There are many ways to deal with this. We could simply filter out cases where we have values of 1 in these two variables (since we don't know their answers we could as well get rid of them). But we could also re-code the variable to define this values as what they are NA (missing data, cases for which we have no valid information).
 
 
 ```r
@@ -4049,7 +4049,7 @@ ggplot() +
 
 Pay attention to the aesthetics here. Because essentially we are looking at three different datasets, the variables we plot are identified not in an `aes` statement within the general `ggplot()` function but rather the `aes` are included and specified within each of the geoms we are plotting. 
 
-But back to the substantive point, can you notice the differences between these **sampling distributions**? *As the sample size increases, more and more of the samples tend to cluster closely around the mean of the sampling distribution*. In other words with larger samples the means you get will tend to differ less from the population mean than with smaller samples. You will be more unlikely to get means that are dramatically different from the population mean.
+But back to the substantive point, can you notice the differences between these **sampling distributions**? **As the sample size increases, more and more of the samples tend to cluster closely around the mean of the sampling distribution**. In other words with larger samples the means you get will tend to differ less from the population mean than with smaller samples. You will be more unlikely to get means that are dramatically different from the population mean.
 
 Let's look closer to the summary statistics using `favstats()` from the loaded `mosaic` package:
 
@@ -4923,10 +4923,8 @@ The point in the error bar represents the mean value for fear of crime for each 
 
 If they were overlapping this would be indicating that some of the plausible values for the mean fear of crime score for males in the population would also be plausible values for the mean fear of crime for females in the population. In this case, when there is some overlap, it is less intuitive to interpret the confidence intervals. *You can have some overlap even if there is a real difference across the population means*. However, the greater the overlap the smaller the chance that there is a difference between the two means in the population. In particular, if the overlap is greater than about 50% for the length of the bar either side of the mean then you will be, roughly speaking, "very confident" that there is no real difference in the population. [This](http://www.apastyle.org/manual/related/cumming-and-finch.pdf) is a good guide about how to interpret error bars in this type of scenarios.
 
-
-
-
-
+## Summary: exercise for this week
+Once you finish your lab session, don't forget to do this [Exercise](https://eonk.shinyapps.io/MCD_ex) and have a chance to sum-up this week's R codes.
 
 
 [^6]: Although we would like to think of our samples as random, it is in fact very difficult to generate random numbers in a computer. Most of the time someone is telling you they are using random numbers they are most likely using pseudo-random numbers. If this is the kind of thing that gets you excited you may want to read the [wiki entry](http://en.wikipedia.org/wiki/Random_number_generation#.22True.22_random_numbers_vs._pseudo-random_numbers). If you want to know how R generates these numbers you should ask for the help pages for the Random.Seed function.
@@ -5570,8 +5568,8 @@ t1waybt(tcviolent ~ ethgrp2, data = BCS0708, tr = .05, nboot = 599)
 ## 
 ## Test statistic: 45.3591 
 ## p-value: 0 
-## Variance explained: 0.081 
-## Effect size: 0.284
+## Variance explained: 0.077 
+## Effect size: 0.278
 ```
 
 As with the standard ANOVA and the Welch version, we still get a significant result.
@@ -5766,6 +5764,9 @@ interpret_omega_squared(0.03, rules = "cohen1992")
 
 Isn't that something! Soon you'll be learning how to write code that will write your whole essay for you! Alright that's enough for this week, well done for getting to the end!
 
+## Summary: exercise for this week
+Once you finish your lab session, don't forget to do this [Exercise](https://eonk.shinyapps.io/MCD_ex) and have a chance to sum-up this week's R codes.
+
 <!--chapter:end:06-hypothesis_testing.Rmd-->
 
 # Studying relationships between two factors
@@ -5792,7 +5793,7 @@ BCS0708<-read.csv("https://raw.githubusercontent.com/eonk/dar_book/main/datasets
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpXH7MA3/downloaded_packages
+## 	/var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpXQkdci/downloaded_packages
 ```
 
 We will start by producing a cross tabulation of victimisation ("bcsvictim"), a categorical unordered variable, by whether the presence of rubbish in the streets is a problem in the area of residence ("rubbcomm"), another categorical unordered variable. Broken windows theory would argue we should see a relationship. We will use the following code:
@@ -7771,13 +7772,6 @@ We can also use **forest plots** in much the same way than we did for linear reg
 
 ```r
 library(sjPlot)
-```
-
-```
-## #refugeeswelcome
-```
-
-```r
 plot_model(fitl_1)
 ```
 

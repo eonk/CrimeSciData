@@ -1,7 +1,7 @@
 --- 
 title: "Modelling Criminological Data"
 author: "Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)"
-date: "2023-02-27"
+date: "2023-03-06"
 site: bookdown::bookdown_site
 documentclass: book
 biblio-style: apalike

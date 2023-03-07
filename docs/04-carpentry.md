@@ -302,7 +302,7 @@ table(df$qb10_12)
 
 In 'qb10_11', there are 255 people that refused to answer and, in 'qb10_12', 1008 that did not know how to answer. If you add 1008, 255, and 18418 you get 19681. So our new variable is actually computing as zeroes people that did not know how to answer this question or refused to answer it. We do not want that. We do not know what these people think, so it would be wrong to assume that they consider that none of these circumstances are valid excuses for sexual intercourse without consent.
 
-There are many ways to deal with this. He could simply filter out cases where we have values of 1 in these two variables (since we don't know their answers we could as well get rid of them). But we could also re-code the variable to define this values as what they are NA (missing data, cases for which we have no valid information).
+There are many ways to deal with this. We could simply filter out cases where we have values of 1 in these two variables (since we don't know their answers we could as well get rid of them). But we could also re-code the variable to define this values as what they are NA (missing data, cases for which we have no valid information).
 
 
 ```r

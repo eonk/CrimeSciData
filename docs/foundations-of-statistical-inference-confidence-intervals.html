@@ -23,7 +23,7 @@
 <meta name="author" content="Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)" />
 
 
-<meta name="date" content="2023-02-27" />
+<meta name="date" content="2023-03-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -222,6 +222,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.7" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#a-brief-intro-to-resampling-and-bootstraping"><i class="fa fa-check"></i><b>5.7</b> A brief intro to resampling and bootstraping</a></li>
 <li class="chapter" data-level="5.8" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#what-about-comparisons-sampling-distribution-for-the-difference-of-two-means"><i class="fa fa-check"></i><b>5.8</b> What about comparisons? Sampling distribution for the difference of two means</a></li>
 <li class="chapter" data-level="5.9" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#comparing-means-visually-by-using-error-bars-representing-confidence-intervals-inference-by-eye"><i class="fa fa-check"></i><b>5.9</b> Comparing means visually by using error bars representing confidence intervals: inference by eye</a></li>
+<li class="chapter" data-level="5.10" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#summary-exercise-for-this-week-4"><i class="fa fa-check"></i><b>5.10</b> Summary: exercise for this week</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="hypotheses.html"><a href="hypotheses.html"><i class="fa fa-check"></i><b>6</b> Hypotheses</a>
 <ul>
@@ -239,6 +240,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="6.5.6" data-path="hypotheses.html"><a href="hypotheses.html#post-hoc-comparisons"><i class="fa fa-check"></i><b>6.5.6</b> Post Hoc Comparisons</a></li>
 <li class="chapter" data-level="6.5.7" data-path="hypotheses.html"><a href="hypotheses.html#effect-size-for-anova"><i class="fa fa-check"></i><b>6.5.7</b> Effect size for ANOVA</a></li>
 </ul></li>
+<li class="chapter" data-level="6.6" data-path="hypotheses.html"><a href="hypotheses.html#summary-exercise-for-this-week-5"><i class="fa fa-check"></i><b>6.6</b> Summary: exercise for this week</a></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html"><i class="fa fa-check"></i><b>7</b> Studying relationships between two factors</a>
 <ul>
@@ -449,7 +451,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb359-13"><a href="foundations-of-statistical-inference-confidence-intervals.html#cb359-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;Distribution of mean value of IQ&quot;</span>)</span></code></pre></div>
 <p><img src="05-inference_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>Pay attention to the aesthetics here. Because essentially we are looking at three different datasets, the variables we plot are identified not in an <code>aes</code> statement within the general <code>ggplot()</code> function but rather the <code>aes</code> are included and specified within each of the geoms we are plotting.</p>
-<p>But back to the substantive point, can you notice the differences between these <strong>sampling distributions</strong>? <em>As the sample size increases, more and more of the samples tend to cluster closely around the mean of the sampling distribution</em>. In other words with larger samples the means you get will tend to differ less from the population mean than with smaller samples. You will be more unlikely to get means that are dramatically different from the population mean.</p>
+<p>But back to the substantive point, can you notice the differences between these <strong>sampling distributions</strong>? <strong>As the sample size increases, more and more of the samples tend to cluster closely around the mean of the sampling distribution</strong>. In other words with larger samples the means you get will tend to differ less from the population mean than with smaller samples. You will be more unlikely to get means that are dramatically different from the population mean.</p>
 <p>Let’s look closer to the summary statistics using <code>favstats()</code> from the loaded <code>mosaic</code> package:</p>
 <div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="foundations-of-statistical-inference-confidence-intervals.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="fu">favstats</span>(<span class="sc">~</span>with, <span class="at">data =</span> sampd_IQ_30)</span></code></pre></div>
 <pre><code>##       min       Q1   median       Q3      max     mean       sd     n missing
@@ -773,6 +775,10 @@ Lower limit= sample mean - 1.96 * standard error</p>
 <p><img src="05-inference_files/figure-html/unnamed-chunk-49-3.png" width="672" /></p>
 <p>The point in the error bar represents the mean value for fear of crime for each of the groups and the error bars represent the upper and lower bound for the confidence interval for the mean fear of crime score for each of those two groups. Notice how <em>the confidence intervals do not overlap</em>. These confidence intervals provide a range of plausible values for the population parameters, the mean score of fear for males and females in the population. The fact that the CI do not overlap is another way of showing that there may be a difference in the population parameters for these two groups. Lack of any overlap is strong suggestion of a significant difference in the population.</p>
 <p>If they were overlapping this would be indicating that some of the plausible values for the mean fear of crime score for males in the population would also be plausible values for the mean fear of crime for females in the population. In this case, when there is some overlap, it is less intuitive to interpret the confidence intervals. <em>You can have some overlap even if there is a real difference across the population means</em>. However, the greater the overlap the smaller the chance that there is a difference between the two means in the population. In particular, if the overlap is greater than about 50% for the length of the bar either side of the mean then you will be, roughly speaking, “very confident” that there is no real difference in the population. <a href="http://www.apastyle.org/manual/related/cumming-and-finch.pdf">This</a> is a good guide about how to interpret error bars in this type of scenarios.</p>
+</div>
+<div id="summary-exercise-for-this-week-4" class="section level2 hasAnchor" number="5.10">
+<h2><span class="header-section-number">5.10</span> Summary: exercise for this week<a href="foundations-of-statistical-inference-confidence-intervals.html#summary-exercise-for-this-week-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Once you finish your lab session, don’t forget to do this <a href="https://eonk.shinyapps.io/MCD_ex">Exercise</a> and have a chance to sum-up this week’s R codes.</p>
 
 </div>
 </div>

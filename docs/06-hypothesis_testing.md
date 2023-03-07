@@ -634,8 +634,8 @@ t1waybt(tcviolent ~ ethgrp2, data = BCS0708, tr = .05, nboot = 599)
 ## 
 ## Test statistic: 45.3591 
 ## p-value: 0 
-## Variance explained: 0.081 
-## Effect size: 0.284
+## Variance explained: 0.077 
+## Effect size: 0.278
 ```
 
 As with the standard ANOVA and the Welch version, we still get a significant result.
@@ -829,3 +829,6 @@ interpret_omega_squared(0.03, rules = "cohen1992")
 ```
 
 Isn't that something! Soon you'll be learning how to write code that will write your whole essay for you! Alright that's enough for this week, well done for getting to the end!
+
+## Summary: exercise for this week
+Once you finish your lab session, don't forget to do this [Exercise](https://eonk.shinyapps.io/MCD_ex) and have a chance to sum-up this week's R codes.
