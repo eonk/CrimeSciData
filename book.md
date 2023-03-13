@@ -1,7 +1,7 @@
 --- 
 title: "Modelling Criminological Data"
 author: "Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)"
-date: "2023-03-07"
+date: "2023-03-13"
 site: bookdown::bookdown_site
 documentclass: book
 biblio-style: apalike
@@ -2487,6 +2487,7 @@ Once you finish your lab session, don't forget to do this [Exercise](https://eon
 
 <!--chapter:end:03-visualisation.Rmd-->
 
+
 # Refresher on descriptive statistics & data carpentry
 
 ## Introduction
@@ -2875,7 +2876,6 @@ df <- df %>%
                               isocntry %in% northern_list ~ "Northern", 
                               isocntry %in% southern_list ~ "Southern")
            )
-
 table(df$region)
 ```
 
@@ -3662,7 +3662,6 @@ We've touched on this already in week two, when we looked at using the `group_by
 politics_by_occ <- df %>% 
     group_by(occup_f) %>% 
     summarise(mean_poli_score = mean(politics_n, na.rm = TRUE))
-
 politics_by_occ
 ```
 
@@ -5572,8 +5571,8 @@ t1waybt(tcviolent ~ ethgrp2, data = BCS0708, tr = .05, nboot = 599)
 ## 
 ## Test statistic: 45.3591 
 ## p-value: 0 
-## Variance explained: 0.078 
-## Effect size: 0.279
+## Variance explained: 0.081 
+## Effect size: 0.284
 ```
 
 As with the standard ANOVA and the Welch version, we still get a significant result.
@@ -5797,11 +5796,10 @@ BCS0708<-read.csv("https://raw.githubusercontent.com/eonk/dar_book/main/datasets
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpKOlYMw/downloaded_packages
+## 	/var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//Rtmp4I4Cf6/downloaded_packages
 ```
 
-We will start by producing a cross tabulation of victimisation ("bcsvictim"), a categorical unordered variable, by whether the presence of rubbish in the streets is a problem in the area of residence ("rubbcomm"), another categorical unordered variable. Broken windows theory would argue we should see a relationship. We will use the following code:
-
+We will start by producing a cross tabulation of victimisation ("bcsvictim"), a categorical unordered variable, by whether the presence of rubbish in the streets is a problem in the area of residence ("rubbcomm"), another categorical un-ordered variable. Broken windows theory would argue we should see a relationship. We will use the following code:
 
 
 ```r
@@ -5868,7 +5866,7 @@ class(BCS0708$rubbcomm)
 ## [1] "character"
 ```
 
-It is categorical, we know, but note that R consdiers this "character" rather than "factor" which is what we would like. To make sure that R knows this is a factor, we can convert it with the `as.factor()` function. PAY ATTENTION: we are *not* recoding, so we use `as.factor()` with a dot (as.dot.factor), and we are **not using** the `as_factor()` from the haven package which we would use to recode if this were a .dta file (it's not!). 
+It is categorical, we know, but note that R consdiers this "character" rather than "factor" which is what we would like. To make sure that R knows this is a factor, we can convert it with the `as.factor()` function. PAY ATTENTION: we are *not* recoding, so we use `as.factor()` with a dot (as.dot.factor), and we are **not using** the `as_factor()` from the haven package which we would use to recode if this were a *.dta file (it's not!). 
 
 
 ```r
@@ -6019,7 +6017,7 @@ The Chi Square test
 
 If this absolute value is large, it will have a small p value associated with and we will be in a position to reject the null hypothesis. We would conclude then that observing such a large chi square is improbable if the null hypothesis is true. In practice we don't actually do any of this. We just run the Chi Square in our software and look at the p value in much the same way we have done for other tests. But it is helpful to know what the test is actually doing.
 
-Asking for the expected frequencies with `CrossTable()` automatically prints the results of the Chi Square test. In this case, you get a Chi Square of 184.04, with 3 degrees of freedom. The probability associated with this particular value is nearly zero (1.180e-39). This value is considerably lower than the standard alpha level of .05. So, these results would lead us to conclude that there is a statistically significant relationship between these two variables. We are able to reject the null hypothesis that these two variables are independent in the population from which this sample was drawn. In other words, this significant Chi Square test means that we can assume that there was indeed a relationship between our indicator of broken windows and victimisation in the population of England and Wales in 2007/2008.
+Asking for the expected frequencies with `CrossTable()` automatically prints the results of the Chi Square test. In this case, you get a Chi Square of 184.04, with 3 degrees of freedom. The probability associated with this particular value is nearly zero (1.180e-39). This value is considerably lower than the standard alpha level of .05. So, these results would lead us to conclude that there is a statistically significant relationship between these two variables. We are able to reject the null hypothesis that these two variables are independent in the population from which this sample was drawn. In other words, this significant Chi Square test means that we can assume that there was indeed a relationship between our indicator of broken windows (percived disorder, here rubbish) and victimisation in the population of England and Wales in 2007/2008.
 
 Notice that R is telling us that the minimum expected frequency is 41.68. Why? The Chi-squared test, for it to works, assumes the cell counts are sufficiently large. Precisely what constitutes 'sufficiently large' is a matter of some debate. One rule of thumb is that all expected cell counts should be above 5. If we have small cells one alternative is to rely on the Fisher's Exact Test rather than in the Chi Square. We don't have to request it here. Our cells are large enough for Chi Square to work fine. But if we needed, we could obtain the Fisher's Exact Test with the following code:
 
@@ -6138,8 +6136,10 @@ We will use the package `vcdExtra` for it (which you may need to install and loa
 
 
 ```r
-mytable.2<-table(BCS0708$bcsvictim, BCS0708$rubbcomm) ##We first create a new object in tabular form because the function we use to compute Goodman and Kruskal's Gamma needs an object of that nature.
-print(mytable.2) ##You can print the content of this object and you will see that it is simply the crosstab with just the counts.
+#step1: create a new object in tabular form because the function we use to compute Goodman and Kruskal's Gamma needs an object of that nature
+mytable.2<-table(BCS0708$bcsvictim, BCS0708$rubbcomm) 
+#step2: print the content of this object and you will see that it is simply the crosstab with just the counts
+print(mytable.2)
 ```
 
 ```
@@ -6155,7 +6155,8 @@ print(mytable.2) ##You can print the content of this object and you will see tha
 
 ```r
 library(vcdExtra) ##This will load the vcdExtra package (assuming it is already installed)
-GKgamma(mytable.2) ##This function from the vcdExtra package will compute the Gamma measure of association, between parenthesis you need to identify the object that contains your data.
+#step3: compute the Gamma measure of association, between parenthesis you need to identify the object that contains your data
+GKgamma(mytable.2)
 ```
 
 ```
@@ -6166,7 +6167,7 @@ GKgamma(mytable.2) ##This function from the vcdExtra package will compute the Ga
 
 Gamma falls between -1 and +1. The sign indicates whether the association is positive or negative. In this case it is positive: this suggests that the higher order of the categories in the ordinal measure (rubbish) is associated with higher values in the second variable (victimisation). Higher in this context mean the order in which they appear in your table. So the highest in your ordinal measure (how common rubbish is) refers to the last row (very common). And highest in the dichotomous measure refers to the last column (victim of a crime). Keep this in mind when interpreting gamma. 
 
-The larger the absolute value of gamma, the stronger the association. There are not clear rules of thumb in how to interpret Gamma. This value is larger than 0, although closer to 0 than to 1. De Vaus (2002) provides the following rules of thumb:  up to .10 (trivial association), .10 to .29 (low to moderate), .30 to .49 (moderate to substantial), .50 to .69 (substantial to very strong), .70 to .89 (very strong), .9 and above (near perfect). On those bases, I would say this particular Gamma estimated at .226 indicates an association of modest size. Notice that the confidence interval is provided. So the estimated gamma with an alpha level of 0.05 is estimated to be anywhere between 0.302 and 0.229. If this confidence interval overlapped with 0 we could not reject the null hypothesis.
+The larger the absolute value of gamma, the stronger the association. There are not clear rules of thumb in how to interpret Gamma. This value is larger than 0, although closer to 0 than to 1. De Vaus (2002) provides the following rules of thumb:  up to .10 (trivial association), .10 to .29 (low to moderate), .30 to .49 (moderate to substantial), .50 to .69 (substantial to very strong), .70 to .89 (very strong), .9 and above (near perfect). On those bases, I would say this particular Gamma estimated at .226 indicates an association of modest size. Notice that the confidence interval is provided. So the estimated gamma with an alpha level of 0.05 is estimated to be anywhere between 0.229 and 0.302. If this confidence interval overlapped with 0 we could not reject the null hypothesis.
 
 Gamma, however, assumes a "linear" relationship, more in one of the variables, more in the other (for positive relationships), less in one, more in the other (for negative relationships). Here we can see that the percentage of people that experience victimisation is almost the same for those who live in areas where rubbish is fairly common but also for those who live in areas where it is very common. That is, once we reach a certain level of rubbish the risk of victimisation does not go much higher. In situations like this gamma is likely underestimating the strength of the relationship.
 
@@ -6237,26 +6238,26 @@ This is where odd ratios are handy. Before we get to them I will discuss a simpl
 | Risk factor: No   |                     |                 |
 +-------------------+---------------------+-----------------+
 
-Our table was set up in such a way that the rows are defined by our "risk factor" and the columns by our outcome. But the first cell represents the intersection of the presence of the risk factor and the absence of the outcome. The easiest way to sort this out is to change the order of the levels in our factor variable identifying the outcome ("bcsvictim"). If we ask R to print the levels of the bcsvictim variable we will see that they are as follow:
+Our table was set up in such a way that the rows are defined by our "risk factor" and the columns by our outcome. But the first cell represents the intersection of the presence of the risk factor and the absence of the outcome. The easiest way to sort this out is to change the order of the levels in our categorical variable identifying the outcome ("bcsvictim"). If we ask R to print the levels of the bcsvictim variable we will see that they are as follows:
 
 
 ```r
-print(levels(BCS0708$bcsvictim))
+print(levels(as.factor(BCS0708$bcsvictim)))
 ```
 
 ```
-## NULL
+## [1] "not a victim of crime" "victim of crime"
 ```
 
 ```r
-print(levels(BCS0708$rural2))
+print(levels(as.factor(BCS0708$rural2)))
 ```
 
 ```
-## NULL
+## [1] "rural" "urban"
 ```
 
-We want to reverse this. So that "victim of crime" becomes the first level (appears first in the print out) and "urban" becomes the first level as well. There are various ways of doing that with add-on packages, this is an easy way using base R:
+You are seeing NULL because these variables are currently character vectors. So we must 1) change them both into factor variables and then 2) reverse the order of the levels. So that "victim of crime" becomes the first level (appears first in the print out) and "urban" becomes the first level as well. There are various ways of doing that with add-on packages, this is an easy way using base R:
 
 
 ```r
@@ -6391,6 +6392,9 @@ Odd ratios are ratios of odds, not probability ratios. You cannot say that urban
 It is also very important that you interpret these quantities carefully. You will often see media reports announcing things such as that chocolate consumption will double your risk of some terrible disease. What that means is that the percentage of cases of individuals that take chocolate and present the condition is twice as large as those that do not take chocolate and present the condition. But you also need to know what those percentages are to put it in the right context. If those probabilities are very low to start with, well, does it really matter?
 
 ![increased risk](https://www.explainxkcd.com/wiki/images/1/11/increased_risk.png)
+
+## Summary: exercise for this week
+Once you finish your lab session, don't forget to do this [Exercise](https://eonk.shinyapps.io/MCD_ex) and have a chance to sum-up this week's R codes.
 
 <!--chapter:end:07-categorical_associations.Rmd-->
 
@@ -7776,13 +7780,6 @@ We can also use **forest plots** in much the same way than we did for linear reg
 
 ```r
 library(sjPlot)
-```
-
-```
-## Install package "strengejacke" from GitHub (`devtools::install_github("strengejacke/strengejacke")`) to load all sj-packages at once!
-```
-
-```r
 plot_model(fitl_1)
 ```
 

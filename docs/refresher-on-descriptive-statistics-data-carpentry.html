@@ -23,7 +23,7 @@
 <meta name="author" content="Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)" />
 
 
-<meta name="date" content="2023-03-07" />
+<meta name="date" content="2023-03-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -250,6 +250,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.3" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#residuals"><i class="fa fa-check"></i><b>7.3</b> Residuals</a></li>
 <li class="chapter" data-level="7.4" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#gamma"><i class="fa fa-check"></i><b>7.4</b> Gamma</a></li>
 <li class="chapter" data-level="7.5" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#odds-and-odd-ratios"><i class="fa fa-check"></i><b>7.5</b> Odds and odd ratios</a></li>
+<li class="chapter" data-level="7.6" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#summary-exercise-for-this-week-6"><i class="fa fa-check"></i><b>7.6</b> Summary: exercise for this week</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html"><i class="fa fa-check"></i><b>8</b> An introduction to regression</a>
 <ul>
@@ -495,8 +496,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb242-4"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb242-4" aria-hidden="true" tabindex="-1"></a>                              isocntry <span class="sc">%in%</span> northern_list <span class="sc">~</span> <span class="st">&quot;Northern&quot;</span>, </span>
 <span id="cb242-5"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb242-5" aria-hidden="true" tabindex="-1"></a>                              isocntry <span class="sc">%in%</span> southern_list <span class="sc">~</span> <span class="st">&quot;Southern&quot;</span>)</span>
 <span id="cb242-6"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb242-6" aria-hidden="true" tabindex="-1"></a>           )</span>
-<span id="cb242-7"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb242-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb242-8"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb242-8" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>region)</span></code></pre></div>
+<span id="cb242-7"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb242-7" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(df<span class="sc">$</span>region)</span></code></pre></div>
 <pre><code>## 
 ##  Eastern Northern Southern  Western 
 ##     8079     3161     7060     9518</code></pre>
@@ -930,8 +930,7 @@ This is the question as it was asked from the survey respondents. Notice the dif
 <div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb320-1" aria-hidden="true" tabindex="-1"></a>politics_by_occ <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
 <span id="cb320-2"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb320-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(occup_f) <span class="sc">%&gt;%</span> </span>
 <span id="cb320-3"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb320-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(<span class="at">mean_poli_score =</span> <span class="fu">mean</span>(politics_n, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb320-4"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb320-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb320-5"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb320-5" aria-hidden="true" tabindex="-1"></a>politics_by_occ</span></code></pre></div>
+<span id="cb320-4"><a href="refresher-on-descriptive-statistics-data-carpentry.html#cb320-4" aria-hidden="true" tabindex="-1"></a>politics_by_occ</span></code></pre></div>
 <pre><code>## # A tibble: 18 × 2
 ##    occup_f                                       mean_poli_score
 ##    &lt;fct&gt;                                                   &lt;dbl&gt;

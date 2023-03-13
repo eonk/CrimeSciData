@@ -1,3 +1,4 @@
+
 # Refresher on descriptive statistics & data carpentry
 
 ## Introduction
@@ -282,7 +283,6 @@ df <- df %>%
                               isocntry %in% northern_list ~ "Northern", 
                               isocntry %in% southern_list ~ "Southern")
            )
-
 table(df$region)
 ```
 
@@ -688,7 +688,6 @@ We've touched on this already in week two, when we looked at using the `group_by
 politics_by_occ <- df %>% 
     group_by(occup_f) %>% 
     summarise(mean_poli_score = mean(politics_n, na.rm = TRUE))
-
 politics_by_occ
 ```
 
