@@ -171,14 +171,14 @@ This is where odd ratios are handy. Before we get to them I will discuss a simpl
 | Risk factor: No   |                     |                 |
 +-------------------+---------------------+-----------------+
 
-Our table was set up in such a way that the rows are defined by our "risk factor" and the columns by our outcome. But the first cell represents the intersection of the presence of the risk factor and the absence of the outcome. The easiest way to sort this out is to change the order of the levels in our factor variable identifying the outcome ("bcsvictim"). If we ask R to print the levels of the bcsvictim variable we will see that they are as follow:
+Our table was set up in such a way that the rows are defined by our "risk factor" and the columns by our outcome. But the first cell represents the intersection of the presence of the risk factor and the absence of the outcome. The easiest way to sort this out is to change the order of the levels in our categorical variable identifying the outcome ("bcsvictim"). If we ask R to print the levels of the bcsvictim variable we will see that they are as follows:
 
 ```{r}
 print(levels(BCS0708$bcsvictim))
 print(levels(BCS0708$rural2))
 ```
 
-We want to reverse this. So that "victim of crime" becomes the first level (appears first in the print out) and "urban" becomes the first level as well. There are various ways of doing that with add-on packages, this is an easy way using base R:
+You are seeing NULL because these variables are currently character vectors. So we must 1) change them both into factor variables and then 2) reverse the order of the levels. So that "victim of crime" becomes the first level (appears first in the print out) and "urban" becomes the first level as well. There are various ways of doing that with add-on packages, this is an easy way using base R:
 
 ```{r}
 BCS0708$bcsvictimR <- factor(BCS0708$bcsvictim, levels = c('victim of crime','not a victim of crime'))
