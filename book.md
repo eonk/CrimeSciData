@@ -1,7 +1,7 @@
 --- 
 title: "Modelling Criminological Data"
 author: "Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)"
-date: "2023-03-14"
+date: "2023-03-19"
 site: bookdown::bookdown_site
 documentclass: book
 biblio-style: apalike
@@ -5571,8 +5571,8 @@ t1waybt(tcviolent ~ ethgrp2, data = BCS0708, tr = .05, nboot = 599)
 ## 
 ## Test statistic: 45.3591 
 ## p-value: 0 
-## Variance explained: 0.081 
-## Effect size: 0.285
+## Variance explained: 0.083 
+## Effect size: 0.288
 ```
 
 As with the standard ANOVA and the Welch version, we still get a significant result.
@@ -5796,7 +5796,7 @@ BCS0708<-read.csv("https://raw.githubusercontent.com/eonk/dar_book/main/datasets
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpNHRX1D/downloaded_packages
+## 	/var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpdVOkFZ/downloaded_packages
 ```
 
 We will start by producing a cross tabulation of victimisation ("bcsvictim"), a categorical unordered variable, by whether the presence of rubbish in the streets is a problem in the area of residence ("rubbcomm"), another categorical un-ordered variable. Broken windows theory would argue we should see a relationship. We will use the following code:
@@ -6416,12 +6416,16 @@ In this session we are going to cover regression analysis or, rather, we are beg
 
 Today we will cover something that is called linear regression or ordinary least squares regression (OLS), which is a technique that you use when you are interested in explaining variation in an interval level variable. First we will see how you can use regression analysis when you only have one input, like in our first model, and then we will move to situations when we have several explanatory variables or inputs, like in our second model.
 
-We will use a new dataset today, specifically the data used by Patrick Sharkey and his colleagues to study the effect of non profit organisations in the levels of crime. In [*"Uneasy Peace"*](https://books.wwnorton.com/books/Uneasy-Peace/) Prof Sharkey argues that one of the factors that contributed to the decline of crime from the 90s onwards was the role played by non profit community organisations to bring peace and services to deteriorated neighbourhoods. In this session we will use the replication data from one of the papers that Prof Sharkey published studying this question. We can find this data in the [Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/46WIH0). If you are interested in the specific study analysing this data you can find it [here](https://journals.sagepub.com/doi/abs/10.1177/0003122417736289).
+We will use a new dataset today, specifically the data used by Patrick Sharkey and his colleagues to study the effect of non profit organisations in the levels of crime. In [*"Uneasy Peace"*](https://books.wwnorton.com/books/Uneasy-Peace/) Prof Sharkey argues that one of the factors that contributed to the decline of crime from the 90s onwards was the role played by non profit community organisations to bring peace and services to deteriorated neighbourhoods. Watch this video and let's have more theoretical background and learn about the research. 
+
+<iframe src="https://www.youtube.com/embed/47IISvRXmpA" width="100%" height="400px" data-external="1"></iframe>
+
+In this session we will use the replication data from one of the papers that Prof Sharkey published studying this question. We can find this data in the [Harvard Dataverse](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/46WIH0). If you are interested in the specific study analysing this data you can find it [here](https://journals.sagepub.com/doi/abs/10.1177/0003122417736289).
 
 
 ```r
 urlfile <- "https://dataverse.harvard.edu/api/access/datafile/:persistentId?persistentId=doi:10.7910/DVN/46WIH0/ARS2VS"
-sharkey <- read.table(urlfile, sep = '\t',header = T)
+communitycrime <- read.table(urlfile, sep = '\t',header = T)
 ```
 
 As before we create an object with the permanent `url` address and then we use a function to read the data into R. The data that can be saved using an `api` is in tab separated format. For this then we use the `read.table` function from base R. We pass two arguments to the function `sep= '\t'` is telling R this file is tab separated. The `header = T` function is telling R that is TRUE (T) that this file has a first row that acts as a header (this row has the name of the variables).
@@ -6431,7 +6435,7 @@ There are many more variables here that we are going to need, so let's do some f
 
 ```r
 library(dplyr)
-df <- filter(sharkey, year == "2012")
+df <- filter(communitycrime, year == "2012")
 df <- select(df, place_name, state_name, viol_r, black, lesshs, unemployed, fborn, incarceration, log_incarceraton, swornftime_r, log_viol_r, largest50)
 ```
 
@@ -6487,7 +6491,7 @@ ggplot(df, aes(x = viol_r)) +
   geom_histogram()
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-4-1.pdf)<!-- --> 
+![](08-regression_files/figure-latex/unnamed-chunk-5-1.pdf)<!-- --> 
 
 As you can see is skewed. Violence is our target variable, the one we want to better understand. You may remember from when we cover ANOVA that some times we have to make transformations to variables so that the assumptions of the models we use are better respected. We will discuss this a bit in greater depth later. For now, just trust us in that rather than using *viol_r* we are going to use the logarithmic transformation of the violence rate, *log_viol_r*.
 
@@ -6498,7 +6502,7 @@ ggplot(df, aes(x = log_viol_r)) +
   geom_histogram()
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-5-1.pdf)<!-- --> 
+![](08-regression_files/figure-latex/unnamed-chunk-6-1.pdf)<!-- --> 
 
 Let's look at the scatterplot between the log of the violence rate and unemployment:
 
@@ -6508,7 +6512,7 @@ ggplot(df, aes(x = unemployed, y = log_viol_r)) +
   geom_point(alpha=.2, position="jitter") 
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-6-1.pdf)<!-- --> 
+![](08-regression_files/figure-latex/unnamed-chunk-7-1.pdf)<!-- --> 
 
 What do you think when looking at this scatterplot? Is there a relationship between violence and unemployment? Does it look as if cities that have a high score on the X axis (unemployment) also have a high score on the Y axis (violent crime)? It may be a bit hard to see but I would think there is certainly a trend. 
 
@@ -6524,7 +6528,7 @@ ggplot(df, aes(x = log_viol_r)) +
   ggtitle("Density estimate and mean of log violent crime rate")
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-7-1.pdf)<!-- --> 
+![](08-regression_files/figure-latex/unnamed-chunk-8-1.pdf)<!-- --> 
 
 
 ```r
@@ -6553,7 +6557,7 @@ If we plot the conditional means we can see that the mean *log_viol_r* for citie
 ## No summary function supplied, defaulting to `mean_se()`
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-9-1.pdf)<!-- --> 
+![](08-regression_files/figure-latex/unnamed-chunk-10-1.pdf)<!-- --> 
 
 Linear regression tackles this problem using a slightly different approach. Rather than focusing on the conditional mean (smoothed or not), it draws a straight line that tries to capture the trend in the data. If we focus in the region of the scatterplot that are less sparse we see that this is an upward trend, suggesting that as the level of unemployment increases so does the level of violent crime. 
 
@@ -6570,7 +6574,7 @@ ggplot(data = df, aes(x = unemployed, y = log_viol_r)) +
 ## `geom_smooth()` using formula 'y ~ x'
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-10-1.pdf)<!-- --> 
+![](08-regression_files/figure-latex/unnamed-chunk-11-1.pdf)<!-- --> 
 
 The `geom_smooth` function asks for a geom with the regression line, `method=lm` asks for the linear regression line, `se=FALSE` asks for just the line to be printed, the other arguments specify the colour and thickness of the line.
 
@@ -6593,7 +6597,7 @@ The linear model then is a model that takes the form of the equation of a straig
 ## No summary function supplied, defaulting to `mean_se()`
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-11-1.pdf)<!-- --> 
+![](08-regression_files/figure-latex/unnamed-chunk-12-1.pdf)<!-- --> 
 
 As De Veaux et al (2012: 179) highlight: "like all models of the real world, the line will be wrong, wrong in the sense that it can't match reality exactly. But it can help us understand how the variables are associated". A map is never a perfect representation of the world, the same happens with statistical models. Yet, as with maps, models can be helpful.
 
@@ -6604,11 +6608,11 @@ In order to draw a regression line we need to know two things:
 (2) And we need to know what is the **slope** of that line, that is, how inclined the line is, the angle of the line.
 
 If you recall from elementary algebra (and you may not), the equation for any straight line is:
- y = mx + b 
+$y = mx + b$ 
 In statistics we use a slightly different notation, although the equation remains the same:
-y = b0 + b1x
+$y = b_0 + b_1x$
 
-We need the origin of the line (b0) and the slope of the line (b1). How does R get the intercept and the slope for the green line? How does R know where to draw this line? We need to estimate these **parameters** (or **coefficients**) from the data. How? We don't have the time to get into these more mathematical details now. You should study the [required reading](http://link.springer.com/chapter/10.1007/978-1-4614-7138-7_3) to understand this (*required means it is required, it is not optional*)[^1]. For now, suffice to say that for linear regression modes like the one we cover here, when drawing the line, R tries to minimise the distance from every point in the scatterplot to the regression line using a method called **least squares estimation**.
+We need the origin of the line ($b_0$) and the slope of the line ($b_1$). How does R get the intercept and the slope for the green line? How does R know where to draw this line? We need to estimate these **parameters** (or **coefficients**) from the data. How? We don't have the time to get into these more mathematical details now. You should study the [required reading](http://link.springer.com/chapter/10.1007/978-1-4614-7138-7_3) to understand this (*required means it is required, it is not optional*)[^8]. For now, suffice to say that for linear regression modes like the one we cover here, when drawing the line, R tries to minimise the distance from every point in the scatterplot to the regression line using a method called **least squares estimation**.
 
 In order to fit the model we use the `lm()` function using the formula specification `(Y ~ X)`. Typically you want to store your regression model in a "variable", let's call it `fit_1`:
 
@@ -6689,19 +6693,21 @@ arm::display(fit_1)
 
 For now I just want you to focus on the numbers in the "Estimate" column. The value of 4.58 estimated for the **intercept** is the "predicted" value for Y when X equals zero. This is the predicted value of the violence score *when the level of unemployment is zero*. 
 
-We then need the b1 regression coefficient for for our independent variable, the value that will shape the **slope** in this scenario. This value is 0.24. This estimated regression coefficient for our independent variable has a convenient interpretation. When the value is positive, it tells us that *for every one unit increase in X there is a b1 increase on Y*. If the coefficient is negative then it represents a decrease on Y. Here, we can read it as "for every one unit increase in the percentage of people unemployed, there is a 0.24 unit increase in the logarithm of the violence rate."
+We then need the $b_1$ regression coefficient for for our independent variable, the value that will shape the **slope** in this scenario. This value is 0.24. This estimated regression coefficient for our independent variable has a convenient interpretation. When the value is positive, it tells us that *for every one unit increase in X there is a* $b_1$ *increase on Y*. If the coefficient is negative then it represents a decrease on Y. Here, we can read it as "for every one unit increase in the percentage of people unemployed, there is a 0.24 unit increase in the logarithm of the violence rate."
 
 Knowing these two parameters not only allows us to draw the line, we can also solve for any given value of X. Let's go back to our guess-the-violence game. Imagine I tell you the level of unemployment is 4. What would be your best bet now? We can simply go back to our regression line equation and insert the estimated parameters:
 
-y = b0 + b1x   
-y = 4.58 + 0.24 (4)  
-y = .1031
+$y = b_0 + b_1x$   
+$y = 4.58 + 0.24 * 4$  
+$y = 5.526564$
 
 Or if you don't want to do the calculation yourself, you can use the `predict` function (differences are due to rounding error):
 
 
 ```r
-predict(fit_1, data.frame(unemployed = c(4))) #First you name your stored model and then you identify the new data (which has to be in a data frame format and with a variable name matching the one in the original data set)
+#First you name your stored model and then you identify the new data 
+#(which has to be in a data frame format and with a variable name matching the one in the original data set)
+predict(fit_1, data.frame(unemployed = c(4))) 
 ```
 
 ```
@@ -6715,14 +6721,14 @@ This is the expected value of Y, log of the violence rate, when X, unemployment 
 
 In the output when we run the model above we saw there was something called the residuals. The residuals (in regression) are the differences between the observed values of Y for each case minus the predicted or expected value of Y, in other words the distances between each point in the dataset and the regression line (see the visual example below). 
 
-![drawing](http://www.shodor.org/media/M/T/l/mYzliZjY4ZDc0NjI3YWQ3YWVlM2MzZmUzN2MwOWY.jpg)
+![@http://www.shodor.org/](imgs/residual_01.png)
 
 You see that we have our line, which is our predicted values, and then we have the black dots which are our actually observed values. The distance between them is essentially the amount by which we were wrong, and all these distances between observed and predicted values are our residuals. **Least square estimation**, the "machine" we use to build the regression line, essentially aims to reduce the squared average of all these distances: that's how it draws the line.
 
 Why do we have residuals? Well, think about it. The fact that the line is not a perfect representation of the cloud of points makes sense, doesn't it? You cannot predict perfectly what the value of Y is for every city just by looking ONLY at unemployment! This line only uses information regarding unemployment. This means that there's bound to be some difference between our predicted level of violence given our knowledge of unemployment (the regression line) and the actual level of violence (the actual location of the points in the scatterplot). There are other things that matter not being taken into account by our model to predict the values of Y. There are other things that surely matter in terms of understanding violence. And then, of course, we have measurement error and other forms of noise.
 
 We can re-write our equation like this if we want to represent each value of Y (rather than the predicted value of Y) then: 
-y = b0 + b1x + residuals
+$y = b_0 + b_1x + e(residuals)$
 
 The residuals capture how much variation is unexplained, how much we still have to learn if we want to understand variation in Y. A good model tries to maximise explained variation and reduce the magnitude of the residuals. 
 
@@ -6763,15 +6769,15 @@ summary(fit_1)$r.squared
 ## [1] 0.2881989
 ```
 
-Knowing how to interpret this is important. R^2 ranges from 0 to 1. The greater it is the more powerful our model is, the more explaining we are doing, the better we are able to account for variation in our outcome Y with our input. In other words, the stronger the relationship is between Y and X. As with all the other measures of effect size interpretation is a matter of judgement. You are advised to see what other researchers report in relation to the particular outcome that you may be exploring.[This](http://blog.minitab.com/blog/adventures-in-statistics/regression-analysis-how-do-i-interpret-r-squared-and-assess-the-goodness-of-fit) is a reasonable explanation of how to interpret R-Squared.
+Knowing how to interpret this is important. $R^2$ ranges from 0 to 1. The greater it is the more powerful our model is, the more explaining we are doing, the better we are able to account for variation in our outcome $Y$ with our input. In other words, the stronger the relationship is between $Y$ and $X$. As with all the other measures of effect size interpretation is a matter of judgement. You are advised to see what other researchers report in relation to the particular outcome that you may be exploring.[This](http://blog.minitab.com/blog/adventures-in-statistics/regression-analysis-how-do-i-interpret-r-squared-and-assess-the-goodness-of-fit) is a reasonable explanation of how to interpret R-Squared.
 
-Weisburd and Britt (2009: 437) suggest that in criminal justice you rarely see values for R^2 greater than .40. Thus, if your R^2 is larger than .40, you can assume you have a powerful model. When, on the other hand, R^2 is lower than .15 or .2 the model is likely to be viewed as relatively weak. Our observed r squared here is not too bad. There is considerably room for improvement if we want to develop a better model to explain violence [^2]. In any case, many people would argue that R^2 is a bit overrated. You need to be aware of what it measures and the context in which you are using it. Read [here](http://blog.minitab.com/blog/adventures-in-statistics/how-high-should-r-squared-be-in-regression-analysis) for some additional detail.
+Weisburd and Britt (2009: 437) suggest that in criminal justice you rarely see values for $R^2$ greater than .40. Thus, if your $R^2$ is larger than .40, you can assume you have a powerful model. When, on the other hand, $R^2$ is lower than .15 or .2 the model is likely to be viewed as relatively weak. Our observed r squared here is not too bad. There is considerably room for improvement if we want to develop a better model to explain violence [^9]. In any case, many people would argue that $R^2$ is a bit overrated. You need to be aware of what it measures and the context in which you are using it. Read [here](http://blog.minitab.com/blog/adventures-in-statistics/how-high-should-r-squared-be-in-regression-analysis) for some additional detail.
 
 ## Inference with regression
 
-In real applications, we have access to a set of observations from which we can compute the least squares line, but the population regression line is unobserved. So our regression line is one of many that could be estimated. A different sample would produce a different regression line. The same sort of ideas that we introduced when discussing the estimation of sample means or proportions also apply here. *if we estimate b0 and b1 from a particular sample, then our estimates won't be exactly equal to b0 and b1 in the population*. But if we could average the estimates obtained over a very large number of data sets, the average of these estimates would equal the coefficients of the regression line in the population.
+In real applications, we have access to a set of observations from which we can compute the least squares line, but the population regression line is unobserved. So our regression line is one of many that could be estimated. A different sample would produce a different regression line. The same sort of ideas that we introduced when discussing the estimation of sample means or proportions also apply here. If we estimate $b_0$ and $b_1$ from a particular sample, then our estimates won't be exactly equal to $b_0$ and b1 in the population. But if we could average the estimates obtained over a very large number of data sets, the average of these estimates would equal the coefficients of the regression line in the population.
 
-In the same way that we can compute the standard error when estimating the mean and explained in Week 5, we can compute standard errors for the regression coefficients to quantify our uncertainty about these estimates. These standard errors can in turn be used to produce confidence intervals. This would require us to assume that the residuals are normally distributed. As seen in the image, and for a simple regression model, you are assuming that the values of Y are approximately normally distributed for each level of X:
+In the same way that we can compute the standard error when estimating the mean and explained in Week 5, we can compute standard errors for the regression coefficients to quantify our uncertainty about these estimates. These standard errors can in turn be used to produce confidence intervals. This would require us to assume that the residuals are normally distributed. As seen in the image, and for a simple regression model, you are assuming that the values of $Y$ are approximately normally distributed for each level of $X$:
 
 ![normalityresiduals](http://reliawiki.org/images/2/28/Doe4.3.png)
 
@@ -6872,7 +6878,7 @@ fit_2 <- lm(log_viol_r ~ largest50, data=df)
 
 Notice that there is nothing different in how we ask for the model. And see below the regression line:
 
-![](08-regression_files/figure-latex/unnamed-chunk-24-1.pdf)<!-- --> 
+![](08-regression_files/figure-latex/unnamed-chunk-25-1.pdf)<!-- --> 
 
 Although in the plot we still see a line, what we are really estimating here is the average of *log_viol_r* for each of the two categories. 
 
@@ -6955,7 +6961,7 @@ So we have seen that our models with just one predictor are not terribly powerfu
 
 Another reason why it is important to think about additional variables in your model is to control for spurious correlations (although here you may also want to use your common sense when selecting your variables!). You must have heard before that correlation does not equal causation. Just because two things are associated we cannot assume that one is the cause for the other. Typically we see how the pilots switch the secure the belt button when there is turbulence. These two things are associated, they tend to come together. But the pilots are not causing the turbulences by pressing a switch! The world is full of **spurious correlations**, associations between two variables that should not be taking too seriously. You can explore a few [here](http://tylervigen.com/). It's funny. 
 
-Looking only at covariation between pair of variables can be misleading. It may lead you to conclude that a relationship is more important than it really is. This is no trivial matter, but one of the most important ones we confront in research and policy[^5]. 
+Looking only at covariation between pair of variables can be misleading. It may lead you to conclude that a relationship is more important than it really is. This is no trivial matter, but one of the most important ones we confront in research and policy[^10]. 
 
 It's not an exaggeration to say that most quantitative explanatory research is about trying to control for the presence of **confounders**, variables that may explain explain away observed associations. Think about any criminology question: Does marriage reduces crime? Or is it that people that get married are different from those that don't (and are those pre-existing differences that are associated with less crime)? Do gangs lead to more crime? Or is it that young people that join gangs are more likely to be offenders to start with? Are the police being racist when they stop and search more members of ethnic minorities? Or is it that there are other factors (i.e., offending, area of residence, time spent in the street) that, once controlled, would mean there is no ethnic dis-proportionality in stop and searches? Does a particular program reduces crime? Or is the observed change due to something else?
 
@@ -7030,10 +7036,6 @@ We are going to use instead the `plot_model()` function of the `sjPlot` package,
 library(sjPlot)
 ```
 
-```
-## Learn more about sjPlot with 'browseVignettes("sjPlot")'.
-```
-
 Let's try with a more complex example:
 
 
@@ -7042,7 +7044,7 @@ fit_4 <- lm(log_viol_r ~ unemployed + largest50 + black + fborn + log_incarcerat
 plot_model(fit_4)
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-30-1.pdf)<!-- --> 
+![](08-regression_files/figure-latex/unnamed-chunk-31-1.pdf)<!-- --> 
 
 <!-- Be advised to use these plots judiciously. There may be other sort of plots that may be [more appropriate](http://www.carlislerainey.com/2012/07/06/why-i-dont-like-coefficient-plots/) for what you want to communicate to your audience than the coefficient plot.-->
 
@@ -7053,7 +7055,7 @@ You can further customise this:
 plot_model(fit_4, title="Violence across cities")
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-31-1.pdf)<!-- --> 
+![](08-regression_files/figure-latex/unnamed-chunk-32-1.pdf)<!-- --> 
 
 What you see plotted here is the point estimates (the circles), the confidence intervals around those estimates (the longer the line the less precise the estimate), and the colours represent whether the effect is negative (red) or positive (blue). There are other packages that also provide similar functionality, like the `dotwhisker` package that you may want to explore, see more details [here](https://cran.r-project.org/web/packages/dotwhisker/vignettes/dotwhisker-vignette.html).
 
@@ -7272,7 +7274,7 @@ library(effects)
 plot(allEffects(fit_3), ask=FALSE)
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-35-1.pdf)<!-- --> 
+![](08-regression_files/figure-latex/unnamed-chunk-36-1.pdf)<!-- --> 
 
 Notice that the line has a confidence interval drawn around it (to reflect the likely impact of sampling variation) and that the predicted means for smaller and largest cities (when controlling for unemployment) also have a confidence interval.
 
@@ -7392,7 +7394,7 @@ In this case the test for the interaction effect is non-significant, which sugge
 plot(allEffects(fit_5), ask=FALSE)
 ```
 
-![](08-regression_files/figure-latex/unnamed-chunk-39-1.pdf)<!-- --> 
+![](08-regression_files/figure-latex/unnamed-chunk-40-1.pdf)<!-- --> 
 
 Notice that essentially what we are doing is running two regression lines and testing whether the slope is different for the two groups. The intercept is different, we know that largest cities are more violent, but what we are testing here is whether violence goes up in a steeper fashion (and in the same direction) for one or the other group as unemployment goes up. We see that's not the case here. The estimated lines are almost parallel.
 
@@ -7784,13 +7786,6 @@ We can also use **forest plots** in much the same way than we did for linear reg
 
 ```r
 library(sjPlot)
-```
-
-```
-## Install package "strengejacke" from GitHub (`devtools::install_github("strengejacke/strengejacke")`) to load all sj-packages at once!
-```
-
-```r
 plot_model(fitl_1)
 ```
 
