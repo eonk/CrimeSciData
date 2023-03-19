@@ -264,7 +264,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.8" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#fitting-and-interpreting-a-multiple-regression-model"><i class="fa fa-check"></i><b>8.8</b> Fitting and interpreting a multiple regression model</a></li>
 <li class="chapter" data-level="8.9" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#presenting-your-regression-results."><i class="fa fa-check"></i><b>8.9</b> Presenting your regression results.</a></li>
 <li class="chapter" data-level="8.10" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#testing-conditional-hypothesis-interactions"><i class="fa fa-check"></i><b>8.10</b> Testing conditional hypothesis: interactions</a></li>
-<li class="chapter" data-level="8.11" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#model-building-and-variable-selection"><i class="fa fa-check"></i><b>8.11</b> Model building and variable selection</a></li>
+<li class="chapter" data-level="8.11" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#regression-assumptions"><i class="fa fa-check"></i><b>8.11</b> Regression assumptions</a></li>
+<li class="chapter" data-level="8.12" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#model-building-and-variable-selection"><i class="fa fa-check"></i><b>8.12</b> Model building and variable selection</a></li>
+<li class="chapter" data-level="8.13" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#summary-exercise-for-this-week-7"><i class="fa fa-check"></i><b>8.13</b> Summary: exercise for this week</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>9</b> Logistic regression</a>
 <ul>
@@ -308,7 +310,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## (as &#39;lib&#39; is unspecified)</code></pre>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpLO1ViJ/downloaded_packages</code></pre>
+##  /var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpOOKwIU/downloaded_packages</code></pre>
 <p>We will start by producing a cross tabulation of victimisation (“bcsvictim”), a categorical unordered variable, by whether the presence of rubbish in the streets is a problem in the area of residence (“rubbcomm”), another categorical un-ordered variable. Broken windows theory would argue we should see a relationship. We will use the following code:</p>
 <div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="studying-relationships-between-two-factors.html#cb491-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gmodels)</span>
 <span id="cb491-2"><a href="studying-relationships-between-two-factors.html#cb491-2" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(BCS0708, <span class="fu">CrossTable</span>(rubbcomm, bcsvictim, <span class="at">prop.chisq =</span> <span class="cn">FALSE</span>, <span class="at">format =</span> <span class="fu">c</span>(<span class="st">&quot;SPSS&quot;</span>)))</span></code></pre></div>

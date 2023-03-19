@@ -5571,8 +5571,8 @@ t1waybt(tcviolent ~ ethgrp2, data = BCS0708, tr = .05, nboot = 599)
 ## 
 ## Test statistic: 45.3591 
 ## p-value: 0 
-## Variance explained: 0.083 
-## Effect size: 0.288
+## Variance explained: 0.085 
+## Effect size: 0.291
 ```
 
 As with the standard ANOVA and the Welch version, we still get a significant result.
@@ -5796,7 +5796,7 @@ BCS0708<-read.csv("https://raw.githubusercontent.com/eonk/dar_book/main/datasets
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpdVOkFZ/downloaded_packages
+## 	/var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpRinDPu/downloaded_packages
 ```
 
 We will start by producing a cross tabulation of victimisation ("bcsvictim"), a categorical unordered variable, by whether the presence of rubbish in the streets is a problem in the area of residence ("rubbcomm"), another categorical un-ordered variable. Broken windows theory would argue we should see a relationship. We will use the following code:
@@ -6412,7 +6412,7 @@ Surely we know the world is complex and likely there are other things that may h
 
 ![](imgs/model2.PNG) 
 
-In this session we are going to cover regression analysis or, rather, we are beginning to talk about regression modelling. This form of analysis has been one the main technique of data analysis in the social sciences for many years and it belongs to a family of techniques called generalised linear models. Regression is a flexible model that allows you to "explain" or "predict" a given outcome (Y), variously called your outcome, response or dependent variable, as a function of a number of what is variously called inputs, features or independent, explanatory, or predictive variables (X1, X2, X3, etc.). Following Gelman and Hill (2007), I will try to stick for the most part to the terms outputs and inputs.
+In this session we are going to cover regression analysis or, rather, we are beginning to talk about regression modelling. This form of analysis has been one the main technique of data analysis in the social sciences for many years and it belongs to a family of techniques called generalised linear models. Regression is a flexible model that allows you to "explain" or "predict" a given outcome (Y), variously called your outcome, response or dependent variable, as a function of a number of what is variously called inputs, features or independent, explanatory, or predictive variables (X1, X2, X3, etc.). Following Gelman and Hill (2007), we will try to stick for the most part to the terms outputs and inputs.
 
 Today we will cover something that is called linear regression or ordinary least squares regression (OLS), which is a technique that you use when you are interested in explaining variation in an interval level variable. First we will see how you can use regression analysis when you only have one input, like in our first model, and then we will move to situations when we have several explanatory variables or inputs, like in our second model.
 
@@ -6514,11 +6514,11 @@ ggplot(df, aes(x = unemployed, y = log_viol_r)) +
 
 ![](08-regression_files/figure-latex/unnamed-chunk-7-1.pdf)<!-- --> 
 
-What do you think when looking at this scatterplot? Is there a relationship between violence and unemployment? Does it look as if cities that have a high score on the X axis (unemployment) also have a high score on the Y axis (violent crime)? It may be a bit hard to see but I would think there is certainly a trend. 
+What do you think when looking at this scatterplot? Is there a relationship between violence and unemployment? Does it look as if cities that have a high score on the X axis (unemployment) also have a high score on the Y axis (violent crime)? It may be a bit hard to see but we would think there is certainly a trend. 
 
 ## Motivating regression
 
-Now, imagine that we play a game. Imagine I have all the names of the cities in a hat, and I randomly take one of names from the hat. You're sitting in the audience, and you have to guess the level of violence (*log_viol_r*) for that city. Imagine that I pay £150 to the student that gets the closest to the right value. What would you guess if you only have one guess and you knew (as we do) how the log of violent crime is distributed? 
+Now, imagine that we play a game. Imagine we have all the names of the cities in a hat, and we randomly take one of names from the hat. You're sitting in the audience, and you have to guess the level of violence (*log_viol_r*) for that city. Imagine that we pay £150 to the student that gets the closest to the right value. What would you guess if you only have one guess and you knew (as we do) how the log of violent crime is distributed? 
 
 
 ```r
@@ -6540,11 +6540,11 @@ summary(df$log_viol_r)
 ##   3.831   5.532   6.149   6.061   6.595   7.634
 ```
 
-If I only had one shot, I would go for the mean or the median (given the skew). Most of the cities have values clustered around those values, which is another way of saying they are bound to be not too far from them. It would be silly to say 4, for example, since there are very few cities with such low level of violence (as measured by *log_viol_r*).
+If we only had one shot, we would go for the mean or the median (given the skew). Most of the cities have values clustered around those values, which is another way of saying they are bound to be not too far from them. It would be silly to say 4, for example, since there are very few cities with such low level of violence (as measured by *log_viol_r*).
 
-Imagine, however, that now when I take the name of the city from the hat, you are also told how much unemployment there is in that city - so the value of the *unemployed* variable for the city that has been selected (for example 9). Imagine as well that you have the scatterplot that we produced earlier in front of you. Would you still go for the value of "six" (the mean) as your best guess for the value of the selected city? 
+Imagine, however, that now when we take the name of the city from the hat, you are also told how much unemployment there is in that city - so the value of the *unemployed* variable for the city that has been selected (for example 9). Imagine as well that you have the scatterplot that we produced earlier in front of you. Would you still go for the value of "six" (the mean) as your best guess for the value of the selected city? 
 
-I certainly would not go with the overall mean or median as my prediction any more. If somebody said to me, the value *unemployed* for the selected respondent is 9, I would be more inclined to guess the mean value for the cities *with that level of unemployment* (the conditional mean), rather than the overall mean across all the cities. Wouldn't you? 
+We certainly would not go with the overall mean or median as my prediction any more. If somebody said to me, the value *unemployed* for the selected respondent is 9, we would be more inclined to guess the mean value for the cities *with that level of unemployment* (the conditional mean), rather than the overall mean across all the cities. Wouldn't you? 
 
 If we plot the conditional means we can see that the mean *log_viol_r* for cities that report an unemployment of 9 is around 6.5. So you may be better off guessing that.
 
@@ -6580,7 +6580,7 @@ The `geom_smooth` function asks for a geom with the regression line, `method=lm`
 
 What that line is doing is giving you guesses (predictions) for the values of violent crime based in the information that we have about the level of unemployment. It gives you one possible guess for the value of violence for every possible value of unemployment and links them all together in a straight line. 
 
-Another way of thinking about this line is as the best possible summary of the cloud of points that are represented in the scatterplot (if we can assume that a straight line would do a good job doing this). If I were to tell you to draw a straight line that best represents this pattern of points the regression line would be the one that best does it (if certain assumptions are met).
+Another way of thinking about this line is as the best possible summary of the cloud of points that are represented in the scatterplot (if we can assume that a straight line would do a good job doing this). If we were to tell you to draw a straight line that best represents this pattern of points the regression line would be the one that best does it (if certain assumptions are met).
 
 The linear model then is a model that takes the form of the equation of a straight line through the data. The line does not go through all the points. In fact, you can see is a slightly less accurate representation than the (smoothed) conditional means:
 
@@ -6691,11 +6691,11 @@ arm::display(fit_1)
 ## residual sd = 0.63, R-Squared = 0.29
 ```
 
-For now I just want you to focus on the numbers in the "Estimate" column. The value of 4.58 estimated for the **intercept** is the "predicted" value for Y when X equals zero. This is the predicted value of the violence score *when the level of unemployment is zero*. 
+For now we just want you to focus on the numbers in the "Estimate" column. The value of 4.58 estimated for the **intercept** is the "predicted" value for Y when X equals zero. This is the predicted value of the violence score *when the level of unemployment is zero*. 
 
 We then need the $b_1$ regression coefficient for for our independent variable, the value that will shape the **slope** in this scenario. This value is 0.24. This estimated regression coefficient for our independent variable has a convenient interpretation. When the value is positive, it tells us that *for every one unit increase in X there is a* $b_1$ *increase on Y*. If the coefficient is negative then it represents a decrease on Y. Here, we can read it as "for every one unit increase in the percentage of people unemployed, there is a 0.24 unit increase in the logarithm of the violence rate."
 
-Knowing these two parameters not only allows us to draw the line, we can also solve for any given value of X. Let's go back to our guess-the-violence game. Imagine I tell you the level of unemployment is 4. What would be your best bet now? We can simply go back to our regression line equation and insert the estimated parameters:
+Knowing these two parameters not only allows us to draw the line, we can also solve for any given value of X. Let's go back to our guess-the-violence game. Imagine we tell you the level of unemployment is 4. What would be your best bet now? We can simply go back to our regression line equation and insert the estimated parameters:
 
 $y = b_0 + b_1x$   
 $y = 4.58 + 0.24 * 4$  
@@ -6771,7 +6771,7 @@ summary(fit_1)$r.squared
 
 Knowing how to interpret this is important. $R^2$ ranges from 0 to 1. The greater it is the more powerful our model is, the more explaining we are doing, the better we are able to account for variation in our outcome $Y$ with our input. In other words, the stronger the relationship is between $Y$ and $X$. As with all the other measures of effect size interpretation is a matter of judgement. You are advised to see what other researchers report in relation to the particular outcome that you may be exploring.[This](http://blog.minitab.com/blog/adventures-in-statistics/regression-analysis-how-do-i-interpret-r-squared-and-assess-the-goodness-of-fit) is a reasonable explanation of how to interpret R-Squared.
 
-Weisburd and Britt (2009: 437) suggest that in criminal justice you rarely see values for $R^2$ greater than .40. Thus, if your $R^2$ is larger than .40, you can assume you have a powerful model. When, on the other hand, $R^2$ is lower than .15 or .2 the model is likely to be viewed as relatively weak. Our observed r squared here is not too bad. There is considerably room for improvement if we want to develop a better model to explain violence [^9]. In any case, many people would argue that $R^2$ is a bit overrated. You need to be aware of what it measures and the context in which you are using it. Read [here](http://blog.minitab.com/blog/adventures-in-statistics/how-high-should-r-squared-be-in-regression-analysis) for some additional detail.
+Weisburd and Britt (2009: 437) suggest that in criminal justice you rarely see values for $R^2$ greater than .40. Thus, if your $R^2$ is larger than .40, you can assume you have a powerful model. When, on the other hand, $R^2$ is lower than .15 or .2 the model is likely to be viewed as relatively weak. Our observed r squared here is not too bad. There is considerably room for improvement if we want to develop a better model to explain violence[^9]. In any case, many people would argue that $R^2$ is a bit overrated. You need to be aware of what it measures and the context in which you are using it. Read [here](http://blog.minitab.com/blog/adventures-in-statistics/how-high-should-r-squared-be-in-regression-analysis) for some additional detail.
 
 ## Inference with regression
 
@@ -6800,7 +6800,7 @@ summary(fit_1)$coefficients
 ## unemployed  0.2370975 0.02302022 10.29953 4.145166e-21
 ```
 
-In our example, we can see that the coefficient for our predictor here is statistically significant.
+In our example, we can see that the coefficient for our predictor here is statistically significant[^10].
 
 We can also obtain confidence intervals for the estimated coefficients using the `confint()` function:
 
@@ -6961,7 +6961,7 @@ So we have seen that our models with just one predictor are not terribly powerfu
 
 Another reason why it is important to think about additional variables in your model is to control for spurious correlations (although here you may also want to use your common sense when selecting your variables!). You must have heard before that correlation does not equal causation. Just because two things are associated we cannot assume that one is the cause for the other. Typically we see how the pilots switch the secure the belt button when there is turbulence. These two things are associated, they tend to come together. But the pilots are not causing the turbulences by pressing a switch! The world is full of **spurious correlations**, associations between two variables that should not be taking too seriously. You can explore a few [here](http://tylervigen.com/). It's funny. 
 
-Looking only at covariation between pair of variables can be misleading. It may lead you to conclude that a relationship is more important than it really is. This is no trivial matter, but one of the most important ones we confront in research and policy[^10]. 
+Looking only at covariation between pair of variables can be misleading. It may lead you to conclude that a relationship is more important than it really is. This is no trivial matter, but one of the most important ones we confront in research and policy[^11]. 
 
 It's not an exaggeration to say that most quantitative explanatory research is about trying to control for the presence of **confounders**, variables that may explain explain away observed associations. Think about any criminology question: Does marriage reduces crime? Or is it that people that get married are different from those that don't (and are those pre-existing differences that are associated with less crime)? Do gangs lead to more crime? Or is it that young people that join gangs are more likely to be offenders to start with? Are the police being racist when they stop and search more members of ethnic minorities? Or is it that there are other factors (i.e., offending, area of residence, time spent in the street) that, once controlled, would mean there is no ethnic dis-proportionality in stop and searches? Does a particular program reduces crime? Or is the observed change due to something else?
 
@@ -7017,7 +7017,7 @@ Other interpretations are also possible and are more generalizable. Gelman and H
 
 So, for example, in this case we could say that comparing respondents who have the same level of unemployment but who differed in whether they are one of the largest cities or not, the model predicts a expected difference of .53 in their violent crime measure. And that cities with the same size category, but that differ by one percent point in unemployment, we would expect to see a difference of 0.23 in their violent crime measure. So we are interpreting the regression slopes **as comparisons of observation that differ in one predictor while being at the same levels of the other predictors**.
 
-As you can see, interpreting regression coefficients can be kind of tricky. The relationship between the response y and any one explanatory variable can change greatly depending on what other explanatory variables are present in the model. 
+As you can see, interpreting regression coefficients can be kind of tricky[^12]. The relationship between the response y and any one explanatory variable can change greatly depending on what other explanatory variables are present in the model. 
 
 For example, if you contrast this model with the one we run with only *largest50* as a predictor you will notice the intercept has changed. You cannot longer read the intercept as the mean value of violence for smaller cities. *Adding predictors to the model changes their meaning*. Now the intercept index the value of violence for smaller cities *that, in addition, score 0 in unemployed*. In this case you don't have cases that meet this condition (equal zero in all your predictors). More often than not, then, there is not much value in bothering to interpret the intercept because if does not represent a real observation in your sample.
 
@@ -7410,13 +7410,102 @@ Essentially what happens is that the regression coefficients that get printed ar
 
 + The coefficient for the interaction term represents the difference in the slope for *unemployed* comparing smaller and largest cities, the difference in the slope of the two lines that we visualised above.
 
-Models with interaction terms are too often misinterpreted. I strongly recommend you read this piece by [Brambor et al (2005)](https://files.nyu.edu/mrg217/public/pa_final.pdf) to understand some of the issues involved. When discussing logistic regression we will return to this and will consider tricks to ease the interpretation.
+Models with interaction terms are too often misinterpreted. we strongly recommend you read this piece by [Brambor et al (2005)](https://files.nyu.edu/mrg217/public/pa_final.pdf) to understand some of the issues involved. When discussing logistic regression we will return to this and will consider tricks to ease the interpretation.
 
 Equally, [John Fox (2003)](http://www.jstatsoft.org/v08/i15/paper) piece on the `effects` package goes to much more detail that we can here to explain the logic and some of the options that are available when producing plots to show interactions with this package. You may also want to have a look at the newer `interactions` package [here](https://interactions.jacob-long.com/index.html).
 
+## Regression assumptions 
+
+Previously we covered assumptions made by various statistical tests. The regression model also makes assumptions of its own. In fact, there are so many that we could spend an entire class discussing them. Gelman and Hill (2007) point out that the most important regression assumptions by decreasing order of importance are:
+
++ **Validity**. The data should be appropriate for the question that you are trying to answer:
+
+> "Optimally, this means that the outcome measure should accurately reflect the phenomenon of interest, the model should include all relevant predictors, and the model should generalize to all cases to which it will be applied... Data used in empirical research rarely meet all (if any) of these criteria precisely. However, keeping these goals in mind can help you be precise about the types of questions you can and cannot answer reliably"
+
++ **Additiviy and linearity**. These are the most important mathematical assumptions of the model. We already talked about additivity in the previous section and discussed how you can include interaction effects in your models if the additivity assumption is violated. We discuss problems with non-linearities  as well using the example of the age-crime-curve. If the relationship is non linear (e.g, it is curvilinear) predicted values will be wrong in a biased manner, meaning that predicted values will systematically miss the true pattern of the mean of y (as related to the x-variables).
+
+
++ **Independence of errors**. Regression assumes that the errors from the prediction line (or hyperplane for multiple regression) are independent. If there is dependency between the observations (you are assessing change across the same units, working with spatial units, or with units that are somehow grouped such as students from the same class), you may have to use models that are more appropriate (e.g., multilevel models, spatial regression, etc.).
+
++ **Equal variances of errors**. When the variance of the residuals is unequal, you may need different estimation methods. This is, nonetheless, considered a minor issue. There is a small effect on the validity of t-test and F-test results, but generally regression inferences are robust with regard to the variance issue.
+
++ **Normality of errors**. The residuals should be normally distributed. Gelman and Hill (2007: 46) discuss this as the least important of the assumptions and in fact "do *not* recommend diagnostics of the normality of the regression residuals". If the errors do not have a normal distribution, it usually is not particularly serious. Regression inferences tend to be robust with respect to normality (or nonnormality of the errors). In practice, the residuals may appear to be nonnormal when the wrong regression equation has been used. So, we will show you how to inspect normality of the residuals not because this is a problem on itself, but because it may be give you further evidence that there is some other problem with the model you are applying to your data.
+
+Apart from this, it is convenient to diagnose multicollinearity (this affects interpretation) and influential observations.
+
+So these are the assumptions of linear regression. 
+
+In this section we can go through very quickly how to test for some of them using visuals. While finding that some of the assumptions are violated do not necessarily mean that you have to scrap your model, it is important to use these diagnostics to illustrate that you have considered what the possible issues with your model is, and if you find any serious issues that you address them. 
+
+In r, we can use the `plot()` function on our output lm object to look through some diagnostics. This gives us 4 plots, so to show them all, we'll use the code `par(mfrow = c(2, 2))` to split our plot window into 4 panes (remember to set back, run `par(mfrow = c(1, 1))`). For example, let's return to `fit_1`, our very first model. 
+
+
+```r
+par(mfrow = c(2, 2))
+plot(fit_1)
+```
+
+![](08-regression_files/figure-latex/unnamed-chunk-41-1.pdf)<!-- --> 
+
+
+The 4 plots we get are 
+
+- **Residuals vs Fitted**. Used to check the linear relationship assumptions. A horizontal line, without distinct patterns is an indication for a linear relationship, what is good.
+- **Normal Q-Q**. Used to examine whether the residuals are normally distributed. It’s good if residuals points follow the straight dashed line.
+- **Scale-Location (or Spread-Location)**. Used to check the homogeneity of variance of the residuals (homoscedasticity). Horizontal line with equally spread points is a good indication of homoscedasticity. This is not the case in our example, where we have a bit of a heteroscedasticity problem (remember funnel-shape from the video!).
+- **Residuals vs Leverage**. Used to identify influential cases, that is extreme values that might influence the regression results when included or excluded from the analysis. 
+
+We can also run some tests to confirm what we see in the plots. 
+
+For example, to test for heteroskedasticity (unequal variance in our residuals) we can run a Breusch-Pagan test from the `lmtest` package or a NCV test from the `car` package. 
+
+
+```r
+lmtest::bptest(fit_1)  # Breusch-Pagan test
+```
+
+```
+## 
+## 	studentized Breusch-Pagan test
+## 
+## data:  fit_1
+## BP = 11.498, df = 1, p-value = 0.0006965
+```
+
+```r
+car::ncvTest(fit_1) # NCV test
+```
+
+```
+## Non-constant Variance Score Test 
+## Variance formula: ~ fitted.values 
+## Chisquare = 8.270574, Df = 1, p = 0.0040293
+```
+
+
+Both these test have a p-value less that a significance level of 0.05, therefore we can reject the null hypothesis that the variance of the residuals is constant and infer that heteroscedasticity is indeed present, thereby confirming our graphical inference.
+
+For testing whether the residuals violate the normality assumption, we can use the  Anderson-Darling test for the composite hypothesis of normality with the `ad.test()` function in the `nortest` package.
+
+
+```r
+nortest::ad.test(fit_1$residuals)
+```
+
+```
+## 
+## 	Anderson-Darling normality test
+## 
+## data:  fit_1$residuals
+## A = 1.0488, p-value = 0.009182
+```
+
+For the purposes of this module, it is enough that you understand that these assumptions of regression exist, what they mean, and how you might test for them. For some of them, for example additivity, we discussed above some ways to address this (look at the section on interaction effects). For others, it is just important to keep in mind when these might be violated, and raise these as possible limitations in your ability to rely on the conclusions you draw from your results. 
+
+
 ## Model building and variable selection
 
-How do you construct a good model? This partly depends on your goal, although there are commonalities. You do want to start with theory as a way to select your predictors and when specifying the nature of the relationship to your response variable (e.g., additive, multiplicative). Gelman and Hill (2007) provide a series of general principles. I would like to emphasise at this stage two of them:
+How do you construct a good model? This partly depends on your goal, although there are commonalities. You do want to start with theory as a way to select your predictors and when specifying the nature of the relationship to your response variable (e.g., additive, multiplicative). Gelman and Hill (2007) provide a series of general principles[^13]. we would like to emphasise at this stage two of them:
 
 + Include all input variables that, for substantive reasons, might be expected to be important in predicting the outcome.
 
@@ -7425,6 +7514,19 @@ How do you construct a good model? This partly depends on your goal, although th
 It is often the case that for any model, the response variable is only related to a subset of the predictors. There are some scenarios where you may be interested in understanding what is the best subset of predictors. Imagine that you want to develop a risk assessment tool to be used by police officers that respond to a domestic violence incident, so that you could use this tool for forecasting the future risk of violence. There is a cost to adding too many predictors. A police officer time should not be wasted gathering information on predictors that are not associated with future risk. So you may want to identify the predictors that will help in this process.
 
 Ideally, we would like to perform variable selection by trying out a lot of different models, each containing a different subset of the predictors. There are various statistics that help in making comparisons across models. Unfortunately, as the number of potentially relevant predictors increases the number of potential models to compare increases exponentially. So you need methods that help you in this process. There are a number of tools that you can use for **variable selection** but this goes beyond the aims of this introduction. If you are interested you may want to read [this](http://link.springer.com/chapter/10.1007/978-1-4614-7138-7_6).
+
+
+## Summary: exercise for this week
+Once you finish your lab session, don't forget to do this [Exercise](https://eonk.shinyapps.io/MCD_ex) and have a chance to sum-up this week's R codes.
+
+
+[^8]: [This](http://link.springer.com/chapter/10.1007/978-1-4614-9170-5_15) is a fine chapter too if you struggle with the explanations in the required reading. Many universities, like the University of Manchester, have full access to Springer ebooks. You can also have a look at [these notes](http://people.stern.nyu.edu/wgreene/Statistics/MultipleRegressionBasicsCollection.pdf).
+[^9]: [This](http://blog.minitab.com/blog/adventures-in-statistics/regression-analysis-how-do-i-interpret-r-squared-and-assess-the-goodness-of-fit) is a reasonable explanation of how to interpret R-Squared.
+[^10]: [This blog post](http://www.sumsar.net/blog/2013/12/an-animation-of-the-construction-of-a-confidence-interval/) provides a nice animation of the confidence interval and hypothesis testing.
+[^11]: [This](http://vudlab.com/simpsons/) is a nice illustration of the Simpon's Paradox, a well known example of omitted variable bias.
+[^12]: We recommend reading chapter 13 "Woes of regression coefficients" of an old book Mostseller and Tukey (1977) Data Analysis and Regression. Reading: Addison-Wesley Publishing.
+[^13]: Look at [this](
+http://www.r-bloggers.com/stop-using-bivariate-correlations-for-variable-selection/) too.
 
 <!--chapter:end:08-regression.Rmd-->
 
