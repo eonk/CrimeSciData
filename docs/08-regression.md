@@ -636,6 +636,10 @@ We are going to use instead the `plot_model()` function of the `sjPlot` package,
 library(sjPlot)
 ```
 
+```
+## Learn more about sjPlot with 'browseVignettes("sjPlot")'.
+```
+
 Let's try with a more complex example:
 
 
@@ -878,7 +882,7 @@ plot(allEffects(fit_3), ask=FALSE)
 
 Notice that the line has a confidence interval drawn around it (to reflect the likely impact of sampling variation) and that the predicted means for smaller and largest cities (when controlling for unemployment) also have a confidence interval.
 
-##Rescaling input variables to assist interpretation
+## Rescaling input variables to assist interpretation
 
 The interpretation or regression coefficients is sensitive to the scale of measurement of the predictors. This means one cannot compare the magnitude of the coefficients to compare the relevance of variables to predict the response variable. Let's look at the more recent model, how can we tell what predictors have a stronger effect?
 

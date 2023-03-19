@@ -5571,8 +5571,8 @@ t1waybt(tcviolent ~ ethgrp2, data = BCS0708, tr = .05, nboot = 599)
 ## 
 ## Test statistic: 45.3591 
 ## p-value: 0 
-## Variance explained: 0.085 
-## Effect size: 0.291
+## Variance explained: 0.079 
+## Effect size: 0.281
 ```
 
 As with the standard ANOVA and the Welch version, we still get a significant result.
@@ -5796,7 +5796,7 @@ BCS0708<-read.csv("https://raw.githubusercontent.com/eonk/dar_book/main/datasets
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//RtmpRinDPu/downloaded_packages
+## 	/var/folders/4l/6cj909957z9b_sp1hsy3vm100000gn/T//Rtmp1m8UDX/downloaded_packages
 ```
 
 We will start by producing a cross tabulation of victimisation ("bcsvictim"), a categorical unordered variable, by whether the presence of rubbish in the streets is a problem in the area of residence ("rubbcomm"), another categorical un-ordered variable. Broken windows theory would argue we should see a relationship. We will use the following code:
@@ -7036,6 +7036,10 @@ We are going to use instead the `plot_model()` function of the `sjPlot` package,
 library(sjPlot)
 ```
 
+```
+## Learn more about sjPlot with 'browseVignettes("sjPlot")'.
+```
+
 Let's try with a more complex example:
 
 
@@ -7278,7 +7282,7 @@ plot(allEffects(fit_3), ask=FALSE)
 
 Notice that the line has a confidence interval drawn around it (to reflect the likely impact of sampling variation) and that the predicted means for smaller and largest cities (when controlling for unemployment) also have a confidence interval.
 
-##Rescaling input variables to assist interpretation
+## Rescaling input variables to assist interpretation
 
 The interpretation or regression coefficients is sensitive to the scale of measurement of the predictors. This means one cannot compare the magnitude of the coefficients to compare the relevance of variables to predict the response variable. Let's look at the more recent model, how can we tell what predictors have a stronger effect?
 
@@ -7888,6 +7892,13 @@ We can also use **forest plots** in much the same way than we did for linear reg
 
 ```r
 library(sjPlot)
+```
+
+```
+## Install package "strengejacke" from GitHub (`devtools::install_github("strengejacke/strengejacke")`) to load all sj-packages at once!
+```
+
+```r
 plot_model(fitl_1)
 ```
 
