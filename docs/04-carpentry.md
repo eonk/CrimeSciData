@@ -75,7 +75,7 @@ Imagine that we needed to write a report about attitudes to sexual violence.
 
 First, we would need to think if we wanted to use all cases in the data or only a subset of the cases. For example, when using something like the Eurobarometer we would need to consider if we are interested in exploring the substantive topic across Europe or only for some countries. Or alternatively you may want to focus your analysis only on men attitudes to sexual violence. In a situation like this you would need to filter cases. This decision needs to be guided by your theoretical interests and your driving research question. Here is a video about Eurobarometer 2018. Not a fancy video but anyone who wants to know about Eurobarometer within a min, have a look. 
 
-<iframe src="https://www.youtube.com/embed/yTufHITtGBA" width="100%" height="400px" data-external="1"></iframe>
+<iframe src="https://www.youtube.com/embed/yTufHITtGBA" width="672" height="400px" data-external="1"></iframe>
 
 So, for example, if we only wanted to work with the UK sample we would need to figure out if there is a variable that identifies the country in the dataset. To know this, we need to look at the *codebook* (sometimes called data dictionary). In this case, we can look at the interactive facility provided for GESIS for online data analysis, which provides an interactive online codebook for this dataset. You can access this facility in the link highlighted in the image below:
 
@@ -118,8 +118,7 @@ Once you have all of this you would need to think about which of these survey qu
 
 There are many items in this survey that relate to this topic, but for purposes of continuing our illustration we are going to focus on the answers to question *QB10*. This question asks respondents to identify in what circumstances may be justified to have sexual intercourse without consent. The participants are read a list of items (e.g., "flirting before hand") and they can select various of them if so they wish. If you want to look the codebook again to see how *qb10_1* is measured, use this [link](https://www.dropbox.com/s/pvw2ipn45ygm6hm/ZA6695_cdb.pdf?dl=0) and go to page.384.
 
-
-\includegraphics[width=23.28in]{imgs/qb10a} 
+<img src="imgs/qb10a.png" width="838" />
 
 What name is associated with this variable? Well you can see that depending on which thing they asked about, it might be `qb10_1`, `qb10_2`, `qb10_3`, etc etc!
 
@@ -413,7 +412,7 @@ library(vcd)
 mosaic(~region + at_sexviol, data = df)
 ```
 
-![](04-carpentry_files/figure-latex/unnamed-chunk-23-1.pdf)<!-- --> 
+<img src="04-carpentry_files/figure-html/unnamed-chunk-23-1.png" width="672" />
 
 In a mosaic plot like this the height of the region levels indicate how big that group is. You can see there are many more observations in our sample that come from Western countries than from Northern countries. Here what we are interested is the length. We see that Northern countries have proportionally more people in the zero category than any other group. On the other hand, Eastern countries have the fewer zeros (so looking as if attitudes more permissive towards sexual violence are more common there, even if still a minority). We will come back to this kind of plots later on this semester.
 
@@ -1007,10 +1006,15 @@ vis_dat(df_f)
 
 ```
 ## Warning: `gather_()` was deprecated in tidyr 1.2.0.
-## Please use `gather()` instead.
+## ℹ Please use `gather()` instead.
+## ℹ The deprecated feature was likely used in the visdat package.
+##   Please report the issue at <https://github.com/ropensci/visdat/issues>.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
 ```
 
-![](04-carpentry_files/figure-latex/unnamed-chunk-54-1.pdf)<!-- --> 
+<img src="04-carpentry_files/figure-html/unnamed-chunk-54-1.png" width="672" />
 
 Nice one! You get a visual representations of how your variables are encoded in this dataframe. You have several categorical variables such as region, urban_f, urban_f, and occup_f. We see that region is encoded as a `character` vector, whereas the others are `factors`. For the purposes of this course, it is generally better to have your categorical variables encoded as factors. So one of the next steps in our data prep may be to recode region as a factor. 
 
@@ -1039,7 +1043,7 @@ The othe piece of info you get with `vis_dat` is the prevalence of missing data 
 vis_miss(df_f)
 ```
 
-![](04-carpentry_files/figure-latex/unnamed-chunk-58-1.pdf)<!-- --> 
+<img src="04-carpentry_files/figure-html/unnamed-chunk-58-1.png" width="672" />
 
 You can find more details about how to explore missing data in the vignette of the `naniar` package [here](http://naniar.njtierney.com/articles/getting-started-w-naniar.html).
 
@@ -1177,7 +1181,7 @@ politics_by_occ
 ```
 
 ```
-## # A tibble: 18 x 2
+## # A tibble: 18 × 2
 ##    occup_f                                       mean_poli_score
 ##    <fct>                                                   <dbl>
 ##  1 Responsible for ordinary shopping, etc.                  5.23

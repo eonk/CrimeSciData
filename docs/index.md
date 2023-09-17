@@ -1,14 +1,17 @@
 --- 
-title: "Modelling Criminological Data"
-author: "Eon Kim and Joanna Hill (based on material developed with Juanjo Medina and Reka Solymosi)"
-date: "2023-03-20"
+title: "Data Science for Crime Science"
+author:
 site: bookdown::bookdown_site
 documentclass: book
 biblio-style: apalike
 link-citations: yes
-description: "This is the course material for Modelling Criminological Data."
+description: "This is a study material for Criminology students at the University of Manchester."
 ---
 
 # Preface {-}
 
-This is the lab note you will be using during the labs for the module *Modelling Criminological Data*. Every week you will have to use these materials during the lab sessions. The idea is that you read this lab note and try to run the code we provide in your own machine. Try not to just 'copy and paste' the codes in the lab note. Try to understand them. Along the way you will see you have to complete a series of exercises to check that you are correctly understanding the materials that we introduce. We hope you find these materials useful. This lab note is a work in process, so if you have any suggestions/find some errors, please don't hesitate to get in touch by submitting an issue to the [GitHub repository](https://github.com/eonk/mcd_book) or via email on eon.kim@manchester.ac.uk.
+This is a study material for Criminology students at the University of Manchester. [The first version of the material](https://maczokni.github.io/modelling_book/) was developed by Juanjo Medina and Reka Solymosi and have since been updated and maintained by Eon Kim and Thiago Oliveira at the University of Manchester. 
+
+This material is designed to supplement your Criminology coursework and to support your learning. We encourage you to explore the material at your own pace and use it to deepen your understanding of the subject.
+
+If you have any suggestions or find any errors, please don't hesitate to contact us by submitting an issue to the the [GitHub repository](https://github.com/eonk/CrimeSciData) or via email on eon.kim@manchester.ac.uk.. We appreciate your feedback and will use it to improve the material for future students.
