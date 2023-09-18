@@ -644,7 +644,7 @@ library(sjPlot)
 ```
 
 ```
-## #refugeeswelcome
+## Learn more about sjPlot with 'browseVignettes("sjPlot")'.
 ```
 
 Let's try with a more complex example:

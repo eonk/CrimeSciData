@@ -960,13 +960,13 @@ summary(fit_B3_boot)
 ```
 ## 
 ## Number of bootstrap replications R = 999 
-##                 original    bootBias  bootSE   bootMed
-## (Intercept)      1.12062 -0.01442125 0.53887   1.10578
-## poly(medv, 2)1 -11.90029 -0.04166493 2.36023 -11.90626
-## poly(medv, 2)2  10.86169  0.14272651 1.55594  10.95820
-## log(lstat)       0.25564  0.00323456 0.19055   0.25927
-## log(dis)        -2.11930  0.00652415 0.12592  -2.11111
-## chas             0.15374  0.00028095 0.19277   0.14225
+##                 original   bootBias  bootSE   bootMed
+## (Intercept)      1.12062 -0.0221233 0.54363   1.10891
+## poly(medv, 2)1 -11.90029 -0.0068502 2.44105 -11.93350
+## poly(medv, 2)2  10.86169  0.1186024 1.53681  10.97559
+## log(lstat)       0.25564  0.0049383 0.19486   0.25880
+## log(dis)        -2.11930  0.0080207 0.12589  -2.11351
+## chas             0.15374 -0.0060073 0.19495   0.14619
 ```
 
 The summary gives the original sample value for each component of the bootstrapped statistics, along with the bootstrap estimates of bias, the difference between the average bootstrapped
@@ -982,13 +982,13 @@ confint(fit_B3_boot)
 ```
 ## Bootstrap bca confidence intervals
 ## 
-##                      2.5 %     97.5 %
-## (Intercept)      0.0245522  2.1620078
-## poly(medv, 2)1 -16.4166049 -7.0911751
-## poly(medv, 2)2   7.3331946 13.7748328
-## log(lstat)      -0.1062709  0.6354136
-## log(dis)        -2.3782469 -1.8780967
-## chas            -0.1920885  0.5618101
+##                       2.5 %     97.5 %
+## (Intercept)     -0.02756049  2.1057597
+## poly(medv, 2)1 -16.37402767 -6.7405478
+## poly(medv, 2)2   7.46073974 13.6773953
+## log(lstat)      -0.10001377  0.6615121
+## log(dis)        -2.36734109 -1.8614122
+## chas            -0.20387900  0.5419301
 ```
 
 ## Multicollinearity
