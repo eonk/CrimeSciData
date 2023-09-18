@@ -1,5 +1,5 @@
 --- 
-title: "Data Science for Crime Science"
+title: "Data Analysis in Crime Science"
 author:
 site: bookdown::bookdown_site
 documentclass: book
@@ -10,8 +10,6 @@ description: "This is a study material for Criminology students at the Universit
 
 # Preface {-}
 
-This is a study material for Criminology students at the University of Manchester. [The first version of the material](https://maczokni.github.io/modelling_book/) was developed by Juanjo Medina and Reka Solymosi and have since been updated and maintained by Eon Kim and Thiago Oliveira at the University of Manchester. 
-
-This material is designed to supplement your Criminology coursework and to support your learning. We encourage you to explore the material at your own pace and use it to deepen your understanding of the subject.
+This study material is designed to introduce Criminology students at the University of Manchester to the use of data science in crime research and practice. This is a improved version of [the material](https://maczokni.github.io/R-for-Criminologists/) originally developed by Juanjo Medina and Reka Solymosi, and is currently being updated and maintained by Eon Kim and Thiago Oliveira.
 
 If you have any suggestions or find any errors, please don't hesitate to contact us by submitting an issue to the the [GitHub repository](https://github.com/eonk/CrimeSciData) or via email on eon.kim@manchester.ac.uk.. We appreciate your feedback and will use it to improve the material for future students.

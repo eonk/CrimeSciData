@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter13 Dealing with non linearities (and unequal variances) | Data Analysis in Crimnological reserch</title>
+  <meta name="description" content="This is a study material for Criminology students at the University of Manchester." />
+  <meta name="generator" content="bookdown 0.29 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter13 Dealing with non linearities (and unequal variances) | Data Analysis in Crimnological reserch" />
+  <meta property="og:type" content="book" />
+  
+  <meta property="og:description" content="This is a study material for Criminology students at the University of Manchester." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter13 Dealing with non linearities (and unequal variances) | Data Analysis in Crimnological reserch" />
+  
+  <meta name="twitter:description" content="This is a study material for Criminology students at the University of Manchester." />
+  
+
+<meta name="author" content="" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="checking-for-normality-outliers-and-influential-data.html"/>
+<link rel="next" href="transformations-and-unequal-variance.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Modelling Criminological Data</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html"><i class="fa fa-check"></i><b>1</b> A first lesson about R</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#install-r-rstudio"><i class="fa fa-check"></i><b>1.1</b> Install R &amp; RStudio</a></li>
+<li class="chapter" data-level="1.2" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#open-up-and-explore-rstudio"><i class="fa fa-check"></i><b>1.2</b> Open up and explore RStudio</a></li>
+<li class="chapter" data-level="1.3" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#customising-the-rstudio-look"><i class="fa fa-check"></i><b>1.3</b> Customising the RStudio look</a></li>
+<li class="chapter" data-level="1.4" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#getting-organised-r-projects"><i class="fa fa-check"></i><b>1.4</b> Getting organised: R Projects</a></li>
+<li class="chapter" data-level="1.5" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#functions-talk-to-your-computer"><i class="fa fa-check"></i><b>1.5</b> Functions: Talk to your computer</a></li>
+<li class="chapter" data-level="1.6" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#more-on-packages"><i class="fa fa-check"></i><b>1.6</b> More on packages</a></li>
+<li class="chapter" data-level="1.7" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#objects-creating-an-object"><i class="fa fa-check"></i><b>1.7</b> Objects: creating an object</a></li>
+<li class="chapter" data-level="1.8" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#more-on-objects"><i class="fa fa-check"></i><b>1.8</b> More on objects</a></li>
+<li class="chapter" data-level="1.9" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#naming-conventions-for-objects-in-r"><i class="fa fa-check"></i><b>1.9</b> Naming conventions for objects in R</a></li>
+<li class="chapter" data-level="1.10" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#r-object-types-vectors"><i class="fa fa-check"></i><b>1.10</b> R object types: vectors</a></li>
+<li class="chapter" data-level="1.11" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#r-object-types-data-frame"><i class="fa fa-check"></i><b>1.11</b> R object types: Data frame</a></li>
+<li class="chapter" data-level="1.12" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#exploring-data"><i class="fa fa-check"></i><b>1.12</b> Exploring data</a></li>
+<li class="chapter" data-level="1.13" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#r-data-types-factors"><i class="fa fa-check"></i><b>1.13</b> R data types: Factors</a></li>
+<li class="chapter" data-level="1.14" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#how-to-import-data"><i class="fa fa-check"></i><b>1.14</b> How to import data</a></li>
+<li class="chapter" data-level="1.15" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#how-to-use-comment"><i class="fa fa-check"></i><b>1.15</b> How to use ‘comment’</a></li>
+<li class="chapter" data-level="1.16" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#how-to-quit-rstudio"><i class="fa fa-check"></i><b>1.16</b> How to Quit RStudio</a></li>
+<li class="chapter" data-level="1.17" data-path="a-first-lesson-about-r.html"><a href="a-first-lesson-about-r.html#summary-exercise-for-this-week"><i class="fa fa-check"></i><b>1.17</b> Summary: exercise for this week</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html"><i class="fa fa-check"></i><b>2</b> Getting to know your data</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#causality-in-social-sciences"><i class="fa fa-check"></i><b>2.1</b> Causality in social sciences</a></li>
+<li class="chapter" data-level="2.2" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#getting-data-thanks-to-reproducibility"><i class="fa fa-check"></i><b>2.2</b> Getting data thanks to reproducibility</a></li>
+<li class="chapter" data-level="2.3" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#getting-a-sense-for-your-data"><i class="fa fa-check"></i><b>2.3</b> Getting a sense for your data</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#first-steps"><i class="fa fa-check"></i><b>2.3.1</b> First steps</a></li>
+<li class="chapter" data-level="2.3.2" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#on-tibbles-and-labelled-vectors"><i class="fa fa-check"></i><b>2.3.2</b> On tibbles and labelled vectors</a></li>
+<li class="chapter" data-level="2.3.3" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#turning-variables-into-factors-and-changing-the-labels"><i class="fa fa-check"></i><b>2.3.3</b> Turning variables into factors and changing the labels</a></li>
+<li class="chapter" data-level="2.3.4" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#looking-for-missing-data-and-other-anomalies"><i class="fa fa-check"></i><b>2.3.4</b> Looking for missing data and other anomalies</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#data-wrangling-with-dplyr"><i class="fa fa-check"></i><b>2.4</b> Data wrangling with dplyr</a></li>
+<li class="chapter" data-level="2.5" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#using-dplyr-single-verbs"><i class="fa fa-check"></i><b>2.5</b> Using dplyr single verbs</a></li>
+<li class="chapter" data-level="2.6" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#using-dplyr-for-grouped-operations"><i class="fa fa-check"></i><b>2.6</b> Using dplyr for grouped operations</a></li>
+<li class="chapter" data-level="2.7" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#making-comparisons-with-numerical-outcomes"><i class="fa fa-check"></i><b>2.7</b> Making comparisons with numerical outcomes</a></li>
+<li class="chapter" data-level="2.8" data-path="getting-to-know-your-data.html"><a href="getting-to-know-your-data.html#summary-exercise-for-this-week-1"><i class="fa fa-check"></i><b>2.8</b> Summary: exercise for this week</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html"><i class="fa fa-check"></i><b>3</b> Data visualisation with R</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#anatomy-of-a-plot"><i class="fa fa-check"></i><b>3.2</b> Anatomy of a plot</a></li>
+<li class="chapter" data-level="3.3" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#what-graph-should-i-use"><i class="fa fa-check"></i><b>3.3</b> What graph should I use?</a></li>
+<li class="chapter" data-level="3.4" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#visualising-numerical-variables-histograms"><i class="fa fa-check"></i><b>3.4</b> Visualising numerical variables: Histograms</a></li>
+<li class="chapter" data-level="3.5" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#visualising-numerical-variables-density-plots"><i class="fa fa-check"></i><b>3.5</b> Visualising numerical variables: Density plots</a></li>
+<li class="chapter" data-level="3.6" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#visualising-numerical-variables-box-plots"><i class="fa fa-check"></i><b>3.6</b> Visualising numerical variables: Box plots</a></li>
+<li class="chapter" data-level="3.7" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#exploring-relationships-between-two-quantitative-variables-scatterplots"><i class="fa fa-check"></i><b>3.7</b> Exploring relationships between two quantitative variables: scatterplots</a></li>
+<li class="chapter" data-level="3.8" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#scatterplots-conditioning-in-a-third-variable"><i class="fa fa-check"></i><b>3.8</b> Scatterplots conditioning in a third variable</a></li>
+<li class="chapter" data-level="3.9" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#scatterplot-matrix"><i class="fa fa-check"></i><b>3.9</b> Scatterplot matrix</a></li>
+<li class="chapter" data-level="3.10" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#titles-legends-and-themes-in-ggplot2"><i class="fa fa-check"></i><b>3.10</b> Titles, legends, and themes in ggplot2</a></li>
+<li class="chapter" data-level="3.11" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#plotting-categorical-data-bar-charts"><i class="fa fa-check"></i><b>3.11</b> Plotting categorical data: bar charts</a></li>
+<li class="chapter" data-level="3.12" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#further-resources"><i class="fa fa-check"></i><b>3.12</b> Further resources</a></li>
+<li class="chapter" data-level="3.13" data-path="data-visualisation-with-r.html"><a href="data-visualisation-with-r.html#summary-exercise-for-this-week-2"><i class="fa fa-check"></i><b>3.13</b> Summary: exercise for this week</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html"><i class="fa fa-check"></i><b>4</b> Refresher on descriptive statistics &amp; data carpentry</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#introduction-1"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#getting-some-data-from-eurobarometer"><i class="fa fa-check"></i><b>4.2</b> Getting some data from Eurobarometer</a></li>
+<li class="chapter" data-level="4.3" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#thinking-about-your-data-filtering-cases"><i class="fa fa-check"></i><b>4.3</b> Thinking about your data: filtering cases</a></li>
+<li class="chapter" data-level="4.4" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#selecting-variables-using-dplyrselect"><i class="fa fa-check"></i><b>4.4</b> Selecting variables: using <code>dplyr::select</code></a></li>
+<li class="chapter" data-level="4.5" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#creating-summated-scales"><i class="fa fa-check"></i><b>4.5</b> Creating summated scales</a></li>
+<li class="chapter" data-level="4.6" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#collapsing-categories-in-character-variables"><i class="fa fa-check"></i><b>4.6</b> Collapsing categories in character variables</a></li>
+<li class="chapter" data-level="4.7" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#working-with-apparently-cryptic-variable-names-and-levels"><i class="fa fa-check"></i><b>4.7</b> Working with apparently cryptic variable names and levels</a></li>
+<li class="chapter" data-level="4.8" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#recoding-factors"><i class="fa fa-check"></i><b>4.8</b> Recoding factors</a></li>
+<li class="chapter" data-level="4.9" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#understanding-missing-data"><i class="fa fa-check"></i><b>4.9</b> Understanding missing data</a></li>
+<li class="chapter" data-level="4.10" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#exploring-dataframes-visually"><i class="fa fa-check"></i><b>4.10</b> Exploring dataframes visually</a></li>
+<li class="chapter" data-level="4.11" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#a-quick-recap-on-descriptive-statistics"><i class="fa fa-check"></i><b>4.11</b> A quick recap on descriptive statistics</a>
+<ul>
+<li class="chapter" data-level="4.11.1" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#central-tendency"><i class="fa fa-check"></i><b>4.11.1</b> Central Tendency</a></li>
+<li class="chapter" data-level="4.11.2" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#dispersion"><i class="fa fa-check"></i><b>4.11.2</b> Dispersion</a></li>
+<li class="chapter" data-level="4.11.3" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#bivariate-analysis"><i class="fa fa-check"></i><b>4.11.3</b> Bivariate analysis</a></li>
+</ul></li>
+<li class="chapter" data-level="4.12" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#further-resources-1"><i class="fa fa-check"></i><b>4.12</b> Further resources</a></li>
+<li class="chapter" data-level="4.13" data-path="refresher-on-descriptive-statistics-data-carpentry.html"><a href="refresher-on-descriptive-statistics-data-carpentry.html#summary-exercise-for-this-week-3"><i class="fa fa-check"></i><b>4.13</b> Summary: exercise for this week</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html"><i class="fa fa-check"></i><b>5</b> Foundations of statistical inference: confidence intervals</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#introduction-2"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#generating-random-data"><i class="fa fa-check"></i><b>5.2</b> Generating random data</a></li>
+<li class="chapter" data-level="5.3" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#sampling-data-and-sampling-variability"><i class="fa fa-check"></i><b>5.3</b> Sampling data and sampling variability</a></li>
+<li class="chapter" data-level="5.4" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#sampling-distributions-and-sampling-experiments"><i class="fa fa-check"></i><b>5.4</b> Sampling distributions and sampling experiments</a></li>
+<li class="chapter" data-level="5.5" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#the-normal-distribution-and-confidence-intervals-with-known-standard-errors"><i class="fa fa-check"></i><b>5.5</b> The normal distribution and confidence intervals with known standard errors</a></li>
+<li class="chapter" data-level="5.6" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#asymptotic-confidence-intervals-for-means-and-proportions-using-r"><i class="fa fa-check"></i><b>5.6</b> Asymptotic confidence intervals for means and proportions using R</a></li>
+<li class="chapter" data-level="5.7" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#a-brief-intro-to-resampling-and-bootstraping"><i class="fa fa-check"></i><b>5.7</b> A brief intro to resampling and bootstraping</a></li>
+<li class="chapter" data-level="5.8" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#what-about-comparisons-sampling-distribution-for-the-difference-of-two-means"><i class="fa fa-check"></i><b>5.8</b> What about comparisons? Sampling distribution for the difference of two means</a></li>
+<li class="chapter" data-level="5.9" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#comparing-means-visually-by-using-error-bars-representing-confidence-intervals-inference-by-eye"><i class="fa fa-check"></i><b>5.9</b> Comparing means visually by using error bars representing confidence intervals: inference by eye</a></li>
+<li class="chapter" data-level="5.10" data-path="foundations-of-statistical-inference-confidence-intervals.html"><a href="foundations-of-statistical-inference-confidence-intervals.html#summary-exercise-for-this-week-4"><i class="fa fa-check"></i><b>5.10</b> Summary: exercise for this week</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="hypotheses.html"><a href="hypotheses.html"><i class="fa fa-check"></i><b>6</b> Hypotheses</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="hypotheses.html"><a href="hypotheses.html#the-logic-of-hypothesis-testing"><i class="fa fa-check"></i><b>6.1</b> The logic of hypothesis testing</a></li>
+<li class="chapter" data-level="6.2" data-path="hypotheses.html"><a href="hypotheses.html#comparing-means-across-two-groups-the-t-test"><i class="fa fa-check"></i><b>6.2</b> Comparing means across two groups (the t test)</a></li>
+<li class="chapter" data-level="6.3" data-path="hypotheses.html"><a href="hypotheses.html#what-does-a-significant-effect-mean"><i class="fa fa-check"></i><b>6.3</b> What does a significant effect mean?</a></li>
+<li class="chapter" data-level="6.4" data-path="hypotheses.html"><a href="hypotheses.html#power-analysis"><i class="fa fa-check"></i><b>6.4</b> Power analysis</a></li>
+<li class="chapter" data-level="6.5" data-path="hypotheses.html"><a href="hypotheses.html#comparing-means-across-several-groups-anova"><i class="fa fa-check"></i><b>6.5</b> Comparing means across several groups (ANOVA)</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="hypotheses.html"><a href="hypotheses.html#the-problem-with-multiple-comparisons"><i class="fa fa-check"></i><b>6.5.1</b> The problem with multiple comparisons</a></li>
+<li class="chapter" data-level="6.5.2" data-path="hypotheses.html"><a href="hypotheses.html#visual-exploration-of-differences-in-the-distributions-across-the-groups"><i class="fa fa-check"></i><b>6.5.2</b> Visual exploration of differences in the distributions across the groups</a></li>
+<li class="chapter" data-level="6.5.3" data-path="hypotheses.html"><a href="hypotheses.html#anova"><i class="fa fa-check"></i><b>6.5.3</b> ANOVA</a></li>
+<li class="chapter" data-level="6.5.4" data-path="hypotheses.html"><a href="hypotheses.html#checking-homogeneity-of-variance-and-dealing-with-unequal-spread"><i class="fa fa-check"></i><b>6.5.4</b> Checking homogeneity of variance and dealing with unequal spread</a></li>
+<li class="chapter" data-level="6.5.5" data-path="hypotheses.html"><a href="hypotheses.html#checking-normality-and-dealing-with-problems"><i class="fa fa-check"></i><b>6.5.5</b> Checking normality and dealing with problems</a></li>
+<li class="chapter" data-level="6.5.6" data-path="hypotheses.html"><a href="hypotheses.html#robust-anova"><i class="fa fa-check"></i><b>6.5.6</b> Robust ANOVA</a></li>
+<li class="chapter" data-level="6.5.7" data-path="hypotheses.html"><a href="hypotheses.html#post-hoc-comparisons"><i class="fa fa-check"></i><b>6.5.7</b> Post Hoc Comparisons</a></li>
+<li class="chapter" data-level="6.5.8" data-path="hypotheses.html"><a href="hypotheses.html#effect-size-for-anova"><i class="fa fa-check"></i><b>6.5.8</b> Effect size for ANOVA</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="hypotheses.html"><a href="hypotheses.html#summary-exercise-for-this-week-5"><i class="fa fa-check"></i><b>6.6</b> Summary: exercise for this week</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html"><i class="fa fa-check"></i><b>7</b> Studying relationships between two factors</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#producing-cross-tabulations"><i class="fa fa-check"></i><b>7.1</b> Producing cross tabulations</a></li>
+<li class="chapter" data-level="7.2" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#expected-frequencies-and-chi-square"><i class="fa fa-check"></i><b>7.2</b> Expected frequencies and Chi-Square</a></li>
+<li class="chapter" data-level="7.3" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#residuals"><i class="fa fa-check"></i><b>7.3</b> Residuals</a></li>
+<li class="chapter" data-level="7.4" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#gamma"><i class="fa fa-check"></i><b>7.4</b> Gamma</a></li>
+<li class="chapter" data-level="7.5" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#odds-and-odd-ratios"><i class="fa fa-check"></i><b>7.5</b> Odds and odd ratios</a></li>
+<li class="chapter" data-level="7.6" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#summary-exercise-for-this-week-6"><i class="fa fa-check"></i><b>7.6</b> Summary: exercise for this week</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html"><i class="fa fa-check"></i><b>8</b> An introduction to regression</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#introduction-models-in-scientific-research"><i class="fa fa-check"></i><b>8.1</b> Introduction: models in scientific research</a></li>
+<li class="chapter" data-level="8.2" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#motivating-regression"><i class="fa fa-check"></i><b>8.2</b> Motivating regression</a></li>
+<li class="chapter" data-level="8.3" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#fitting-a-simple-regression-model"><i class="fa fa-check"></i><b>8.3</b> Fitting a simple regression model</a></li>
+<li class="chapter" data-level="8.4" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#residuals-revisited-r-squared"><i class="fa fa-check"></i><b>8.4</b> Residuals revisited: R squared</a></li>
+<li class="chapter" data-level="8.5" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#inference-with-regression"><i class="fa fa-check"></i><b>8.5</b> Inference with regression</a></li>
+<li class="chapter" data-level="8.6" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#fitting-regression-with-categorical-predictors"><i class="fa fa-check"></i><b>8.6</b> Fitting regression with categorical predictors</a></li>
+<li class="chapter" data-level="8.7" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#motivating-multiple-regression"><i class="fa fa-check"></i><b>8.7</b> Motivating multiple regression</a></li>
+<li class="chapter" data-level="8.8" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#fitting-and-interpreting-a-multiple-regression-model"><i class="fa fa-check"></i><b>8.8</b> Fitting and interpreting a multiple regression model</a></li>
+<li class="chapter" data-level="8.9" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#presenting-your-regression-results."><i class="fa fa-check"></i><b>8.9</b> Presenting your regression results.</a></li>
+<li class="chapter" data-level="8.10" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#rescaling-input-variables-to-assist-interpretation"><i class="fa fa-check"></i><b>8.10</b> Rescaling input variables to assist interpretation</a></li>
+<li class="chapter" data-level="8.11" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#testing-conditional-hypothesis-interactions"><i class="fa fa-check"></i><b>8.11</b> Testing conditional hypothesis: interactions</a></li>
+<li class="chapter" data-level="8.12" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#regression-assumptions"><i class="fa fa-check"></i><b>8.12</b> Regression assumptions</a></li>
+<li class="chapter" data-level="8.13" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#model-building-and-variable-selection"><i class="fa fa-check"></i><b>8.13</b> Model building and variable selection</a></li>
+<li class="chapter" data-level="8.14" data-path="an-introduction-to-regression.html"><a href="an-introduction-to-regression.html#summary-exercise-for-this-week-7"><i class="fa fa-check"></i><b>8.14</b> Summary: exercise for this week</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regression-in-the-real-world.html"><a href="regression-in-the-real-world.html"><i class="fa fa-check"></i><b>9</b> Regression in the real world</a></li>
+<li class="chapter" data-level="10" data-path="introduction-3.html"><a href="introduction-3.html"><i class="fa fa-check"></i><b>10</b> Introduction</a></li>
+<li class="chapter" data-level="11" data-path="plotting-residuals.html"><a href="plotting-residuals.html"><i class="fa fa-check"></i><b>11</b> Plotting residuals</a></li>
+<li class="chapter" data-level="12" data-path="checking-for-normality-outliers-and-influential-data.html"><a href="checking-for-normality-outliers-and-influential-data.html"><i class="fa fa-check"></i><b>12</b> Checking for normality, outliers and influential data</a></li>
+<li class="chapter" data-level="13" data-path="dealing-with-non-linearities-and-unequal-variances.html"><a href="dealing-with-non-linearities-and-unequal-variances.html"><i class="fa fa-check"></i><b>13</b> Dealing with non linearities (and unequal variances)</a></li>
+<li class="chapter" data-level="14" data-path="transformations-and-unequal-variance.html"><a href="transformations-and-unequal-variance.html"><i class="fa fa-check"></i><b>14</b> Transformations and unequal variance</a></li>
+<li class="chapter" data-level="15" data-path="boostrapping-regression-models.html"><a href="boostrapping-regression-models.html"><i class="fa fa-check"></i><b>15</b> Boostrapping regression models</a></li>
+<li class="chapter" data-level="16" data-path="multicollinearity.html"><a href="multicollinearity.html"><i class="fa fa-check"></i><b>16</b> Multicollinearity</a></li>
+<li class="chapter" data-level="17" data-path="logistic-regression.html"><a href="logistic-regression.html"><i class="fa fa-check"></i><b>17</b> Logistic regression</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="logistic-regression.html"><a href="logistic-regression.html#introduction-4"><i class="fa fa-check"></i><b>17.1</b> Introduction</a></li>
+<li class="chapter" data-level="17.2" data-path="logistic-regression.html"><a href="logistic-regression.html#fitting-logistic-regression"><i class="fa fa-check"></i><b>17.2</b> Fitting logistic regression</a></li>
+<li class="chapter" data-level="17.3" data-path="logistic-regression.html"><a href="logistic-regression.html#assessing-model-fit-i-deviance-and-pseudo-r-squared"><i class="fa fa-check"></i><b>17.3</b> Assessing model fit I: deviance and pseudo r squared</a></li>
+<li class="chapter" data-level="17.4" data-path="logistic-regression.html"><a href="logistic-regression.html#assessing-model-fit-ii-confusion-matrix-and-roc-curves"><i class="fa fa-check"></i><b>17.4</b> Assessing model fit II: confusion matrix and ROC curves</a></li>
+<li class="chapter" data-level="17.5" data-path="logistic-regression.html"><a href="logistic-regression.html#interactions"><i class="fa fa-check"></i><b>17.5</b> Interactions</a></li>
+<li class="chapter" data-level="17.6" data-path="logistic-regression.html"><a href="logistic-regression.html#further-resources-2"><i class="fa fa-check"></i><b>17.6</b> Further resources</a></li>
+<li class="chapter" data-level="17.7" data-path="logistic-regression.html"><a href="logistic-regression.html#summary-exercise-for-this-week-8"><i class="fa fa-check"></i><b>17.7</b> Summary: exercise for this week</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="wrapping-up.html"><a href="wrapping-up.html"><i class="fa fa-check"></i><b>18</b> Wrapping up</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Data Analysis in Crimnological reserch</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="dealing-with-non-linearities-and-unequal-variances" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Chapter13</span> Dealing with non linearities (and unequal variances)<a href="dealing-with-non-linearities-and-unequal-variances.html#dealing-with-non-linearities-and-unequal-variances" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The diagnostics we have carried out so far suggest that perhaps we had a problem with non-linearities regarding the relationship between fear of violent crime and perceptions of antisocial behaviour. The residual plots seem to indicate that the model we fitted underpredict at low and high levels of perceptions of antisocial behaviour. Let’s look back at the marginal relationship between these two variables through a scatterplot.</p>
+<p>As we said one of the fundamental assumptions of regression is that the model assumes that a straight line is a good representation of the data. If this is not the case you may better off using some form of nonlinear model. So, one of the first things you want to do when looking at your data is to assess if a straight line represents a reasonable summary for it. Let’s go back to the first simple model we explored and plot the smoothed conditional means</p>
+<pre><code>## Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+## ℹ Please use `linewidth` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.</code></pre>
+<pre><code>## Warning in geom_line(data = BCS0708, aes(x = round(tcarea/0.1) * 0.1, y =
+## tcviolent), : Ignoring unknown parameters: `fun.y`</code></pre>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<pre><code>## Warning: Removed 3664 rows containing non-finite values (`stat_smooth()`).</code></pre>
+<pre><code>## Warning: Removed 3664 rows containing non-finite values (`stat_summary()`).</code></pre>
+<pre><code>## No summary function supplied, defaulting to `mean_se()`</code></pre>
+<pre><code>## Warning: Removed 3664 rows containing missing values (`geom_point()`).</code></pre>
+<p><img src="09-regression2_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>Is the straight line a good summary? One way of exploring this when you only have one predictor is to use a <a href="http://en.wikipedia.org/wiki/Local_regression">Loess regression line</a>. This form of local regression subsets chunks of data around your X axis to try to estimate a regression line that fits well a region of the data. These are the blue lines that you see plotted in the residual plots earlier. This visualisation posted online in the wonderful Simply Statistics blog.</p>
+<p><img src="imgs/SSblog.gif" /></p>
+<div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb648-1"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb648-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> BCS0708, <span class="fu">aes</span>(<span class="at">x =</span> tcarea, <span class="at">y =</span> tcviolent)) <span class="sc">+</span></span>
+<span id="cb648-2"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb648-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">2</span>, <span class="at">position =</span> <span class="st">&quot;jitter&quot;</span>, <span class="at">color =</span><span class="st">&quot;orange&quot;</span>) <span class="sc">+</span></span>
+<span id="cb648-3"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb648-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb648-4"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb648-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
+<span id="cb648-5"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb648-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
+<pre><code>## Warning: Removed 3664 rows containing non-finite values (`stat_smooth()`).</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula = &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
+<pre><code>## Warning: Removed 3664 rows containing non-finite values (`stat_smooth()`).</code></pre>
+<pre><code>## Warning: Removed 3664 rows containing missing values (`geom_point()`).</code></pre>
+<p><img src="09-regression2_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>We already knew from the residual plots we had a problem here, but hopefully this plots also helps you to see the problem more clearly. This plot seems to suggest that perhaps the relationship here is somehow curvilinear, although notice that the curvature takes place as the result of the underprediction in the regions of X with sparser data.</p>
+<div id="using-polynomial-regression" class="section level4 hasAnchor" number="13.0.0.1">
+<h4><span class="header-section-number">13.0.0.1</span> Using polynomial regression<a href="dealing-with-non-linearities-and-unequal-variances.html#using-polynomial-regression" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>What do you do in a situation such as this? There are a number of solutions, some of which are more complex than others. One fairly simple way of extending the linear model is by using polynomial regression. Essentially what this does is to incorporate a transformed predictor into the model with the intention of capturing the curvature apparent in the data. What we do is that we add additional terms to the model until we are satisfied we capture the pattern in the data.</p>
+<p>So say we are working with a simple model of <code>tcviolent ~ tcarea</code>. We could try to fit a polynomial regression adding a second term with a squared <code>tcarea</code>. This would produce the following predicted line:</p>
+<div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb654-1"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb654-1" tabindex="-1"></a><span class="co">#Notice the arguments in the first geom_smooth(). We are asking ggplot to produce a linear model using the specified formula. This formula asks for a polynomial regression with a quadratic term added (that&#39;s why you see the 2). You may want to look at the help files for the poly() function, which is one of the ways of inserting polynomials in a R formula (the preferred way of doing it if you want to have more than a quadratic term).</span></span>
+<span id="cb654-2"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb654-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> BCS0708, <span class="fu">aes</span>(<span class="at">x =</span> tcarea, <span class="at">y =</span> tcviolent)) <span class="sc">+</span></span>
+<span id="cb654-3"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb654-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">2</span>, <span class="at">position =</span> <span class="st">&quot;jitter&quot;</span>, <span class="at">color =</span><span class="st">&quot;orange&quot;</span>) <span class="sc">+</span></span>
+<span id="cb654-4"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb654-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">2</span>), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">se=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb654-5"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb654-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb654-6"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb654-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<pre><code>## Warning: Removed 3664 rows containing non-finite values (`stat_smooth()`).</code></pre>
+<pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula = &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
+<pre><code>## Warning: Removed 3664 rows containing non-finite values (`stat_smooth()`).</code></pre>
+<pre><code>## Warning: Removed 3664 rows containing missing values (`geom_point()`).</code></pre>
+<p><img src="09-regression2_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>Essentially, adding this extra term allows the possibility of increasing slopes with <code>tcarea</code> and helps to model U-shaped patterns. If we still think that the non-linearities are not adequately captured we could try with a cubic transformation (raising to the power of 3) and adding this additional term. The more complex your polynomial, the more difficult may be to interpret your tabular results.</p>
+<p>Another thing to note is that the higher order polyomial you add, the better your model fits. <strong>However</strong> that doesn’t necessarily mean that it is a better model. You might venture into what is known as overfitting, where your model fits your data greatly, but uses its predictive power. See this <a href="http://www.nature.com/nmeth/journal/v13/n9/full/nmeth.3968.html">paper by Lever et al. in Nature</a> to learn more.</p>
+<p>Let’s return to the more complex model we were examining and rerun the model with a quadratic term added. When including quadratic terms as part of a formula in R we need to use the <code>I()</code>function for converting objects (or the <code>poly()</code> function).</p>
+<div class="sourceCode" id="cb659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb659-1"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb659-1" tabindex="-1"></a>fit_3q <span class="ot">&lt;-</span> <span class="fu">lm</span>(tcviolent <span class="sc">~</span> tcarea <span class="sc">+</span> <span class="fu">I</span>(tcarea<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> sex, <span class="at">data =</span> BCS0708)</span>
+<span id="cb659-2"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb659-2" tabindex="-1"></a><span class="fu">summary</span>(fit_3q )</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = tcviolent ~ tcarea + I(tcarea^2) + sex, data = BCS0708)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.6267 -0.5840 -0.1253  0.4740  4.2919 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  0.265422   0.015870  16.725  &lt; 2e-16 ***
+## tcarea       0.273647   0.011811  23.169  &lt; 2e-16 ***
+## I(tcarea^2)  0.047727   0.007628   6.257 4.12e-10 ***
+## sexmale     -0.592218   0.020238 -29.263  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.9037 on 8008 degrees of freedom
+##   (3664 observations deleted due to missingness)
+## Multiple R-squared:  0.1852, Adjusted R-squared:  0.1849 
+## F-statistic: 606.8 on 3 and 8008 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>The near-zero p-value associated with the quadratic term suggests that it leads to an improved model. We can use the <code>anova()</code> function to quantify the improvement in the model.</p>
+<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb661-1"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb661-1" tabindex="-1"></a><span class="fu">anova</span>(fit_3, fit_3q)</span></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Model 1: tcviolent ~ tcarea + sex
+## Model 2: tcviolent ~ tcarea + I(tcarea^2) + sex
+##   Res.Df    RSS Df Sum of Sq      F    Pr(&gt;F)    
+## 1   8009 6572.4                                  
+## 2   8008 6540.4  1    31.976 39.151 4.123e-10 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>In the output the first model is the one without the quadratic term (the straight line model) and the second model is the one with the added polynomial. What the <code>anova()</code> function is doing here is to run a hypothesis test that the two models fit the data equally well, whereas the research hypothesis is that the model with the quadratic term represents a better fit. The p value we observe is virtually zero. So clearly in this case adding a quadratic term represents an improvement to our model. If we compare the plot of the residuals against the fitted values we can see that the non-linear pattern that was evident in our simpler model washes away once we introduce the quadratic term.</p>
+<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb663-1" tabindex="-1"></a><span class="co">#You would use this code to obtain only the fitted against the residuals.</span></span>
+<span id="cb663-2"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb663-2" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_3, <span class="sc">~</span><span class="dv">1</span>, <span class="at">fitted =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="09-regression2_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<pre><code>##            Test stat Pr(&gt;|Test stat|)    
+## Tukey test    4.6065        4.094e-06 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb665-1" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_3q, <span class="sc">~</span><span class="dv">1</span>, <span class="at">fitted =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p><img src="09-regression2_files/figure-html/unnamed-chunk-16-2.png" width="672" /></p>
+<pre><code>##            Test stat Pr(&gt;|Test stat|)
+## Tukey test    1.2223           0.2216</code></pre>
+<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb667-1" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_3q)</span></code></pre></div>
+<p><img src="09-regression2_files/figure-html/unnamed-chunk-16-3.png" width="672" /></p>
+<pre><code>##             Test stat Pr(&gt;|Test stat|)  
+## tcarea         0.2981          0.76561  
+## I(tcarea^2)    1.8972          0.05783 .
+## Tukey test     1.2223          0.22159  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>We can run the tests we used before to check for fit:</p>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb669-1" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_3q, <span class="at">plot =</span> <span class="cn">FALSE</span>) <span class="co">#Setting the plot argument to false will only print the tests.</span></span></code></pre></div>
+<pre><code>##             Test stat Pr(&gt;|Test stat|)  
+## tcarea         0.2981          0.76561  
+## I(tcarea^2)    1.8972          0.05783 .
+## Tukey test     1.2223          0.22159  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>We can see that the tests are no longer significant. Should we add a cubic term? The Loess line was not a simple curve, would a more complex model be required?</p>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb671-1" tabindex="-1"></a>fit_3c <span class="ot">&lt;-</span> <span class="fu">lm</span>(tcviolent <span class="sc">~</span> tcarea <span class="sc">+</span> <span class="fu">I</span>(tcarea<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(tcarea<span class="sc">^</span><span class="dv">3</span>) <span class="sc">+</span> sex, <span class="at">data =</span> BCS0708)</span>
+<span id="cb671-2"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb671-2" tabindex="-1"></a><span class="fu">summary</span>(fit_3c)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = tcviolent ~ tcarea + I(tcarea^2) + I(tcarea^3) + 
+##     sex, data = BCS0708)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.7352 -0.5846 -0.1276  0.4733  4.2846 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  0.272535   0.017115  15.924  &lt; 2e-16 ***
+## tcarea       0.263588   0.014888  17.705  &lt; 2e-16 ***
+## I(tcarea^2)  0.035936   0.013078   2.748  0.00601 ** 
+## I(tcarea^3)  0.005696   0.005132   1.110  0.26708    
+## sexmale     -0.591906   0.020239 -29.245  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.9037 on 8007 degrees of freedom
+##   (3664 observations deleted due to missingness)
+## Multiple R-squared:  0.1853, Adjusted R-squared:  0.1849 
+## F-statistic: 455.4 on 4 and 8007 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>In this case, we have less evidence that adding this additional term would improve the fit. As you can see the p value associated with the cubic term is not significant.</p>
+<p>As we discussed when introducing regression interpreting the coefficients can get tricky. That is certainly the case when you add polynomial regression. The description of results in this case will typically focus on the general pattern of results, rather than in the regression coefficients for your transformed variable. One solution to this is to produce graphical displays of the relationship such as those that can be obtained with the <code>effects</code> package.</p>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb673-1" tabindex="-1"></a><span class="fu">library</span>(effects)</span></code></pre></div>
+<pre><code>## lattice theme set by effectsTheme()
+## See ?effectsTheme for details.</code></pre>
+<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="dealing-with-non-linearities-and-unequal-variances.html#cb675-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(fit_3q)<span class="sc">$</span>tcarea)</span></code></pre></div>
+<p><img src="09-regression2_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>We have discussed transforming the variable by squaring it, but other curvilinear patterns may require other transformations such as taking the inverse (1/X), when there is a decreasing negative effect of the predictor on the response variable, or taking the square root of X, when there is a dminishing positive impact of the predictor on the response variable -refer to <a href="http://link.springer.com/book/10.1007%2F978-1-4614-9170-5">Weisburt and Britt, 2014: 516-518</a>. There are also other more sophisticated ways of accommodating non linearities -by means of fitting regression splines or using generalised additive models. But those models are well beyond the scope of this course.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="checking-for-normality-outliers-and-influential-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="transformations-and-unequal-variance.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["book.pdf", "book.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
