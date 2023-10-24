@@ -636,8 +636,8 @@ t1waybt(tcviolent ~ ethgrp2, data = BCS0708, tr = .05, nboot = 599)
 ## 
 ## Test statistic: 45.3591 
 ## p-value: 0 
-## Variance explained: 0.093 
-## Effect size: 0.306
+## Variance explained: 0.081 
+## Effect size: 0.284
 ```
 
 As with the standard ANOVA and the Welch version, we still get a significant result.
@@ -751,26 +751,27 @@ ANOVA(tcviolent ~ ethgrp2, data = BCS0708, brief=TRUE)
 ## 
 ##   DESCRIPTIVE STATISTICS  
 ## 
-##                            n            mean              sd              min             max 
-## asian or asian british   283   0.88175663803   1.16668811073   -2.07022309303   3.31529736519 
-## black or black british   120   0.50063411160   1.13798384912   -1.85322141647   2.59109425545 
-## chinese or other          93   0.33978925640   1.13861126145   -1.64311027527   2.80809569359 
-## mixed                     35   0.51799569013   1.29961704407   -2.33650994301   2.96658897400 
-## white                   7902   0.00311507460   0.97682414921   -2.35029053688   3.80547618866 
+##                            n           mean             sd             min            max 
+## asian or asian british   283   0.8817566380   1.1666881107   -2.0702230930   3.3152973652 
+## black or black british   120   0.5006341116   1.1379838491   -1.8532214165   2.5910942554 
+## chinese or other          93   0.3397892564   1.1386112614   -1.6431102753   2.8080956936 
+## mixed                     35   0.5179956901   1.2996170441   -2.3365099430   2.9665889740 
+## white                   7902   0.0031150746   0.9768241492   -2.3502905369   3.8054761887 
 ##  
-## Grand Mean: 0.045530510071 
+## Grand Mean: 0.04553051007 
 ## 
 ## 
 ##   ANOVA 
 ## 
-##                      df            Sum Sq         Mean Sq         F-value   p-value 
-## ethgrp2               4   252.83066055375  63.20766513844 64.54270257531    0.0000 
-## Residuals          8428  8253.67052402441   0.97931543949 
+##                     df           Sum Sq        Mean Sq        F-value   p-value 
+## ethgrp2              4   252.8306605538  63.2076651384 64.5427025753    0.0000 
+## Residuals         8428  8253.6705240244   0.9793154395 
 ## 
 ## R Squared: 0.030 
 ## R Sq Adjusted: 0.029 
 ## Omega Squared: 0.029 
 ##  
+## 
 ## Cohen's f: 0.174 
 ## 
 ## 

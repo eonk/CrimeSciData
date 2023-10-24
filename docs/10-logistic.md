@@ -111,10 +111,6 @@ summary(fitl_1)
 ## glm(formula = harsher ~ checks + colour + sex + employed, family = "binomial", 
 ##     data = Arrests)
 ## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -1.5226  -0.6156  -0.4407  -0.3711   2.3449  
-## 
 ## Coefficients:
 ##             Estimate Std. Error z value Pr(>|z|)    
 ## (Intercept) -1.90346    0.15999 -11.898  < 2e-16 ***
@@ -213,20 +209,20 @@ library(lessR, quietly= TRUE)
 
 ```
 ## 
-## lessR 4.2.3                         feedback: gerbing@pdx.edu 
+## lessR 4.2.9                         feedback: gerbing@pdx.edu 
 ## --------------------------------------------------------------
 ## > d <- Read("")   Read text, Excel, SPSS, SAS, or R data file
 ##   d is default data frame, data= in analysis routines optional
 ## 
 ## Learn about reading, writing, and manipulating data, graphics,
 ## testing means and proportions, regression, factor analysis,
-## customization, and descriptive statistics from pivot tables.
+## customization, and descriptive statistics from pivot tables
 ##   Enter:  browseVignettes("lessR")
 ## 
-## View changes in this and recent versions of lessR.
+## View changes in this and recent versions of lessR
 ##   Enter: news(package="lessR")
 ## 
-## **New Feature**: Interactive analysis of your data
+## Interactive data analysis
 ##   Enter: interact()
 ```
 
@@ -356,6 +352,13 @@ We can also use **forest plots** in much the same way than we did for linear reg
 
 ```r
 library(sjPlot)
+```
+
+```
+## #refugeeswelcome
+```
+
+```r
 plot_model(fitl_1)
 ```
 
@@ -419,10 +422,6 @@ The difference between the -2LL for the model with no predictors and the -2LL fo
 ## Call:
 ## glm(formula = harsher ~ checks + colour + sex + employed, family = "binomial", 
 ##     data = Arrests)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -1.5226  -0.6156  -0.4407  -0.3711   2.3449  
 ## 
 ## Coefficients:
 ##             Estimate Std. Error z value             Pr(>|z|)    
@@ -749,10 +748,6 @@ summary(fitl_2)
 ## Call:
 ## glm(formula = harsher ~ employed + citizen + checks + colour * 
 ##     year + colour * age, family = binomial, data = Arrests)
-## 
-## Deviance Residuals: 
-##     Min       1Q   Median       3Q      Max  
-## -1.7625  -0.6178  -0.4408  -0.3473   2.4496  
 ## 
 ## Coefficients:
 ##                     Estimate  Std. Error z value             Pr(>|z|)    

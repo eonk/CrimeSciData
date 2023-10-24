@@ -1004,16 +1004,6 @@ library(visdat)
 vis_dat(df_f)
 ```
 
-```
-## Warning: `gather_()` was deprecated in tidyr 1.2.0.
-## ℹ Please use `gather()` instead.
-## ℹ The deprecated feature was likely used in the visdat package.
-##   Please report the issue at <https://github.com/ropensci/visdat/issues>.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-## generated.
-```
-
 <img src="04-carpentry_files/figure-html/unnamed-chunk-54-1.png" width="672" />
 
 Nice one! You get a visual representations of how your variables are encoded in this dataframe. You have several categorical variables such as region, urban_f, urban_f, and occup_f. We see that region is encoded as a `character` vector, whereas the others are `factors`. For the purposes of this course, it is generally better to have your categorical variables encoded as factors. So one of the next steps in our data prep may be to recode region as a factor. 

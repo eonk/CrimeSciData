@@ -67,6 +67,7 @@ residualPlots(fit_3)
 ```
 ##            Test stat Pr(>|Test stat|)    
 ## tcarea        6.2571        4.123e-10 ***
+## sex                                      
 ## Tukey test    4.6065        4.094e-06 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -249,8 +250,8 @@ influencePlot(fit_3, id.n=1)
 ```
 
 ```
-## Warning in plot.xy(xy.coords(x, y), type = type, ...): "id.n" is not a graphical
-## parameter
+## Warning in plot.xy(xy.coords(x, y), type = type, ...): "id.n" is not a
+## graphical parameter
 ```
 
 <img src="09-regression2_files/figure-html/unnamed-chunk-9-1.png" width="672" />
@@ -504,8 +505,9 @@ residualPlots(fit_3q)
 
 ```
 ##             Test stat Pr(>|Test stat|)  
-## tcarea         0.2981          0.76561  
+## tcarea        -0.3529          0.72420  
 ## I(tcarea^2)    1.8972          0.05783 .
+## sex                                     
 ## Tukey test     1.2223          0.22159  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -520,8 +522,9 @@ residualPlots(fit_3q, plot = FALSE) #Setting the plot argument to false will onl
 
 ```
 ##             Test stat Pr(>|Test stat|)  
-## tcarea         0.2981          0.76561  
+## tcarea        -0.3529          0.72420  
 ## I(tcarea^2)    1.8972          0.05783 .
+## sex                                     
 ## Tukey test     1.2223          0.22159  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -726,7 +729,7 @@ residualPlots(fit_B1)
 ## medv          9.8302        < 2.2e-16 ***
 ## lstat         4.8810        1.422e-06 ***
 ## dis           5.7387        1.655e-08 ***
-## chas          0.2913           0.7709    
+## chas          0.3195           0.7495    
 ## Tukey test   10.2705        < 2.2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -838,7 +841,7 @@ residualPlots(fit_B2)
 ## medv          8.0190        7.613e-15 ***
 ## lstat         0.4771           0.6335    
 ## dis           7.7327        5.838e-14 ***
-## chas          0.1680           0.8666    
+## chas          0.2330           0.8158    
 ## Tukey test    6.0272        1.668e-09 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -915,7 +918,7 @@ residualPlots(fit_B3)
 ## poly(medv, 2)                             
 ## log(lstat)       0.5714          0.56801  
 ## log(dis)         1.9410          0.05282 .
-## chas             1.5171          0.12988  
+## chas             0.3017          0.76303  
 ## Tukey test       1.1169          0.26402  
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -961,12 +964,12 @@ summary(fit_B3_boot)
 ## 
 ## Number of bootstrap replications R = 999 
 ##                 original   bootBias  bootSE   bootMed
-## (Intercept)      1.12062 -0.0221233 0.54363   1.10891
-## poly(medv, 2)1 -11.90029 -0.0068502 2.44105 -11.93350
-## poly(medv, 2)2  10.86169  0.1186024 1.53681  10.97559
-## log(lstat)       0.25564  0.0049383 0.19486   0.25880
-## log(dis)        -2.11930  0.0080207 0.12589  -2.11351
-## chas             0.15374 -0.0060073 0.19495   0.14619
+## (Intercept)      1.12062  0.0034977 0.52981   1.13327
+## poly(medv, 2)1 -11.90029 -0.0844829 2.37541 -11.97046
+## poly(medv, 2)2  10.86169  0.0468036 1.58379  10.90279
+## log(lstat)       0.25564 -0.0038917 0.18973   0.25223
+## log(dis)        -2.11930  0.0050089 0.12245  -2.11803
+## chas             0.15374  0.0024551 0.19731   0.15394
 ```
 
 The summary gives the original sample value for each component of the bootstrapped statistics, along with the bootstrap estimates of bias, the difference between the average bootstrapped
@@ -982,13 +985,13 @@ confint(fit_B3_boot)
 ```
 ## Bootstrap bca confidence intervals
 ## 
-##                       2.5 %     97.5 %
-## (Intercept)     -0.02756049  2.1057597
-## poly(medv, 2)1 -16.37402767 -6.7405478
-## poly(medv, 2)2   7.46073974 13.6773953
-## log(lstat)      -0.10001377  0.6615121
-## log(dis)        -2.36734109 -1.8614122
-## chas            -0.20387900  0.5419301
+##                        2.5 %     97.5 %
+## (Intercept)     2.910771e-04  2.1026428
+## poly(medv, 2)1 -1.628427e+01 -6.6265516
+## poly(medv, 2)2  7.735923e+00 13.8456789
+## log(lstat)     -1.025618e-01  0.6498576
+## log(dis)       -2.343929e+00 -1.8693378
+## chas           -2.493797e-01  0.5614535
 ```
 
 ## Multicollinearity
