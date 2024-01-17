@@ -636,8 +636,8 @@ t1waybt(tcviolent ~ ethgrp2, data = BCS0708, tr = .05, nboot = 599)
 ## 
 ## Test statistic: 45.3591 
 ## p-value: 0 
-## Variance explained: 0.081 
-## Effect size: 0.284
+## Variance explained: 0.078 
+## Effect size: 0.279
 ```
 
 As with the standard ANOVA and the Welch version, we still get a significant result.

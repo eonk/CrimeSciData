@@ -334,8 +334,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Apart from this, it is convenient to diagnose multicollinearity (this affects interpretation) and influential observations.</p>
 <p>So these are the assumptions of linear regression, and today we will go through how to test for them, and also what are some options that you can consider if you find that your model violates them. While finding that some of the assumptions are violated do not necessarily mean that you have to scrap your model, it is important to use these diagnostics to illustrate that you have considered what the possible issues with your model is, and if you find any serious issues that you address them.</p>
 <p>We’ll be using the British Crime Survey daya from 2007/8 again, so read it in (you might already have it saved from earlier sessions):</p>
-<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb612-1"><a href="regression-in-the-real-world.html#cb612-1" tabindex="-1"></a><span class="do">##R in Windows have some problems with https addresses, that&#39;s why we need to do this first:</span></span>
-<span id="cb612-2"><a href="regression-in-the-real-world.html#cb612-2" tabindex="-1"></a>BCS0708<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="regression-in-the-real-world.html#cb613-1" tabindex="-1"></a><span class="do">##R in Windows have some problems with https addresses, that&#39;s why we need to do this first:</span></span>
+<span id="cb613-2"><a href="regression-in-the-real-world.html#cb613-2" tabindex="-1"></a>BCS0708<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv&quot;</span>)</span></code></pre></div>
 </div>
 <div id="plotting-residuals" class="section level2 hasAnchor" number="9.2">
 <h2><span class="header-section-number">9.2</span> Plotting residuals<a href="regression-in-the-real-world.html#plotting-residuals" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -348,10 +348,10 @@ You can read more about these <a href="https://r-forge.r-project.org/scm/viewvc.
 &gt; this “is useful for revealing problems but less useful for determining the exact nature of the problem” and consequently one needs “other diagnostic graphs to suggest improvements to the model”.</p>
 <p>In the previous session we fitted the model <code>tcviolent ~ tcarea + sex</code>. This was our <code>fit_3</code> model during that session. You may have to run the model again if you do not have it in your global environment.</p>
 <p>To obtain the basic residual plots for this model we use the <code>residualPlots()</code> function of the <code>car</code> package.</p>
-<div class="sourceCode" id="cb613"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb613-1"><a href="regression-in-the-real-world.html#cb613-1" tabindex="-1"></a><span class="fu">library</span>(car)</span></code></pre></div>
+<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb614-1"><a href="regression-in-the-real-world.html#cb614-1" tabindex="-1"></a><span class="fu">library</span>(car)</span></code></pre></div>
 <pre><code>## Loading required package: carData</code></pre>
-<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb615-1"><a href="regression-in-the-real-world.html#cb615-1" tabindex="-1"></a>fit_3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(tcviolent <span class="sc">~</span> tcarea <span class="sc">+</span> sex, <span class="at">data=</span>BCS0708)</span>
-<span id="cb615-2"><a href="regression-in-the-real-world.html#cb615-2" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_3)</span></code></pre></div>
+<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb616-1"><a href="regression-in-the-real-world.html#cb616-1" tabindex="-1"></a>fit_3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(tcviolent <span class="sc">~</span> tcarea <span class="sc">+</span> sex, <span class="at">data=</span>BCS0708)</span>
+<span id="cb616-2"><a href="regression-in-the-real-world.html#cb616-2" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_3)</span></code></pre></div>
 <p><img src="09-regression2_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <pre><code>##            Test stat Pr(&gt;|Test stat|)    
 ## tcarea        6.2571        4.123e-10 ***
@@ -398,7 +398,7 @@ Ideally a plot of the residuals should show that:</p>
 <p><img src="09-regression2_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>This will plot a scatterplot for each predictor variable against the response variable. This displays the conditional distribution of the response given each predictor, <em>ignoring the other predictors</em>. They are called marginal plots because they show the marginal relationship between the outcome and <em>each predictor</em>. It will also print a scatterplot of the response versus the fitted value displaying the conditional distribution of the outcome given the fit of the model. We observe here the curvature that was already identified by the previous plots (notice the blue line).</p>
 <p>We can also use the <code>marginalModelPlots()</code> function to assess the <strong>homogeneity of variance</strong> assumption using the following argument:</p>
-<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb618-1"><a href="regression-in-the-real-world.html#cb618-1" tabindex="-1"></a><span class="fu">marginalModelPlots</span>(fit_3, <span class="at">sd =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb619"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb619-1"><a href="regression-in-the-real-world.html#cb619-1" tabindex="-1"></a><span class="fu">marginalModelPlots</span>(fit_3, <span class="at">sd =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## Warning in xy.coords(x, y, xlabel, ylabel, log): NAs introduced by coercion</code></pre>
 <pre><code>## Warning in min(x): no non-missing arguments to min; returning Inf</code></pre>
 <pre><code>## Warning in max(x): no non-missing arguments to max; returning -Inf</code></pre>
@@ -409,7 +409,7 @@ Ideally a plot of the residuals should show that:</p>
 <div id="diagnostic-for-homoskedasiticity" class="section level4 hasAnchor" number="9.2.0.5">
 <h4><span class="header-section-number">9.2.0.5</span> Diagnostic for homoskedasiticity<a href="regression-in-the-real-world.html#diagnostic-for-homoskedasiticity" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>And since we are discussing homoskedasiticity (e.g., homogeneity of variance or constant/equal variance), it is worth pointing out that the <code>car</code> package implements a score test that evaluates whether the variance is constant. To obtain this test we use the <code>ncvTest()</code> function.</p>
-<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb623-1"><a href="regression-in-the-real-world.html#cb623-1" tabindex="-1"></a><span class="fu">ncvTest</span>(fit_3)</span></code></pre></div>
+<div class="sourceCode" id="cb624"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb624-1"><a href="regression-in-the-real-world.html#cb624-1" tabindex="-1"></a><span class="fu">ncvTest</span>(fit_3)</span></code></pre></div>
 <pre><code>## Non-constant Variance Score Test 
 ## Variance formula: ~ fitted.values 
 ## Chisquare = 186.8947, Df = 1, p = &lt; 2.22e-16</code></pre>
@@ -423,14 +423,14 @@ Ideally a plot of the residuals should show that:</p>
 <div id="density-estimate-of-the-residuals" class="section level4 hasAnchor" number="9.3.0.1">
 <h4><span class="header-section-number">9.3.0.1</span> Density estimate of the residuals<a href="regression-in-the-real-world.html#density-estimate-of-the-residuals" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We could plot the density estimate of the residuals:</p>
-<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb625-1"><a href="regression-in-the-real-world.html#cb625-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(<span class="fu">rstudent</span>(fit_3)))</span></code></pre></div>
+<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="regression-in-the-real-world.html#cb626-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(<span class="fu">rstudent</span>(fit_3)))</span></code></pre></div>
 <p><img src="09-regression2_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>We can see that the right hand side tail is heavier than it should be.</p>
 </div>
 <div id="qqplot" class="section level4 hasAnchor" number="9.3.0.2">
 <h4><span class="header-section-number">9.3.0.2</span> qqplot<a href="regression-in-the-real-world.html#qqplot" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We could also use a normal probability plot to assess the normality of the residuals using the <code>qqPlot()</code> function of the <code>car</code> package;</p>
-<div class="sourceCode" id="cb626"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb626-1"><a href="regression-in-the-real-world.html#cb626-1" tabindex="-1"></a><span class="fu">qqPlot</span>(fit_3, <span class="at">id.n =</span> <span class="dv">3</span>) <span class="co">#The id.n argument asks R to identify the row number for the most extreme observations, the value specifies how many cases we want to higlight</span></span></code></pre></div>
+<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb627-1"><a href="regression-in-the-real-world.html#cb627-1" tabindex="-1"></a><span class="fu">qqPlot</span>(fit_3, <span class="at">id.n =</span> <span class="dv">3</span>) <span class="co">#The id.n argument asks R to identify the row number for the most extreme observations, the value specifies how many cases we want to higlight</span></span></code></pre></div>
 <p><img src="09-regression2_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <pre><code>## [1] 1761 3919</code></pre>
 <p>You have a few cases where the fitted values are much smaller than the observed values (thus the large positive residuals) particularly in the right hand side of the plot. As we saw in previous residual plots, there is a bit curvature in the data. It is likely this may be what this plot is picking up here.</p>
@@ -438,14 +438,14 @@ Ideally a plot of the residuals should show that:</p>
 <div id="outliers" class="section level4 hasAnchor" number="9.3.0.3">
 <h4><span class="header-section-number">9.3.0.3</span> Outliers<a href="regression-in-the-real-world.html#outliers" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>We can also run a formal test for outliers using the following function from the <code>car</code> package. This function locates the largest Studentised residuals in absolute value and computes a Bonferroni-corrected t test. If the probability value associated with this test is smaller than your alpha value, then you can conclude the observation you are dealing with is likely an outlier. Look at our results from using the function, what can you conclude?</p>
-<div class="sourceCode" id="cb628"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb628-1"><a href="regression-in-the-real-world.html#cb628-1" tabindex="-1"></a><span class="fu">outlierTest</span>(fit_3)</span></code></pre></div>
+<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb629-1"><a href="regression-in-the-real-world.html#cb629-1" tabindex="-1"></a><span class="fu">outlierTest</span>(fit_3)</span></code></pre></div>
 <pre><code>##      rstudent unadjusted p-value Bonferroni p
 ## 1761 4.746679         2.1037e-06     0.016855</code></pre>
 </div>
 <div id="influential-cases" class="section level4 hasAnchor" number="9.3.0.4">
 <h4><span class="header-section-number">9.3.0.4</span> Influential cases<a href="regression-in-the-real-world.html#influential-cases" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>So far we have only been looking at outliers, but we can also obtain information about unusual cases that have large influence in our results (remember the distinction higlighted in the recommended reading material above). For identifying influential observations we can use visual methods. The <code>influencePlot()</code> function, also from the <code>car</code> package, produces a bubble plot, which combine measures of the residuals and other statistics (hat values and Cook distance) oriented to identify influential observations.</p>
-<div class="sourceCode" id="cb630"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb630-1"><a href="regression-in-the-real-world.html#cb630-1" tabindex="-1"></a><span class="fu">influencePlot</span>(fit_3, <span class="at">id.n=</span><span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb631-1"><a href="regression-in-the-real-world.html#cb631-1" tabindex="-1"></a><span class="fu">influencePlot</span>(fit_3, <span class="at">id.n=</span><span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## Warning in plot.window(...): &quot;id.n&quot; is not a graphical parameter</code></pre>
 <pre><code>## Warning in plot.xy(xy, type, ...): &quot;id.n&quot; is not a graphical parameter</code></pre>
 <pre><code>## Warning in axis(side = side, at = at, labels = labels, ...): &quot;id.n&quot; is not a
@@ -468,10 +468,10 @@ Ideally a plot of the residuals should show that:</p>
 <p>We should be concerned by cases that are outlying (have a large residual), those will have very or very low score in the Y axis, <em>and</em> have high leverage as indicated by their <em>hat value</em> (are relatively far from the center of the regressor space), those will have high scores in the Y axis.</p>
 <p>The size of the bubble gives you the <em>Cook distance</em>, which is a statistic that tries to summarise how much your regression coefficients may change without that particular case. Here we see that our only significant outlier (as diagnosed by the statistical test we run earlier) has fairly low leverage. There are a number of observations with more than twice the mean hat value (the first dashed line in the x axis) and three times the mean hat value (the second dashed line in the x axis).</p>
 <p>We can compare the two models using the following code:</p>
-<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb638-1"><a href="regression-in-the-real-world.html#cb638-1" tabindex="-1"></a><span class="co">#This will rerun regression but without the case 1761 in our dataset and store the results in a new object</span></span>
-<span id="cb638-2"><a href="regression-in-the-real-world.html#cb638-2" tabindex="-1"></a>fit_3_no <span class="ot">&lt;-</span> <span class="fu">update</span>(fit_3, <span class="at">subset =</span> <span class="fu">rownames</span>(BCS0708) <span class="sc">!=</span> <span class="dv">1761</span>)</span>
-<span id="cb638-3"><a href="regression-in-the-real-world.html#cb638-3" tabindex="-1"></a><span class="co">#The compareCoeff() function will print the coefficients for the two models and allow us to compare their magnitude and standard errors.</span></span>
-<span id="cb638-4"><a href="regression-in-the-real-world.html#cb638-4" tabindex="-1"></a><span class="fu">compareCoefs</span>(fit_3, fit_3_no)</span></code></pre></div>
+<div class="sourceCode" id="cb639"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb639-1"><a href="regression-in-the-real-world.html#cb639-1" tabindex="-1"></a><span class="co">#This will rerun regression but without the case 1761 in our dataset and store the results in a new object</span></span>
+<span id="cb639-2"><a href="regression-in-the-real-world.html#cb639-2" tabindex="-1"></a>fit_3_no <span class="ot">&lt;-</span> <span class="fu">update</span>(fit_3, <span class="at">subset =</span> <span class="fu">rownames</span>(BCS0708) <span class="sc">!=</span> <span class="dv">1761</span>)</span>
+<span id="cb639-3"><a href="regression-in-the-real-world.html#cb639-3" tabindex="-1"></a><span class="co">#The compareCoeff() function will print the coefficients for the two models and allow us to compare their magnitude and standard errors.</span></span>
+<span id="cb639-4"><a href="regression-in-the-real-world.html#cb639-4" tabindex="-1"></a><span class="fu">compareCoefs</span>(fit_3, fit_3_no)</span></code></pre></div>
 <pre><code>## Calls:
 ## 1: lm(formula = tcviolent ~ tcarea + sex, data = BCS0708)
 ## 2: lm(formula = tcviolent ~ tcarea + sex, data = BCS0708, subset = 
@@ -510,11 +510,11 @@ Ideally a plot of the residuals should show that:</p>
 <p><img src="09-regression2_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>Is the straight line a good summary? One way of exploring this when you only have one predictor is to use a <a href="http://en.wikipedia.org/wiki/Local_regression">Loess regression line</a>. This form of local regression subsets chunks of data around your X axis to try to estimate a regression line that fits well a region of the data. These are the blue lines that you see plotted in the residual plots earlier. This visualisation posted online in the wonderful Simply Statistics blog.</p>
 <p><img src="imgs/SSblog.gif" /></p>
-<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb647-1"><a href="regression-in-the-real-world.html#cb647-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> BCS0708, <span class="fu">aes</span>(<span class="at">x =</span> tcarea, <span class="at">y =</span> tcviolent)) <span class="sc">+</span></span>
-<span id="cb647-2"><a href="regression-in-the-real-world.html#cb647-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">2</span>, <span class="at">position =</span> <span class="st">&quot;jitter&quot;</span>, <span class="at">color =</span><span class="st">&quot;orange&quot;</span>) <span class="sc">+</span></span>
-<span id="cb647-3"><a href="regression-in-the-real-world.html#cb647-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb647-4"><a href="regression-in-the-real-world.html#cb647-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
-<span id="cb647-5"><a href="regression-in-the-real-world.html#cb647-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb648-1"><a href="regression-in-the-real-world.html#cb648-1" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> BCS0708, <span class="fu">aes</span>(<span class="at">x =</span> tcarea, <span class="at">y =</span> tcviolent)) <span class="sc">+</span></span>
+<span id="cb648-2"><a href="regression-in-the-real-world.html#cb648-2" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">2</span>, <span class="at">position =</span> <span class="st">&quot;jitter&quot;</span>, <span class="at">color =</span><span class="st">&quot;orange&quot;</span>) <span class="sc">+</span></span>
+<span id="cb648-3"><a href="regression-in-the-real-world.html#cb648-3" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb648-4"><a href="regression-in-the-real-world.html#cb648-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
+<span id="cb648-5"><a href="regression-in-the-real-world.html#cb648-5" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning: Removed 3664 rows containing non-finite values (`stat_smooth()`).</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula = &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
@@ -526,12 +526,12 @@ Ideally a plot of the residuals should show that:</p>
 <h4><span class="header-section-number">9.4.0.1</span> Using polynomial regression<a href="regression-in-the-real-world.html#using-polynomial-regression" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>What do you do in a situation such as this? There are a number of solutions, some of which are more complex than others. One fairly simple way of extending the linear model is by using polynomial regression. Essentially what this does is to incorporate a transformed predictor into the model with the intention of capturing the curvature apparent in the data. What we do is that we add additional terms to the model until we are satisfied we capture the pattern in the data.</p>
 <p>So say we are working with a simple model of <code>tcviolent ~ tcarea</code>. We could try to fit a polynomial regression adding a second term with a squared <code>tcarea</code>. This would produce the following predicted line:</p>
-<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb653-1"><a href="regression-in-the-real-world.html#cb653-1" tabindex="-1"></a><span class="co">#Notice the arguments in the first geom_smooth(). We are asking ggplot to produce a linear model using the specified formula. This formula asks for a polynomial regression with a quadratic term added (that&#39;s why you see the 2). You may want to look at the help files for the poly() function, which is one of the ways of inserting polynomials in a R formula (the preferred way of doing it if you want to have more than a quadratic term).</span></span>
-<span id="cb653-2"><a href="regression-in-the-real-world.html#cb653-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> BCS0708, <span class="fu">aes</span>(<span class="at">x =</span> tcarea, <span class="at">y =</span> tcviolent)) <span class="sc">+</span></span>
-<span id="cb653-3"><a href="regression-in-the-real-world.html#cb653-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">2</span>, <span class="at">position =</span> <span class="st">&quot;jitter&quot;</span>, <span class="at">color =</span><span class="st">&quot;orange&quot;</span>) <span class="sc">+</span></span>
-<span id="cb653-4"><a href="regression-in-the-real-world.html#cb653-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">2</span>), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">se=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb653-5"><a href="regression-in-the-real-world.html#cb653-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb653-6"><a href="regression-in-the-real-world.html#cb653-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb654-1"><a href="regression-in-the-real-world.html#cb654-1" tabindex="-1"></a><span class="co">#Notice the arguments in the first geom_smooth(). We are asking ggplot to produce a linear model using the specified formula. This formula asks for a polynomial regression with a quadratic term added (that&#39;s why you see the 2). You may want to look at the help files for the poly() function, which is one of the ways of inserting polynomials in a R formula (the preferred way of doing it if you want to have more than a quadratic term).</span></span>
+<span id="cb654-2"><a href="regression-in-the-real-world.html#cb654-2" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> BCS0708, <span class="fu">aes</span>(<span class="at">x =</span> tcarea, <span class="at">y =</span> tcviolent)) <span class="sc">+</span></span>
+<span id="cb654-3"><a href="regression-in-the-real-world.html#cb654-3" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> .<span class="dv">2</span>, <span class="at">position =</span> <span class="st">&quot;jitter&quot;</span>, <span class="at">color =</span><span class="st">&quot;orange&quot;</span>) <span class="sc">+</span></span>
+<span id="cb654-4"><a href="regression-in-the-real-world.html#cb654-4" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>, <span class="at">formula =</span> y <span class="sc">~</span> <span class="fu">poly</span>(x, <span class="dv">2</span>), <span class="at">color =</span> <span class="st">&quot;red&quot;</span>, <span class="at">size =</span> <span class="dv">1</span>, <span class="at">se=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb654-5"><a href="regression-in-the-real-world.html#cb654-5" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">se=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb654-6"><a href="regression-in-the-real-world.html#cb654-6" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code></pre></div>
 <pre><code>## Warning: Removed 3664 rows containing non-finite values (`stat_smooth()`).</code></pre>
 <pre><code>## `geom_smooth()` using method = &#39;gam&#39; and formula = &#39;y ~ s(x, bs = &quot;cs&quot;)&#39;</code></pre>
 <pre><code>## Warning: Removed 3664 rows containing non-finite values (`stat_smooth()`).</code></pre>
@@ -540,8 +540,8 @@ Ideally a plot of the residuals should show that:</p>
 <p>Essentially, adding this extra term allows the possibility of increasing slopes with <code>tcarea</code> and helps to model U-shaped patterns. If we still think that the non-linearities are not adequately captured we could try with a cubic transformation (raising to the power of 3) and adding this additional term. The more complex your polynomial, the more difficult may be to interpret your tabular results.</p>
 <p>Another thing to note is that the higher order polyomial you add, the better your model fits. <strong>However</strong> that doesn’t necessarily mean that it is a better model. You might venture into what is known as overfitting, where your model fits your data greatly, but uses its predictive power. See this <a href="http://www.nature.com/nmeth/journal/v13/n9/full/nmeth.3968.html">paper by Lever et al. in Nature</a> to learn more.</p>
 <p>Let’s return to the more complex model we were examining and rerun the model with a quadratic term added. When including quadratic terms as part of a formula in R we need to use the <code>I()</code>function for converting objects (or the <code>poly()</code> function).</p>
-<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb658-1"><a href="regression-in-the-real-world.html#cb658-1" tabindex="-1"></a>fit_3q <span class="ot">&lt;-</span> <span class="fu">lm</span>(tcviolent <span class="sc">~</span> tcarea <span class="sc">+</span> <span class="fu">I</span>(tcarea<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> sex, <span class="at">data =</span> BCS0708)</span>
-<span id="cb658-2"><a href="regression-in-the-real-world.html#cb658-2" tabindex="-1"></a><span class="fu">summary</span>(fit_3q )</span></code></pre></div>
+<div class="sourceCode" id="cb659"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb659-1"><a href="regression-in-the-real-world.html#cb659-1" tabindex="-1"></a>fit_3q <span class="ot">&lt;-</span> <span class="fu">lm</span>(tcviolent <span class="sc">~</span> tcarea <span class="sc">+</span> <span class="fu">I</span>(tcarea<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> sex, <span class="at">data =</span> BCS0708)</span>
+<span id="cb659-2"><a href="regression-in-the-real-world.html#cb659-2" tabindex="-1"></a><span class="fu">summary</span>(fit_3q )</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = tcviolent ~ tcarea + I(tcarea^2) + sex, data = BCS0708)
@@ -564,7 +564,7 @@ Ideally a plot of the residuals should show that:</p>
 ## Multiple R-squared:  0.1852, Adjusted R-squared:  0.1849 
 ## F-statistic: 606.8 on 3 and 8008 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>The near-zero p-value associated with the quadratic term suggests that it leads to an improved model. We can use the <code>anova()</code> function to quantify the improvement in the model.</p>
-<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb660-1"><a href="regression-in-the-real-world.html#cb660-1" tabindex="-1"></a><span class="fu">anova</span>(fit_3, fit_3q)</span></code></pre></div>
+<div class="sourceCode" id="cb661"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb661-1"><a href="regression-in-the-real-world.html#cb661-1" tabindex="-1"></a><span class="fu">anova</span>(fit_3, fit_3q)</span></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Model 1: tcviolent ~ tcarea + sex
@@ -575,18 +575,18 @@ Ideally a plot of the residuals should show that:</p>
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>In the output the first model is the one without the quadratic term (the straight line model) and the second model is the one with the added polynomial. What the <code>anova()</code> function is doing here is to run a hypothesis test that the two models fit the data equally well, whereas the research hypothesis is that the model with the quadratic term represents a better fit. The p value we observe is virtually zero. So clearly in this case adding a quadratic term represents an improvement to our model. If we compare the plot of the residuals against the fitted values we can see that the non-linear pattern that was evident in our simpler model washes away once we introduce the quadratic term.</p>
-<div class="sourceCode" id="cb662"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb662-1"><a href="regression-in-the-real-world.html#cb662-1" tabindex="-1"></a><span class="co">#You would use this code to obtain only the fitted against the residuals.</span></span>
-<span id="cb662-2"><a href="regression-in-the-real-world.html#cb662-2" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_3, <span class="sc">~</span><span class="dv">1</span>, <span class="at">fitted =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb663"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb663-1"><a href="regression-in-the-real-world.html#cb663-1" tabindex="-1"></a><span class="co">#You would use this code to obtain only the fitted against the residuals.</span></span>
+<span id="cb663-2"><a href="regression-in-the-real-world.html#cb663-2" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_3, <span class="sc">~</span><span class="dv">1</span>, <span class="at">fitted =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="09-regression2_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <pre><code>##            Test stat Pr(&gt;|Test stat|)    
 ## Tukey test    4.6065        4.094e-06 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb664"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb664-1"><a href="regression-in-the-real-world.html#cb664-1" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_3q, <span class="sc">~</span><span class="dv">1</span>, <span class="at">fitted =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb665-1"><a href="regression-in-the-real-world.html#cb665-1" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_3q, <span class="sc">~</span><span class="dv">1</span>, <span class="at">fitted =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <p><img src="09-regression2_files/figure-html/unnamed-chunk-16-2.png" width="672" /></p>
 <pre><code>##            Test stat Pr(&gt;|Test stat|)
 ## Tukey test    1.2223           0.2216</code></pre>
-<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb666-1"><a href="regression-in-the-real-world.html#cb666-1" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_3q)</span></code></pre></div>
+<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb667-1"><a href="regression-in-the-real-world.html#cb667-1" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_3q)</span></code></pre></div>
 <p><img src="09-regression2_files/figure-html/unnamed-chunk-16-3.png" width="672" /></p>
 <pre><code>##             Test stat Pr(&gt;|Test stat|)  
 ## tcarea        -0.3529          0.72420  
@@ -596,7 +596,7 @@ Ideally a plot of the residuals should show that:</p>
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>We can run the tests we used before to check for fit:</p>
-<div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb668-1"><a href="regression-in-the-real-world.html#cb668-1" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_3q, <span class="at">plot =</span> <span class="cn">FALSE</span>) <span class="co">#Setting the plot argument to false will only print the tests.</span></span></code></pre></div>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb669-1"><a href="regression-in-the-real-world.html#cb669-1" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_3q, <span class="at">plot =</span> <span class="cn">FALSE</span>) <span class="co">#Setting the plot argument to false will only print the tests.</span></span></code></pre></div>
 <pre><code>##             Test stat Pr(&gt;|Test stat|)  
 ## tcarea        -0.3529          0.72420  
 ## I(tcarea^2)    1.8972          0.05783 .
@@ -605,8 +605,8 @@ Ideally a plot of the residuals should show that:</p>
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>We can see that the tests are no longer significant. Should we add a cubic term? The Loess line was not a simple curve, would a more complex model be required?</p>
-<div class="sourceCode" id="cb670"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb670-1"><a href="regression-in-the-real-world.html#cb670-1" tabindex="-1"></a>fit_3c <span class="ot">&lt;-</span> <span class="fu">lm</span>(tcviolent <span class="sc">~</span> tcarea <span class="sc">+</span> <span class="fu">I</span>(tcarea<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(tcarea<span class="sc">^</span><span class="dv">3</span>) <span class="sc">+</span> sex, <span class="at">data =</span> BCS0708)</span>
-<span id="cb670-2"><a href="regression-in-the-real-world.html#cb670-2" tabindex="-1"></a><span class="fu">summary</span>(fit_3c)</span></code></pre></div>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb671-1"><a href="regression-in-the-real-world.html#cb671-1" tabindex="-1"></a>fit_3c <span class="ot">&lt;-</span> <span class="fu">lm</span>(tcviolent <span class="sc">~</span> tcarea <span class="sc">+</span> <span class="fu">I</span>(tcarea<span class="sc">^</span><span class="dv">2</span>) <span class="sc">+</span> <span class="fu">I</span>(tcarea<span class="sc">^</span><span class="dv">3</span>) <span class="sc">+</span> sex, <span class="at">data =</span> BCS0708)</span>
+<span id="cb671-2"><a href="regression-in-the-real-world.html#cb671-2" tabindex="-1"></a><span class="fu">summary</span>(fit_3c)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = tcviolent ~ tcarea + I(tcarea^2) + I(tcarea^3) + 
@@ -632,10 +632,10 @@ Ideally a plot of the residuals should show that:</p>
 ## F-statistic: 455.4 on 4 and 8007 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>In this case, we have less evidence that adding this additional term would improve the fit. As you can see the p value associated with the cubic term is not significant.</p>
 <p>As we discussed when introducing regression interpreting the coefficients can get tricky. That is certainly the case when you add polynomial regression. The description of results in this case will typically focus on the general pattern of results, rather than in the regression coefficients for your transformed variable. One solution to this is to produce graphical displays of the relationship such as those that can be obtained with the <code>effects</code> package.</p>
-<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb672-1"><a href="regression-in-the-real-world.html#cb672-1" tabindex="-1"></a><span class="fu">library</span>(effects)</span></code></pre></div>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb673-1"><a href="regression-in-the-real-world.html#cb673-1" tabindex="-1"></a><span class="fu">library</span>(effects)</span></code></pre></div>
 <pre><code>## lattice theme set by effectsTheme()
 ## See ?effectsTheme for details.</code></pre>
-<div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb674-1"><a href="regression-in-the-real-world.html#cb674-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(fit_3q)<span class="sc">$</span>tcarea)</span></code></pre></div>
+<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="regression-in-the-real-world.html#cb675-1" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">allEffects</span>(fit_3q)<span class="sc">$</span>tcarea)</span></code></pre></div>
 <p><img src="09-regression2_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>We have discussed transforming the variable by squaring it, but other curvilinear patterns may require other transformations such as taking the inverse (1/X), when there is a decreasing negative effect of the predictor on the response variable, or taking the square root of X, when there is a dminishing positive impact of the predictor on the response variable -refer to <a href="http://link.springer.com/book/10.1007%2F978-1-4614-9170-5">Weisburt and Britt, 2014: 516-518</a>. There are also other more sophisticated ways of accommodating non linearities -by means of fitting regression splines or using generalised additive models. But those models are well beyond the scope of this course.</p>
 </div>
@@ -643,13 +643,13 @@ Ideally a plot of the residuals should show that:</p>
 <div id="transformations-and-unequal-variance" class="section level2 hasAnchor" number="9.5">
 <h2><span class="header-section-number">9.5</span> Transformations and unequal variance<a href="regression-in-the-real-world.html#transformations-and-unequal-variance" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>You may have noticed in the residual plot for our polynomial regression that the variance does not seem constant in this case. Again, there are a number of solutions one could apply in this type of scenarios. One possibility is to replace the usual coefficient standard errors with standard errors that will be consistent even with heterokedasticity.</p>
-<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb675-1"><a href="regression-in-the-real-world.html#cb675-1" tabindex="-1"></a><span class="fu">library</span>(lmtest, <span class="at">quietly =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb676-1"><a href="regression-in-the-real-world.html#cb676-1" tabindex="-1"></a><span class="fu">library</span>(lmtest, <span class="at">quietly =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;zoo&#39;</code></pre>
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     as.Date, as.Date.numeric</code></pre>
-<div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb678-1"><a href="regression-in-the-real-world.html#cb678-1" tabindex="-1"></a><span class="fu">library</span>(arm, <span class="at">quietly =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb679-1"><a href="regression-in-the-real-world.html#cb679-1" tabindex="-1"></a><span class="fu">library</span>(arm, <span class="at">quietly =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
 <pre><code>## 
 ## arm (Version 1.13-1, built: 2022-8-25)</code></pre>
 <pre><code>## Working directory is /Users/eonkim/Desktop/R/CrimeSciData</code></pre>
@@ -658,7 +658,7 @@ Ideally a plot of the residuals should show that:</p>
 <pre><code>## The following object is masked from &#39;package:car&#39;:
 ## 
 ##     logit</code></pre>
-<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb683-1"><a href="regression-in-the-real-world.html#cb683-1" tabindex="-1"></a><span class="fu">coeftest</span>(fit_3q, <span class="at">vcov =</span> hccm)</span></code></pre></div>
+<div class="sourceCode" id="cb684"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb684-1"><a href="regression-in-the-real-world.html#cb684-1" tabindex="-1"></a><span class="fu">coeftest</span>(fit_3q, <span class="at">vcov =</span> hccm)</span></code></pre></div>
 <pre><code>## 
 ## t test of coefficients:
 ## 
@@ -669,7 +669,7 @@ Ideally a plot of the residuals should show that:</p>
 ## sexmale     -0.5922181  0.0200261 -29.5724 &lt; 2.2e-16 ***
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb685-1"><a href="regression-in-the-real-world.html#cb685-1" tabindex="-1"></a><span class="fu">display</span>(fit_3q, <span class="at">digit=</span><span class="dv">4</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb686"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb686-1"><a href="regression-in-the-real-world.html#cb686-1" tabindex="-1"></a><span class="fu">display</span>(fit_3q, <span class="at">digit=</span><span class="dv">4</span>)</span></code></pre></div>
 <pre><code>## lm(formula = tcviolent ~ tcarea + I(tcarea^2) + sex, data = BCS0708)
 ##             coef.est coef.se
 ## (Intercept)  0.2654   0.0159
@@ -698,9 +698,9 @@ symbox(~asbperc, data=BCS0708)
 <img src="09-regression2_files/figure-html/unnamed-chunk-21-2.png" width="672" />
 -->
 <p>Let’s look at another example using the <code>Boston</code> dataset. We will model crime as a linear function of property values (<code>medv</code>), lower status of the population (<code>lstat</code>), distances to employment centres (<code>dis</code>), and a binary input indicating proximity to the river (<code>chas</code>).</p>
-<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb687-1"><a href="regression-in-the-real-world.html#cb687-1" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb687-2"><a href="regression-in-the-real-world.html#cb687-2" tabindex="-1"></a>fit_B1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(crim <span class="sc">~</span> medv <span class="sc">+</span> lstat <span class="sc">+</span> dis <span class="sc">+</span> chas, <span class="at">data =</span> Boston)</span>
-<span id="cb687-3"><a href="regression-in-the-real-world.html#cb687-3" tabindex="-1"></a><span class="fu">summary</span>(fit_B1)</span></code></pre></div>
+<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb688-1"><a href="regression-in-the-real-world.html#cb688-1" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb688-2"><a href="regression-in-the-real-world.html#cb688-2" tabindex="-1"></a>fit_B1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(crim <span class="sc">~</span> medv <span class="sc">+</span> lstat <span class="sc">+</span> dis <span class="sc">+</span> chas, <span class="at">data =</span> Boston)</span>
+<span id="cb688-3"><a href="regression-in-the-real-world.html#cb688-3" tabindex="-1"></a><span class="fu">summary</span>(fit_B1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = crim ~ medv + lstat + dis + chas, data = Boston)
@@ -723,7 +723,7 @@ symbox(~asbperc, data=BCS0708)
 ## Multiple R-squared:  0.2534, Adjusted R-squared:  0.2474 
 ## F-statistic: 42.51 on 4 and 501 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>We see that the R square is not too bad at .24 and three of the inputs are significantly associated with crime in the direction one would expect. Areas with more expensive properties and closer to employment centres tend to have less crime, and areas with a greater proportion of lower status residents tend to have more crime. Let’s have a look at the residuals.</p>
-<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb689-1"><a href="regression-in-the-real-world.html#cb689-1" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_B1)</span></code></pre></div>
+<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb690-1"><a href="regression-in-the-real-world.html#cb690-1" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_B1)</span></code></pre></div>
 <p><img src="09-regression2_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <pre><code>##            Test stat Pr(&gt;|Test stat|)    
 ## medv          9.8302        &lt; 2.2e-16 ***
@@ -734,11 +734,11 @@ symbox(~asbperc, data=BCS0708)
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>We can see non-linearities and quite obvious unequal variances.</p>
-<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb691-1"><a href="regression-in-the-real-world.html#cb691-1" tabindex="-1"></a><span class="fu">qqPlot</span>(fit_B1)</span></code></pre></div>
+<div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb692-1"><a href="regression-in-the-real-world.html#cb692-1" tabindex="-1"></a><span class="fu">qqPlot</span>(fit_B1)</span></code></pre></div>
 <p><img src="09-regression2_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <pre><code>## [1] 381 419</code></pre>
 <p>The qqplot shows a clear skew in the residuals. And if we were to look at outliers we would also see problems.</p>
-<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb693-1"><a href="regression-in-the-real-world.html#cb693-1" tabindex="-1"></a><span class="fu">outlierTest</span>(fit_B1)</span></code></pre></div>
+<div class="sourceCode" id="cb694"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb694-1"><a href="regression-in-the-real-world.html#cb694-1" tabindex="-1"></a><span class="fu">outlierTest</span>(fit_B1)</span></code></pre></div>
 <pre><code>##      rstudent unadjusted p-value Bonferroni p
 ## 381 12.261038         2.1183e-30   1.0719e-27
 ## 419  9.272410         5.4493e-19   2.7573e-16
@@ -748,7 +748,7 @@ symbox(~asbperc, data=BCS0708)
 ## 428  4.081649         5.2049e-05   2.6337e-02
 ## 405  4.068951         5.4871e-05   2.7765e-02</code></pre>
 <p>Quite a few of the outliers are significant and the influence plot shows further evidence of it:</p>
-<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb695-1"><a href="regression-in-the-real-world.html#cb695-1" tabindex="-1"></a><span class="fu">influencePlot</span>(fit_B1)</span></code></pre></div>
+<div class="sourceCode" id="cb696"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb696-1"><a href="regression-in-the-real-world.html#cb696-1" tabindex="-1"></a><span class="fu">influencePlot</span>(fit_B1)</span></code></pre></div>
 <p><img src="09-regression2_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 <pre><code>##        StudRes         Hat       CookD
 ## 284  0.8641468 0.045088797 0.007055541
@@ -758,11 +758,11 @@ symbox(~asbperc, data=BCS0708)
 ## 419  9.2724104 0.007275786 0.107751496</code></pre>
 <p>What this analysis shows is that often problems come together and are related to each other. If you remember from week 2, the distribution of crime is highly skewed. In these cases it can make sense to transform the Y variable as a first step, since this skew is surely playing a role in the unequal spread that we see in the residual plots.</p>
 <p>We can use the <code>symbox()</code> function to investigate what transformation will make <code>crim</code> less skewed.</p>
-<div class="sourceCode" id="cb697"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb697-1"><a href="regression-in-the-real-world.html#cb697-1" tabindex="-1"></a><span class="fu">symbox</span>(<span class="sc">~</span>crim, <span class="at">data=</span>Boston)</span></code></pre></div>
+<div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb698-1"><a href="regression-in-the-real-world.html#cb698-1" tabindex="-1"></a><span class="fu">symbox</span>(<span class="sc">~</span>crim, <span class="at">data=</span>Boston)</span></code></pre></div>
 <p><img src="09-regression2_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <p>This set of boxplots suggests what the distribution of <code>crim</code> would look like if we were to apply different transformations. In this case, as in many other instances with skewed distributions, applying the logarithmic transformation seems the most appropriate one. Let’s explore the implications of it:</p>
-<div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb698-1"><a href="regression-in-the-real-world.html#cb698-1" tabindex="-1"></a>fit_B2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(crim) <span class="sc">~</span> medv <span class="sc">+</span> lstat <span class="sc">+</span> dis <span class="sc">+</span> chas, <span class="at">data =</span> Boston)</span>
-<span id="cb698-2"><a href="regression-in-the-real-world.html#cb698-2" tabindex="-1"></a><span class="fu">summary</span>(fit_B2)</span></code></pre></div>
+<div class="sourceCode" id="cb699"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb699-1"><a href="regression-in-the-real-world.html#cb699-1" tabindex="-1"></a>fit_B2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(crim) <span class="sc">~</span> medv <span class="sc">+</span> lstat <span class="sc">+</span> dis <span class="sc">+</span> chas, <span class="at">data =</span> Boston)</span>
+<span id="cb699-2"><a href="regression-in-the-real-world.html#cb699-2" tabindex="-1"></a><span class="fu">summary</span>(fit_B2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = log(crim) ~ medv + lstat + dis + chas, data = Boston)
@@ -785,7 +785,7 @@ symbox(~asbperc, data=BCS0708)
 ## Multiple R-squared:  0.5807, Adjusted R-squared:  0.5774 
 ## F-statistic: 173.5 on 4 and 501 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>You will notice that the coefficients change in magnitude, since we have re-expressed the response variable in the logarithmic scale, but the direction and the statistical significance remain unchanged. The R square, however, is now much better. Let’s look at the residuals:</p>
-<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb700-1"><a href="regression-in-the-real-world.html#cb700-1" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_B2)</span></code></pre></div>
+<div class="sourceCode" id="cb701"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb701-1"><a href="regression-in-the-real-world.html#cb701-1" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_B2)</span></code></pre></div>
 <p><img src="09-regression2_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <pre><code>##            Test stat Pr(&gt;|Test stat|)    
 ## medv          8.0190        7.613e-15 ***
@@ -796,7 +796,7 @@ symbox(~asbperc, data=BCS0708)
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>We can see that the non-constant variance is still present, though to a lesser degree, and we can now also see that the non-linearities persist. We can further investigate this model using a scatterplot matrix. In fact, this should typically preceed fitting the model to assess potential non-linearities. We will use the <code>scatterplotMatrix</code> of the <code>car</code> package.</p>
-<div class="sourceCode" id="cb702"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb702-1"><a href="regression-in-the-real-world.html#cb702-1" tabindex="-1"></a><span class="fu">scatterplotMatrix</span>(<span class="sc">~</span> <span class="fu">log</span>(crim) <span class="sc">+</span> medv <span class="sc">+</span> lstat <span class="sc">+</span> dis <span class="sc">+</span> chas, <span class="at">data=</span>Boston)</span></code></pre></div>
+<div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb703-1"><a href="regression-in-the-real-world.html#cb703-1" tabindex="-1"></a><span class="fu">scatterplotMatrix</span>(<span class="sc">~</span> <span class="fu">log</span>(crim) <span class="sc">+</span> medv <span class="sc">+</span> lstat <span class="sc">+</span> dis <span class="sc">+</span> chas, <span class="at">data=</span>Boston)</span></code></pre></div>
 <pre><code>## Warning in smoother(x[subs], y[subs], col = smoother.args$col[i], log.x =
 ## FALSE, : could not fit smooth
 
@@ -810,8 +810,8 @@ symbox(~asbperc, data=BCS0708)
 ## FALSE, : could not fit smooth</code></pre>
 <p><img src="09-regression2_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <p>The matrix reveals that the distribution of the nummerical predictors are all also suffering from some skew and display a curvilinear relationship with the response variable.</p>
-<div class="sourceCode" id="cb704"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb704-1"><a href="regression-in-the-real-world.html#cb704-1" tabindex="-1"></a>fit_B3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(crim) <span class="sc">~</span> <span class="fu">poly</span>(medv, <span class="dv">2</span>) <span class="sc">+</span> <span class="fu">log</span>(lstat) <span class="sc">+</span> <span class="fu">log</span>(dis) <span class="sc">+</span> chas, <span class="at">data =</span> Boston)</span>
-<span id="cb704-2"><a href="regression-in-the-real-world.html#cb704-2" tabindex="-1"></a><span class="fu">summary</span>(fit_B3)</span></code></pre></div>
+<div class="sourceCode" id="cb705"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb705-1"><a href="regression-in-the-real-world.html#cb705-1" tabindex="-1"></a>fit_B3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(crim) <span class="sc">~</span> <span class="fu">poly</span>(medv, <span class="dv">2</span>) <span class="sc">+</span> <span class="fu">log</span>(lstat) <span class="sc">+</span> <span class="fu">log</span>(dis) <span class="sc">+</span> chas, <span class="at">data =</span> Boston)</span>
+<span id="cb705-2"><a href="regression-in-the-real-world.html#cb705-2" tabindex="-1"></a><span class="fu">summary</span>(fit_B3)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = log(crim) ~ poly(medv, 2) + log(lstat) + log(dis) + 
@@ -836,7 +836,7 @@ symbox(~asbperc, data=BCS0708)
 ## Multiple R-squared:  0.656,  Adjusted R-squared:  0.6526 
 ## F-statistic: 190.7 on 5 and 500 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Transforming the <code>lstat</code> and <code>dis</code> variable in the logarithmic scale<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a> and allowing a quadratic term for median property value seems to increase the R square and improve the fit of the model.</p>
-<div class="sourceCode" id="cb706"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb706-1"><a href="regression-in-the-real-world.html#cb706-1" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_B3)</span></code></pre></div>
+<div class="sourceCode" id="cb707"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb707-1"><a href="regression-in-the-real-world.html#cb707-1" tabindex="-1"></a><span class="fu">residualPlots</span>(fit_B3)</span></code></pre></div>
 <p><img src="09-regression2_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 <pre><code>##               Test stat Pr(&gt;|Test stat|)  
 ## poly(medv, 2)                             
@@ -847,7 +847,7 @@ symbox(~asbperc, data=BCS0708)
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>Although we still have some issues with unequal spread, the outputs do not lead us to alter our substantive conclusions.</p>
-<div class="sourceCode" id="cb708"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb708-1"><a href="regression-in-the-real-world.html#cb708-1" tabindex="-1"></a><span class="fu">coeftest</span>(fit_B3, <span class="at">vcov =</span> hccm) <span class="co">#The vcov is providing a covariance matrix that is corrected for heteroskedasticity.</span></span></code></pre></div>
+<div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb709-1"><a href="regression-in-the-real-world.html#cb709-1" tabindex="-1"></a><span class="fu">coeftest</span>(fit_B3, <span class="at">vcov =</span> hccm) <span class="co">#The vcov is providing a covariance matrix that is corrected for heteroskedasticity.</span></span></code></pre></div>
 <pre><code>## 
 ## t test of coefficients:
 ## 
@@ -866,40 +866,40 @@ symbox(~asbperc, data=BCS0708)
 <h2><span class="header-section-number">9.6</span> Boostrapping regression models<a href="regression-in-the-real-world.html#boostrapping-regression-models" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>As we discussed in previous sessions, bootstrapping is an approach to statistical inference that is based on building a “resampling” distribution from the observed sample. This approach allow us to obtain distribution-free confidence intervals and some of the bootstrap approaches are also helpful when other assumptions of the model are violated. For more details about this topic you may want to read Fox and Weisber (2012) <a href="http://socserv.mcmaster.ca/jfox/Books/Companion/appendix/Appendix-Bootstrapping.pdf">online appendix</a>. Here we are going to illustrated boostrapping with observation resampling.</p>
 <p>We can use the <code>Boot()</code> function that comes with the <code>car</code> package for this.</p>
-<div class="sourceCode" id="cb710"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb710-1"><a href="regression-in-the-real-world.html#cb710-1" tabindex="-1"></a>fit_B3_boot <span class="ot">&lt;-</span> <span class="fu">Boot</span>(fit_B3, <span class="at">f=</span>coef, <span class="at">R=</span><span class="dv">999</span>, <span class="at">method=</span><span class="st">&quot;case&quot;</span>) <span class="co">#This will take our latest model for the Boston data, will run 999 resamples of the cases, and will resample the coefficients (you could resample other quantitites)</span></span>
-<span id="cb710-2"><a href="regression-in-the-real-world.html#cb710-2" tabindex="-1"></a><span class="fu">summary</span>(fit_B3_boot)</span></code></pre></div>
+<div class="sourceCode" id="cb711"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb711-1"><a href="regression-in-the-real-world.html#cb711-1" tabindex="-1"></a>fit_B3_boot <span class="ot">&lt;-</span> <span class="fu">Boot</span>(fit_B3, <span class="at">f=</span>coef, <span class="at">R=</span><span class="dv">999</span>, <span class="at">method=</span><span class="st">&quot;case&quot;</span>) <span class="co">#This will take our latest model for the Boston data, will run 999 resamples of the cases, and will resample the coefficients (you could resample other quantitites)</span></span>
+<span id="cb711-2"><a href="regression-in-the-real-world.html#cb711-2" tabindex="-1"></a><span class="fu">summary</span>(fit_B3_boot)</span></code></pre></div>
 <pre><code>## 
 ## Number of bootstrap replications R = 999 
 ##                 original   bootBias  bootSE   bootMed
-## (Intercept)      1.12062  0.0034977 0.52981   1.13327
-## poly(medv, 2)1 -11.90029 -0.0844829 2.37541 -11.97046
-## poly(medv, 2)2  10.86169  0.0468036 1.58379  10.90279
-## log(lstat)       0.25564 -0.0038917 0.18973   0.25223
-## log(dis)        -2.11930  0.0050089 0.12245  -2.11803
-## chas             0.15374  0.0024551 0.19731   0.15394</code></pre>
+## (Intercept)      1.12062 -0.0289979 0.54627   1.10354
+## poly(medv, 2)1 -11.90029  0.0301350 2.44335 -11.89130
+## poly(medv, 2)2  10.86169  0.0903602 1.60974  10.92294
+## log(lstat)       0.25564  0.0054375 0.19378   0.25631
+## log(dis)        -2.11930  0.0115805 0.12626  -2.10837
+## chas             0.15374 -0.0025712 0.18502   0.15149</code></pre>
 <p>The summary gives the original sample value for each component of the bootstrapped statistics, along with the bootstrap estimates of bias, the difference between the average bootstrapped
 value of the statistic and its original-sample value. The bootstrap estimates of standard error are computed as the standard deviation of the bootstrap replicates.</p>
 <p>Confidence intervals using various methods can be applied to this object:</p>
-<div class="sourceCode" id="cb712"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb712-1"><a href="regression-in-the-real-world.html#cb712-1" tabindex="-1"></a><span class="fu">confint</span>(fit_B3_boot)</span></code></pre></div>
+<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb713-1"><a href="regression-in-the-real-world.html#cb713-1" tabindex="-1"></a><span class="fu">confint</span>(fit_B3_boot)</span></code></pre></div>
 <pre><code>## Bootstrap bca confidence intervals
 ## 
 ##                        2.5 %     97.5 %
-## (Intercept)     2.910771e-04  2.1026428
-## poly(medv, 2)1 -1.628427e+01 -6.6265516
-## poly(medv, 2)2  7.735923e+00 13.8456789
-## log(lstat)     -1.025618e-01  0.6498576
-## log(dis)       -2.343929e+00 -1.8693378
-## chas           -2.493797e-01  0.5614535</code></pre>
+## (Intercept)     -0.008079916  2.1041738
+## poly(medv, 2)1 -16.593388974 -6.3516710
+## poly(medv, 2)2   7.363046271 13.8614434
+## log(lstat)      -0.104316494  0.6763167
+## log(dis)        -2.374536281 -1.8755365
+## chas            -0.232170982  0.5156606</code></pre>
 </div>
 <div id="multicollinearity" class="section level2 hasAnchor" number="9.7">
 <h2><span class="header-section-number">9.7</span> Multicollinearity<a href="regression-in-the-real-world.html#multicollinearity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The regression model may experience some problems where there is strong collinearity, when the predictors are related among themselves. In these scenarios, the standard errors for the coefficients will be large and the confidence intervals will also be broader. The power of the hypothesis test for our t statistic will be lower. That is, it will be more difficult to detect a significant relationship even if there is one.</p>
 <p>To diagnose multicollinearity a first step may be to observe the correlation between the predictors in the model. Let’s first subset the data to only obtain the relevant predictors and our main outcome. For this I will introduce another form of selecting columns in a dataframe using the <code>dplyr</code> package.</p>
-<div class="sourceCode" id="cb714"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb714-1"><a href="regression-in-the-real-world.html#cb714-1" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">quietly=</span><span class="cn">TRUE</span>, <span class="at">warn.conflict=</span><span class="cn">FALSE</span>)</span>
-<span id="cb714-2"><a href="regression-in-the-real-world.html#cb714-2" tabindex="-1"></a>Boston_R <span class="ot">&lt;-</span> <span class="fu">select</span>(Boston, crim, lstat, dis, chas, medv)</span></code></pre></div>
+<div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="regression-in-the-real-world.html#cb715-1" tabindex="-1"></a><span class="fu">library</span>(dplyr, <span class="at">quietly=</span><span class="cn">TRUE</span>, <span class="at">warn.conflict=</span><span class="cn">FALSE</span>)</span>
+<span id="cb715-2"><a href="regression-in-the-real-world.html#cb715-2" tabindex="-1"></a>Boston_R <span class="ot">&lt;-</span> <span class="fu">select</span>(Boston, crim, lstat, dis, chas, medv)</span></code></pre></div>
 <p>Then we can obtain the correlations using the <code>cor()</code> function.</p>
-<div class="sourceCode" id="cb715"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb715-1"><a href="regression-in-the-real-world.html#cb715-1" tabindex="-1"></a>c_1 <span class="ot">&lt;-</span> <span class="fu">cor</span>(Boston_R)</span>
-<span id="cb715-2"><a href="regression-in-the-real-world.html#cb715-2" tabindex="-1"></a>c_1</span></code></pre></div>
+<div class="sourceCode" id="cb716"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb716-1"><a href="regression-in-the-real-world.html#cb716-1" tabindex="-1"></a>c_1 <span class="ot">&lt;-</span> <span class="fu">cor</span>(Boston_R)</span>
+<span id="cb716-2"><a href="regression-in-the-real-world.html#cb716-2" tabindex="-1"></a>c_1</span></code></pre></div>
 <pre><code>##              crim      lstat         dis        chas       medv
 ## crim   1.00000000  0.4556215 -0.37967009 -0.05589158 -0.3883046
 ## lstat  0.45562148  1.0000000 -0.49699583 -0.05392930 -0.7376627
@@ -907,22 +907,22 @@ value of the statistic and its original-sample value. The bootstrap estimates of
 ## chas  -0.05589158 -0.0539293 -0.09917578  1.00000000  0.1752602
 ## medv  -0.38830461 -0.7376627  0.24992873  0.17526018  1.0000000</code></pre>
 <p>And then we can visualise these correlations with the <code>corrplot</code> package.</p>
-<div class="sourceCode" id="cb717"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb717-1"><a href="regression-in-the-real-world.html#cb717-1" tabindex="-1"></a><span class="fu">library</span>(corrplot, <span class="at">quietly =</span> <span class="cn">TRUE</span>, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb718"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb718-1"><a href="regression-in-the-real-world.html#cb718-1" tabindex="-1"></a><span class="fu">library</span>(corrplot, <span class="at">quietly =</span> <span class="cn">TRUE</span>, <span class="at">warn.conflicts =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <pre><code>## corrplot 0.92 loaded</code></pre>
-<div class="sourceCode" id="cb719"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb719-1"><a href="regression-in-the-real-world.html#cb719-1" tabindex="-1"></a><span class="fu">corrplot</span>(c_1, <span class="at">order =</span> <span class="st">&quot;hclust&quot;</span>, <span class="at">tl.pos=</span><span class="st">&quot;d&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb720-1"><a href="regression-in-the-real-world.html#cb720-1" tabindex="-1"></a><span class="fu">corrplot</span>(c_1, <span class="at">order =</span> <span class="st">&quot;hclust&quot;</span>, <span class="at">tl.pos=</span><span class="st">&quot;d&quot;</span>)</span></code></pre></div>
 <p><img src="09-regression2_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
 <p>We can see that there are some non-trivial correlations between some of the predictors, in particular between median property value and percent lower status (r=-73). And keep in mind these coefficients are not picking up well enough the actual curvilinear relation that we saw in the scatterplot matrix printed earlier.</p>
 <p>Correlations among pairs of variables, will only give you a first impression of the problem. What we are really concerned is what happens once you throw all the variables in the model. Not all problems with multicollinearity will be detected by the correlation matrix. The recommended reading describes the variance inflation factor as a tool to diagnose multicollinearity. Let’s look at the on we obtain with the first model (pre-transformations) that we run with the <code>Boston</code> dataset:</p>
-<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb720-1"><a href="regression-in-the-real-world.html#cb720-1" tabindex="-1"></a><span class="fu">vif</span>(fit_B1)</span></code></pre></div>
+<div class="sourceCode" id="cb721"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb721-1"><a href="regression-in-the-real-world.html#cb721-1" tabindex="-1"></a><span class="fu">vif</span>(fit_B1)</span></code></pre></div>
 <pre><code>##     medv    lstat      dis     chas 
 ## 2.358517 2.850675 1.399747 1.057865</code></pre>
 <p>Typically a VIF larger than 5 or 10 indicates serious problems wiht collinearity. Fox (2008) recommends using the square root of the variance inflation factor:</p>
-<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb722-1"><a href="regression-in-the-real-world.html#cb722-1" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">vif</span>(fit_B1))</span></code></pre></div>
+<div class="sourceCode" id="cb723"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb723-1"><a href="regression-in-the-real-world.html#cb723-1" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">vif</span>(fit_B1))</span></code></pre></div>
 <pre><code>##     medv    lstat      dis     chas 
 ## 1.535746 1.688394 1.183109 1.028525</code></pre>
 <p>Typically, it is assumed that you need a value greater than 2 for the square root of the variance inflation factor before collinearity seriously impairs the precision of the estimation. It does not look as if we would have to worry much on the basis of these results.</p>
 <p>When you have a set of related inputs or regressors (either because you have a multicategory factor and various dummy variables or because you have polynomial regressors) you cannot use the variance inflation factor. There is, however, a similar statistics that you can use in these contexts: the <strong>generalised variance inflation factor</strong>. We could use this measure for the final model we used for the <code>Boston</code> data. We invoke this statistic using the same code as before:</p>
-<div class="sourceCode" id="cb724"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb724-1"><a href="regression-in-the-real-world.html#cb724-1" tabindex="-1"></a><span class="fu">vif</span>(fit_B3)</span></code></pre></div>
+<div class="sourceCode" id="cb725"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb725-1"><a href="regression-in-the-real-world.html#cb725-1" tabindex="-1"></a><span class="fu">vif</span>(fit_B3)</span></code></pre></div>
 <pre><code>##                   GVIF Df GVIF^(1/(2*Df))
 ## poly(medv, 2) 4.439803  2        1.451580
 ## log(lstat)    4.151409  1        2.037501

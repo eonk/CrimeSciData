@@ -355,7 +355,7 @@ library(sjPlot)
 ```
 
 ```
-## #refugeeswelcome
+## Install package "strengejacke" from GitHub (`devtools::install_github("strengejacke/strengejacke")`) to load all sj-packages at once!
 ```
 
 ```r

@@ -323,7 +323,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb489-1"><a href="studying-relationships-between-two-factors.html#cb489-1" tabindex="-1"></a>BCS0708<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/eonk/dar_book/main/datasets/BCS0708.csv&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## The downloaded binary packages are in
-##  /var/folders/9p/2vm2p_ss60zcf4pr0135n4q80000gr/T//Rtmpk58zAo/downloaded_packages</code></pre>
+##  /var/folders/9p/2vm2p_ss60zcf4pr0135n4q80000gr/T//RtmpdE7dWU/downloaded_packages</code></pre>
 <p>We will start by producing a cross tabulation of victimisation (“bcsvictim”), a categorical unordered variable, by whether the presence of rubbish in the streets is a problem in the area of residence (“rubbcomm”), another categorical un-ordered variable. Broken windows theory would argue we should see a relationship. We will use the following code:</p>
 <div class="sourceCode" id="cb491"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb491-1"><a href="studying-relationships-between-two-factors.html#cb491-1" tabindex="-1"></a><span class="fu">library</span>(gmodels)</span>
 <span id="cb491-2"><a href="studying-relationships-between-two-factors.html#cb491-2" tabindex="-1"></a><span class="fu">with</span>(BCS0708, <span class="fu">CrossTable</span>(rubbcomm, bcsvictim, <span class="at">prop.chisq =</span> <span class="cn">FALSE</span>, <span class="at">format =</span> <span class="fu">c</span>(<span class="st">&quot;SPSS&quot;</span>)))</span></code></pre></div>
