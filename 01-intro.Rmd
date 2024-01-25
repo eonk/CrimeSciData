@@ -3,12 +3,12 @@
 ## Install R & RStudio
 We recommend that you use your own laptops for this course. If you have not already, then please download and install R and RStudio onto your laptops. 
 - click [here](https://www.youtube.com/watch?v=eD07NznguA4) for instructions using Windows or
-- [here](https://www.youtube.com/watch?v=cX532N_XLIs&list=PLqzoL9-eJTNDw71zWePXyHx3_cm_fMP8S) for instructions using a Mac. If you are using a Mac it would be convenient that you use the most up to date version of OS or, at least one compatible with the most recent version of R. Read [this](https://www.howtogeek.com/350906/how-to-check-which-version-of-macos-youre-using/) if you want to check how to do that.
+- [here](https://www.youtube.com/watch?v=cX532N_XLIs&list=PLqzoL9-eJTNDw71zWePXyHx3_cm_fMP8S) for instructions using a Mac. If you are using a Mac it would be convenient that you use the most up-to-date version of OS or, at least one compatible with the most recent version of R. Read [this](https://www.howtogeek.com/350906/how-to-check-which-version-of-macos-youre-using/) if you want to check how to do that.
 
 If you prefer, you can always use any of the PCs in the computer cluster. All of them already have the software installed. 
 
 ## Open up and explore RStudio
-In this session we will focus in developing basic familiarity with R Studio. You can use R without using R Studio, but R Studio is an app that makes it easier to work with R. R Studio automatically runs R in the background. We will be interacting with R in this course unit via R Studio.
+In this session, we will focus on developing basic familiarity with R Studio. You can use R without using R Studio, but R Studio is an app that makes it easier to work with R. R Studio automatically runs R in the background. We will be interacting with R in this course unit via R Studio.
 
 ![](imgs/rstudio.PNG){width=80%}
 
@@ -527,4 +527,4 @@ What is more. I would suggest you go to the Tools drop down menu, select Global 
 <img src="https://user-images.githubusercontent.com/98951792/215292052-cbb36812-e7a7-4a7f-b2e4-57ea93918274.png"> 
 
 ## Summary: exercise for this week
-Once you finish your lab session, don't forget to do this [Exercise](https://eonk.shinyapps.io/MCD_ex) and have a chance to sum-up this week's R codes.
+Once you finish your lab session, don't forget to do this [Exercise](https://eonk.shinyapps.io/MCD_ex) and have a chance to sum up this week's R codes.
