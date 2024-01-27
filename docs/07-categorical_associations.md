@@ -17,7 +17,7 @@ BCS0708<-read.csv("https://raw.githubusercontent.com/eonk/dar_book/main/datasets
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/9p/2vm2p_ss60zcf4pr0135n4q80000gr/T//RtmpdE7dWU/downloaded_packages
+## 	/var/folders/9p/2vm2p_ss60zcf4pr0135n4q80000gr/T//RtmpileDEB/downloaded_packages
 ```
 
 We will start by producing a cross tabulation of victimisation ("bcsvictim"), a categorical unordered variable, by whether the presence of rubbish in the streets is a problem in the area of residence ("rubbcomm"), another categorical un-ordered variable. Broken windows theory would argue we should see a relationship. We will use the following code:

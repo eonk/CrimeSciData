@@ -871,12 +871,12 @@ symbox(~asbperc, data=BCS0708)
 <pre><code>## 
 ## Number of bootstrap replications R = 999 
 ##                 original   bootBias  bootSE   bootMed
-## (Intercept)      1.12062 -0.0289979 0.54627   1.10354
-## poly(medv, 2)1 -11.90029  0.0301350 2.44335 -11.89130
-## poly(medv, 2)2  10.86169  0.0903602 1.60974  10.92294
-## log(lstat)       0.25564  0.0054375 0.19378   0.25631
-## log(dis)        -2.11930  0.0115805 0.12626  -2.10837
-## chas             0.15374 -0.0025712 0.18502   0.15149</code></pre>
+## (Intercept)      1.12062 -0.0149155 0.53578   1.09808
+## poly(medv, 2)1 -11.90029 -0.1142525 2.42217 -12.00464
+## poly(medv, 2)2  10.86169  0.1393496 1.56207  11.04427
+## log(lstat)       0.25564 -0.0001446 0.19297   0.25376
+## log(dis)        -2.11930  0.0124076 0.12667  -2.10306
+## chas             0.15374  0.0054687 0.20508   0.15953</code></pre>
 <p>The summary gives the original sample value for each component of the bootstrapped statistics, along with the bootstrap estimates of bias, the difference between the average bootstrapped
 value of the statistic and its original-sample value. The bootstrap estimates of standard error are computed as the standard deviation of the bootstrap replicates.</p>
 <p>Confidence intervals using various methods can be applied to this object:</p>
@@ -884,12 +884,12 @@ value of the statistic and its original-sample value. The bootstrap estimates of
 <pre><code>## Bootstrap bca confidence intervals
 ## 
 ##                        2.5 %     97.5 %
-## (Intercept)     -0.008079916  2.1041738
-## poly(medv, 2)1 -16.593388974 -6.3516710
-## poly(medv, 2)2   7.363046271 13.8614434
-## log(lstat)      -0.104316494  0.6763167
-## log(dis)        -2.374536281 -1.8755365
-## chas            -0.232170982  0.5156606</code></pre>
+## (Intercept)      0.002515035  2.1249369
+## poly(medv, 2)1 -16.240663098 -7.2029348
+## poly(medv, 2)2   7.404317033 13.6305568
+## log(lstat)      -0.112242226  0.6656402
+## log(dis)        -2.374187605 -1.8792560
+## chas            -0.276912435  0.5611586</code></pre>
 </div>
 <div id="multicollinearity" class="section level2 hasAnchor" number="9.7">
 <h2><span class="header-section-number">9.7</span> Multicollinearity<a href="regression-in-the-real-world.html#multicollinearity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
