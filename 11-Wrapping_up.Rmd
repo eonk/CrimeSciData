@@ -49,4 +49,4 @@ So, this is the end. At least for now. What we have done this semester is an int
 
 But there are many free courses offered as massive online open courses that you could take to consolidate or further expand what you have learnt this semester. Check out [Coursera](https://www.coursera.org/browse/data-science) or [edX](https://www.edx.org/course/subject/data-science) platforms for these. Many of those courses make you pay for a certificate (and if you want to get feedback), but you can watch the videos and use the materials for free in almost all of them. You may also want to have a look at [datacamp](https://www.datacamp.com). Most of their courses require a paid subscription, but there are many courses for free (particularly those created by the community).
 
-Good luck with the essays!!! And do not hesitate to get in touch if you have any queries.
+Good luck with the final assessment! And do not hesitate to get in touch if you have any queries.
