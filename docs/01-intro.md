@@ -3,7 +3,7 @@
 ## Install R & RStudio
 We recommend that you use your own laptops for this course. If you have not already, then please download and install R and RStudio onto your laptops. 
 - click [here](https://www.youtube.com/watch?v=eD07NznguA4) for instructions using Windows or
-- [here](https://www.youtube.com/watch?v=cX532N_XLIs&list=PLqzoL9-eJTNDw71zWePXyHx3_cm_fMP8S) for instructions using a Mac. If you are using a Mac it would be convenient that you use the most up-to-date version of OS or, at least one compatible with the most recent version of R. Read [this](https://www.howtogeek.com/350906/how-to-check-which-version-of-macos-youre-using/) if you want to check how to do that.
+- [here](https://www.youtube.com/watch?v=E8IFmqSXjDc) for instructions using a Mac. If you are using a Mac it would be convenient that you use the most up-to-date version of OS or, at least one compatible with the most recent version of R. Read [this](https://www.howtogeek.com/350906/how-to-check-which-version-of-macos-youre-using/) if you want to check how to do that.
 
 If you prefer, you can always use any of the PCs in the computer cluster. All of them already have the software installed. 
 
@@ -44,7 +44,7 @@ Click in the *Tools* menu and select *Global options*. This will open up a pop u
 ## Getting organised: R Projects
 Whenever you do analysis you will be working with a variety of files. You may have an Excel data set (or some other type of data set file, like csv for example), a Microsoft Word file where you are writing down the essay with your results, but also a script with all the programming code you have been using. R needs to know where all these files sit in your computer. Often you will get error messages because you are expecting R to find one of these files in the wrong location. **It is absolutely critical thus that you understand how your computer organises and store files.** Please watch the video below to understand the basics of file management and file paths: 
 
-[Windows users](https://www.top-windows-tutorials.com/file-paths/)
+[Windows users](https://www.youtube.com/watch?v=k-EID5_2D9U)
 
 [MAC users](https://www.switchingtomac.com/tutorials/osx/5-ways-to-reveal-the-path-of-a-file-on-macos/)
 
@@ -750,21 +750,21 @@ Something like:
 
 
 ```r
-my_dataframe <- read_csv('PATH_OR_URL_TO_CSV_FILE')
+my_dataframe <- read.csv('PATH_OR_URL_TO_CSV_FILE')
 ```
 
 Well what if your data does not live on your laptop or PC? Well, if there is a way that R can still access this data just by following a path, then this approach will still work! 
 Tips! please keep your folders simple. Just use one data folder for this module amd do not creat mutiple folders such as 'data for week 1', 'data for week 2' something like this. 
 
-All data we will use in the module are in the blackboard but we will also provide the links of where we saved the data for you. You know when you right click on the link, and select "Save As..." or whatever you click on to save? You could, also select "Copy Link Address". This just copies the webpage where this data is stored. Give it a go! Copy the address, and then paste it into your browser. It will take you to a blank page where a forced download of the data will begin. So what if you pasted this into the `read_csv()` function? 
+All data we will use in the module are in the blackboard but we will also provide the links of where we saved the data for you. You know when you right click on the link, and select "Save As..." or whatever you click on to save? You could, also select "Copy Link Address". This just copies the webpage where this data is stored. Give it a go! Copy the address, and then paste it into your browser. It will take you to a blank page where a forced download of the data will begin. So what if you pasted this into the `read.csv()` function? 
 
 
 ```r
 #example 1: when you download data directly fro the webpage, you will use this code.
-my_dataframe <- read_csv("www.data.com/data you want to import.csv")
+my_dataframe <- read.csv("www.data.com/data you want to import.csv")
 #example 2: when you download data from BB and save it to your computer, you can use file.choose() 
 #file.choose() brings up a file explorer window that allows you to interactively choose a file path to work with.
-my_dataframe <- read_csv(file.choose())
+my_dataframe <- read.csv(file.choose())
 ```
 
 In the first example, the my_dataframe object would be assigned the value returned from the read.csv() function reading in the file from the 'url' link you provided. File path is no mysterious thing, file path is simply the *path* to the *file* you want to read. If this is a website, then so be it. 
