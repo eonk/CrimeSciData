@@ -10,9 +10,9 @@ description: "This is a study material for Criminology students at the Universit
 
 # Preface {-}
 
-This study material is designed to introduce Criminology students at the University of Manchester to the use of data science in crime research and practice. This is an improved version of [the material](https://maczokni.github.io/R-for-Criminologists/) originally developed by Juanjo Medina and Reka Solymosi, and is currently being updated and maintained by Eon Kim, Joanna Hill and Thiago Oliveira.
+This study material is designed to introduce Criminology students at the University of Manchester to the use of data science in crime research and practice. This is an improved version of [the material](https://jjmedinaariza.github.io/modelling_book/) originally developed by Juanjo Medina and Reka Solymosi, and is currently being updated and maintained by Thiago Oliveira and Ana Maria Nicoriciu.
 
-This lab note is a work in process. If you have any suggestions or find any errors, please don't hesitate to contact me by submitting an issue to the the [GitHub repository](https://github.com/eonk/CrimeSciData) or via email on thiago.oliveira@manchester.ac.uk. I appreciate your feedback and will use it to improve the material for future students.
+This lab note is a work in process. If you have any suggestions or find any errors, please don't hesitate to contact us by submitting an issue to the the [GitHub repository](https://github.com/eonk/CrimeSciData) or via email on thiago.oliveira@manchester.ac.uk. We appreciate your feedback and will use it to improve the material for future students.
 
 <div style="margin-top: 50px;"></div>
 
