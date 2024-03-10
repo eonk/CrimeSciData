@@ -248,7 +248,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="7" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html"><i class="fa fa-check"></i><b>7</b> Studying relationships between two factors</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#producing-cross-tabulations"><i class="fa fa-check"></i><b>7.1</b> Producing cross tabulations</a></li>
+<li class="chapter" data-level="7.1" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#producing-cross-tabulations"><i class="fa fa-check"></i><b>7.1</b> Producing cross-tabulations</a></li>
 <li class="chapter" data-level="7.2" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#expected-frequencies-and-chi-square"><i class="fa fa-check"></i><b>7.2</b> Expected frequencies and Chi-Square</a></li>
 <li class="chapter" data-level="7.3" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#residuals"><i class="fa fa-check"></i><b>7.3</b> Residuals</a></li>
 <li class="chapter" data-level="7.4" data-path="studying-relationships-between-two-factors.html"><a href="studying-relationships-between-two-factors.html#gamma"><i class="fa fa-check"></i><b>7.4</b> Gamma</a></li>
@@ -871,12 +871,12 @@ symbox(~asbperc, data=BCS0708)
 <pre><code>## 
 ## Number of bootstrap replications R = 999 
 ##                 original   bootBias  bootSE   bootMed
-## (Intercept)      1.12062 -0.0105741 0.52855   1.13275
-## poly(medv, 2)1 -11.90029 -0.0377692 2.41165 -11.94570
-## poly(medv, 2)2  10.86169  0.0303583 1.64046  10.86097
-## log(lstat)       0.25564  0.0034381 0.19034   0.25502
-## log(dis)        -2.11930  0.0025125 0.13220  -2.12007
-## chas             0.15374 -0.0015488 0.20044   0.15929</code></pre>
+## (Intercept)      1.12062 -0.0284487 0.56351   1.08582
+## poly(medv, 2)1 -11.90029  0.0049833 2.52068 -11.93234
+## poly(medv, 2)2  10.86169  0.0200165 1.65795  10.83312
+## log(lstat)       0.25564  0.0058147 0.19959   0.26356
+## log(dis)        -2.11930  0.0123777 0.12965  -2.10856
+## chas             0.15374  0.0142662 0.20856   0.16826</code></pre>
 <p>The summary gives the original sample value for each component of the bootstrapped statistics, along with the bootstrap estimates of bias, the difference between the average bootstrapped
 value of the statistic and its original-sample value. The bootstrap estimates of standard error are computed as the standard deviation of the bootstrap replicates.</p>
 <p>Confidence intervals using various methods can be applied to this object:</p>
@@ -884,12 +884,12 @@ value of the statistic and its original-sample value. The bootstrap estimates of
 <pre><code>## Bootstrap bca confidence intervals
 ## 
 ##                       2.5 %     97.5 %
-## (Intercept)     -0.06204540  2.0939159
-## poly(medv, 2)1 -16.37618189 -6.8735084
-## poly(medv, 2)2   7.33168813 13.8886107
-## log(lstat)      -0.08791288  0.6714318
-## log(dis)        -2.37563294 -1.8412090
-## chas            -0.24763928  0.5328849</code></pre>
+## (Intercept)      0.02652647  2.2237512
+## poly(medv, 2)1 -16.61233078 -6.5910023
+## poly(medv, 2)2   7.67246256 14.2249320
+## log(lstat)      -0.13805528  0.6703103
+## log(dis)        -2.37511227 -1.8684148
+## chas            -0.26043845  0.5737351</code></pre>
 </div>
 <div id="multicollinearity" class="section level2 hasAnchor" number="9.7">
 <h2><span class="header-section-number">9.7</span> Multicollinearity<a href="regression-in-the-real-world.html#multicollinearity" class="anchor-section" aria-label="Anchor link to header"></a></h2>
